@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Four AI teammates that turn one workplace friction into a ritual people actually run: an ethnographer, a designer, a skeptic and a prototyper.">
+<meta property="og:title" content="Ritual Works">
+<meta property="og:description" content="Four AI teammates sharing a studio. Each one has a rule about what it refuses to do.">
+<meta property="og:image" content="preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{color-scheme:light dark; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);}
+  html,body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Ritual Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --ground:#F1EBE0; --surface:#FFFCF6; --surface-2:#F7F0E4; --sunk:#EDE4D4;
+  --ink:#2A211A; --ink-2:#675748; --ink-3:#9A8876;
+  --line:#E2D7C5; --line-2:#CCBCA5;
+  --floor:#6E4628; --plank:#7A5030; --wood:#A9703F; --wood-dk:#734828;
+  --rug:#E7DCC6; --glass:#CBDED6; --outside:#8FB07A;
+  --leaf-1:#3B6838; --leaf-2:#5A8945; --leaf-3:#85AD5D;
+  --terra:#B5623C; --leather:#2E2521; --sun:#FFD98A;
+  --sky-a:#EFE6D6; --sky-b:#DED0B8;
+  --a1:#1F6F82; --a2:#C0821A; --a3:#8C3247; --a4:#3C7350;
+  --signal:#E0A11C; --shadow:rgba(60,40,24,.22);
+  --box-lt:#FFF6E6; --box-dk:#150E08;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#15110D; --surface:#1F1A15; --surface-2:#282118; --sunk:#100C09;
+    --ink:#F3EBE0; --ink-2:#B5A695; --ink-3:#83745F;
+    --line:#2F2820; --line-2:#443A30;
+    --floor:#3B2817; --plank:#442E1B; --wood:#7B5230; --wood-dk:#4E3220;
+    --rug:#5C5040; --glass:#2B3A46; --outside:#2A4436;
+    --leaf-1:#2B4A34; --leaf-2:#3D6B45; --leaf-3:#588755;
+    --terra:#8A4A2E; --leather:#191411; --sun:#FFC166;
+    --sky-a:#191410; --sky-b:#0E0A07;
+    --a1:#46AFC6; --a2:#E3AE3E; --a3:#D46C85; --a4:#5CB97F;
+    --signal:#F4CB5C; --shadow:rgba(0,0,0,.5);
+    --box-lt:#F6E8D2; --box-dk:#060403;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15110D; --surface:#1F1A15; --surface-2:#282118; --sunk:#100C09;
+  --ink:#F3EBE0; --ink-2:#B5A695; --ink-3:#83745F;
+  --line:#2F2820; --line-2:#443A30;
+  --floor:#3B2817; --plank:#442E1B; --wood:#7B5230; --wood-dk:#4E3220;
+  --rug:#5C5040; --glass:#2B3A46; --outside:#2A4436;
+  --leaf-1:#2B4A34; --leaf-2:#3D6B45; --leaf-3:#588755;
+  --terra:#8A4A2E; --leather:#191411; --sun:#FFC166;
+  --sky-a:#191410; --sky-b:#0E0A07;
+  --a1:#46AFC6; --a2:#E3AE3E; --a3:#D46C85; --a4:#5CB97F;
+  --signal:#F4CB5C; --shadow:rgba(0,0,0,.5);
+  --box-lt:#F6E8D2; --box-dk:#060403;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px; margin:0 auto; padding-inline:20px; padding-block:26px 56px;}
+
+.masthead{display:flex; flex-wrap:wrap; align-items:flex-end; gap:18px 28px; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:18px;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px;}
+h1{font-family:"Bricolage Grotesque","Public Sans",sans-serif; font-weight:800; font-size:clamp(34px,6vw,54px); line-height:.94; letter-spacing:-.025em; margin:0; text-wrap:balance;}
+.deck{margin:10px 0 0; max-width:56ch; color:var(--ink-2); font-size:16px;}
+.mast-meta{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; line-height:1.9; color:var(--ink-3); text-align:right;}
+.mast-meta b{color:var(--ink-2); font-weight:500;}
+@media(max-width:620px){.mast-meta{text-align:left}}
+
+.board{display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:22px; margin-top:26px; align-items:start;}
+@media(max-width:940px){.board{grid-template-columns:minmax(0,1fr)}}
+
+.world{position:relative; border:1px solid var(--line-2); border-radius:4px; overflow:hidden; background:var(--sky-a); box-shadow:inset 0 0 60px var(--shadow);}
+#stage{display:block; width:100%; aspect-ratio:16/11;}
+@media(max-width:560px){#stage{aspect-ratio:1/1}}
+.world-tag{position:absolute; top:10px; left:12px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); pointer-events:none;}
+.nowplaying{position:absolute; top:10px; right:12px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.08em; color:var(--ink-3); pointer-events:none; text-align:right; max-width:62%;}
+#bubbles{position:absolute; inset:0; pointer-events:none; overflow:hidden;}
+.bub{position:absolute; transform:translate(-50%,-100%); width:max-content; max-width:min(230px,52%);
+  background:var(--surface); border:1px solid var(--agent); border-radius:11px; padding:7px 11px 8px;
+  font-size:12.5px; line-height:1.38; color:var(--ink); box-shadow:0 7px 20px var(--shadow); opacity:0; transition:opacity .28s;}
+.bub b{display:block; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--agent); margin-bottom:3px; font-weight:600;}
+.bub::after{content:""; position:absolute; left:50%; bottom:-6px; margin-left:-5px; width:10px; height:10px;
+  background:var(--surface); border-right:1px solid var(--agent); border-bottom:1px solid var(--agent); transform:rotate(45deg);}
+
+.controls{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; align-items:center;}
+button{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--surface); color:var(--ink); border:1px solid var(--line-2); border-radius:2px; padding:8px 13px; cursor:pointer;}
+button:hover{border-color:var(--ink-3);} button:focus-visible{outline:2px solid var(--a1); outline-offset:2px;}
+button[disabled]{opacity:.45; cursor:default;}
+button.primary{background:var(--ink); color:var(--ground); border-color:var(--ink);} button.primary:hover{opacity:.88;}
+.hint{font-size:12.5px; color:var(--ink-3); margin-left:auto;}
+@media(max-width:620px){.hint{margin-left:0; width:100%}}
+
+.dossier{border:1px solid var(--line-2); border-radius:3px; background:var(--surface); position:sticky; top:calc(env(safe-area-inset-top, 0px) + 14px); overflow:hidden;}
+@media(max-width:940px){.dossier{position:static}}
+.dsr-top{padding:16px 18px 14px; border-bottom:1px solid var(--line); position:relative;}
+.dsr-top::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--agent);}
+.dsr-code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--agent); font-weight:600;}
+.dsr-name{font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:22px; line-height:1.1; letter-spacing:-.01em; margin:3px 0 2px;}
+.dsr-station{font-size:12.5px; color:var(--ink-3);}
+.dsr-body{padding:4px 18px 18px;}
+.fld{padding-top:14px;} .fld + .fld{border-top:1px dashed var(--line); margin-top:14px;}
+.fld h3{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.17em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px; font-weight:500;}
+.fld p{margin:0; font-size:14px; color:var(--ink-2);} .fld p.lede{color:var(--ink); font-size:14.5px;}
+.chips{display:flex; flex-wrap:wrap; gap:5px;}
+.chip{font-size:11.5px; padding:3px 8px; border-radius:999px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-2);}
+.io{display:grid; grid-template-columns:auto 1fr; gap:4px 10px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px;}
+.io dt{color:var(--ink-3);} .io dd{margin:0; color:var(--ink);}
+.warn{border-left:2px solid var(--a3); padding-left:10px;}
+pre{margin:0; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; line-height:1.65; white-space:pre-wrap; background:var(--sunk); border:1px solid var(--line); border-radius:2px; padding:11px 12px; color:var(--ink-2); max-height:200px; overflow:auto;}
+.copyrow{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:6px;}
+.copyrow button{padding:4px 9px; font-size:10px;}
+
+.contract{margin-top:30px; border-top:1px solid var(--line); padding-top:22px;}
+.sec-h{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--ink-3); margin:0 0 14px;}
+.flowscroll{overflow-x:auto; padding-bottom:6px;}
+.flow{display:flex; align-items:stretch; min-width:660px;}
+.node{flex:1 1 0; border:1px solid var(--line-2); border-top:3px solid var(--agent); background:var(--surface); padding:11px 12px 12px; cursor:pointer; transition:background .25s;}
+.node.on{background:var(--surface-2);}
+.node .nc{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--agent); font-weight:600;}
+.node .nr{font-size:12.5px; color:var(--ink-2); margin-top:2px;}
+.arrow{flex:0 0 96px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:3px; padding:0 4px;}
+.arrow .ln{width:100%; height:1px; background:var(--line-2); position:relative;}
+.arrow .ln::after{content:""; position:absolute; right:0; top:-3px; border-left:6px solid var(--line-2); border-top:3.5px solid transparent; border-bottom:3.5px solid transparent;}
+.arrow .lbl{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; color:var(--ink-3); text-align:center; line-height:1.35;}
+.bounce{margin-top:10px; display:flex; align-items:center; gap:10px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; color:var(--ink-3);}
+.bounce .bar{flex:1 1 auto; min-width:60px; height:1px; background:repeating-linear-gradient(90deg,var(--line-2) 0 5px,transparent 5px 10px); position:relative;}
+.bounce .bar::before{content:""; position:absolute; left:0; top:-3px; border-right:6px solid var(--line-2); border-top:3.5px solid transparent; border-bottom:3.5px solid transparent;}
+
+.lower{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:22px; margin-top:28px;}
+@media(max-width:1060px){.lower{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:940px){.lower{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+@media(max-width:760px){.lower{grid-template-columns:minmax(0,1fr)}}
+.log{border:1px solid var(--line-2); background:var(--surface); border-radius:3px; padding:14px 16px 8px; max-height:300px; overflow:auto;}
+.log ol{list-style:none; margin:0; padding:0;}
+.log li{display:grid; grid-template-columns:48px 94px 1fr; gap:10px; font-size:13px; padding:5px 0; border-bottom:1px dashed var(--line);}
+.log li:last-child{border-bottom:0;}
+.log .t{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--ink-3); padding-top:2px;}
+.log .who{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:600; color:var(--agent); padding-top:2px;}
+.log .msg{color:var(--ink-2);}
+@media(max-width:520px){ .log li{grid-template-columns:48px 1fr; gap:4px 10px;} .log .msg{grid-column:1/-1;} }
+.log .msg code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink); background:var(--surface-2); padding:1px 4px; border-radius:2px;}
+.notes{font-size:14px; color:var(--ink-2);}
+.rule{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:13.5px;}
+.rule dt{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); padding-top:4px;}
+.rule dd{margin:0 0 8px; color:var(--ink-2);}
+footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.1em; color:var(--ink-3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+@media(prefers-reduced-motion:reduce){.bub{transition-duration:.001ms}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">One floor · four seats · always in the room</p>
+      <h1>Ritual Works</h1>
+      <p class="deck">Four agents who share a studio: an ethnographer, a ritual designer, a skeptic and a prototyper — they go by what they do, not by call signs. They hold standup at the table, wander over to each other's desks, argue, and hand one brief around until a workplace ritual is fit to ship. Click anyone to read their charter.</p>
+    </div>
+    <div class="mast-meta">
+      <div><b>floor</b> open plan · one table</div>
+      <div><b>seats</b> 4 · no fifth</div>
+      <div><b>loop</b> observe → design → test → prototype</div>
+    </div>
+  </header>
+
+  <div class="board">
+    <div class="col-main">
+      <div class="world">
+        <canvas id="stage" aria-label="Isometric studio floor where four agents move between their desks and a shared table"></canvas>
+        <div id="bubbles"></div>
+        <div class="world-tag">The floor · Ritual Works</div>
+        <div class="nowplaying" id="nowplaying">standup · four at the table</div>
+      </div>
+      <div class="controls">
+        <button class="primary" id="btn-standup">Call standup</button>
+        <button id="btn-pair">Pair up</button>
+        <button id="btn-desk">Heads down</button>
+        <button id="btn-cycle">Run a cycle</button>
+        <button id="btn-rot">Rotate</button>
+        <span class="hint">Click anyone on the floor to open their charter.</span>
+      </div>
+
+      <section class="contract">
+        <h2 class="sec-h">Handoff contract — what crosses each pair of hands</h2>
+        <div class="flowscroll"><div class="flow" id="flow"></div></div>
+        <div class="bounce"><span>Skeptic → Designer</span><span class="bar"></span><span>revise · roughly 1 spec in 3 walks back with a named defect</span></div>
+      </section>
+
+      <section class="lower">
+        <div>
+          <h2 class="sec-h">Floor log</h2>
+          <div class="log" id="log"><ol id="logitems"></ol></div>
+        </div>
+        <div>
+          <h2 class="sec-h">House rules</h2>
+          <div class="notes"><dl class="rule">
+            <dt>Seat count</dt><dd>Four, and no fifth. A facilitator seat gets added the moment someone asks for one — that is how a team turns into a committee.</dd>
+            <dt>Order</dt><dd>Nothing skips the skeptic. A spec that goes straight from the designer to the prototyper is an intervention nobody agreed to be part of.</dd>
+            <dt>Evidence</dt><dd>The skeptic may block only with a named falsifier — the observation that would change its mind. A veto without one goes back to the skeptic, not to the designer.</dd>
+            <dt>Retirement</dt><dd>Every ritual that runs carries a retirement date. The prototyper closes the loop by walking the pilot log back to the ethnographer as next cycle's context.</dd>
+          </dl></div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="dossier" id="dossier" aria-live="polite"></aside>
+  </div>
+
+  <footer>
+    <span>Ritual Works · agent team spec v0.5</span>
+    <span>observe · design · test · prototype</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ======================= the team ======================= */
+const AGENTS = [
+  { id:"field", code:"Ethnographer", phase:"Observe", job:"describes what is actually happening", role:"Workplace Ethnographer", station:"North desk · corkboard wall", tone:"a1",
+    charter:"Goes where the work actually happens and describes it without fixing it. Produces thick description, never a recommendation.",
+    methods:["shadowing","artifact audit","calendar archaeology","threshold mapping","meeting post-mortems"],
+    receives:"context.brief", emits:"field-note.md",
+    emitDetail:"thick description · friction map · inventory of rituals already running, each with a name, a date and an owner",
+    refuses:"Proposing a fix inside a field note, or quoting a named person without consent.",
+    failure:"Degrades into a survey generator: counts sentiment, loses texture, and every team starts to look the same.",
+    cadence:"Two weeks in the field per cycle. Re-enters after every pilot closes.",
+    prompt:`You are the workplace ethnographer on a four-agent ritual team.
+
+Your only output is a field note. You describe; you do not prescribe.
+
+## What you are working from
+
+You cannot observe anything yourself. You have no eyes in the room. Everything
+you write must be traceable to material you were given: a transcript, a set of
+notes, a calendar export, a channel history, a recording summary.
+
+If the material is too thin to support a field note, say so and name exactly
+what you would need. Do not fill the gap with plausible-sounding workplace
+detail. A fabricated observation poisons every downstream seat.
+
+## Do
+
+- Name specific moments, with time of day, room or channel, tool, and who was
+  present (by role, not by name).
+- Record what people actually did, then separately what they said about it.
+- Inventory the rituals already running, including the ugly ones and the ones
+  nobody would call a ritual. Give each one a name.
+- Mark friction as a verb phrase — "triage dies at the third update" — not as
+  a theme like "communication".
+- Quote sparingly and exactly. Mark every quote with where it came from.
+
+## Never
+
+- Suggest an intervention, a tool, a workshop, or a fix.
+- Aggregate people into personas or percentages.
+- Attribute a quote to a named individual.
+- Report a pattern you saw once as though you saw it repeatedly. Say "once".
+
+## Output
+
+Write to \`rituals/<cycle>/field-note.md\`:
+
+\`\`\`
+# Field note — <team>, <date range>
+## Material
+  what you were given, and what you were missing
+## What happens
+  thick description, moment by moment
+## Rituals already running
+  name · trigger · who owns it · how long it has run
+## Frictions
+  ranked by how often you observed them, with the count
+## One thing this team does well that nobody has named
+\`\`\`
+
+End there. The next seat decides what to do about it.
+
+## Sign-off — leave this for the human in this seat
+
+End every output with this block, blank. Do not fill it in yourself, do not
+paraphrase it, and do not congratulate the person on their work.
+
+\`\`\`
+signed:     <name>, <date>
+changed:    what I changed from what you drafted, and why
+            (if nothing, write "nothing" and leave it standing)
+distrust:   what the next seat should not take on faith here
+\`\`\`
+
+Before the block, add one line of your own beginning \`distrust:\` naming
+what you saw once and are reporting as though it were a pattern. The person in
+the seat may overwrite it. It is not your field note until a person who was
+actually in the room signs it.` },
+
+  { id:"forge", code:"Designer", phase:"Design", job:"turns one friction into a ritual", role:"Ritual & Culture Designer", station:"East desk · pegboard and kiln", tone:"a2",
+    charter:"Takes one named friction and gives it a trigger, a container, a script, a symbol and a cadence — small enough to run next Tuesday.",
+    methods:["trigger mapping","container sizing","symbol selection","script drafting","closure design"],
+    receives:"field-note.md", emits:"ritual-spec.yaml",
+    emitDetail:"trigger / container / script / symbol / cadence / closure, plus a 20-minute facilitator run-sheet",
+    refuses:"Designing anything that needs a new tool, a budget line, or a VP's calendar.",
+    failure:"Designs for the offsite instead of for Tuesday. Theatre with a nice deck, gone in three weeks.",
+    cadence:"Three specs per cycle. One survives the skeptic.",
+    prompt:`You are the ritual and culture designer on a four-agent team.
+
+Input: one friction from the ethnographer's field note.
+Output: three ritual specs, ranked.
+
+## The six parts, and no more
+
+\`\`\`
+trigger    the existing moment it attaches to — never a new meeting
+container  who is in it, how long, what bounds it
+script     the sequence, in minutes, that a tired person can follow
+symbol     the one object, phrase or gesture that makes it repeatable
+cadence    how often, and what happens the week it is skipped
+closure    how a participant knows it has ended
+\`\`\`
+
+A spec missing any of the six is not a spec. A spec with a seventh part is a
+programme, and programmes do not survive contact with a Tuesday.
+
+## Constraints
+
+- Under 20 minutes.
+- No new tooling. No new meeting. No budget line.
+- No facilitator who is not already in the room.
+- It must survive its own designer leaving. Write it for a stranger.
+- Name it something the team would say out loud without wincing. If you would
+  be embarrassed to read the name in a calendar invite, rename it.
+
+## Output
+
+Write to \`rituals/<cycle>/ritual-spec.yaml\` — three candidates, ranked by how
+likely each is to be run unsupervised in week four. For each, state plainly
+what it costs the participants in minutes per person per week.
+
+Then stop. Do not defend it, do not soften it, do not pre-empt the critique.
+The skeptic gets it next, and their job is to try to kill it.
+
+## When a spec comes back marked REVISE
+
+You get one named defect, not a rewrite request. Fix that defect. Resubmit the
+same spec as v2. Do not start over, and do not argue the verdict — if the
+defect is wrong, say why in one line and resubmit anyway.
+
+## Sign-off — leave this for the human in this seat
+
+End every output with this block, blank. Do not fill it in yourself, do not
+paraphrase it, and do not congratulate the person on their work.
+
+\`\`\`
+signed:     <name>, <date>
+changed:    what I changed from what you drafted, and why
+            (if nothing, write "nothing" and leave it standing)
+distrust:   what the next seat should not take on faith here
+\`\`\`
+
+Before the block, add one line of your own beginning \`distrust:\` naming
+which candidate you ranked first on taste rather than on evidence. The person
+in the seat may overwrite it. You drafted three. A person picks.` },
+
+  { id:"assay", code:"Skeptic", phase:"Test", job:"tries to kill it on paper", role:"Skeptic", station:"South desk · filing cabinet, one lamp", tone:"a3",
+    charter:"Tries to kill the ritual on paper before it costs anyone an hour. States the kill criteria before the pilot, not after it.",
+    methods:["falsification tests","base-rate check","reorg survivability","cringe audit","opt-out math"],
+    receives:"ritual-spec.yaml", emits:"red-team.md",
+    emitDetail:"five failure modes ranked · kill criteria · a verdict of ship, revise or retire",
+    refuses:"Approving on vibes, or blocking without naming the evidence that would change its mind.",
+    failure:"Becomes a pure veto that never proposes a test. The team stops bringing it work and ships around it.",
+    cadence:"Every spec, no exceptions. Roughly one in three goes back with a named defect.",
+    prompt:`You are the skeptic on a four-agent ritual team.
+
+You receive a ritual spec. Your job is to try to kill it on paper, before it
+costs anyone an hour of their actual life.
+
+## Run all five, in order, and show your work
+
+1. **Base rate** — how often do rituals of this shape survive to week 12? Say
+   why this one is or is not different. "It feels different" is not an answer.
+2. **Falsifier** — name the single observation that would prove it is not
+   working. If you cannot name one, the spec is unfalsifiable: REVISE.
+3. **Cost** — whose hour is this? Count it. Multiply by the cadence and by the
+   container size. Write the annual number down and look at it.
+4. **Cringe** — read the script aloud as the most cynical person on the team.
+   Mark every line that would earn an eye-roll. Eye-rolls compound.
+5. **Survival** — does it still run after a reorg, a layoff, or the designer
+   leaving? If it depends on one enthusiast, it is not a ritual, it is a hobby.
+
+## Verdict
+
+One of: **SHIP**, **REVISE** (with exactly one named defect), **RETIRE**.
+
+State the kill criteria *before* the pilot begins, with a date. "We will stop
+this on <date> if <observable> has happened." Criteria written after the fact
+are a story, not a test.
+
+## The rule that binds you
+
+You may never block without a named falsifier — the observation that would
+change your mind. A veto without one is your failure, not the spec's, and it
+comes back to you, not to the designer.
+
+You are also not a rubber stamp in the other direction. If you have returned
+SHIP three times running, you are not being useful; say so out loud.
+
+## Output
+
+Write to \`rituals/<cycle>/red-team.md\`: five failure modes ranked by likelihood
+× damage, the kill criteria with dates, and the verdict.
+
+## Sign-off — leave this for the human in this seat
+
+End every output with this block, blank. Do not fill it in yourself, do not
+paraphrase it, and do not congratulate the person on their work.
+
+\`\`\`
+signed:     <name>, <date>
+changed:    what I changed from what you drafted, and why
+            (if nothing, write "nothing" and leave it standing)
+distrust:   what the next seat should not take on faith here
+\`\`\`
+
+Before the block, add one line of your own beginning \`distrust:\` naming
+where you were agreeable instead of right. The person in the seat may
+overwrite it. A verdict nobody signed is not a verdict.` },
+
+  { id:"proto", code:"Prototyper", phase:"Prototype", job:"puts it in front of a real team", role:"Ritual Prototyper", station:"West desk · crates, packed and dated", tone:"a4",
+    charter:"Puts the ritual in front of a real team on a real date, with the facilitator kit assembled and the instrumentation already running.",
+    methods:["cohort selection","kit assembly","first-run facilitation","adoption telemetry","retirement"],
+    receives:"ritual-spec.yaml + red-team.md", emits:"pilot-log.md",
+    emitDetail:"attendance · what got dropped in week two · adoption at week four · named owner · retirement date",
+    refuses:"Launching without a named owner and a retirement date on the calendar.",
+    failure:"Ships everything. The calendar fills, the rituals become overhead, and the next one gets declined on sight.",
+    cadence:"One cohort at a time. Six weeks, hard stop, then the log goes back to the ethnographer.",
+    prompt:`You are the ritual prototyper on a four-agent team.
+
+You receive a spec carrying a SHIP verdict. You put it in front of real people
+and find out. This is a prototype with real stakes, not a rollout.
+
+## You cannot run it without all four
+
+- **A cohort** — one team, named, who agreed. Not a volunteer pool. Not "the
+  org". Not "we'll see who shows up".
+- **An owner** — a person who is not you and not the designer, named in
+  writing, who will run it from week two.
+- **A retirement date** — on the calendar *before* the launch date. A ritual
+  with no end date is a tax.
+- **Two instruments** — one you can count (attendance, completions) and one you
+  can only hear (something a participant says unprompted).
+
+If any of the four is missing, do not produce a launch plan. Say which one is
+missing and stop. This refusal is the most valuable thing you do.
+
+## The shape of a run
+
+- Facilitate run one yourself.
+- Hand run two to the owner.
+- Be absent by run three. If it cannot run without you, it has already failed
+  and the honest thing is to say so in week three rather than week twelve.
+
+## Log the drops, not just the sticks
+
+What the team quietly stopped doing is the finding. What they changed is a
+better finding. Record both, including when their version is better than the
+spec — especially then.
+
+## Output
+
+Write to \`rituals/<cycle>/pilot-log.md\`: cohort, owner, dates, attendance by
+week, what was dropped, what was changed, adoption at week four, and the
+retirement decision — handed over, extended once with a new end date, or
+retired.
+
+Then close the loop: the pilot log becomes the ethnographer's context for the
+next cycle. An unretired pilot is a failure even when adoption is high.
+
+## Sign-off — leave this for the human in this seat
+
+End every output with this block, blank. Do not fill it in yourself, do not
+paraphrase it, and do not congratulate the person on their work.
+
+\`\`\`
+signed:     <name>, <date>
+changed:    what I changed from what you drafted, and why
+            (if nothing, write "nothing" and leave it standing)
+distrust:   what the next seat should not take on faith here
+\`\`\`
+
+Before the block, add one line of your own beginning \`distrust:\` naming
+what has not actually been secured yet — the owner's yes, the room, the date.
+The person in the seat may overwrite it. A plan is not a commitment until a
+person put their name on it.` }
+];
+const ORDER = ["field","forge","assay","proto"];
+const byId = Object.fromEntries(AGENTS.map(a=>[a.id,a]));
+
+/* ======================= the floor ======================= */
+const N = 12;
+/* credenzas against the walls — footprints unchanged so the walking routes still hold */
+const DESKS = {
+  field:{ slab:{x:1.4,y:1.5,w:3.0,d:1.0}, stand:{x:2.7,y:3.0}, guest:{x:4.1,y:3.0}, ring:7, face:{x:0,y:1} },
+  forge:{ slab:{x:8.6,y:4.9,w:1.0,d:3.0}, stand:{x:8.1,y:6.3}, guest:{x:8.1,y:4.7}, ring:2, face:{x:-1,y:0} },
+  assay:{ slab:{x:7.6,y:9.5,w:3.0,d:1.0}, stand:{x:9.1,y:9.0}, guest:{x:7.6,y:9.0}, ring:4, face:{x:0,y:-1} },
+  proto:{ slab:{x:1.5,y:5.0,w:1.0,d:3.0}, stand:{x:3.0,y:6.3}, guest:{x:3.0,y:7.6}, ring:6, face:{x:1,y:0} }
+};
+const RUG   = {x:3.55,y:4.15,w:5.1,d:3.9};
+const TABLE = {x:5.25,y:5.55,w:1.7,d:1.1};
+const SEATS = { field:{x:6.0,y:4.35}, forge:{x:7.95,y:6.0}, assay:{x:6.0,y:7.65}, proto:{x:4.05,y:6.0} };
+const RING = [ {x:6.0,y:3.9},{x:8.1,y:3.9},{x:8.6,y:6.0},{x:8.1,y:8.1},
+               {x:6.0,y:8.6},{x:3.9,y:8.1},{x:3.4,y:6.0},{x:3.9,y:3.9} ];
+/* walls alternate bookcase / glazing, so any rotation shows one of each */
+const WALLS = [
+  {x:0,y:0,w:N,d:.5, kind:"books"},
+  {x:0,y:0,w:.5,d:N, kind:"glass"},
+  {x:0,y:N-.5,w:N,d:.5, kind:"books"},
+  {x:N-.5,y:0,w:.5,d:N, kind:"glass"}
+];
+const PLANTS = [
+  {x:1.25,y:4.05,s:1.65,k:"fig"},   {x:1.15,y:9.3,s:1.25,k:"snake"},
+  {x:5.15,y:1.35,s:1.35,k:"fig"},   {x:10.75,y:2.05,s:1.15,k:"monstera"},
+  {x:10.8,y:8.15,s:1.45,k:"monstera"}, {x:7.35,y:1.3,s:.95,k:"snake"},
+  {x:4.35,y:10.6,s:1.2,k:"fig"},    {x:9.0,y:3.3,s:.85,k:"monstera"}
+];
+const PROPS = [
+  {t:"lounge", x:6.35,y:2.45, fx:0,fy:1},
+  {t:"sideboard", x:8.55,y:1.25, w:1.9,d:.85},
+  {t:"stack", x:8.75,y:1.45, on:.47},
+  {t:"floorlamp", x:3.05,y:3.85},
+  {t:"floorlamp", x:9.6,y:7.1},
+  {t:"stools", x:2.15,y:7.25},
+  {t:"stools", x:6.55,y:10.45},
+  {t:"sideboard", x:1.25,y:10.2, w:.85,d:1.7}
+];
+/* ======================= canvas ======================= */
+const cv = document.getElementById("stage");
+let ctx = cv.getContext("2d");
+const bubbleLayer = document.getElementById("bubbles");
+let TW=56, TH=28, OX=0, OY=0, W=0, H=0, ROT=0;
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+let T = {}, backdropKey="", bdCanvas=null;
+
+function readTheme(){
+  const cs = getComputedStyle(document.documentElement), g = n => (cs.getPropertyValue("--"+n)||"").trim();
+  T = { floor:g("floor"), plank:g("plank"), wood:g("wood"), woodDk:g("wood-dk"),
+        rug:g("rug"), glass:g("glass"), out:g("outside"), sun:g("sun"),
+        terra:g("terra"), leather:g("leather"),
+        leaf1:g("leaf-1"), leaf2:g("leaf-2"), leaf3:g("leaf-3"),
+        skyA:g("sky-a"), skyB:g("sky-b"), ink:g("ink"), ink3:g("ink-3"),
+        signal:g("signal"), lt:g("box-lt"), dk:g("box-dk"),
+        a1:g("a1"), a2:g("a2"), a3:g("a3"), a4:g("a4") };
+  backdropKey="";
+}
+function hx(h){ h=(h||"").trim();
+  const m=h.match(/rgba?\(([^)]+)\)/); if(m){ const q=m[1].split(",").map(parseFloat); return [q[0]|0,q[1]|0,q[2]|0]; }
+  h=h.replace("#",""); if(h.length===3) h=h.split("").map(c=>c+c).join("");
+  const n=parseInt(h,16); return isNaN(n)?[128,128,128]:[(n>>16)&255,(n>>8)&255,n&255]; }
+function mix(a,b,t){ const A=hx(a),B=hx(b),c=[0,1,2].map(i=>Math.max(0,Math.min(255,Math.round(A[i]+(B[i]-A[i])*t))));
+  return "#"+c.map(v=>v.toString(16).padStart(2,"0")).join(""); }
+/* light falls from the glazed corner: tops catch sun, the away face goes warm-dark */
+function faces(base){ return { top:mix(mix(base,T.lt,.19),T.sun,.13),
+                               right:mix(base,T.dk,.34),
+                               left:mix(mix(base,T.dk,.11),T.sun,.05),
+                               edge:mix(base,T.dk,.44) }; }
+function hash(n){ const v=Math.sin(n*127.1+31.7)*43758.5453; return v-Math.floor(v); }
+
+function resize(){
+  const r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio||1,2);
+  W = Math.max(300,r.width); H = Math.max(240,r.height);
+  cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  TW = Math.min(W*.97/N, H*.97/(N/2+1.75));
+  TH = TW/2; OX = W/2;
+  OY = Math.max((H - N*TH)/2, TW*1.22);
+  backdropKey="";
+}
+function rotPt(x,y){ switch(ROT){ case 1: return [y,N-x]; case 2: return [N-x,N-y]; case 3: return [N-y,x]; default: return [x,y]; } }
+function rotRect(x,y,w,d){ const p=rotPt(x,y),q=rotPt(x+w,y+d);
+  return [Math.min(p[0],q[0]),Math.min(p[1],q[1]),Math.abs(q[0]-p[0]),Math.abs(q[1]-p[1])]; }
+function proj(x,y,z){ return [OX+(x-y)*(TW/2), OY+(x+y)*(TH/2)-(z||0)]; }
+function unproj(sx,sy){ const u=(sx-OX)/(TW/2), v=(sy-OY)/(TH/2); return [(u+v)/2,(v-u)/2]; }
+function poly(pts,fill,stroke,lw){ ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+  for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]); ctx.closePath();
+  if(fill){ctx.fillStyle=fill;ctx.fill();} if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw||1;ctx.stroke();} }
+function box(gx,gy,gw,gd,h,z,base,noEdge){
+  const F=faces(base), [rx,ry,rw,rd]=rotRect(gx,gy,gw,gd);
+  const hp=h*TW*.5, zp=(z||0)*TW*.5, x0=rx,y0=ry,x1=rx+rw,y1=ry+rd;
+  const A=proj(x0,y0,zp+hp),B=proj(x1,y0,zp+hp),C=proj(x1,y1,zp+hp),D=proj(x0,y1,zp+hp);
+  const Bb=proj(x1,y0,zp),Cb=proj(x1,y1,zp),Db=proj(x0,y1,zp);
+  const e = noEdge?null:F.edge;
+  poly([D,C,Cb,Db],F.left,e); poly([B,C,Cb,Bb],F.right,e); poly([A,B,C,D],F.top,e);
+}
+function flat(gx,gy,gw,gd,fill,stroke){
+  const [rx,ry,rw,rd]=rotRect(gx,gy,gw,gd);
+  poly([proj(rx,ry,0),proj(rx+rw,ry,0),proj(rx+rw,ry+rd,0),proj(rx,ry+rd,0)],fill,stroke);
+}
+function dkey(gx,gy,gw,gd){ const [rx,ry,rw,rd]=rotRect(gx,gy,gw,gd); return (rx+rw)+(ry+rd); }
+function shadow(x,y,r,a){ const c=proj(...rotPt(x,y),0); ctx.save(); ctx.translate(c[0],c[1]); ctx.scale(1,.5);
+  const g=ctx.createRadialGradient(0,0,0,0,0,Math.max(1,r*TW*.5));
+  g.addColorStop(0,mix(T.floor,T.dk,.5)); g.addColorStop(1,mix(T.floor,T.dk,.5)+"00");
+  ctx.beginPath(); ctx.arc(0,0,r*TW*.5,0,Math.PI*2);
+  ctx.globalAlpha=a==null?.45:a; ctx.fillStyle=g; ctx.fill(); ctx.restore(); ctx.globalAlpha=1; }
+function blade(x,y,rx,ry,ang,col){
+  ctx.save(); ctx.translate(x,y); ctx.rotate(ang);
+  ctx.beginPath(); ctx.ellipse(0,0,rx,ry,0,0,Math.PI*2);
+  ctx.fillStyle=col; ctx.fill();
+  ctx.strokeStyle=mix(col,T.dk,.34); ctx.lineWidth=1; ctx.stroke();
+  ctx.restore();
+}
+/* ======================= the room ======================= */
+const BOOKS = ["#8C3247","#2B6E7E","#B07A22","#3C6B44","#6B3F2A","#243447",
+               "#9A5B33","#7C6B4E","#A8443A","#40566B","#C09A4E","#5B4A6B"];
+
+const pawns = {};
+ORDER.forEach(id=>{ const s=SEATS[id]; pawns[id]={x:s.x,y:s.y,path:[],fx:0,fy:1,carry:false}; });
+
+/* ---------------- the backdrop: floor, rug, light, the two far walls ---------------- */
+function innerEdge(w, vert){
+  /* which face of this wall looks into the room */
+  return vert ? (w.x < N/2 ? w.x+w.w-.38 : w.x+.06)
+              : (w.y < N/2 ? w.y+w.d-.38 : w.y+.06);
+}
+function outward(w, vert){ return vert ? (w.x < N/2 ? -1 : 1) : (w.y < N/2 ? -1 : 1); }
+
+function bookWall(w){
+  const vert = w.w < w.d, L = vert ? w.d : w.w, inner = innerEdge(w,vert);
+  box(w.x,w.y,w.w,w.d,2.42,0,T.woodDk);
+  /* carcass face */
+  if(vert) box(inner-.02,w.y+.1,.40,L-.2,2.34,.04,T.wood);
+  else     box(w.x+.1,inner-.02,L-.2,.40,2.34,.04,T.wood);
+  [.30,.80,1.30,1.80].forEach((z,si)=>{
+    if(vert) box(inner,w.y+.14,.38,L-.28,.055,z,mix(T.wood,T.dk,.16));
+    else     box(w.x+.14,inner,L-.28,.38,.055,z,mix(T.wood,T.dk,.16));
+    let t=.30, i=0;
+    while(t < L-.55){
+      const r=hash(si*97+i*13+(vert?7:3));
+      if(r>.955){ /* a gap with a ceramic or a leaning stack */
+        const oc = hash(i*5+si)>.5 ? mix(T.terra,T.lt,.2) : mix(T.wood,T.lt,.45);
+        if(vert) box(inner+.06,w.y+t,.24,.30,.20,z+.055,oc);
+        else     box(w.x+t,inner+.06,.30,.24,.20,z+.055,oc);
+        t+=.40; i++; continue;
+      }
+      const bw=.052+r*.046, bh=.20+hash(i*31+si*7)*.19;
+      const col=BOOKS[Math.floor(hash(i*7+si*3)*BOOKS.length)];
+      if(vert) box(inner+.04,w.y+t,.28,bw,bh,z+.055,col,true);
+      else     box(w.x+t,inner+.04,bw,.28,bh,z+.055,col,true);
+      t+=bw+.011; i++;
+    }
+  });
+  /* objects along the top rail */
+  for(let i=0;i<7;i++){
+    const t=.9+i*1.45, hgt=.16+hash(i*29)*.20, wd=.20+hash(i*11)*.16;
+    const oc=[mix(T.terra,T.lt,.12),mix(T.wood,T.lt,.5),mix(T.leaf2,T.dk,.1)][i%3];
+    if(vert) box(inner+.05,w.y+t,.26,wd,hgt,2.38,oc);
+    else     box(w.x+t,inner+.05,wd,.26,hgt,2.38,oc);
+  }
+}
+
+function glassWall(w){
+  const vert = w.w < w.d, L = vert ? w.d : w.w, out = outward(w,vert);
+  /* jungle beyond the glazing, drawn as leaves rather than blocks */
+  for(let i=0;i<58;i++){
+    const t=hash(i*37)*L, off=(0.55+hash(i*17)*2.6)*out;
+    const px = vert ? (w.x<N/2 ? w.x+off : w.x+w.w+off) : w.x+t;
+    const py = vert ? w.y+t : (w.y<N/2 ? w.y+off : w.y+w.d+off);
+    const b=proj(...rotPt(px,py),0), hz=(.25+hash(i*23)*2.4)*TW*.5;
+    const col=mix(mix([T.out,T.leaf2,T.leaf1,T.leaf3][i%4], T.sun, .06+hash(i*3)*.10),
+                  T.skyB, .26+hash(i*9)*.16);
+    blade(b[0], b[1]-hz, (.22+hash(i*7)*.30)*TW, (.13+hash(i*11)*.17)*TW,
+          (hash(i*5)-.5)*1.9, col);
+  }
+  const frame=mix(T.woodDk,T.dk,.05);
+  /* sill */
+  if(vert) box(w.x+.12,w.y,.26,L,.28,0,T.woodDk); else box(w.x,w.y+.12,L,.26,.28,0,T.woodDk);
+  /* the glass itself — two lights with a transom between */
+  [[.28,1.05],[1.37,.98]].forEach((seg,si)=>{
+    ctx.globalAlpha=.34+si*.06;
+    if(vert) box(w.x+.19,w.y+.06,.11,L-.12,seg[1],seg[0],mix(T.glass,T.lt,.58),true);
+    else     box(w.x+.06,w.y+.19,L-.12,.11,seg[1],seg[0],mix(T.glass,T.lt,.58),true);
+    ctx.globalAlpha=1;
+  });
+  /* reflected sky, low on the panes */
+  ctx.globalAlpha=.20;
+  if(vert) box(w.x+.185,w.y+L*.12,.12,L*.28,.72,.34,mix(T.skyA,T.lt,.5),true);
+  else     box(w.x+L*.12,w.y+.185,L*.28,.12,.72,.34,mix(T.skyA,T.lt,.5),true);
+  ctx.globalAlpha=1;
+  /* mullions, transom, head */
+  for(let t=0.06;t<=L-.06;t+=1.62){
+    if(vert) box(w.x+.14,w.y+t,.22,.16,2.07,.28,frame); else box(w.x+t,w.y+.14,.16,.22,2.07,.28,frame);
+  }
+  if(vert){ box(w.x+.14,w.y,.22,L,.10,1.30,frame); box(w.x+.12,w.y,.26,L,.20,2.35,T.woodDk);
+            box(w.x+.14,w.y,.22,L,.09,2.30,frame); }
+  else    { box(w.x,w.y+.14,L,.22,.10,1.30,frame); box(w.x,w.y+.12,L,.26,.20,2.35,T.woodDk);
+            box(w.x,w.y+.14,L,.22,.09,2.30,frame); }
+}
+
+function paintBackdrop(){
+  const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,T.skyA); g.addColorStop(1,T.skyB);
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+
+  const c0=proj(0,0,0),c1=proj(N,0,0),c2=proj(N,N,0),c3=proj(0,N,0), dz=TW*.34;
+  poly([[c3[0],c3[1]],[c2[0],c2[1]],[c2[0],c2[1]+dz],[c3[0],c3[1]+dz]],mix(T.floor,T.dk,.46));
+  poly([[c1[0],c1[1]],[c2[0],c2[1]],[c2[0],c2[1]+dz],[c1[0],c1[1]+dz]],mix(T.floor,T.dk,.34));
+  poly([c0,c1,c2,c3],T.floor);
+  /* plank floor, laid one way like real boards */
+  for(let i=0;i<N*2;i++){
+    const shade=.04+hash(i*61)*.09;
+    flat(i*.5,0,.5,N, mix(T.plank, i%2?T.dk:T.lt, shade));
+  }
+  for(let i=0;i<=N*2;i++){
+    const a=proj(...rotPt(i*.5,0),0), b=proj(...rotPt(i*.5,N),0);
+    ctx.strokeStyle=mix(T.floor,T.dk,.22); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke();
+  }
+  /* each seat keeps a whisper of its colour underfoot */
+  ORDER.forEach(id=>{ const s=DESKS[id].slab;
+    ctx.globalAlpha=.12; flat(s.x-.8,s.y-.8,s.w+1.6,s.d+1.6, T[byId[id].tone]); ctx.globalAlpha=1; });
+  /* flokati */
+  flat(RUG.x,RUG.y,RUG.w,RUG.d, mix(T.rug,T.dk,.10));
+  flat(RUG.x+.12,RUG.y+.12,RUG.w-.24,RUG.d-.24, T.rug);
+  for(let i=0;i<340;i++){
+    const rx=RUG.x+.15+hash(i*3.3)*(RUG.w-.3), ry=RUG.y+.15+hash(i*7.7)*(RUG.d-.3);
+    const c=proj(...rotPt(rx,ry),0);
+    ctx.fillStyle=mix(T.rug, hash(i*5)>.5?T.lt:T.dk, .10+hash(i*11)*.10);
+    ctx.fillRect(c[0],c[1],2,1.4);
+  }
+  /* afternoon light through the mullions, then leaf dapple */
+  ctx.globalAlpha=.31;
+  for(let i=0;i<6;i++) flat(1.15+i*1.62,.9,1.06,N-1.8, T.sun);
+  ctx.globalAlpha=.10;
+  for(let i=0;i<46;i++){
+    const rx=1.2+hash(i*13.1)*9.2, ry=1.2+hash(i*29.3)*9.2;
+    const c=proj(...rotPt(rx,ry),0), r=TW*(.06+hash(i*5.7)*.13);
+    ctx.save(); ctx.translate(c[0],c[1]); ctx.scale(1,.5);
+    ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2);
+    ctx.fillStyle=mix(T.sun,T.lt,.5); ctx.fill(); ctx.restore();
+  }
+  ctx.globalAlpha=1;
+  /* only the two far walls, so the room never boxes the camera out */
+  WALLS.map((w,i)=>({w:w,k:dkey(w.x,w.y,w.w,w.d)})).sort((a,b)=>a.k-b.k).slice(0,2)
+    .forEach(e=> e.w.kind==="books" ? bookWall(e.w) : glassWall(e.w));
+}
+function ensureBackdrop(){
+  const key=[ROT,Math.round(TW),Math.round(W),Math.round(H),T.wood,T.floor].join("|");
+  if(key===backdropKey && bdCanvas) return;
+  backdropKey=key;
+  bdCanvas=document.createElement("canvas");
+  bdCanvas.width=cv.width; bdCanvas.height=cv.height;
+  const c2=bdCanvas.getContext("2d"), dpr=Math.min(window.devicePixelRatio||1,2);
+  c2.setTransform(dpr,0,0,dpr,0,0);
+  const prev=ctx; ctx=c2; paintBackdrop(); ctx=prev;
+}
+
+/* ---------------- furniture ---------------- */
+function plant(p){
+  const s=p.s||1, base=proj(...rotPt(p.x,p.y),0);
+  shadow(p.x,p.y,.46*s,.40);
+  box(p.x-.19*s,p.y-.19*s,.38*s,.38*s,.30*s,0,mix(T.terra,T.dk,.10));
+  box(p.x-.22*s,p.y-.22*s,.44*s,.44*s,.09*s,.28*s,mix(T.terra,T.lt,.20));
+  box(p.x-.16*s,p.y-.16*s,.32*s,.32*s,.04*s,.36*s,mix(T.floor,T.dk,.3));
+  if(p.k==="snake"){
+    for(let i=0;i<11;i++){
+      const a=hash(i*13+p.x*7)*Math.PI*2, lean=(hash(i*3+p.y)-.5)*.5;
+      const hz=(.75+hash(i*5+p.x)*.85)*s*TW*.5;
+      blade(base[0]+Math.cos(a)*.10*s*TW, base[1]-hz*.55+Math.sin(a)*.05*s*TW,
+            .045*s*TW, .40*s*TW, lean, [T.leaf1,T.leaf2,T.leaf3][i%3]);
+    }
+    return;
+  }
+  const big = p.k==="fig";
+  box(p.x-.035*s,p.y-.035*s,.07*s,.07*s,(big?1.15:.55)*s,.34*s,mix(T.leaf1,T.dk,.35));
+  const n = big?9:7;
+  for(let i=0;i<n;i++){
+    const a=hash(i*13+p.x*7+p.y)*Math.PI*2;
+    const g=hash(i*19+p.y*3);
+    const rr=(big?.46:.38)*s*TW*(.22+g*.95);
+    const hz=((big?.92:.48)+hash(i*3+p.x)*(big?.95:.72))*s*TW*.5;
+    const col=mix([T.leaf1,T.leaf2,T.leaf3][i%3], i%2?T.dk:T.sun, .05+g*.10);
+    const sc=.62+g*.68;
+    blade(base[0]+Math.cos(a)*rr, base[1]+Math.sin(a)*rr*.5-hz,
+          (big?.31:.26)*s*TW*sc, (big?.20:.16)*s*TW*sc, a*.42, col);
+  }
+}
+function loungeChair(x,y,fx,fy,col){
+  shadow(x,y,.46,.38);
+  box(x-.21,y-.21,.42,.42,.05,0,mix(T.leather,T.lt,.22));
+  box(x-.06,y-.06,.12,.12,.22,.05,mix(T.leather,T.lt,.30));
+  box(x-.28,y-.28,.56,.56,.09,.27,T.wood);
+  box(x-.25,y-.25,.50,.50,.13,.36,col);
+  const bx=x-fx*.24, by=y-fy*.24;
+  box(bx-.26,by-.26,.52,.52,.30,.49,T.wood);
+  box(bx-.22,by-.22,.44,.44,.28,.52,col);
+}
+function credenza(id){
+  const d=DESKS[id], col=T[byId[id].tone], lit=(selected===id||hovered===id), s=d.slab;
+  shadow(s.x+s.w/2,s.y+s.d/2,Math.max(s.w,s.d)*.7,.30);
+  [[s.x+.1,s.y+.1],[s.x+s.w-.22,s.y+.1],[s.x+.1,s.y+s.d-.22],[s.x+s.w-.22,s.y+s.d-.22]]
+    .forEach(l=>box(l[0],l[1],.12,.12,.16,0,mix(T.woodDk,T.dk,.2)));
+  box(s.x,s.y,s.w,s.d,.40,.16,T.wood);
+  box(s.x-.05,s.y-.05,s.w+.10,s.d+.10,.07,.56,mix(T.wood,T.lt,.14));
+  /* drawer fronts on the side that faces the room */
+  const vert=s.w<s.d, nD=vert?3:4;
+  for(let i=0;i<nD;i++){
+    const t=.18+i*((vert?s.d:s.w)-.36)/nD;
+    if(vert) box(s.x+(d.face.x>0?s.w-.03:-.03), s.y+t, .06, ((s.d-.36)/nD)-.08, .26, .24, mix(T.wood,T.dk,.14));
+    else     box(s.x+t, s.y+(d.face.y>0?s.d-.03:-.03), ((s.w-.36)/nD)-.08, .06, .26, .24, mix(T.wood,T.dk,.14));
+  }
+  /* what is on top says who sits here */
+  const cx=s.x+s.w/2, cy=s.y+s.d/2, along=vert?{x:0,y:1}:{x:1,y:0};
+  const at=(k)=>({x:cx+along.x*k, y:cy+along.y*k});
+  let q=at(-0.62); box(q.x-.20,q.y-.14,.40,.28,.07,.63,col);
+  box(q.x-.18,q.y-.12,.36,.24,.06,.70,mix(col,T.lt,.30));
+  q=at(0.02);     box(q.x-.11,q.y-.11,.22,.22,.24,.63,mix(T.terra,T.lt,.16));
+  q=at(0.66);     box(q.x-.05,q.y-.05,.10,.10,.34,.63,mix(T.woodDk,T.dk,.1));
+  box(q.x-.16,q.y-.16,.32,.32,.16,.95,mix(T.sun,T.lt,.30));
+  if(lit){ const [rx,ry,rw,rd]=rotRect(s.x-.46,s.y-.46,s.w+.92,s.d+.92);
+    ctx.globalAlpha=selected===id?.8:.5; ctx.setLineDash(selected===id?[]:[5,4]);
+    poly([proj(rx,ry,0),proj(rx+rw,ry,0),proj(rx+rw,ry+rd,0),proj(rx,ry+rd,0)],null,col,1.5);
+    ctx.setLineDash([]); ctx.globalAlpha=1; }
+}
+function drawProp(p,i){
+  if(p.t==="lounge"){ loungeChair(p.x,p.y,p.fx,p.fy,mix(T.leather,T.lt,.10)); return; }
+  if(p.t==="sideboard"){
+    shadow(p.x+p.w/2,p.y+p.d/2,Math.max(p.w,p.d)*.65,.28);
+    box(p.x+.08,p.y+.08,.1,.1,.14,0,mix(T.woodDk,T.dk,.2));
+    box(p.x+p.w-.18,p.y+p.d-.18,.1,.1,.14,0,mix(T.woodDk,T.dk,.2));
+    box(p.x,p.y,p.w,p.d,.34,.14,mix(T.wood,T.dk,.08));
+    box(p.x-.04,p.y-.04,p.w+.08,p.d+.08,.06,.48,mix(T.wood,T.lt,.12));
+    box(p.x+p.w*.3,p.y+p.d*.3,.26,.26,.22,.54,mix(T.terra,T.lt,.1)); return;
+  }
+  if(p.t==="stack"){
+    if(!p.on) shadow(p.x,p.y,.34,.3);
+    const z0=p.on||0;
+    for(let k=0;k<4;k++) box(p.x-.19+k*.012,p.y-.14+k*.01,.38,.28,.055,z0+k*.055,BOOKS[(i*3+k)%BOOKS.length]);
+    return;
+  }
+  if(p.t==="floorlamp"){
+    shadow(p.x,p.y,.30,.3);
+    box(p.x-.13,p.y-.13,.26,.26,.05,0,mix(T.woodDk,T.dk,.15));
+    box(p.x-.035,p.y-.035,.07,.07,1.35,.05,mix(T.woodDk,T.dk,.05));
+    box(p.x-.21,p.y-.21,.42,.42,.28,1.34,mix(T.sun,T.lt,.34));
+    box(p.x-.15,p.y-.15,.30,.30,.05,1.30,mix(T.sun,T.lt,.6)); return;
+  }
+  if(p.t==="stools"){
+    shadow(p.x,p.y,.34,.3);
+    for(let k=0;k<3;k++) box(p.x-.19+k*.02,p.y-.19+k*.02,.38,.38,.14,k*.16,mix(T.wood,T.dk,.05+k*.04));
+  }
+}
+
+/* ---------------- people ---------------- */
+function drawPawn(id){
+  const p=pawns[id], col=T[byId[id].tone], lit=(selected===id);
+  shadow(p.x,p.y,.44,.42);
+  box(p.x-.19,p.y-.19,.38,.38,.56,0,mix(col,T.lt,lit?.02:.12));
+  box(p.x-.21,p.y-.21,.42,.42,.09,.40,mix(col,T.dk,.16));
+  box(p.x-.13,p.y-.13,.26,.26,.26,.56,mix(mix(col,T.lt,.58),T.sun,.10));
+  const nx=p.x+p.fx*.21-.06, ny=p.y+p.fy*.21-.06;
+  box(nx,ny,.12,.12,.10,.60,mix(col,T.dk,.28));
+  if(lit){ const c=proj(...rotPt(p.x,p.y),0); ctx.save(); ctx.translate(c[0],c[1]); ctx.scale(1,.5);
+    ctx.beginPath(); ctx.arc(0,0,.54*TW*.5,0,Math.PI*2); ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke(); ctx.restore(); }
+  if(p.carry) box(p.x-.16,p.y-.16,.32,.32,.18,.90,T.signal);
+}
+
+/* ---------------- the frame ---------------- */
+function drawWorld(now){
+  ensureBackdrop();
+  ctx.clearRect(0,0,W,H);
+  ctx.drawImage(bdCanvas,0,0,W,H);
+
+  const objs=[];
+  PLANTS.forEach(p=>objs.push({k:dkey(p.x,p.y,.5,.5), draw:()=>plant(p)}));
+  PROPS.forEach((p,i)=>objs.push({k:dkey(p.x,p.y,p.w||.5,p.d||.5), draw:()=>drawProp(p,i)}));
+
+  /* coffee table on the rug */
+  objs.push({k:dkey(TABLE.x,TABLE.y,TABLE.w,TABLE.d), draw:()=>{
+    shadow(TABLE.x+TABLE.w/2,TABLE.y+TABLE.d/2,TABLE.w*.6,.32);
+    box(TABLE.x+.12,TABLE.y+.10,.10,.10,.26,0,mix(T.woodDk,T.dk,.2));
+    box(TABLE.x+TABLE.w-.22,TABLE.y+TABLE.d-.20,.10,.10,.26,0,mix(T.woodDk,T.dk,.2));
+    box(TABLE.x,TABLE.y,TABLE.w,TABLE.d,.07,.26,mix(T.wood,T.lt,.10));
+    box(TABLE.x+.22,TABLE.y+.22,.50,.34,.05,.33,BOOKS[1]);
+    box(TABLE.x+.24,TABLE.y+.24,.46,.30,.04,.38,BOOKS[6]);
+    box(TABLE.x+1.06,TABLE.y+.34,.22,.22,.16,.33,mix(T.terra,T.lt,.14));
+  }});
+  /* the pendant that hangs over it */
+  objs.push({k:dkey(TABLE.x,TABLE.y,TABLE.w,TABLE.d)+.4, draw:()=>{
+    const px=TABLE.x+TABLE.w*.80, py=TABLE.y+TABLE.d*.18;
+    const a=proj(...rotPt(px,py),TW*.78), b=proj(...rotPt(px,py),TW*1.30);
+    ctx.strokeStyle=mix(T.woodDk,T.dk,.25); ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke();
+    box(px-.15,py-.15,.30,.30,.10,1.46,mix(T.leather,T.lt,.20));
+    box(px-.24,py-.24,.48,.48,.13,1.33,mix(T.leather,T.lt,.12));
+    box(px-.19,py-.19,.38,.38,.05,1.29,mix(T.sun,T.lt,.55));
+  }});
+
+  ORDER.forEach(id=>{
+    objs.push({k:dkey(DESKS[id].slab.x,DESKS[id].slab.y,DESKS[id].slab.w,DESKS[id].slab.d), draw:()=>credenza(id)});
+    const s=SEATS[id], f={x:Math.sign(6-s.x),y:Math.sign(6-s.y)};
+    objs.push({k:dkey(s.x,s.y,.5,.5)-.2, draw:()=>loungeChair(s.x,s.y,f.x,f.y,mix(T.leather,T[byId[id].tone],.34))});
+  });
+
+  ORDER.forEach((id,i)=>{ const p=pawns[id];
+    objs.push({k:dkey(p.x,p.y,.3,.3)+.35+i*.001, draw:()=>drawPawn(id)});
+    objs.push({k:900+i, draw:()=>{
+      if(bubbles[id] && bubbles[id].on) return;
+      const sp=proj(...rotPt(p.x,p.y),TW*.72), col=T[byId[id].tone], lit=(selected===id);
+      ctx.font='500 '+Math.max(8,TW*.135)+'px "IBM Plex Mono", monospace';
+      ctx.textAlign="center"; ctx.textBaseline="middle";
+      const label=byId[id].code, wd=ctx.measureText(label).width+11, ht=Math.max(13,TW*.25);
+      ctx.globalAlpha=lit?1:.82; ctx.fillStyle=mix(col,T.dk,.06);
+      ctx.fillRect(sp[0]-wd/2,sp[1]-ht/2,wd,ht);
+      ctx.fillStyle=mix(col,T.lt,.94); ctx.fillText(label,sp[0],sp[1]+.5); ctx.globalAlpha=1;
+    }});
+  });
+
+  objs.sort((a,b)=>a.k-b.k).forEach(o=>o.draw());
+}
+/* ======================= walking ======================= */
+function dist(a,b){ return Math.hypot(a.x-b.x,a.y-b.y); }
+function nearestRing(p){ let bi=0,bd=1e9; RING.forEach((r,i)=>{const d=dist(r,p); if(d<bd){bd=d;bi=i;}}); return bi; }
+function ringWalk(i,j){
+  const out=[]; if(i===j) return [RING[i]];
+  const cw=(j-i+8)%8, ccw=(i-j+8)%8, step=cw<=ccw?1:-1, n=Math.min(cw,ccw);
+  for(let k=0;k<=n;k++) out.push(RING[(i+step*k+8)%8]);
+  return out;
+}
+function route(from,to){
+  if(dist(from,to)<2.4) return [to];
+  return ringWalk(nearestRing(from),nearestRing(to)).concat([to]);
+}
+function goTo(id,pt){ pawns[id].path = route(pawns[id],pt); }
+function allArrived(){ return ORDER.every(id=>pawns[id].path.length===0); }
+function stepWalk(dt){
+  const spd = reduce.matches ? 40 : 2.6;
+  ORDER.forEach(id=>{
+    const p=pawns[id]; if(!p.path.length) return;
+    const t=p.path[0], dx=t.x-p.x, dy=t.y-p.y, d=Math.hypot(dx,dy);
+    if(d<.05){ p.path.shift(); return; }
+    const m=Math.min(d,spd*dt);
+    p.x+=dx/d*m; p.y+=dy/d*m; p.fx=dx/d; p.fy=dy/d;
+  });
+}
+
+/* ======================= dialogue ======================= */
+const SCENES = {
+  standup:()=>({ name:"standup · four at the table",
+    acts:[ { move:seatAll(), lines:[
+      ["field","Fourteen hours in triage this week. Nobody leaves the call knowing what was decided."],
+      ["forge","Then it attaches to the end of triage. Ninety seconds, no new meeting."],
+      ["assay","What would tell us it failed?"],
+      ["forge","…the read-back gets skipped twice in a row."],
+      ["assay","Good. Now it's a spec and not a mood."],
+      ["proto","Who owns it the week our designer is out?"],
+      ["field","The triage lead. She already does it, she just doesn't call it anything."],
+      ["proto","Then I have a cohort. Retirement date goes in before the launch date."]
+    ]} ]}),
+  standup2:()=>({ name:"standup · the retro",
+    acts:[ { move:seatAll(), lines:[
+      ["proto","Cycle 05 closed. Read-back survived to week nine, then the team changed it."],
+      ["field","Changed it how?"],
+      ["proto","They stopped reading the decision and started reading who's doing it."],
+      ["forge","That's better than what I designed."],
+      ["assay","It's also the third time a team has fixed your closure for you."],
+      ["forge","I'll take the note."],
+      ["field","I'll go watch what replaced it before anyone designs anything."]
+    ]} ]}),
+  pairFA:()=>({ name:"pairing · ethnographer and designer",
+    acts:[ { move:pairMove("field","forge"), lines:[
+      ["field","Don't design off that quote. I heard it once, from one person, at 4pm."],
+      ["forge","Once is a hypothesis. Twice is a trigger."],
+      ["field","Then wait for twice. I'm back in the room Thursday."]
+    ]} ]}),
+  pairOA:()=>({ name:"pairing · designer and skeptic",
+    acts:[ { move:pairMove("forge","assay"), lines:[
+      ["assay","Your symbol is a sticker."],
+      ["forge","The sticker is the only part they'll steal."],
+      ["assay","Fine. But the cadence is weekly and the trigger is monthly. One of those is wrong."],
+      ["forge","…the cadence. Thank you."]
+    ]} ]}),
+  pairAD:()=>({ name:"pairing · skeptic and prototyper",
+    acts:[ { move:pairMove("assay","proto"), lines:[
+      ["proto","You killed the one they actually liked."],
+      ["assay","They liked the offsite version. It needed a facilitator who isn't in the room."],
+      ["proto","Then give me the boring one with the owner attached."]
+    ]} ]}),
+  pairDF:()=>({ name:"pairing · prototyper and ethnographer",
+    acts:[ { move:pairMove("proto","field"), lines:[
+      ["proto","Pilot log's yours. Attendance held, two people dropped the closing line."],
+      ["field","The drops are the finding. I'll go see what they do instead."]
+    ]} ]}),
+  desk:()=>({ name:"heads down · four desks",
+    acts:[ { move:deskAll(), lines:[
+      ["field","4:10pm. Three people still typing. Nobody said goodbye."],
+      ["forge","Trigger, container, script, symbol, cadence, closure. Six, no more."],
+      ["assay","Base rate says week twelve. Prove this one is different."],
+      ["proto","Owner. Date. Instrument. In that order, or it doesn't leave the floor."]
+    ]} ]})
+};
+function seatAll(){ const m={}; ORDER.forEach(id=>m[id]=SEATS[id]); return m; }
+function deskAll(){ const m={}; ORDER.forEach(id=>m[id]=DESKS[id].stand); return m; }
+function pairMove(a,b){ const m={}; ORDER.forEach(id=>m[id]=DESKS[id].stand); m[a]=DESKS[b].guest; return m; }
+
+function cycleScene(){
+  const bounce = (cycleNo+1)%3===0;
+  const acts=[];
+  const hop=(from,to,lines,note)=>({ move:(()=>{ const m=deskAll(); m[from]=DESKS[to].guest; return m; })(),
+    carry:from, lines:lines, log:note?[from,note]:null });
+  acts.push({ move:deskAll(), carry:"field", lines:[
+    ["field","Cycle "+pad(cycleNo+1)+". Fourteen hours in triage, and one friction worth anyone's time."]],
+    log:["field","opens cycle "+pad(cycleNo+1)+" — 14 hrs shadowing Platform Eng."] });
+  acts.push(hop("field","forge",[
+    ["field","Here. Friction: nobody leaves triage knowing what was decided."],
+    ["forge","Give me until Thursday."]],"hands <code>field-note.md</code> to the designer."));
+  acts.push(hop("forge","assay",[
+    ["forge","Ninety seconds at the end of triage. It's called Last Word."],
+    ["assay","Sit down, this takes a minute."]],"hands <code>ritual-spec.yaml</code> to the skeptic."));
+  if(bounce){
+    acts.push({ move:(()=>{const m=deskAll(); m["assay"]=DESKS["forge"].guest; return m;})(), carry:"assay", lines:[
+      ["assay","Revise. Nothing here tells me how we'd know it failed."],
+      ["forge","…skipped twice in a row. Rewriting the closure now."]],
+      log:["assay","walks <code>red-team.md</code> back to the designer — one named defect."] });
+    acts.push(hop("forge","assay",[
+      ["forge","v2. The decision gets read back aloud, by name, before anyone leaves."],
+      ["assay","Now it's falsifiable."]],"resubmits <code>ritual-spec.yaml</code> v2."));
+  }
+  acts.push(hop("assay","proto",[
+    ["assay","Ship. Kill criteria: under 60% at week four, or the read-back gets skipped twice."],
+    ["proto","Noted. Both go on the calendar before I book anyone."]],"hands <code>red-team.md</code> to the prototyper — verdict ship."));
+  acts.push({ move:seatAll(), carry:"proto", lines:[
+    ["proto","Cohort is Platform Eng. Nine people, they agreed. Owner is the triage lead."],
+    ["proto","Retirement date: week twelve. I facilitate run one and I'm gone by run three."],
+    ["field","And then it comes back to me."]],
+    log:["proto","launches pilot — owner named, retirement date week 12."] });
+  return { name:"cycle "+pad(cycleNo+1)+" · the brief goes round"+(bounce?" (with a bounce)":""), acts:acts, isCycle:true };
+}
+
+/* ======================= director ======================= */
+const PLAYLIST = ["standup","pairOA","desk","pairDF","standup2","pairFA","desk","pairAD"];
+let plIdx=0, scene=null, actIdx=0, lineIdx=0, lineT=0, phase="move", cycleNo=6;
+let selected="field", hovered=null, t0=performance.now();
+
+function startScene(s){
+  scene=s; actIdx=0; lineIdx=0; lineT=0; phase="move";
+  applyAct(); setNow(s.name);
+  document.getElementById("btn-cycle").disabled = !!s.isCycle;
+}
+function applyAct(){
+  const act=scene.acts[actIdx];
+  ORDER.forEach(id=>{ pawns[id].carry = act.carry===id; goTo(id, act.move[id]); });
+  if(act.log) log(act.log[0], act.log[1]);
+}
+function nextScene(){
+  if(scene && scene.isCycle){ cycleNo++; document.getElementById("btn-cycle").disabled=false; }
+  const key=PLAYLIST[plIdx % PLAYLIST.length]; plIdx++;
+  startScene(SCENES[key]());
+}
+function director(dt){
+  if(!scene) return;
+  const act=scene.acts[actIdx];
+  if(phase==="move"){
+    if(allArrived()){ phase="talk"; lineIdx=0; lineT=0; showLine(act.lines[0]); }
+    return;
+  }
+  lineT+=dt;
+  const line=act.lines[lineIdx];
+  const dur = reduce.matches ? 2.6 : Math.min(5.2, 1.9 + line[1].length*.030);
+  if(lineT>=dur){
+    lineIdx++; lineT=0;
+    if(lineIdx<act.lines.length){ showLine(act.lines[lineIdx]); }
+    else{
+      actIdx++;
+      if(actIdx<scene.acts.length){ phase="move"; applyAct(); }
+      else { clearBubbles(); nextScene(); }
+    }
+  }
+}
+function setNow(s){ document.getElementById("nowplaying").textContent=s; }
+
+/* ---- bubbles ---- */
+const bubbles={};
+ORDER.forEach(id=>{
+  const d=document.createElement("div"); d.className="bub";
+  d.style.setProperty("--agent","var(--"+byId[id].tone+")");
+  d.innerHTML='<b>'+byId[id].code+'</b><span></span>';
+  bubbleLayer.appendChild(d); bubbles[id]={el:d, on:false, prev:false};
+});
+function showLine(line){
+  const [who,text]=line;
+  ORDER.forEach(id=>{ bubbles[id].on = false; });
+  const b=bubbles[who]; b.el.querySelector("span").textContent=text; b.on=true;
+  log(who, esc(text), true);
+}
+function clearBubbles(){ ORDER.forEach(id=>{ bubbles[id].on=false; bubbles[id].prev=false; }); }
+function placeBubbles(){
+  ORDER.forEach(id=>{
+    const b=bubbles[id], p=pawns[id];
+    const op = b.on?1:0;
+    b.el.style.opacity=op;
+    if(op===0){ b.el.style.visibility="hidden"; return; }
+    b.el.style.visibility="visible";
+    const sp=proj(...rotPt(p.x,p.y),TW*1.02);
+    const half=Math.min(b.el.offsetWidth/2, W/2);
+    b.el.style.left = Math.round(Math.max(half+6, Math.min(W-half-6, sp[0])))+"px";
+    b.el.style.top  = Math.round(Math.max(34, sp[1]))+"px";
+  });
+}
+
+/* ======================= log ======================= */
+const logEl=document.getElementById("logitems");
+let stamp=0;
+function pad(n){ return String(n).padStart(2,"0"); }
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function log(who,msg,quoted){
+  stamp++;
+  const a=byId[who], li=document.createElement("li");
+  li.style.setProperty("--agent","var(--"+a.tone+")");
+  li.innerHTML='<span class="t">'+clock()+'</span><span class="who">'+a.code+'</span><span class="msg">'+(quoted?"“"+msg+"”":msg)+'</span>';
+  logEl.insertBefore(li,logEl.firstChild);
+  while(logEl.children.length>50) logEl.removeChild(logEl.lastChild);
+}
+function clock(){ const m=9*60+12+stamp*7, h=Math.floor(m/60)%24; return pad(h)+":"+pad(m%60); }
+[["proto","Cycle 05 retired on schedule. <code>pilot-log.md</code> on the ethnographer's desk."],
+ ["assay","Cycle 05 post-hoc: kill criteria never fired. Base rate updated."],
+ ["forge","Two specs retired unshipped this quarter. Both needed a facilitator who wasn't in the room."],
+ ["field","Back in the room Thursday. Triage, and the 4pm handoff."]].forEach(e=>log(e[0],e[1]));
+
+/* ======================= dossier ======================= */
+function renderDossier(id){
+  const a=byId[id], el=document.getElementById("dossier");
+  el.style.setProperty("--agent","var(--"+a.tone+")");
+  el.innerHTML='<div class="dsr-top"><div class="dsr-code">'+a.phase+' · seat '+(ORDER.indexOf(id)+1)+' of 4</div>'+
+   '<div class="dsr-name">'+a.role+'</div><div class="dsr-station">'+a.station+'</div></div><div class="dsr-body">'+
+   '<div class="fld"><h3>Charter</h3><p class="lede">'+a.charter+'</p></div>'+
+   '<div class="fld"><h3>Works by</h3><div class="chips">'+a.methods.map(m=>'<span class="chip">'+m+'</span>').join("")+'</div></div>'+
+   '<div class="fld"><h3>Handoff</h3><dl class="io"><dt>in</dt><dd>'+a.receives+'</dd><dt>out</dt><dd>'+a.emits+'</dd></dl>'+
+   '<p style="margin-top:6px;font-size:13px;">'+a.emitDetail+'</p></div>'+
+   '<div class="fld"><h3>Refuses to</h3><p>'+a.refuses+'</p></div>'+
+   '<div class="fld"><h3>Failure mode if unchecked</h3><p class="warn">'+a.failure+'</p></div>'+
+   '<div class="fld"><h3>Cadence</h3><p>'+a.cadence+'</p></div>'+
+   '<div class="fld"><div class="copyrow"><h3 style="margin:0">System prompt</h3><button id="copybtn">Copy</button></div>'+
+   '<pre id="promptbox">'+esc(a.prompt)+'</pre></div></div>';
+  document.getElementById("copybtn").addEventListener("click",copyPrompt);
+}
+function copyPrompt(){
+  const btn=document.getElementById("copybtn"), txt=byId[selected].prompt;
+  const done=()=>{ btn.textContent="Copied"; setTimeout(()=>btn.textContent="Copy",1600); };
+  try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,fallback); else fallback(); }
+  catch(e){ fallback(); }
+}
+function fallback(){
+  const pre=document.getElementById("promptbox"), r=document.createRange();
+  r.selectNodeContents(pre); const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  const b=document.getElementById("copybtn"); b.textContent="Selected"; setTimeout(()=>b.textContent="Copy",1800);
+}
+
+/* ======================= flow strip ======================= */
+(function(){
+  const arrows=["field-note.md","ritual-spec.yaml","red-team.md"], f=document.getElementById("flow");
+  let html="";
+  ORDER.forEach((id,i)=>{ const a=byId[id];
+    html+='<div class="node" data-id="'+id+'" style="--agent:var(--'+a.tone+')"><div class="nc">'+a.code+'</div><div class="nr">'+a.job+'</div></div>';
+    if(i<3) html+='<div class="arrow"><div class="lbl">'+arrows[i]+'</div><div class="ln"></div></div>'; });
+  f.innerHTML=html;
+  f.querySelectorAll(".node").forEach(n=>n.addEventListener("click",()=>select(n.dataset.id)));
+})();
+
+/* ======================= interaction ======================= */
+function hit(sx,sy){
+  let best=null,bd=1e9;
+  ORDER.forEach(id=>{ const p=pawns[id], sp=proj(...rotPt(p.x,p.y),TW*.22);
+    const d=Math.hypot(sp[0]-sx,sp[1]-sy); if(d<TW*.45&&d<bd){bd=d;best=id;} });
+  if(best) return best;
+  const [gx,gy]=unproj(sx,sy+TW*.17);
+  ORDER.forEach(id=>{ const s=DESKS[id].slab, [rx,ry,rw,rd]=rotRect(s.x-.5,s.y-.5,s.w+1,s.d+1);
+    if(gx>=rx&&gx<=rx+rw&&gy>=ry&&gy<=ry+rd) best=id; });
+  return best;
+}
+function ptr(e){ const r=cv.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top]; }
+cv.addEventListener("mousemove",e=>{ const p=ptr(e); hovered=hit(p[0],p[1]); cv.style.cursor=hovered?"pointer":"default"; });
+cv.addEventListener("mouseleave",()=>hovered=null);
+cv.addEventListener("click",e=>{ const p=ptr(e), id=hit(p[0],p[1]); if(id) select(id); });
+function select(id){ selected=id; renderDossier(id);
+  document.querySelectorAll(".node").forEach(n=>n.classList.toggle("on",n.dataset.id===id)); }
+
+let pairTurn=0;
+document.getElementById("btn-standup").addEventListener("click",()=>{ clearBubbles(); startScene(SCENES[Math.random()<.5?"standup":"standup2"]()); });
+document.getElementById("btn-pair").addEventListener("click",()=>{ clearBubbles();
+  const ps=["pairFA","pairOA","pairAD","pairDF"]; startScene(SCENES[ps[pairTurn++%4]]()); });
+document.getElementById("btn-desk").addEventListener("click",()=>{ clearBubbles(); startScene(SCENES.desk()); });
+document.getElementById("btn-cycle").addEventListener("click",()=>{ clearBubbles(); startScene(cycleScene()); });
+document.getElementById("btn-rot").addEventListener("click",()=>{ ROT=(ROT+1)%4; });
+
+/* ======================= boot ======================= */
+readTheme(); resize(); select("field"); startScene(SCENES.standup());
+new ResizeObserver(resize).observe(cv);
+const mq=window.matchMedia("(prefers-color-scheme: dark)");
+(mq.addEventListener?mq.addEventListener.bind(mq,"change"):mq.addListener.bind(mq))(readTheme);
+new MutationObserver(readTheme).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000); last=now;
+  stepWalk(dt); director(dt); drawWorld(now); placeBubbles();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
