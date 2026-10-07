@@ -1,45 +1,62 @@
-# Ritual cycles
+# Culture design cycles
 
-A four-seat agent team that turns one named workplace friction into a ritual
-someone will actually run. Each seat is a subagent in `.claude/agents/`; each
-hands off to the next through a file in a numbered cycle directory.
+Four AI teammates help a human team lead turn one recurring workplace tension
+into a small practice, reality-check it and prepare a responsible trial.
 
-```
-ethnographer  →  field-note.md      describes; never prescribes
-designer      →  ritual-spec.yaml   trigger/container/script/symbol/cadence/closure
-skeptic       →  red-team.md        SHIP · REVISE · RETIRE, with kill criteria
-prototyper    →  pilot-log.md       cohort, owner, retirement date, instruments
-                      └── back to the ethnographer as next cycle's context
+```text
+Ethnographer  → field note, current-state journey or participant profiles
+                                    describes; never prescribes
+    HUMAN CHOOSES THE FOCUS
+Designer      → ritual-spec.yaml   creates three small practice options
+    HUMAN CHOOSES THE IDEA
+Challenger    → red-team.md        tests evidence, cost, safety and durability
+    HUMAN DECIDES WHETHER TO PROCEED
+Experimenter  → pilot-plan.md      prepares a real-world trial
+    REAL PEOPLE TRY IT
+Experimenter  → pilot-log.md       records only actual evidence
+                         └── returns to the Ethnographer as the next cycle's context
 ```
 
 ## Running one
 
-```
-/ritual-cycle path/to/transcript-or-notes.md "Platform Eng"
+```text
+/ritual-cycle path/to/anonymized-notes.md "Platform Eng"
 ```
 
-Or invoke a single seat directly when that is all you need:
+The command pauses for the human team lead at each decision. It ends after the
+trial plan because the next step must happen with real people. After a trial,
+ask the Experimenter to read the plan and the actual trial notes.
 
-```
-> use the skeptic subagent on rituals/03/ritual-spec.yaml
+You can also invoke one teammate directly:
+
+```text
+use the Challenger on rituals/03/ritual-spec.yaml
 ```
 
 ## What the team can and cannot do
 
-**Cannot:** observe anything. No seat sits in your meetings. The ethnographer
-is a synthesiser, not an observer — it works only on material you hand it
-(transcripts, your own notes, calendar exports, channel history). A cycle run
-on no material produces convincing fiction, which is worse than nothing.
+**Cannot:** observe meetings, secure consent, obtain agreement, run a trial or
+know what happened without evidence. A polished account created from thin
+material is fiction, not fieldwork.
 
-**Can:** hold a shape. The value is not the four personas, it is the sequence
-and two refusal rules — nothing skips the skeptic, and nothing launches without
-a named owner and a retirement date. Those two would improve a team of four
-humans just as much.
+**Can:** hold a disciplined sequence, make assumptions visible, generate
+possibilities, test burden and power, and help people decide what to observe
+next.
+
+The two most important distinctions are:
+
+- A recommendation is not a human decision.
+- A trial plan is not a trial result.
 
 ## Layout
 
-```
+```text
 rituals/
-  _template/          copy this to start a cycle by hand
+  _template/          exact field-note, journey, profile, evidence, design,
+                      review and trial templates
   01/ 02/ 03/ …       one directory per cycle
 ```
+
+Every teammate uses the relevant template without removing sections. Every
+handoff uses [`../prompts/HANDOFF-CARD.md`](../prompts/HANDOFF-CARD.md): the
+teammate writes `Agent caution`, and the human completes the checkpoint.

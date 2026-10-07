@@ -1,0 +1,129 @@
+cycle: "NN"
+selected_friction: ""
+human_ritual_fit_decision: ""
+
+candidates:
+  - rank: 1
+    name: ""
+    evidence:
+      lens: "pain_point | paradox | layer | bright_spot"
+      source_ids: []
+      assumption: ""
+      evidence_that_would_test_assumption: ""
+    meaning:
+      moment_marked: ""
+      purpose: ""
+      invited_value_or_story: ""
+      possible_alternative_interpretation: ""
+    mechanics:
+      trigger: ""
+      container:
+        participants: ""
+        duration_minutes: 0
+        boundary: ""
+      script:
+        - minute: 0
+          action: ""
+      symbol: ""
+      cadence: ""
+      skipped_week: ""
+      closure: ""
+    participation:
+      pass_or_opt_out: ""
+      feedback_path: ""
+    practical_cost:
+      minutes_per_person_per_week: 0
+      behavior_replaced_or_reduced: ""
+      new_tool: false
+      new_meeting: false
+      new_budget: false
+    warning_sign: "<sign it has become empty routine, performance or burden>"
+
+  - rank: 2
+    name: ""
+    evidence:
+      lens: "pain_point | paradox | layer | bright_spot"
+      source_ids: []
+      assumption: ""
+      evidence_that_would_test_assumption: ""
+    meaning:
+      moment_marked: ""
+      purpose: ""
+      invited_value_or_story: ""
+      possible_alternative_interpretation: ""
+    mechanics:
+      trigger: ""
+      container:
+        participants: ""
+        duration_minutes: 0
+        boundary: ""
+      script:
+        - minute: 0
+          action: ""
+      symbol: ""
+      cadence: ""
+      skipped_week: ""
+      closure: ""
+    participation:
+      pass_or_opt_out: ""
+      feedback_path: ""
+    practical_cost:
+      minutes_per_person_per_week: 0
+      behavior_replaced_or_reduced: ""
+      new_tool: false
+      new_meeting: false
+      new_budget: false
+    warning_sign: "<sign it has become empty routine, performance or burden>"
+
+  - rank: 3
+    name: ""
+    evidence:
+      lens: "pain_point | paradox | layer | bright_spot"
+      source_ids: []
+      assumption: ""
+      evidence_that_would_test_assumption: ""
+    meaning:
+      moment_marked: ""
+      purpose: ""
+      invited_value_or_story: ""
+      possible_alternative_interpretation: ""
+    mechanics:
+      trigger: ""
+      container:
+        participants: ""
+        duration_minutes: 0
+        boundary: ""
+      script:
+        - minute: 0
+          action: ""
+      symbol: ""
+      cadence: ""
+      skipped_week: ""
+      closure: ""
+    participation:
+      pass_or_opt_out: ""
+      feedback_path: ""
+    practical_cost:
+      minutes_per_person_per_week: 0
+      behavior_replaced_or_reduced: ""
+      new_tool: false
+      new_meeting: false
+      new_budget: false
+    warning_sign: "<sign it has become empty routine, performance or burden>"
+
+handoff:
+  evidence_used: []
+  interpretation_or_proposal: ""
+  unknowns: []
+  recommendation: ""
+  disagreement_to_preserve: ""
+  agent_caution: ""
+  human_checkpoint:
+    signed: ""
+    date: ""
+    changed: ""
+    decision: ""
+    reason: ""
+    distrust: ""
+  next_owner: "Human Team Lead"
+  next_question: "Which candidate do you choose, combine, change or reject, and why?"

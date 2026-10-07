@@ -3,6 +3,7 @@
 team:          <the team this cycle is about>
 dates:         <the range the material covers>
 requested by:  <who asked, and what they said they wanted>
+human lead:    <who will make the decisions and sign the handoffs>
 
 ## Material provided
 
@@ -13,8 +14,21 @@ requested by:  <who asked, and what they said they wanted>
 
 - <what you would need to see to say anything about X>
 
+## Consent and data care
+
+- permission to use this material: <confirmed / not confirmed / unknown>
+- identifying details removed: <yes / no / needs review>
+- people who could be put at risk by this work: <...>
+
+## Is a small practice the right response?
+
+- structural factors considered: <workload, authority, staffing, incentives,
+  policy, discrimination, safety, leadership>
+- current assessment: <could help / partial only / wrong response / unknown>
+
 ## Standing constraints
 
 - no new meetings
 - no new tooling
 - no facilitator who is not already in the room
+- no coerced disclosure or penalty for passing

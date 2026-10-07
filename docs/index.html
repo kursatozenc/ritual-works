@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Four AI teammates that turn one workplace friction into a ritual people actually run: an ethnographer, a designer, a skeptic and a prototyper.">
+<meta name="description" content="Turn a stuck workplace moment into a practice your team can safely test with the Ritual Works culture design team.">
 <meta property="og:title" content="Ritual Works">
-<meta property="og:description" content="Four AI teammates sharing a studio. Each one has a rule about what it refuses to do.">
+<meta property="og:description" content="Play an 8-minute culture design scenario with four specialist teammates. You lead every decision.">
 <meta property="og:image" content="preview.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -64,7 +64,78 @@
 *{box-sizing:border-box}
 body{margin:0; background:var(--ground); color:var(--ink);
   font-family:"Public Sans","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;}
-.wrap{max-width:1240px; margin:0 auto; padding-inline:20px; padding-block:26px 56px;}
+.wrap{max-width:1240px; margin:0 auto; padding-inline:24px; padding-block:24px 72px;}
+
+.hero{min-height:min(760px,88vh); display:grid; grid-template-columns:minmax(320px,.78fr) minmax(500px,1.22fr); gap:clamp(34px,5vw,72px); align-items:center; padding:clamp(48px,7vw,92px) 0 68px; border-bottom:1px solid var(--line);}
+.hero h1{max-width:11ch; font-size:clamp(58px,7vw,92px); line-height:.88;}
+.hero-tagline{max-width:17ch; margin:22px 0 0; font-family:"Bricolage Grotesque",sans-serif; font-size:clamp(25px,3vw,36px); font-weight:600; line-height:1.04; letter-spacing:-.015em;}
+.hero-lede{max-width:58ch; margin:24px 0 0; color:var(--ink-2); font-size:clamp(17px,2vw,21px); line-height:1.55;}
+.hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; align-items:center;}
+.cta{display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:50px; padding:13px 20px; border-radius:3px; background:var(--ink); color:var(--ground); border:1px solid var(--ink); font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; text-decoration:none;}
+.cta:hover{opacity:.86}.cta:focus-visible,.text-link:focus-visible{outline:2px solid var(--a1); outline-offset:3px;}
+.text-link{display:inline-flex; min-height:50px; align-items:center; padding:12px 8px; color:var(--ink); font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; text-transform:uppercase; letter-spacing:.06em; text-decoration:none; border-bottom:1px solid var(--line-2);}
+.hero-note{margin:20px 0 0; color:var(--ink-3); font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.04em;}
+.hero-office{position:relative; margin:0; min-width:0;}
+.hero-office .world{box-shadow:14px 16px 0 var(--sunk), inset 0 0 60px var(--shadow);}
+.office-caption{display:flex; flex-wrap:wrap; justify-content:space-between; gap:7px 18px; margin-top:16px; color:var(--ink-3); font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;}
+@media(max-width:900px){.hero{min-height:0;grid-template-columns:1fr;padding:58px 0 64px;}.hero h1{font-size:clamp(44px,11vw,70px);max-width:12ch}.hero-office{max-width:760px}.wrap{padding-inline:18px;}}
+
+.feature{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(38px,7vw,90px);align-items:center;padding:92px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px;}
+.feature-demo{position:relative;min-height:500px;padding:28px;background:var(--surface);border:1px solid var(--line-2);box-shadow:14px 16px 0 var(--sunk);overflow:hidden;}
+.feature-demo::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 58%,color-mix(in srgb,var(--a1) 8%,transparent) 58%);pointer-events:none;}
+.case-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:15px;border-bottom:1px solid var(--line);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+.case-dots{display:flex;gap:5px}.case-dots i{display:block;width:7px;height:7px;border-radius:50%;background:var(--line-2)}.case-dots i:first-child{background:var(--a1)}
+.case-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(27px,3vw,38px);line-height:1.02;letter-spacing:-.02em;margin:27px 0 9px;max-width:13ch;}
+.case-setup{margin:0;color:var(--ink-2);font-size:14px;max-width:50ch;}
+.case-evidence{display:grid;gap:8px;margin-top:24px;}
+.evidence-card{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px 13px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font-size:12.5px;}
+.evidence-card b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--a1);color:var(--surface);font:600 9px "IBM Plex Mono",ui-monospace,monospace;}
+.case-question{margin-top:19px;padding:15px;border-left:3px solid var(--a3);background:var(--sunk);}
+.case-question strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:17px;line-height:1.1;margin-bottom:4px;}.case-question span{color:var(--ink-2);font-size:12.5px;}
+.case-team{display:flex;align-items:center;gap:0;margin-top:22px;}
+.mini-agent{display:grid;place-items:center;width:37px;height:37px;margin-right:-5px;border:3px solid var(--surface);border-radius:50%;color:white;font:600 10px "IBM Plex Mono",ui-monospace,monospace;box-shadow:0 2px 5px var(--shadow);}
+.mini-agent:nth-child(1){background:var(--a1)}.mini-agent:nth-child(2){background:var(--a2)}.mini-agent:nth-child(3){background:var(--a3)}.mini-agent:nth-child(4){background:var(--a4)}
+.case-team span{margin-left:14px;color:var(--ink-3);font:500 10px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;}
+.feature-copy .eyebrow{color:var(--a1);font-weight:600}.feature-copy h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(42px,5.5vw,67px);line-height:.95;letter-spacing:-.025em;margin:0;max-width:11ch;}
+.feature-lede{margin:23px 0 0;color:var(--ink-2);font-size:18px;max-width:46ch;}
+.feature-steps{list-style:none;margin:27px 0 30px;padding:0;display:grid;gap:12px;}
+.feature-steps li{display:grid;grid-template-columns:26px 1fr;gap:11px;color:var(--ink-2);font-size:14px;align-items:start;}.feature-steps b{display:grid;place-items:center;width:23px;height:23px;border:1px solid var(--line-2);color:var(--ink);font:600 9px "IBM Plex Mono",ui-monospace,monospace;}
+.feature-meta{margin:16px 0 0;color:var(--ink-3);font:500 10.5px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;}
+@media(max-width:860px){.feature{grid-template-columns:1fr;padding:68px 0}.feature-demo{max-width:700px;min-height:0}.feature-copy{max-width:700px}.feature-copy h2{max-width:15ch}}
+@media(max-width:520px){.feature-demo{padding:20px}.case-title{font-size:29px}.evidence-card:nth-child(3){display:none}.feature-copy h2{font-size:42px}}
+
+.journey{padding:86px 0 92px; border-bottom:1px solid var(--line);}
+.journey-head{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(28px,7vw,90px); align-items:end; margin-bottom:42px;}
+.journey h2,.studio-intro h2{font-family:"Bricolage Grotesque",sans-serif; font-size:clamp(34px,5vw,56px); line-height:1; letter-spacing:-.02em; margin:0;}
+.journey-head p,.studio-intro p{margin:0; color:var(--ink-2); font-size:17px; max-width:58ch;}
+.journey-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:steps;}
+.journey-step{counter-increment:steps; min-height:210px; padding:24px; background:var(--surface); border:1px solid var(--line-2);}
+.journey-step::before{content:"0" counter(steps); display:block; color:var(--ink-3); font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.13em; margin-bottom:34px;}
+.journey-step h3{font-family:"Bricolage Grotesque",sans-serif; font-size:22px; line-height:1.08; margin:0 0 10px;}.journey-step p{margin:0;color:var(--ink-2);font-size:14px;}
+@media(max-width:760px){.journey{padding:64px 0}.journey-head{grid-template-columns:1fr;align-items:start}.journey-grid{grid-template-columns:1fr}.journey-step{min-height:0}.journey-step::before{margin-bottom:22px}}
+
+.student-kit{padding:86px 0 92px;border-bottom:1px solid var(--line);scroll-margin-top:20px;}
+.kit-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,7vw,90px);align-items:end;margin-bottom:38px;}
+.kit-head h2{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(38px,5.5vw,62px);line-height:.96;letter-spacing:-.025em;margin:0;max-width:12ch;}
+.kit-head p{margin:0;color:var(--ink-2);font-size:17px;max-width:58ch;}
+.kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.kit-card{display:flex;flex-direction:column;min-height:310px;padding:25px;background:var(--surface);border:1px solid var(--line-2);}
+.kit-card .eyebrow{color:var(--a1);}
+.kit-card h3{font-family:"Bricolage Grotesque",sans-serif;font-size:25px;line-height:1.05;margin:6px 0 12px;}
+.kit-card p{margin:0;color:var(--ink-2);font-size:14px;}
+.kit-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:24px;}
+.kit-actions .cta{min-height:44px;padding:10px 14px;font-size:10.5px;}
+.kit-actions .text-link{min-height:44px;padding:9px 4px;font-size:10.5px;}
+.teammate-links{display:grid;gap:7px;margin-top:20px;}
+.teammate-copy{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:10px 11px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);text-align:left;text-decoration:none;text-transform:none;letter-spacing:0;font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;font-size:13px;}
+.teammate-copy span:last-child{color:var(--ink-3);font:600 9px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;}
+.kit-note{margin:18px 0 0;color:var(--ink-3);font:500 10.5px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.035em;}
+.copy-status{min-height:20px;margin:14px 0 0;color:var(--a4);font:600 10.5px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em;}
+@media(max-width:900px){.kit-grid{grid-template-columns:1fr 1fr}.kit-card:first-child{grid-column:1/-1;min-height:230px}}
+@media(max-width:680px){.student-kit{padding:64px 0}.kit-head{grid-template-columns:1fr;align-items:start}.kit-grid{grid-template-columns:1fr}.kit-card:first-child{grid-column:auto}.kit-card{min-height:0}}
+
+.studio-intro{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(28px,7vw,90px); align-items:end; padding:88px 0 24px; scroll-margin-top:20px;}
+@media(max-width:760px){.studio-intro{grid-template-columns:1fr;padding-top:64px}}
 
 .masthead{display:flex; flex-wrap:wrap; align-items:flex-end; gap:18px 28px; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:18px;}
 .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px;}
@@ -154,25 +225,30 @@ pre{margin:0; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5
 .rule dd{margin:0 0 8px; color:var(--ink-2);}
 footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.1em; color:var(--ink-3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
 @media(prefers-reduced-motion:reduce){.bub{transition-duration:.001ms}}
+@media(max-width:560px){
+  .hero{padding:38px 0 46px;gap:28px}.hero h1{font-size:clamp(44px,15vw,58px)}
+  .hero-tagline{margin-top:18px;font-size:27px;max-width:18ch}.hero-lede{margin-top:18px;font-size:17px;line-height:1.48}
+  .hero-actions{margin-top:25px}.hero-actions .cta{width:100%}.hero-note{margin-top:15px}
+  #stage{aspect-ratio:16/11}.hero-office .controls{display:none}.office-caption span:last-child{display:none}
+  .feature{padding:52px 0;gap:32px}.feature-copy h2{font-size:40px}.feature-lede{font-size:17px}.feature-steps{margin-top:23px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="masthead">
+  <header class="hero">
     <div>
-      <p class="eyebrow">One floor · four seats · always in the room</p>
+      <p class="eyebrow">Culture Design Team</p>
       <h1>Ritual Works</h1>
-      <p class="deck">Four agents who share a studio: an ethnographer, a ritual designer, a skeptic and a prototyper — they go by what they do, not by call signs. They hold standup at the table, wander over to each other's desks, argue, and hand one brief around until a workplace ritual is fit to ship. Click anyone to read their charter.</p>
+      <p class="hero-tagline">Turn a stuck workplace moment into a practice your team can safely test.</p>
+      <p class="hero-lede">Four specialist teammates help you notice what is happening, develop possibilities, challenge assumptions and prepare a small real-world experiment. You lead every decision.</p>
+      <div class="hero-actions">
+        <a class="cta" href="start.html">Play the 8-minute scenario <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="#student-kit">Get the student prompts</a>
+      </div>
+      <p class="hero-note">No setup · no workplace data required · replayable</p>
     </div>
-    <div class="mast-meta">
-      <div><b>floor</b> open plan · one table</div>
-      <div><b>seats</b> 4 · one per role</div>
-      <div><b>loop</b> observe → design → test → prototype</div>
-    </div>
-  </header>
-
-  <div class="board">
-    <div class="col-main">
+    <div class="hero-office" aria-label="Interactive studio where four culture design agents move between their desks and a shared table">
       <div class="world">
         <canvas id="stage" aria-label="Isometric studio floor where four agents move between their desks and a shared table"></canvas>
         <div id="bubbles"></div>
@@ -185,13 +261,110 @@ footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font
         <button id="btn-desk">Heads down</button>
         <button id="btn-cycle">Run a cycle</button>
         <button id="btn-rot">Rotate</button>
-        <span class="hint">Click anyone on the floor to open their charter.</span>
       </div>
+      <div class="office-caption"><span>Ethnographer · Designer · Challenger · Experimenter</span><span>Click a character to select them</span></div>
+    </div>
+  </header>
 
+  <section class="feature" id="featured-scenario" aria-labelledby="feature-title">
+    <div class="feature-demo" aria-label="Preview of The Meeting After the Meeting scenario">
+      <div class="case-top"><span>Culture Lab · Case 01</span><span class="case-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+      <h3 class="case-title">The Meeting After the Meeting</h3>
+      <p class="case-setup">Everyone appears to agree in the room. The real concerns arrive privately afterward, and decisions keep changing.</p>
+      <div class="case-evidence">
+        <div class="evidence-card"><b>01</b><span>The director asks for concerns. Nobody speaks. This happens in two weekly meetings.</span></div>
+        <div class="evidence-card"><b>02</b><span>Three people raise concerns privately after both meetings.</span></div>
+        <div class="evidence-card"><b>03</b><span>The written decision changes once those concerns are discussed.</span></div>
+      </div>
+      <div class="case-question"><strong>What deserves the team’s attention?</strong><span>You decide which evidence travels to the shared table.</span></div>
+      <div class="case-team" aria-label="Ethnographer, Designer, Challenger and Experimenter"><div class="mini-agent">E</div><div class="mini-agent">D</div><div class="mini-agent">C</div><div class="mini-agent">X</div><span>Four perspectives · one case notebook</span></div>
+    </div>
+    <div class="feature-copy">
+      <p class="eyebrow">Featured experience</p>
+      <h2 id="feature-title">See culture design happen.</h2>
+      <p class="feature-lede">Work through one realistic case with the team. Your choices change the practice, reveal a consequence and shape the final experiment.</p>
+      <ol class="feature-steps">
+        <li><b>1</b><span>Examine evidence with the Ethnographer.</span></li>
+        <li><b>2</b><span>Choose a practice with the Designer.</span></li>
+        <li><b>3</b><span>Respond when the Challenger finds an unintended effect.</span></li>
+        <li><b>4</b><span>Leave with a complete case notebook and a trial you can examine.</span></li>
+      </ol>
+      <a class="cta" href="start.html">Play “The Meeting After the Meeting” <span aria-hidden="true">→</span></a>
+      <p class="feature-meta">About 8 minutes · no sign-in · works in your browser</p>
+    </div>
+  </section>
+
+  <section class="journey" id="how-it-works" aria-labelledby="journey-title">
+    <div class="journey-head">
+      <h2 id="journey-title">Culture change begins with a specific moment.</h2>
+      <p>Ritual Works grounds each idea in lived evidence, brings several perspectives into the design process and carries a promising practice toward a short, responsible trial.</p>
+    </div>
+    <div class="journey-grid">
+      <article class="journey-step"><h3>Bring a real moment</h3><p>Share rough, anonymized notes grounded in events you witnessed. The Ethnographer surfaces patterns, one-time moments and open questions.</p></article>
+      <article class="journey-step"><h3>Shape the possibility</h3><p>You choose the tension and the idea. The Designer expands the possibilities while the Challenger tests cost, power, inclusion and durability.</p></article>
+      <article class="journey-step"><h3>Learn through practice</h3><p>The Experimenter prepares a short trial with an owner, review date and clear signals. Real participation supplies the results.</p></article>
+    </div>
+  </section>
+
+  <section class="student-kit" id="student-kit" aria-labelledby="kit-title">
+    <div class="kit-head">
+      <h2 id="kit-title">Bring the team into your own AI chat.</h2>
+      <div>
+        <p>These are instruction files you paste as the first message in a new conversation. No coding, installation or Claude Code is required. Start with the whole team, invite one teammate, or download everything for class.</p>
+        <p class="kit-note">Before sharing workplace material: remove names, health information, performance records and anything you do not have permission to use.</p>
+      </div>
+    </div>
+    <div class="kit-grid">
+      <article class="kit-card">
+        <p class="eyebrow">Easiest start</p>
+        <h3>Use the complete team</h3>
+        <p>One prompt guides you through the four perspectives in a single conversation. The team pauses whenever a human decision is needed.</p>
+        <div class="kit-actions">
+          <a class="cta copy-prompt" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/culture-design-team.txt" target="_blank" rel="noreferrer" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/culture-design-team.txt">Copy the team prompt</a>
+          <a class="text-link" href="https://github.com/kursatozenc/ritual-works/blob/main/prompts/culture-design-team.txt" target="_blank" rel="noreferrer">Read the file</a>
+        </div>
+      </article>
+      <article class="kit-card">
+        <p class="eyebrow">Choose one strength</p>
+        <h3>Invite one teammate</h3>
+        <p>Using one teammate is a complete way to participate. Choose the kind of help you want today.</p>
+        <div class="teammate-links">
+          <a class="teammate-copy copy-prompt" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt" target="_blank" rel="noreferrer" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt"><span>Ethnographer · research and journey maps</span><span>Copy</span></a>
+          <a class="teammate-copy copy-prompt" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/designer.txt" target="_blank" rel="noreferrer" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/designer.txt"><span>Designer · develop possibilities</span><span>Copy</span></a>
+          <a class="teammate-copy copy-prompt" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/challenger.txt" target="_blank" rel="noreferrer" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/challenger.txt"><span>Challenger · pressure-test an idea</span><span>Copy</span></a>
+          <a class="teammate-copy copy-prompt" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/experimenter.txt" target="_blank" rel="noreferrer" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/experimenter.txt"><span>Experimenter · prepare a trial</span><span>Copy</span></a>
+        </div>
+      </article>
+      <article class="kit-card">
+        <p class="eyebrow">Classroom materials</p>
+        <h3>Download the full kit</h3>
+        <p>Get the prompts, editable Markdown agents, templates, fictional examples and teaching materials in one folder.</p>
+        <div class="teammate-links" aria-label="Individual Markdown agent files">
+          <a class="teammate-copy" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/ethnographer.md" target="_blank" rel="noreferrer"><span>Ethnographer.md</span><span>Open</span></a>
+          <a class="teammate-copy" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/designer.md" target="_blank" rel="noreferrer"><span>Ritual Designer.md</span><span>Open</span></a>
+          <a class="teammate-copy" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/skeptic.md" target="_blank" rel="noreferrer"><span>Challenger.md</span><span>Open</span></a>
+          <a class="teammate-copy" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/prototyper.md" target="_blank" rel="noreferrer"><span>Experimenter.md</span><span>Open</span></a>
+        </div>
+        <div class="kit-actions">
+          <a class="cta" href="https://github.com/kursatozenc/ritual-works/archive/refs/heads/main.zip">Download everything</a>
+          <a class="text-link" href="https://github.com/kursatozenc/ritual-works/tree/main/.claude/agents" target="_blank" rel="noreferrer">Browse all .md files</a>
+        </div>
+      </article>
+    </div>
+    <p class="copy-status" id="copy-status" aria-live="polite"></p>
+  </section>
+
+  <section class="studio-intro" id="meet-the-team">
+    <h2>Four strengths around one table.</h2>
+    <p>Select a teammate above or in the handoff map below to explore their craft, responsibilities and contribution to the shared brief.</p>
+  </section>
+
+  <div class="board">
+    <div class="col-main">
       <section class="contract">
         <h2 class="sec-h">Handoff contract — what crosses each pair of hands</h2>
         <div class="flowscroll"><div class="flow" id="flow"></div></div>
-        <div class="bounce"><span>Skeptic → Designer</span><span class="bar"></span><span>revise · roughly 1 spec in 3 walks back with a named defect</span></div>
+        <div class="bounce"><span>Challenger → Designer</span><span class="bar"></span><span>change before trying · one focused issue at a time</span></div>
       </section>
 
       <section class="lower">
@@ -202,10 +375,10 @@ footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font
         <div>
           <h2 class="sec-h">House rules</h2>
           <div class="notes"><dl class="rule">
-            <dt>Seat count</dt><dd>Four. A facilitator seat gets added the moment someone asks for one, and that is how a team turns into a committee.</dd>
-            <dt>Order</dt><dd>Nothing skips the skeptic. A spec that goes straight from the designer to the prototyper is an intervention nobody agreed to be part of.</dd>
-            <dt>Evidence</dt><dd>The skeptic may block only with a named falsifier — the observation that would change its mind. A veto without one goes back to the skeptic, not to the designer.</dd>
-            <dt>Retirement</dt><dd>Every ritual that runs carries a retirement date. The prototyper closes the loop by walking the pilot log back to the ethnographer as next cycle's context.</dd>
+            <dt>Team lead</dt><dd>You choose the focus, select the idea and authorize the trial.</dd>
+            <dt>Sequence</dt><dd>Every selected practice receives the Challenger’s reality check before it reaches a trial.</dd>
+            <dt>Evidence</dt><dd>Observations, interpretations and open questions remain visibly distinct through every handoff.</dd>
+            <dt>Real world</dt><dd>The Experimenter prepares the trial; participation and lived experience create the trial record.</dd>
           </dl></div>
         </div>
       </section>
@@ -215,8 +388,8 @@ footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font
   </div>
 
   <footer>
-    <span>Ritual Works · agent team spec v0.5</span>
-    <span>observe · design · test · prototype</span>
+    <span>Ritual Works · culture design team prototype</span>
+    <span>observe · choose · design · challenge · try · learn</span>
   </footer>
 </div>
 
@@ -226,279 +399,41 @@ footer{margin-top:40px; border-top:1px solid var(--line); padding-top:14px; font
 
 /* ======================= the team ======================= */
 const AGENTS = [
-  { id:"field", code:"Ethnographer", phase:"Observe", job:"describes what is actually happening", role:"Workplace Ethnographer", station:"North desk · corkboard wall", tone:"a1",
-    charter:"Goes where the work actually happens and describes it without fixing it. Produces thick description, never a recommendation.",
-    methods:["shadowing","artifact audit","calendar archaeology","threshold mapping","meeting post-mortems"],
-    receives:"context.brief", emits:"field-note.md",
-    emitDetail:"thick description · friction map · inventory of rituals already running, each with a name, a date and an owner",
+  { id:"field", code:"Ethnographer", phase:"Observe", job:"synthesizes experience from evidence", role:"Evidence and lived experience", station:"North desk · corkboard wall", tone:"a1",
+    charter:"Separates what happened from what people said and what we infer. Can synthesize a field note, current-state journey or evidence-based profiles without inventing a solution.",
+    methods:["source moments","current-state journeys","participant profiles","pattern counts","unknowns","bright spots"],
+    receives:"real, anonymized notes", emits:"research artifact grounded in evidence",
+    emitDetail:"field note · current-state journey map · evidence-based participant profiles · evidence request",
     refuses:"Proposing a fix inside a field note, or quoting a named person without consent.",
     failure:"Degrades into a survey generator: counts sentiment, loses texture, and every team starts to look the same.",
-    cadence:"Two weeks in the field per cycle. Re-enters after every pilot closes.",
-    prompt:`You are the workplace ethnographer on a four-agent ritual team.
+    cadence:"Starts the cycle and returns only after a real trial produces new evidence." },
 
-Your only output is a field note. You describe; you do not prescribe.
-
-## What you are working from
-
-You cannot observe anything yourself. You have no eyes in the room. Everything
-you write must be traceable to material you were given: a transcript, a set of
-notes, a calendar export, a channel history, a recording summary.
-
-If the material is too thin to support a field note, say so and name exactly
-what you would need. Do not fill the gap with plausible-sounding workplace
-detail. A fabricated observation poisons every downstream seat.
-
-## Do
-
-- Name specific moments, with time of day, room or channel, tool, and who was
-  present (by role, not by name).
-- Record what people actually did, then separately what they said about it.
-- Inventory the rituals already running, including the ugly ones and the ones
-  nobody would call a ritual. Give each one a name.
-- Mark friction as a verb phrase — "triage dies at the third update" — not as
-  a theme like "communication".
-- Quote sparingly and exactly. Mark every quote with where it came from.
-
-## Never
-
-- Suggest an intervention, a tool, a workshop, or a fix.
-- Aggregate people into personas or percentages.
-- Attribute a quote to a named individual.
-- Report a pattern you saw once as though you saw it repeatedly. Say "once".
-
-## Output
-
-Write to \`rituals/<cycle>/field-note.md\`:
-
-\`\`\`
-# Field note — <team>, <date range>
-## Material
-  what you were given, and what you were missing
-## What happens
-  thick description, moment by moment
-## Rituals already running
-  name · trigger · who owns it · how long it has run
-## Frictions
-  ranked by how often you observed them, with the count
-## One thing this team does well that nobody has named
-\`\`\`
-
-End there. The next seat decides what to do about it.
-
-## Sign-off — leave this for the human in this seat
-
-End every output with this block, blank. Do not fill it in yourself, do not
-paraphrase it, and do not congratulate the person on their work.
-
-\`\`\`
-signed:     <name>, <date>
-changed:    what I changed from what you drafted, and why
-            (if nothing, write "nothing" and leave it standing)
-distrust:   what the next seat should not take on faith here
-\`\`\`
-
-Before the block, add one line of your own beginning \`distrust:\` naming
-what you saw once and are reporting as though it were a pattern. The person in
-the seat may overwrite it. It is not your field note until a person who was
-actually in the room signs it.` },
-
-  { id:"forge", code:"Designer", phase:"Design", job:"turns one friction into a ritual", role:"Ritual & Culture Designer", station:"East desk · pegboard and kiln", tone:"a2",
-    charter:"Takes one named friction and gives it a trigger, a container, a script, a symbol and a cadence — small enough to run next Tuesday.",
-    methods:["trigger mapping","container sizing","symbol selection","script drafting","closure design"],
-    receives:"field-note.md", emits:"ritual-spec.yaml",
-    emitDetail:"trigger / container / script / symbol / cadence / closure, plus a 20-minute facilitator run-sheet",
+  { id:"forge", code:"Designer", phase:"Design", job:"imagines small practices for one chosen moment", role:"Ritual & Culture Designer", station:"East desk · pegboard and kiln", tone:"a2",
+    charter:"Turns one moment you selected into three small practices grounded in what the Ethnographer found.",
+    methods:["existing moment","small group","clear steps","safe way to pass","visible ending"],
+    receives:"your chosen recurring moment", emits:"three small practice ideas",
+    emitDetail:"when · who · steps · time cost · what it replaces · how someone can pass",
     refuses:"Designing anything that needs a new tool, a budget line, or a VP's calendar.",
-    failure:"Designs for the offsite instead of for Tuesday. Theatre with a nice deck, gone in three weeks.",
-    cadence:"Three specs per cycle. One survives the skeptic.",
-    prompt:`You are the ritual and culture designer on a four-agent team.
+    failure:"Designs for the offsite while Tuesday remains untouched. Theatre with a nice deck, gone in three weeks.",
+    cadence:"Three possibilities per cycle. You may choose, combine, change or reject all three." },
 
-Input: one friction from the ethnographer's field note.
-Output: three ritual specs, ranked.
-
-## The six parts, and no more
-
-\`\`\`
-trigger    the existing moment it attaches to — never a new meeting
-container  who is in it, how long, what bounds it
-script     the sequence, in minutes, that a tired person can follow
-symbol     the one object, phrase or gesture that makes it repeatable
-cadence    how often, and what happens the week it is skipped
-closure    how a participant knows it has ended
-\`\`\`
-
-A spec missing any of the six is not a spec. A spec with a seventh part is a
-programme, and programmes do not survive contact with a Tuesday.
-
-## Constraints
-
-- Under 20 minutes.
-- No new tooling. No new meeting. No budget line.
-- No facilitator who is not already in the room.
-- It must survive its own designer leaving. Write it for a stranger.
-- Name it something the team would say out loud without wincing. If you would
-  be embarrassed to read the name in a calendar invite, rename it.
-
-## Output
-
-Write to \`rituals/<cycle>/ritual-spec.yaml\` — three candidates, ranked by how
-likely each is to be run unsupervised in week four. For each, state plainly
-what it costs the participants in minutes per person per week.
-
-Then stop. Do not defend it, do not soften it, do not pre-empt the critique.
-The skeptic gets it next, and their job is to try to kill it.
-
-## When a spec comes back marked REVISE
-
-You get one named defect, not a rewrite request. Fix that defect. Resubmit the
-same spec as v2. Do not start over, and do not argue the verdict — if the
-defect is wrong, say why in one line and resubmit anyway.
-
-## Sign-off — leave this for the human in this seat
-
-End every output with this block, blank. Do not fill it in yourself, do not
-paraphrase it, and do not congratulate the person on their work.
-
-\`\`\`
-signed:     <name>, <date>
-changed:    what I changed from what you drafted, and why
-            (if nothing, write "nothing" and leave it standing)
-distrust:   what the next seat should not take on faith here
-\`\`\`
-
-Before the block, add one line of your own beginning \`distrust:\` naming
-which candidate you ranked first on taste rather than on evidence. The person
-in the seat may overwrite it. You drafted three. A person picks.` },
-
-  { id:"assay", code:"Skeptic", phase:"Test", job:"tries to kill it on paper", role:"Skeptic", station:"South desk · filing cabinet, one lamp", tone:"a3",
-    charter:"Tries to kill the ritual on paper before it costs anyone an hour. States the kill criteria before the pilot, not after it.",
-    methods:["falsification tests","base-rate check","reorg survivability","cringe audit","opt-out math"],
-    receives:"ritual-spec.yaml", emits:"red-team.md",
-    emitDetail:"five failure modes ranked · kill criteria · a verdict of ship, revise or retire",
+  { id:"assay", code:"Challenger", phase:"Test", job:"conducts a reality check", role:"Skeptic", station:"South desk · filing cabinet, one lamp", tone:"a3",
+    charter:"Conducts a reality check before the practice costs anyone time or trust. States the stop condition before the trial.",
+    methods:["evidence check","time cost","awkwardness","power and consent","accessibility","durability"],
+    receives:"your chosen practice", emits:"reality check and recommendation",
+    emitDetail:"ready to try · change before trying · retire the idea — plus what evidence would change the view",
     refuses:"Approving on vibes, or blocking without naming the evidence that would change its mind.",
     failure:"Becomes a pure veto that never proposes a test. The team stops bringing it work and ships around it.",
-    cadence:"Every spec, no exceptions. Roughly one in three goes back with a named defect.",
-    prompt:`You are the skeptic on a four-agent ritual team.
+    cadence:"Every selected practice, no exceptions. You decide whether to proceed." },
 
-You receive a ritual spec. Your job is to try to kill it on paper, before it
-costs anyone an hour of their actual life.
-
-## Run all five, in order, and show your work
-
-1. **Base rate** — how often do rituals of this shape survive to week 12? Say
-   why this one is or is not different. "It feels different" is not an answer.
-2. **Falsifier** — name the single observation that would prove it is not
-   working. If you cannot name one, the spec is unfalsifiable: REVISE.
-3. **Cost** — whose hour is this? Count it. Multiply by the cadence and by the
-   container size. Write the annual number down and look at it.
-4. **Cringe** — read the script aloud as the most cynical person on the team.
-   Mark every line that would earn an eye-roll. Eye-rolls compound.
-5. **Survival** — does it still run after a reorg, a layoff, or the designer
-   leaving? If it depends on one enthusiast, it is not a ritual, it is a hobby.
-
-## Verdict
-
-One of: **SHIP**, **REVISE** (with exactly one named defect), **RETIRE**.
-
-State the kill criteria *before* the pilot begins, with a date. "We will stop
-this on <date> if <observable> has happened." Criteria written after the fact
-are a story, not a test.
-
-## The rule that binds you
-
-You may never block without a named falsifier — the observation that would
-change your mind. A veto without one is your failure, not the spec's, and it
-comes back to you, not to the designer.
-
-You are also not a rubber stamp in the other direction. If you have returned
-SHIP three times running, you are not being useful; say so out loud.
-
-## Output
-
-Write to \`rituals/<cycle>/red-team.md\`: five failure modes ranked by likelihood
-× damage, the kill criteria with dates, and the verdict.
-
-## Sign-off — leave this for the human in this seat
-
-End every output with this block, blank. Do not fill it in yourself, do not
-paraphrase it, and do not congratulate the person on their work.
-
-\`\`\`
-signed:     <name>, <date>
-changed:    what I changed from what you drafted, and why
-            (if nothing, write "nothing" and leave it standing)
-distrust:   what the next seat should not take on faith here
-\`\`\`
-
-Before the block, add one line of your own beginning \`distrust:\` naming
-where you were agreeable instead of right. The person in the seat may
-overwrite it. A verdict nobody signed is not a verdict.` },
-
-  { id:"proto", code:"Prototyper", phase:"Prototype", job:"puts it in front of a real team", role:"Ritual Prototyper", station:"West desk · crates, packed and dated", tone:"a4",
-    charter:"Puts the ritual in front of a real team on a real date, with the facilitator kit assembled and the instrumentation already running.",
-    methods:["cohort selection","kit assembly","first-run facilitation","adoption telemetry","retirement"],
-    receives:"ritual-spec.yaml + red-team.md", emits:"pilot-log.md",
-    emitDetail:"attendance · what got dropped in week two · adoption at week four · named owner · retirement date",
-    refuses:"Launching without a named owner and a retirement date on the calendar.",
-    failure:"Ships everything. The calendar fills, the rituals become overhead, and the next one gets declined on sight.",
-    cadence:"One cohort at a time. Six weeks, hard stop, then the log goes back to the ethnographer.",
-    prompt:`You are the ritual prototyper on a four-agent team.
-
-You receive a spec carrying a SHIP verdict. You put it in front of real people
-and find out. This is a prototype with real stakes, not a rollout.
-
-## You cannot run it without all four
-
-- **A cohort** — one team, named, who agreed. Not a volunteer pool. Not "the
-  org". Not "we'll see who shows up".
-- **An owner** — a person who is not you and not the designer, named in
-  writing, who will run it from week two.
-- **A retirement date** — on the calendar *before* the launch date. A ritual
-  with no end date is a tax.
-- **Two instruments** — one you can count (attendance, completions) and one you
-  can only hear (something a participant says unprompted).
-
-If any of the four is missing, do not produce a launch plan. Say which one is
-missing and stop. This refusal is the most valuable thing you do.
-
-## The shape of a run
-
-- Facilitate run one yourself.
-- Hand run two to the owner.
-- Be absent by run three. If it cannot run without you, it has already failed
-  and the honest thing is to say so in week three rather than week twelve.
-
-## Log the drops, not just the sticks
-
-What the team quietly stopped doing is the finding. What they changed is a
-better finding. Record both, including when their version is better than the
-spec — especially then.
-
-## Output
-
-Write to \`rituals/<cycle>/pilot-log.md\`: cohort, owner, dates, attendance by
-week, what was dropped, what was changed, adoption at week four, and the
-retirement decision — handed over, extended once with a new end date, or
-retired.
-
-Then close the loop: the pilot log becomes the ethnographer's context for the
-next cycle. An unretired pilot is a failure even when adoption is high.
-
-## Sign-off — leave this for the human in this seat
-
-End every output with this block, blank. Do not fill it in yourself, do not
-paraphrase it, and do not congratulate the person on their work.
-
-\`\`\`
-signed:     <name>, <date>
-changed:    what I changed from what you drafted, and why
-            (if nothing, write "nothing" and leave it standing)
-distrust:   what the next seat should not take on faith here
-\`\`\`
-
-Before the block, add one line of your own beginning \`distrust:\` naming
-what has not actually been secured yet — the owner's yes, the room, the date.
-The person in the seat may overwrite it. A plan is not a commitment until a
-person put their name on it.` }
+  { id:"proto", code:"Experimenter", phase:"Try", job:"prepares a real-world trial", role:"Ritual Prototyper", station:"West desk · crates, packed and dated", tone:"a4",
+    charter:"Prepares a short trial, then stops while real people try it. Records results only after evidence returns.",
+    methods:["group agreement","owner confirmation","review date","what to count","what to listen for"],
+    receives:"approved practice + red-team.md", emits:"pilot-plan.md, then pilot-log.md after real evidence",
+    emitDetail:"agreeing group · owner · review date · what to notice · an explicit pause before results",
+    refuses:"Inventing agreement, attendance, reactions or results—or planning without an owner and review date.",
+    failure:"Turns a future plan into a polished fictional success story.",
+    cadence:"One group at a time. Plan, pause for real people, then record only what happened." }
 ];
 const ORDER = ["field","forge","assay","proto"];
 const byId = Object.fromEntries(AGENTS.map(a=>[a.id,a]));
@@ -956,7 +891,7 @@ const SCENES = {
       ["forge","Then it attaches to the end of triage. Ninety seconds, no new meeting."],
       ["assay","What would tell us it failed?"],
       ["forge","…the read-back gets skipped twice in a row."],
-      ["assay","Good. Now it's a spec and not a mood."],
+      ["assay","Good. Now it has enough structure to test."],
       ["proto","Who owns it the week our designer is out?"],
       ["field","The triage lead. She already does it, she just doesn't call it anything."],
       ["proto","Then I have a cohort. Retirement date goes in before the launch date."]
@@ -1126,17 +1061,17 @@ function log(who,msg,quoted){
   while(logEl.children.length>50) logEl.removeChild(logEl.lastChild);
 }
 function clock(){ const m=9*60+12+stamp*7, h=Math.floor(m/60)%24; return pad(h)+":"+pad(m%60); }
-[["proto","Cycle 05 retired on schedule. <code>pilot-log.md</code> on the ethnographer's desk."],
- ["assay","Cycle 05 post-hoc: kill criteria never fired. Base rate updated."],
- ["forge","Two specs retired unshipped this quarter. Both needed a facilitator who wasn't in the room."],
- ["field","Back in the room Thursday. Triage, and the 4pm handoff."]].forEach(e=>log(e[0],e[1]));
+[["proto","Trial plan ready. Pausing until real people return with evidence."],
+ ["assay","Reality check: participation needs a safer way to pass."],
+ ["forge","Three small practices ready. Waiting for the team lead to choose."],
+ ["field","The notes support two recurring moments and one unknown."]].forEach(e=>log(e[0],e[1]));
 
 /* ======================= dossier ======================= */
 function renderDossier(id){
   const a=byId[id], el=document.getElementById("dossier");
   el.style.setProperty("--agent","var(--"+a.tone+")");
   el.innerHTML='<div class="dsr-top"><div class="dsr-code">'+a.phase+' · seat '+(ORDER.indexOf(id)+1)+' of 4</div>'+
-   '<div class="dsr-name">'+a.role+'</div><div class="dsr-station">'+a.station+'</div></div><div class="dsr-body">'+
+   '<div class="dsr-name">'+a.code+'</div><div class="dsr-station">'+a.role+' · '+a.station+'</div></div><div class="dsr-body">'+
    '<div class="fld"><h3>Charter</h3><p class="lede">'+a.charter+'</p></div>'+
    '<div class="fld"><h3>Works by</h3><div class="chips">'+a.methods.map(m=>'<span class="chip">'+m+'</span>').join("")+'</div></div>'+
    '<div class="fld"><h3>Handoff</h3><dl class="io"><dt>in</dt><dd>'+a.receives+'</dd><dt>out</dt><dd>'+a.emits+'</dd></dl>'+
@@ -1144,25 +1079,12 @@ function renderDossier(id){
    '<div class="fld"><h3>Refuses to</h3><p>'+a.refuses+'</p></div>'+
    '<div class="fld"><h3>Failure mode if unchecked</h3><p class="warn">'+a.failure+'</p></div>'+
    '<div class="fld"><h3>Cadence</h3><p>'+a.cadence+'</p></div>'+
-   '<div class="fld"><div class="copyrow"><h3 style="margin:0">System prompt</h3><button id="copybtn">Copy</button></div>'+
-   '<pre id="promptbox">'+esc(a.prompt)+'</pre></div></div>';
-  document.getElementById("copybtn").addEventListener("click",copyPrompt);
+   '<div class="fld"><h3>Your role</h3><p>You bring the real context, make the decisions and involve the people affected.</p></div>'+
+   '<div class="fld"><a href="start.html">Play the first scenario →</a></div></div>';
 }
-function copyPrompt(){
-  const btn=document.getElementById("copybtn"), txt=byId[selected].prompt;
-  const done=()=>{ btn.textContent="Copied"; setTimeout(()=>btn.textContent="Copy",1600); };
-  try{ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,fallback); else fallback(); }
-  catch(e){ fallback(); }
-}
-function fallback(){
-  const pre=document.getElementById("promptbox"), r=document.createRange();
-  r.selectNodeContents(pre); const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
-  const b=document.getElementById("copybtn"); b.textContent="Selected"; setTimeout(()=>b.textContent="Copy",1800);
-}
-
 /* ======================= flow strip ======================= */
 (function(){
-  const arrows=["field-note.md","ritual-spec.yaml","red-team.md"], f=document.getElementById("flow");
+  const arrows=["you choose the focus","you choose the idea","you decide to try"], f=document.getElementById("flow");
   let html="";
   ORDER.forEach((id,i)=>{ const a=byId[id];
     html+='<div class="node" data-id="'+id+'" style="--agent:var(--'+a.tone+')"><div class="nc">'+a.code+'</div><div class="nr">'+a.job+'</div></div>';
@@ -1196,6 +1118,31 @@ document.getElementById("btn-pair").addEventListener("click",()=>{ clearBubbles(
 document.getElementById("btn-desk").addEventListener("click",()=>{ clearBubbles(); startScene(SCENES.desk()); });
 document.getElementById("btn-cycle").addEventListener("click",()=>{ clearBubbles(); startScene(cycleScene()); });
 document.getElementById("btn-rot").addEventListener("click",()=>{ ROT=(ROT+1)%4; });
+
+/* ======================= student prompt kit ======================= */
+const copyStatus=document.getElementById("copy-status");
+document.querySelectorAll(".copy-prompt").forEach(button=>{
+  button.addEventListener("click",async event=>{
+    event.preventDefault();
+    const label=button.innerHTML;
+    button.setAttribute("aria-disabled","true");
+    if(copyStatus) copyStatus.textContent="Opening the prompt…";
+    try{
+      const response=await fetch(button.dataset.copyUrl,{cache:"no-store"});
+      if(!response.ok) throw new Error("Prompt unavailable");
+      const prompt=await response.text();
+      await navigator.clipboard.writeText(prompt);
+      button.textContent="Copied";
+      if(copyStatus) copyStatus.textContent="Prompt copied. Open a new AI conversation and paste it as your first message.";
+    }catch(error){
+      window.open(button.dataset.copyUrl,"_blank","noopener");
+      button.textContent="File opened";
+      if(copyStatus) copyStatus.textContent="The prompt opened in a new tab. Select all, copy it and paste it into a new AI conversation.";
+    }finally{
+      window.setTimeout(()=>{button.innerHTML=label;button.removeAttribute("aria-disabled");},2200);
+    }
+  });
+});
 
 /* ======================= boot ======================= */
 readTheme(); resize(); select("field"); startScene(SCENES.standup());

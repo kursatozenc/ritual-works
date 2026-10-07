@@ -1,129 +1,154 @@
 # Ritual Works
 
-**Four AI teammates that turn one workplace friction into a ritual people actually run.**
+**A culture design team that helps you turn a recurring tension into a small,
+responsible experiment your group can actually try.**
 
-An ethnographer, a designer, a skeptic and a prototyper lead. Each one has a job,
-and — more importantly — one thing it refuses to do.
+![The culture design team at the table](docs/preview.png)
 
-![The four of them at the table](docs/preview.png)
+**[Meet the team in the room →](https://kursatozenc.github.io/ritual-works/)**
 
-**[See them in the room →](https://kursatozenc.github.io/ritual-works/)**
+You bring the real situation, lived context, judgment and consent. Four AI
+teammates bring different strengths:
 
----
+| Teammate | Strength | Important limit |
+|---|---|---|
+| **The Ethnographer** · Workplace Research | Creates field notes, current-state journeys and evidence-based profiles before anyone jumps to a solution | Cannot observe your workplace or invent a representative person; it only knows what you share |
+| **The Designer** · Ritual Designer | Imagines small practices that fit into everyday work | Cannot decide what is right for your group |
+| **The Challenger** · Skeptic | Tests whether an idea is useful, realistic and safe | Must say what evidence would change its mind |
+| **The Experimenter** · Prototyper | Prepares a short real-world trial and helps you learn from it | Cannot run the trial or invent its results |
 
-## What's actually in here
+**You are the team lead.** You choose the focus, decide what is worth trying,
+involve the people affected and stop ideas that do not fit. The teammates never
+make those decisions for you.
 
-Four text files. That is the whole thing.
+## Start here — no technical experience needed
 
-`ethnographer.md` is a page of instructions that says *you are an ethnographer,
-here is your job, here is what you are not allowed to do.* When Claude reads that
-file, it behaves like an ethnographer. There is no server, no API key, nothing to
-install beyond the Claude you already have.
+Use the **[guided team](START-HERE.md)**. It works in one AI conversation and
+guides you one step at a time. You do not need to install anything or move work
+between four chats.
 
-Download the folder and you have the team. Rewrite the skeptic to be meaner,
-add a fifth seat, rename everyone — it's yours now.
+If you would rather see the journey before trying it, read
+**[a small fictional example](examples/README.md)**.
 
-## The four seats
+You will:
 
-| Seat | Does | Hands over | Refuses to |
-|---|---|---|---|
-| **Ethnographer** | Describes what is actually happening | `field-note.md` | Propose a fix. Ever. |
-| **Designer** | Turns one friction into a ritual | `ritual-spec.yaml` | Need a new tool, a budget, or a VP's calendar |
-| **Skeptic** | Tries to kill it on paper | `red-team.md` | Block without naming what would change its mind |
-| **Prototyper** | Puts it in front of a real team | `pilot-log.md` | Run it without a named owner and a retirement date |
+1. Share anonymized notes from a real situation.
+2. Review what the Ethnographer notices.
+3. Choose the recurring moment you want to work on.
+4. Decide whether a small repeated practice is the right response.
+5. Compare three ideas from the Designer.
+6. Put one through the Challenger's reality check.
+7. Prepare a short trial with the Experimenter.
+8. Leave the AI, try it with real people, and return with actual observations.
 
-The prototyper sends its pilot log back to the ethnographer as the next cycle's
-context, so it's a loop, not a pipeline.
+The process pauses for your decision at every important handoff. It also pauses
+before the trial because the next step has to happen with people, not AI.
 
-## Two ways to use it
+## What counts as useful starting material?
 
-### A. No install — paste a prompt (2 minutes)
+Useful material describes something that actually happened:
 
-Open `prompts/`. Each file is one teammate as plain text.
+> At Monday's planning meeting, the facilitator asked for concerns. Nobody
+> responded. Afterward, three people raised concerns privately.
 
-1. Go to Claude and start a new Project (or just a new conversation).
-2. Paste `prompts/ethnographer.txt` in as the custom instructions.
-3. Give it your raw material. Get a field note back.
-4. Repeat for the other three, passing each one's output to the next.
+This is too general to support the work:
 
-Works on a laptop, works on a phone, no terminal. This is the right path for
-most people and for most of a design class.
+> Our team has a communication problem.
 
-### B. The full version — Claude Code
+Rough bullet points are welcome. You can use your own observation notes, an
+anonymized transcript, interview notes or a summary of several real moments.
+Remove names and sensitive details, and make sure you have permission to use
+the material.
 
-Here the handoff is real: the ethnographer *writes* a file, the designer *reads*
-it off disk.
+## What do we mean by a ritual?
 
-1. Install [Claude Code](https://claude.com/claude-code).
-2. Download this repo (green **Code** button → Download ZIP, or
-   `git clone https://github.com/kursatozenc/ritual-works.git`).
-3. Open the folder: `cd ritual-works && claude`
-4. Run the whole cycle over your material:
+Here, a ritual is a small, repeatable practice that helps a group handle or
+mark an important moment. It does not need to be ceremonial. A two-minute check
+at the end of an existing meeting can be a ritual.
 
-```
+Not every culture problem needs one. Problems rooted in workload, authority,
+staffing, incentives, policy or harmful leadership may require a structural
+response instead. The team will help you notice when a ritual is the wrong
+tool.
+
+## Studio version — work with the four teammates separately
+
+The studio version makes every role and handoff visible. It is useful for
+classes, facilitators and culture practitioners.
+
+### Copy-and-paste version
+
+Open [`prompts/`](prompts/), read the
+[`Team Constitution`](prompts/TEAM-CONSTITUTION.md), and use the four
+self-contained prompts in [`prompts/teammates/`](prompts/teammates/) in order.
+This is the best way to study or modify how the team and each role work.
+
+### Claude Code version
+
+Claude Code can coordinate file handoffs between teammates:
+
+```text
+cd ritual-works && claude
 /ritual-cycle my-notes.md "Platform Eng"
-```
-
-Or call one seat when that's all you need:
-
-```
-> use the skeptic subagent on rituals/01/ritual-spec.yaml
 ```
 
 Each cycle gets its own numbered folder under `rituals/`.
 
-## What it can't do
+## The team rules
 
-**Nobody here can observe anything.** No seat sits in your meetings. The
-ethnographer is a *synthesiser*, not an observer — it works only on material you
-hand it: a transcript, your own notes, a calendar export, channel history.
+- Nobody invents observations.
+- The team lead chooses the focus and the idea to test.
+- The Challenger cannot object without saying what would change its mind.
+- A ritual cannot hide a structural problem.
+- Nothing runs without the agreement of a real group, a named owner and a
+  review date.
+- A trial plan is not a trial result. Results are written only after evidence
+  comes back from real people.
+- Every handoff is reviewed and signed by a person.
 
-Run a cycle on an empty folder and you will get back confident, well-structured
-fiction. That is worse than nothing. The observation is still your job, and if
-you're using this to teach, that limit is the most useful thing about it.
+## Human checkpoint
 
-## Who signs it
+Every result that crosses from one teammate to the next carries an `Agent
+caution` written by the teammate and a checkpoint completed by the human:
 
-Every artifact that crosses a boundary carries three lines written by the
-person in that seat, not by the agent:
-
+```text
+signed:     <name>
+date:       <date>
+changed:    what I changed from the draft, and why
+decision:   what I decided at this handoff
+reason:     why
+distrust:   what the next teammate should not take on faith
 ```
-signed:     <name>, <date>
-changed:    what I changed from what you drafted, and why
-distrust:   what the next seat should not take on faith here
-```
 
-This is the difference between holding a role and operating a clipboard. The
-agent handles structure and speed; the person handles observation, taste,
-judgment and consent — the parts that require being a person in an
-organization. The sign-off is where that shows up.
+The two cautions are not duplicates. The agent names the weakest part of its
+own work; the person records what they still refuse to take on faith. Use the
+complete [`Handoff Card`](prompts/HANDOFF-CARD.md).
 
-## The part worth stealing
-
-The four personas are not the point. The point is the **sequence** and **two
-rules**:
-
-1. Nothing skips the skeptic.
-2. Nothing runs without a named owner and a retirement date.
-
-Those two would improve a team of four humans just as much as they improve this.
+This makes the human contribution visible. The teammates provide structure and
+speed; people provide observation, taste, responsibility and consent.
 
 ## Teaching with it
 
-See **[teaching/class-kit.md](teaching/class-kit.md)** — a studio protocol where
-students play the four seats themselves, a side-by-side exercise comparing a
-student's field note against the machine's, consent norms, and the three things
-that reliably go wrong.
+See **[teaching/class-kit.md](teaching/class-kit.md)** for a studio protocol,
+human role-play, an exercise comparing a student's field note with the
+machine's, consent norms and assessment guidance.
 
-## Layout
+Prompt changes can be checked against the
+**[usability and judgment stress tests](tests/usability-stress-tests.md)**.
 
-```
-.claude/agents/      the four teammates (Claude Code reads these automatically)
-.claude/commands/    /ritual-cycle — runs all four in order
-prompts/            the same four, as paste-anywhere plain text
-rituals/            one numbered folder per cycle; _template to start by hand
-teaching/           class kit
-docs/               the 3D room (this is what GitHub Pages serves)
+## What is in the repository?
+
+```text
+START-HERE.md         the beginner-friendly, single-conversation path
+.claude/agents/       the four specialist teammates
+.claude/commands/     the full cycle coordinator
+prompts/              copy-and-paste versions of the team
+  TEAM-CONSTITUTION    shared purpose, boundaries and decision rights
+  HANDOFF-CARD         visible evidence and human decisions between teammates
+  teammates/           four self-contained specialist prompts
+rituals/              templates and numbered cycles
+teaching/             the class kit
+docs/                 the illustrated room
 ```
 
 ## Credit
