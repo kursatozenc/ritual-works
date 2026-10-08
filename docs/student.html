@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Choose a culture design teammate for the work in front of you, from research to a small real-world trial.">
+<title>Culture Design Field Studio · Ritual Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light dark;
+  --ground:#F1EBE0;--surface:#FFFCF6;--surface-2:#F7F0E4;--sunk:#EDE4D4;
+  --ink:#2A211A;--ink-2:#675748;--ink-3:#927E6A;--line:#E2D7C5;--line-2:#CCBCA5;
+  --floor:#6E4628;--wood:#A9703F;--wood-dk:#734828;--rug:#E7DCC6;--glass:#CBDED6;
+  --eth:#1F6F82;--design:#C0821A;--challenge:#8C3247;--experiment:#3C7350;--shadow:rgba(60,40,24,.20);
+}
+@media(prefers-color-scheme:dark){:root{
+  --ground:#15110D;--surface:#1F1A15;--surface-2:#282118;--sunk:#100C09;
+  --ink:#F3EBE0;--ink-2:#B5A695;--ink-3:#897864;--line:#2F2820;--line-2:#443A30;
+  --floor:#3B2817;--wood:#7B5230;--wood-dk:#4E3220;--rug:#5C5040;--glass:#2B3A46;
+  --eth:#46AFC6;--design:#E3AE3E;--challenge:#D46C85;--experiment:#5CB97F;--shadow:rgba(0,0,0,.45);
+}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 "Public Sans","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}.shell{max-width:1180px;margin:auto;padding:0 22px 72px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;border-bottom:1px solid var(--line)}
+.brand{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none}.top-links{display:flex;gap:22px;align-items:center}
+.top-links a{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-2)}.top-links a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr);gap:clamp(36px,6vw,78px);align-items:center;padding:70px 0 76px;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 10px;color:var(--eth);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif}
+h1{max-width:10.5ch;margin:0;font-size:clamp(52px,7vw,84px);line-height:.91;letter-spacing:-.035em}
+.hero-lede{max-width:51ch;margin:25px 0 0;color:var(--ink-2);font-size:clamp(18px,2vw,21px)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:1px solid var(--ink);border-radius:3px;background:var(--ink);color:var(--ground);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.button.secondary{background:transparent;color:var(--ink);border-color:var(--line-2)}.button:hover{opacity:.84}.button:focus-visible,a:focus-visible{outline:2px solid var(--eth);outline-offset:3px}
+.hero-note{margin:16px 0 0;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.035em}
+
+.office{position:relative;min-height:430px;overflow:hidden;border:1px solid var(--line-2);background:linear-gradient(var(--surface-2) 0 28%,transparent 28%),linear-gradient(145deg,var(--floor),var(--wood-dk));box-shadow:14px 16px 0 var(--sunk)}
+.office::before{content:"";position:absolute;left:0;right:0;top:28%;height:8px;background:var(--wood-dk)}
+.office-label{position:absolute;z-index:5;top:13px;left:15px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase}
+.window{position:absolute;top:55px;left:8%;width:26%;height:86px;border:8px solid var(--wood-dk);background:linear-gradient(var(--glass) 0 58%,#7A9E69 59%)}
+.window::before,.window::after{content:"";position:absolute;background:var(--wood-dk)}.window::before{width:5px;top:0;bottom:0;left:48%}.window::after{height:5px;left:0;right:0;top:48%}
+.shelf{position:absolute;right:8%;top:58px;width:27%;height:78px;border:8px solid var(--wood-dk);background:var(--wood)}.shelf::after{content:"";position:absolute;left:8%;right:8%;top:30px;height:6px;background:var(--wood-dk)}
+.rug{position:absolute;left:24%;top:42%;width:52%;height:45%;border-radius:50%;background:var(--rug);box-shadow:inset 0 0 0 8px rgba(80,56,35,.08)}
+.table{position:absolute;z-index:2;left:35%;top:53%;width:30%;height:23%;border-radius:50%;background:var(--wood);border:5px solid var(--wood-dk);box-shadow:0 12px 0 var(--wood-dk),0 18px 20px var(--shadow)}
+.table::after{content:"YOUR WORK";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-5deg);padding:7px 9px;background:#FFF1CB;color:#5B4733;border:1px solid rgba(79,55,32,.3);font:600 7px "IBM Plex Mono",monospace;letter-spacing:.08em}
+.person{--person:var(--eth);position:absolute;z-index:4;width:60px;height:82px;transform:translate(-50%,-50%);animation:breath 2.8s ease-in-out infinite}
+.person .head{position:absolute;left:17px;top:3px;width:27px;height:27px;border-radius:50%;background:#C99069;border:3px solid rgba(42,28,18,.42)}
+.person .body{position:absolute;left:9px;top:29px;width:43px;height:39px;border-radius:12px 12px 7px 7px;background:var(--person);border:3px solid rgba(42,28,18,.42);box-shadow:0 6px 0 rgba(42,28,18,.24)}
+.person .name{position:absolute;top:70px;left:50%;transform:translateX(-50%);padding:2px 5px;white-space:nowrap;background:rgba(29,20,14,.84);color:#FFF7EA;font:500 8px "IBM Plex Mono",monospace}
+.person.e{--person:var(--eth);left:27%;top:57%;animation-delay:-.4s}.person.d{--person:var(--design);left:73%;top:57%;animation-delay:-1.1s}.person.c{--person:var(--challenge);left:27%;top:84%;animation-delay:-1.8s}.person.x{--person:var(--experiment);left:73%;top:84%;animation-delay:-2.3s}
+.bubble{position:absolute;z-index:6;left:50%;top:38%;transform:translate(-50%,-100%);width:min(280px,72%);padding:10px 12px;background:var(--surface);border:1px solid var(--eth);box-shadow:0 7px 18px var(--shadow);font-size:12px;color:var(--ink-2)}
+.bubble b{display:block;margin-bottom:2px;color:var(--eth);font:600 9px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+@keyframes breath{50%{transform:translate(-50%,-53%)}}
+
+.section{padding:78px 0;border-bottom:1px solid var(--line);scroll-margin-top:18px}.section-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:36px}.section h2{max-width:12ch;margin:0;font-size:clamp(39px,5vw,58px);line-height:.96;letter-spacing:-.025em}.section-head p{max-width:58ch;margin:0;color:var(--ink-2);font-size:17px}
+.needs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.need{--mate:var(--eth);display:grid;grid-template-columns:58px 1fr;gap:18px;min-height:240px;padding:25px;background:var(--surface);border:1px solid var(--line-2);box-shadow:inset 0 3px var(--mate)}.need-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--mate);color:white;font:600 16px "IBM Plex Mono",monospace}.need h3{margin:2px 0 8px;font-size:27px;line-height:1.02}.need p{margin:0;color:var(--ink-2);font-size:13.5px}.need small{display:block;margin:14px 0 18px;color:var(--ink-3);font:500 9px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.need-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}.need-links a{color:var(--mate);font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:3px}.need.d{--mate:var(--design)}.need.c{--mate:var(--challenge)}.need.x{--mate:var(--experiment)}
+.workflow{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:clamp(28px,6vw,76px);align-items:center}.workflow-card{min-height:420px;padding:30px;background:var(--surface);border:1px solid var(--line-2);box-shadow:12px 14px 0 var(--sunk)}.case-top{display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);color:var(--ink-3);font:500 9px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}.workflow-card h3{max-width:12ch;margin:28px 0 10px;font-size:38px;line-height:.98}.workflow-card>p{max-width:50ch;margin:0;color:var(--ink-2);font-size:14px}.flow{display:grid;gap:8px;margin-top:24px}.flow div{display:grid;grid-template-columns:29px 1fr;gap:10px;padding:11px 12px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font-size:12.5px}.flow b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--eth);color:white;font:600 9px "IBM Plex Mono",monospace}.workflow-copy h2{max-width:10ch}.workflow-copy>p{margin:22px 0 0;color:var(--ink-2);font-size:17px}.workflow-copy .actions{margin-top:27px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:steps}.step{counter-increment:steps;min-height:220px;padding:24px;background:var(--surface);border:1px solid var(--line-2)}.step::before{content:"0" counter(steps);display:block;margin-bottom:35px;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.12em}.step h3{margin:0 0 9px;font-size:23px;line-height:1.06}.step p{margin:0;color:var(--ink-2);font-size:13.5px}
+.full-team{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:25px;align-items:center;padding:32px;background:var(--surface);border:1px solid var(--line-2)}.full-team h3{margin:0 0 7px;font-size:29px}.full-team p{max-width:65ch;margin:0;color:var(--ink-2)}
+footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:54px 0}.office{max-width:720px}.workflow{grid-template-columns:1fr}.workflow-card{max-width:720px}.steps{grid-template-columns:1fr}.step{min-height:0}.step::before{margin-bottom:20px}}
+@media(max-width:720px){.needs{grid-template-columns:1fr}.full-team{grid-template-columns:1fr}.full-team .button{justify-self:start}.section-head{grid-template-columns:1fr}}
+@media(max-width:650px){.shell{padding-inline:15px}.top{align-items:flex-start;padding:14px 0}.top-links{display:block;text-align:right}.top-links a{display:block;padding:4px 0}.hero{padding:42px 0;gap:30px}.hero h1{font-size:clamp(45px,14vw,62px)}.actions .button{width:100%}.office{min-height:330px}.person{transform:translate(-50%,-50%) scale(.82)}@keyframes breath{50%{transform:translate(-50%,-53%) scale(.82)}}.bubble{top:40%;font-size:11px}.section{padding:59px 0}.need{grid-template-columns:1fr}.workflow-card{min-height:0;padding:22px}.workflow-card h3{font-size:32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.person{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="top" aria-label="Page navigation">
+    <a class="brand" href="index.html">Ritual Works</a>
+    <div class="top-links"><a href="#choose">Choose a teammate</a><a href="index.html">Visit the main studio</a></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Culture Design Field Studio</p>
+      <h1>Find the teammate for the work in front of you.</h1>
+      <p class="hero-lede">Four teammates bring distinct strengths to culture-design work—from learning about lived experience to preparing a small real-world trial.</p>
+      <div class="actions"><a class="button" href="#choose">Choose a starting point →</a><a class="button secondary" href="interview.html">Make sense of interviews</a></div>
+      <p class="hero-note">Use one teammate or the whole team · no coding required · you lead the decisions</p>
+    </div>
+    <div class="office" aria-label="Four culture design teammates gathered around a shared table">
+      <div class="office-label">The field studio · four distinct strengths</div><div class="window"></div><div class="shelf"></div><div class="rug"></div><div class="table"></div>
+      <div class="person e"><span class="head"></span><span class="body"></span><span class="name">Ethnographer</span></div>
+      <div class="person d"><span class="head"></span><span class="body"></span><span class="name">Designer</span></div>
+      <div class="person c"><span class="head"></span><span class="body"></span><span class="name">Challenger</span></div>
+      <div class="person x"><span class="head"></span><span class="body"></span><span class="name">Experimenter</span></div>
+      <div class="bubble"><b>Team note</b>Bring the work you have. Choose the strength you need today.</div>
+    </div>
+  </header>
+
+  <section class="section" id="choose" aria-labelledby="choose-title">
+    <div class="section-head"><h2 id="choose-title">What are you trying to do?</h2><p>Start with the question closest to your work. Each teammate can work independently, and you can invite another perspective when the project is ready.</p></div>
+    <div class="needs">
+      <article class="need e"><div class="need-icon">E</div><div><p class="eyebrow">Ethnographer</p><h3>Learn from lived experience</h3><p>Prepare interviews, organize evidence, trace patterns and create current-state journeys or participant profiles.</p><small>Bring notes, transcripts or a research question</small><div class="need-links"><a href="interview.html">Guided interview sensemaking →</a><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt" target="_blank" rel="noreferrer">Open teammate prompt</a></div></div></article>
+      <article class="need d"><div class="need-icon">D</div><div><p class="eyebrow">Ritual Designer</p><h3>Develop possible practices</h3><p>Translate a human-chosen cultural tension into several participatory practices, symbols and meaningful moments.</p><small>Bring a reviewed insight and a clear design intent</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/designer.txt" target="_blank" rel="noreferrer">Open teammate prompt →</a></div></div></article>
+      <article class="need c"><div class="need-icon">C</div><div><p class="eyebrow">Challenger</p><h3>Pressure-test an idea</h3><p>Examine a proposed practice for power, exclusion, burden, coercion, unintended signals and practical constraints.</p><small>Bring one specific idea and its intended participants</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/challenger.txt" target="_blank" rel="noreferrer">Open teammate prompt →</a></div></div></article>
+      <article class="need x"><div class="need-icon">X</div><div><p class="eyebrow">Experimenter</p><h3>Prepare a small trial</h3><p>Turn a selected and reviewed practice into a bounded pilot with an owner, learning signals and a review date.</p><small>Bring an idea that has passed a reality check</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/experimenter.txt" target="_blank" rel="noreferrer">Open teammate prompt →</a></div></div></article>
+    </div>
+  </section>
+
+  <section class="section workflow" aria-labelledby="workflow-title">
+    <div class="workflow-card" aria-label="Preview of the interview sensemaking workflow">
+      <div class="case-top"><span>Guided workflow · 01</span><span>Ethnographer</span></div><h3>Interview Sensemaking</h3><p>Turn anonymized research into one evidence-grounded artifact without losing contradictions, missing voices or the limits of the material.</p>
+      <div class="flow"><div><b>1</b><span>Paste anonymized interview notes or use a fictional onboarding case.</span></div><div><b>2</b><span>Choose a journey map, participant profiles, pattern inventory or evidence request.</span></div><div><b>3</b><span>Copy one complete request into the AI chat you already use.</span></div></div>
+    </div>
+    <div class="workflow-copy"><p class="eyebrow">For students in discovery</p><h2 id="workflow-title">Go deeper when you need more guidance.</h2><p>The first guided workflow supports teams who are preparing interviews or beginning synthesis. It includes a privacy check, a fictional practice case and an evidence-disciplined request builder.</p><div class="actions"><a class="button" href="interview.html">Open Interview Sensemaking →</a></div></div>
+  </section>
+
+  <section class="section" aria-labelledby="use-title">
+    <div class="section-head"><h2 id="use-title">A simple way to work together.</h2><p>The teammate prompts carry methods and boundaries into a conversation. Your judgment supplies the context, choices and accountability.</p></div>
+    <div class="steps"><article class="step"><h3>Choose one need</h3><p>You can begin with a single teammate. Use the complete team only when the work genuinely spans several stages.</p></article><article class="step"><h3>Bring the right material</h3><p>Use anonymized evidence you have permission to share. Keep people’s words distinct from your interpretation.</p></article><article class="step"><h3>Review before moving on</h3><p>Correct the draft, name what remains unknown and make each consequential decision with your human team.</p></article></div>
+  </section>
+
+  <section class="section" aria-labelledby="all-title">
+    <div class="full-team"><div><p class="eyebrow">For a complete culture-design cycle</p><h3 id="all-title">Bring all four strengths into one conversation.</h3><p>The complete team prompt manages handoffs while pausing for your choices at the focus, idea, revision and trial checkpoints.</p></div><a class="button secondary" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/culture-design-team.txt" target="_blank" rel="noreferrer">Open the full team prompt</a></div>
+  </section>
+
+  <footer><span>Culture Design Field Studio</span><span>Ritual Works · Human judgment stays in the loop</span></footer>
+</div>
+</body>
+</html>

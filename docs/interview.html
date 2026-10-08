@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A guided research studio for Designing Organizational Culture students working with onboarding interviews.">
+<title>Interview Sensemaking · Ritual Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light dark;
+  --ground:#F1EBE0;--surface:#FFFCF6;--surface-2:#F7F0E4;--sunk:#EDE4D4;
+  --ink:#2A211A;--ink-2:#675748;--ink-3:#927E6A;--line:#E2D7C5;--line-2:#CCBCA5;
+  --floor:#6E4628;--wood:#A9703F;--wood-dk:#734828;--rug:#E7DCC6;--glass:#CBDED6;
+  --eth:#1F6F82;--design:#C0821A;--challenge:#8C3247;--experiment:#3C7350;
+  --signal:#E0A11C;--shadow:rgba(60,40,24,.20);
+}
+@media(prefers-color-scheme:dark){:root{
+  --ground:#15110D;--surface:#1F1A15;--surface-2:#282118;--sunk:#100C09;
+  --ink:#F3EBE0;--ink-2:#B5A695;--ink-3:#897864;--line:#2F2820;--line-2:#443A30;
+  --floor:#3B2817;--wood:#7B5230;--wood-dk:#4E3220;--rug:#5C5040;--glass:#2B3A46;
+  --eth:#46AFC6;--design:#E3AE3E;--challenge:#D46C85;--experiment:#5CB97F;--signal:#F4CB5C;--shadow:rgba(0,0,0,.45);
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 "Public Sans","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}.shell{max-width:1180px;margin:auto;padding:0 22px 72px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;border-bottom:1px solid var(--line)}
+.brand{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none}.top-links{display:flex;gap:22px;align-items:center}
+.top-links a{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-2)}
+.top-links a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr);gap:clamp(36px,6vw,78px);align-items:center;padding:70px 0 76px;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 10px;color:var(--eth);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif}
+h1{max-width:10ch;margin:0;font-size:clamp(52px,7vw,84px);line-height:.91;letter-spacing:-.035em}
+.hero-lede{max-width:49ch;margin:25px 0 0;color:var(--ink-2);font-size:clamp(18px,2vw,21px)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:1px solid var(--ink);border-radius:3px;background:var(--ink);color:var(--ground);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.button.secondary{background:transparent;color:var(--ink);border-color:var(--line-2)}.button:hover{opacity:.84}.button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--eth);outline-offset:3px}
+.hero-note{margin:16px 0 0;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.035em}
+
+.office{position:relative;min-height:430px;overflow:hidden;border:1px solid var(--line-2);background:linear-gradient(var(--surface-2) 0 28%,transparent 28%),linear-gradient(145deg,var(--floor),var(--wood-dk));box-shadow:14px 16px 0 var(--sunk)}
+.office::before{content:"";position:absolute;left:0;right:0;top:28%;height:8px;background:var(--wood-dk)}
+.office-label{position:absolute;z-index:5;top:13px;left:15px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase}
+.window{position:absolute;top:55px;left:8%;width:26%;height:86px;border:8px solid var(--wood-dk);background:linear-gradient(var(--glass) 0 58%,#7A9E69 59%)}
+.window::before,.window::after{content:"";position:absolute;background:var(--wood-dk)}.window::before{width:5px;top:0;bottom:0;left:48%}.window::after{height:5px;left:0;right:0;top:48%}
+.shelf{position:absolute;right:8%;top:58px;width:27%;height:78px;border:8px solid var(--wood-dk);background:var(--wood)}
+.shelf::after{content:"";position:absolute;left:8%;right:8%;top:30px;height:6px;background:var(--wood-dk)}
+.rug{position:absolute;left:24%;top:42%;width:52%;height:45%;border-radius:50%;background:var(--rug);box-shadow:inset 0 0 0 8px rgba(80,56,35,.08)}
+.table{position:absolute;z-index:2;left:35%;top:53%;width:30%;height:23%;border-radius:50%;background:var(--wood);border:5px solid var(--wood-dk);box-shadow:0 12px 0 var(--wood-dk),0 18px 20px var(--shadow)}
+.paper{position:absolute;z-index:3;padding:7px 9px;background:#FFF1CB;color:#5B4733;border:1px solid rgba(79,55,32,.3);font:600 7px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.paper.p1{left:41%;top:58%;transform:rotate(-7deg)}.paper.p2{left:51%;top:64%;transform:rotate(6deg)}
+.person{--person:var(--eth);position:absolute;z-index:4;width:60px;height:82px;transform:translate(-50%,-50%);animation:breath 2.8s ease-in-out infinite}
+.person .head{position:absolute;left:17px;top:3px;width:27px;height:27px;border-radius:50%;background:#C99069;border:3px solid rgba(42,28,18,.42)}
+.person .body{position:absolute;left:9px;top:29px;width:43px;height:39px;border-radius:12px 12px 7px 7px;background:var(--person);border:3px solid rgba(42,28,18,.42);box-shadow:0 6px 0 rgba(42,28,18,.24)}
+.person .name{position:absolute;top:70px;left:50%;transform:translateX(-50%);padding:2px 5px;white-space:nowrap;background:rgba(29,20,14,.84);color:#FFF7EA;font:500 8px "IBM Plex Mono",monospace}
+.person.e{--person:var(--eth);left:27%;top:57%;animation-delay:-.4s}.person.d{--person:var(--design);left:73%;top:57%;animation-delay:-1.1s}.person.c{--person:var(--challenge);left:27%;top:84%;animation-delay:-1.8s}.person.x{--person:var(--experiment);left:73%;top:84%;animation-delay:-2.3s}
+.bubble{position:absolute;z-index:6;left:50%;top:38%;transform:translate(-50%,-100%);width:min(265px,72%);padding:10px 12px;background:var(--surface);border:1px solid var(--eth);box-shadow:0 7px 18px var(--shadow);font-size:12px;color:var(--ink-2)}
+.bubble b{display:block;margin-bottom:2px;color:var(--eth);font:600 9px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+@keyframes breath{50%{transform:translate(-50%,-53%)}}
+
+.phase{padding:34px 0;border-bottom:1px solid var(--line)}
+.phase-label{margin:0 0 14px;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.phase-track{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.phase-step{padding:14px 15px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-3);font-size:12px}.phase-step b{display:block;margin-bottom:3px;color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:17px}.phase-step.now{border-color:var(--eth);background:var(--surface);box-shadow:inset 0 3px var(--eth)}.phase-step.now small{color:var(--eth)}.phase-step small{font:600 8.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+
+.section{padding:78px 0;border-bottom:1px solid var(--line);scroll-margin-top:18px}.section-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:36px}.section h2{max-width:12ch;margin:0;font-size:clamp(39px,5vw,58px);line-height:.96;letter-spacing:-.025em}.section-head p{max-width:58ch;margin:0;color:var(--ink-2);font-size:17px}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.path-card{display:flex;flex-direction:column;min-height:275px;padding:23px;background:var(--surface);border:1px solid var(--line-2)}.path-card.primary{box-shadow:inset 0 4px var(--eth)}.path-card .num{color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.12em}.path-card h3{margin:28px 0 9px;font-size:25px;line-height:1.02}.path-card p{margin:0;color:var(--ink-2);font-size:13.5px}.path-card a{margin-top:auto;padding-top:22px;color:var(--eth);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none}
+
+.builder{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(300px,.87fr);gap:18px}.workbench,.guide{background:var(--surface);border:1px solid var(--line-2)}.workbench{padding:clamp(22px,4vw,38px)}.guide{padding:26px;align-self:start;position:sticky;top:16px}.step-label{margin:0 0 5px;color:var(--eth);font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}.workbench h3,.guide h3{margin:0 0 9px;font-size:27px;line-height:1.04}.field{margin-top:24px}.field label,.field legend{display:block;margin:0 0 7px;color:var(--ink);font-weight:600;font-size:13px}.field small{display:block;margin-top:6px;color:var(--ink-3);font-size:11.5px}.field input[type=text],.field textarea{display:block;width:100%;border:1px solid var(--line-2);border-radius:2px;background:var(--surface-2);color:var(--ink);font:14px/1.5 "Public Sans",sans-serif;padding:12px}.field textarea{min-height:230px;resize:vertical}.field-group{border:0;margin:24px 0 0;padding:0}.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}.choice,.check{display:flex;gap:9px;align-items:flex-start;padding:11px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);font-size:12.5px}.choice input,.check input{accent-color:var(--eth);margin-top:3px}.privacy{margin:22px 0 0;padding:14px;border-left:3px solid var(--challenge);background:var(--surface-2)}.privacy p{margin:0 0 10px;font-size:12px;color:var(--ink-2)}.privacy .check{padding:0;border:0;background:transparent;color:var(--ink)}
+.builder-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:24px}.builder-actions .button{font-size:10px}.status{min-height:20px;margin:13px 0 0;color:var(--experiment);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.04em}.guide ol{padding-left:20px;margin:20px 0 0;color:var(--ink-2);font-size:13px}.guide li+li{margin-top:12px}.guide strong{color:var(--ink)}.guide-note{margin:20px 0 0;padding:13px;background:var(--surface-2);color:var(--ink-2);font-size:12px}.guide-note b{color:var(--challenge)}
+
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.mate{padding:20px;border:1px solid var(--line-2);background:var(--surface)}.mate .dot{width:12px;height:12px;margin-bottom:34px;border-radius:50%;background:var(--mate)}.mate h3{margin:0 0 8px;font-size:22px}.mate p{margin:0;color:var(--ink-2);font-size:12.5px}.mate small{display:block;margin-top:17px;color:var(--ink-3);font:500 8.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.mate.e{--mate:var(--eth);box-shadow:inset 0 3px var(--eth)}.mate.d{--mate:var(--design)}.mate.c{--mate:var(--challenge)}.mate.x{--mate:var(--experiment)}
+.ethics{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ethics article{padding:24px;background:var(--surface);border:1px solid var(--line-2)}.ethics h3{margin:0 0 11px;font-size:23px}.ethics ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px}.ethics li+li{margin-top:7px}
+footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:54px 0}.office{max-width:720px}.phase-track{grid-template-columns:1fr 1fr}.phase-step.now{grid-column:1/-1}.paths{grid-template-columns:1fr}.path-card{min-height:0}.builder{grid-template-columns:1fr}.guide{position:static}.team{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.shell{padding-inline:15px}.top{align-items:flex-start;padding:14px 0}.top-links{display:block;text-align:right}.top-links a{display:block;padding:4px 0}.hero{padding:42px 0;gap:30px}.hero h1{font-size:clamp(45px,14vw,62px)}.actions .button{width:100%}.office{min-height:330px}.person{transform:translate(-50%,-50%) scale(.82)}@keyframes breath{50%{transform:translate(-50%,-53%) scale(.82)}}.bubble{top:40%;font-size:11px}.phase-track{grid-template-columns:1fr}.phase-step.now{grid-column:auto}.section{padding:59px 0}.section-head{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.team,.ethics{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.person{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="top" aria-label="Page navigation">
+    <a class="brand" href="student.html">Culture Design Field Studio</a>
+    <div class="top-links"><a href="#research-studio">Research studio</a><a href="student.html">Choose another path</a></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Guided workflow · Interview sensemaking</p>
+      <h1>Make sense of your interviews.</h1>
+      <p class="hero-lede">Turn anonymized onboarding research into a current-state journey, evidence-based participant profiles, or a plan for what to learn next.</p>
+      <div class="actions">
+        <a class="button" href="#research-studio">I have interview notes →</a>
+        <a class="button secondary" href="#choose-path">Show me where to begin</a>
+      </div>
+      <p class="hero-note">Built for the discovery phase · one teammate is enough · you make the research decisions</p>
+    </div>
+    <div class="office" aria-label="The four Ritual Works teammates gathered around an onboarding research case">
+      <div class="office-label">The field studio · onboarding case</div><div class="window"></div><div class="shelf"></div><div class="rug"></div><div class="table"></div>
+      <div class="paper p1">Interview notes</div><div class="paper p2">Journey map</div>
+      <div class="person e"><span class="head"></span><span class="body"></span><span class="name">Ethnographer</span></div>
+      <div class="person d"><span class="head"></span><span class="body"></span><span class="name">Designer</span></div>
+      <div class="person c"><span class="head"></span><span class="body"></span><span class="name">Challenger</span></div>
+      <div class="person x"><span class="head"></span><span class="body"></span><span class="name">Experimenter</span></div>
+      <div class="bubble"><b>Ethnographer</b>Let’s separate what people said from what we think it means.</div>
+    </div>
+  </header>
+
+  <section class="phase" aria-labelledby="phase-title">
+    <p class="phase-label" id="phase-title">Your course pathway</p>
+    <div class="phase-track">
+      <div class="phase-step now"><small>You are here</small><b>Interview</b>Gather lived accounts</div>
+      <div class="phase-step"><small>Next</small><b>Synthesize</b>Map the experience</div>
+      <div class="phase-step"><small>Later</small><b>Reframe</b>Name the opportunity</div>
+      <div class="phase-step"><small>Later</small><b>Design</b>Develop possibilities</div>
+      <div class="phase-step"><small>Later</small><b>Test</b>Learn through trials</div>
+    </div>
+  </section>
+
+  <section class="section" id="choose-path" aria-labelledby="path-title">
+    <div class="section-head"><h2 id="path-title">Begin where you are.</h2><p>You do not need to use every teammate. Choose the smallest amount of support that helps you move your project forward today.</p></div>
+    <div class="paths">
+      <article class="path-card"><span class="num">01 · Before an interview</span><h3>Strengthen your guide</h3><p>Ask the Ethnographer to find leading questions, missing perspectives and places where a story would reveal more than an opinion.</p><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt" target="_blank" rel="noreferrer">Open the Ethnographer prompt →</a></article>
+      <article class="path-card primary"><span class="num">02 · After interviews</span><h3>Build from your evidence</h3><p>Bring anonymized notes into the guided workbench below. Choose one useful research artifact and keep every conclusion traceable.</p><a href="#research-studio">Use the research studio →</a></article>
+      <article class="path-card"><span class="num">03 · Practice first</span><h3>Try a fictional case</h3><p>Use sample onboarding notes to see how the workflow behaves before bringing in any partner-organization material.</p><a href="#research-studio" id="practice-link">Load the fictional notes →</a></article>
+    </div>
+  </section>
+
+  <section class="section" id="research-studio" aria-labelledby="studio-title">
+    <div class="section-head"><h2 id="studio-title">Interview-to-Journey Studio</h2><p>Prepare one complete request for the Ethnographer. Copy it into the AI chat you already use; no installation or coding is required.</p></div>
+    <div class="builder">
+      <div class="workbench">
+        <p class="step-label">Build your research request</p><h3>What should the Ethnographer work on?</h3>
+        <div class="field"><label for="question">Learning question</label><input id="question" type="text" value="How do new employees experience onboarding, and where does the experience help or hinder them?" maxlength="400"><small>A learning question keeps the analysis focused without deciding the answer in advance.</small></div>
+        <div class="field"><label for="notes">Anonymized interview notes</label><textarea id="notes" placeholder="Paste notes from one or more interviews. Label sources with neutral IDs such as N1, N2, M1. Keep concrete moments and exact quotes, but remove names and sensitive details."></textarea><small>Good input includes what happened, when it happened, the participant’s role, what they did and what they said.</small></div>
+        <fieldset class="field-group"><legend>Choose one artifact for this pass</legend><div class="choices">
+          <label class="choice"><input type="radio" name="artifact" value="current-state journey map" checked><span><strong>Current-state journey map</strong><br>Stages, actions, feelings, touchpoints, frictions and bright spots.</span></label>
+          <label class="choice"><input type="radio" name="artifact" value="evidence-based participant profiles"><span><strong>Participant profiles</strong><br>Meaningful differences supported by behavior and context.</span></label>
+          <label class="choice"><input type="radio" name="artifact" value="field note and pattern inventory"><span><strong>Pattern inventory</strong><br>Observed, reported, inferred and unknown—kept separate.</span></label>
+          <label class="choice"><input type="radio" name="artifact" value="evidence request"><span><strong>What to learn next</strong><br>Gaps, missing voices and focused follow-up questions.</span></label>
+        </div></fieldset>
+        <div class="privacy"><p>Do not paste raw recordings, names, health information, performance records, or confidential material you do not have permission to use.</p><label class="check"><input type="checkbox" id="privacy-check"><span>I removed identifying and sensitive details, and I have permission to use these notes for this class project.</span></label></div>
+        <div class="builder-actions"><button class="button" id="copy-request">Copy complete Ethnographer request</button><button class="button secondary" id="load-example">Use fictional example</button></div>
+        <p class="status" id="copy-status" aria-live="polite"></p>
+      </div>
+      <aside class="guide">
+        <p class="step-label">How to use it</p><h3>One copy, then one conversation.</h3>
+        <ol><li>Paste your anonymized notes and choose one artifact.</li><li>Select the permission check. The fictional example is already safe to use.</li><li>Copy the complete request and paste it as the first message in a new AI conversation.</li><li>Review the result with your team. Correct what is misleading, overgeneralized or missing.</li></ol>
+        <p class="guide-note"><b>Keep authorship with your team.</b> The output is a draft interpretation—not proof, consensus, or a substitute for returning to participants.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="team-title">
+    <div class="section-head"><h2 id="team-title">The rest of the team joins later.</h2><p>The Ethnographer is the right teammate today. The other strengths become useful after your team has reviewed the evidence and chosen a direction.</p></div>
+    <div class="team">
+      <article class="mate e"><div class="dot"></div><h3>Ethnographer</h3><p>Organizes evidence, journeys and participant differences without inventing missing details.</p><small>Now · Discovery</small></article>
+      <article class="mate d"><div class="dot"></div><h3>Designer</h3><p>Develops several possible cultural practices from a human-chosen opportunity.</p><small>Later · Design</small></article>
+      <article class="mate c"><div class="dot"></div><h3>Challenger</h3><p>Examines power, burden, exclusion and possible unintended effects.</p><small>Later · Reality check</small></article>
+      <article class="mate x"><div class="dot"></div><h3>Experimenter</h3><p>Turns a selected practice into a small, ethical trial with signals and a review point.</p><small>Later · Prototype</small></article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="care-title">
+    <div class="section-head"><h2 id="care-title">Work carefully with partner stories.</h2><p>Organizational research can contain personal and politically sensitive material. Reduce the material before bringing it into any AI tool.</p></div>
+    <div class="ethics">
+      <article><h3>Bring</h3><ul><li>Neutral source IDs such as N1, M1 and HR1</li><li>Concrete moments, actions and touchpoints</li><li>Short exact quotes when participants permitted their use</li><li>Contradictions, exceptions and positive moments</li></ul></article>
+      <article><h3>Leave out</h3><ul><li>Names and details that reveal identity</li><li>Health, immigration or performance information</li><li>Raw recordings and unnecessary full transcripts</li><li>Anything outside the agreed purpose of the research</li></ul></article>
+    </div>
+  </section>
+
+  <footer><span>Interview Sensemaking · Culture Design Field Studio</span><span>Ritual Works · Human judgment stays in the loop</span></footer>
+</div>
+<script>
+(function(){
+  const notes=document.getElementById('notes');
+  const question=document.getElementById('question');
+  const privacy=document.getElementById('privacy-check');
+  const status=document.getElementById('copy-status');
+  const example=`FICTIONAL PRACTICE MATERIAL — not a real partner organization\n\n[N1 · new employee]\n- Before day one, received a welcome email and a calendar invitation but no explanation of what the first week would involve.\n- Reported: “I had five meetings on the first day, but I still did not know who I could ask a small question.”\n- Laptop access worked on day three. Until then, N1 took notes on paper and watched others work.\n- A peer sent an informal message on day four and became the person N1 contacted most often.\n\n[N2 · new employee]\n- Manager sent a written 30-day plan two days before the start date.\n- Reported feeling clear about the work but unsure about team norms: “I knew the goals. I did not know when it was okay to disagree.”\n- Joined a recurring team social in week two and reported that hearing colleagues' personal stories made later questions easier to ask.\n\n[M1 · manager]\n- Uses an HR checklist and schedules introductions based on calendar availability.\n- Reported that access requests are submitted before day one, but timing varies by system owner.\n- Said the peer buddy role is informal and depends on who has capacity.\n\nKnown limits: three accounts from two roles; no account from HR, IT, a remote employee or someone who left during onboarding.`;
+
+  function artifact(){return document.querySelector('input[name="artifact"]:checked').value}
+  function fallbackInstructions(){return `You are the Ethnographer on a culture-design team. Use plain language. You cannot observe anything yourself, so every statement must be traceable to the notes supplied here. Keep observed events, participant reports, interpretations and unknowns visibly separate. Never invent a person, quote, demographic detail, stage or pattern. Mark frequency accurately and preserve contradictions and branching experiences. Do not recommend a solution or design an intervention. If the evidence cannot support the requested artifact, explain the gap and propose the smallest ethical evidence request instead. End by asking the human team to identify what is recognizable, misleading, overgeneralized or missing.`}
+  async function teammateInstructions(){
+    const sources=['../prompts/teammates/observer.txt','https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt'];
+    for(const source of sources){try{const response=await fetch(source);if(response.ok){const text=await response.text();if(text.trim())return text}}catch(e){}}
+    return fallbackInstructions();
+  }
+  async function buildRequest(){
+    const instruction=await teammateInstructions();
+    return `${instruction}\n\n---\n\nCOURSE PROJECT REQUEST\n\nResearch setting: a student project about employee onboarding with a partner organization.\nLearning question: ${question.value.trim()}\nRequested artifact: ${artifact()}\n\nResearch notes:\n${notes.value.trim()}\n\nBefore producing the artifact:\n1. State which sources and roles are represented and which appear absent.\n2. Flag any identifying, sensitive or unsupported material that should not be analyzed.\n3. Tell us if the evidence is too thin for the requested artifact.\n\nIn the artifact, attach source IDs to every substantive claim. Keep direct evidence separate from interpretation, preserve conflicting accounts, and write “unknown” rather than filling gaps. Do not move into solutions. End with a short human-review checklist.`;
+  }
+  async function copyText(text){
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return}
+    const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
+  }
+  function loadExample(){notes.value=example;privacy.checked=true;status.textContent='Fictional onboarding notes loaded. Choose an artifact, then copy the request.';document.getElementById('research-studio').scrollIntoView({behavior:'smooth'});}
+  document.getElementById('load-example').addEventListener('click',loadExample);
+  document.getElementById('practice-link').addEventListener('click',function(e){e.preventDefault();loadExample()});
+  document.getElementById('copy-request').addEventListener('click',async function(){
+    status.textContent='';
+    if(!notes.value.trim()){status.textContent='Add anonymized notes, or load the fictional example first.';notes.focus();return}
+    if(!privacy.checked){status.textContent='Complete the permission and privacy check before copying.';privacy.focus();return}
+    this.disabled=true;this.textContent='Preparing…';
+    try{await copyText(await buildRequest());status.textContent='Copied. Paste it as the first message in a new AI conversation.'}
+    catch(e){status.textContent='Copying was blocked by the browser. Try again or open the Ethnographer prompt directly.'}
+    this.disabled=false;this.textContent='Copy complete Ethnographer request';
+  });
+})();
+</script>
+</body>
+</html>
