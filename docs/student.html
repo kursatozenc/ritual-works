@@ -60,10 +60,10 @@ h1{max-width:10.5ch;margin:0;font-size:clamp(52px,7vw,84px);line-height:.91;lett
 .needs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.need{--mate:var(--eth);display:grid;grid-template-columns:58px 1fr;gap:18px;min-height:240px;padding:25px;background:var(--surface);border:1px solid var(--line-2);box-shadow:inset 0 3px var(--mate)}.need-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--mate);color:white;font:600 16px "IBM Plex Mono",monospace}.need h3{margin:2px 0 8px;font-size:27px;line-height:1.02}.need p{margin:0;color:var(--ink-2);font-size:13.5px}.need small{display:block;margin:14px 0 18px;color:var(--ink-3);font:500 9px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.need-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}.need-links a{color:var(--mate);font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:3px}.need.d{--mate:var(--design)}.need.c{--mate:var(--challenge)}.need.x{--mate:var(--experiment)}
 .workflow{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:clamp(28px,6vw,76px);align-items:center}.workflow-card{min-height:420px;padding:30px;background:var(--surface);border:1px solid var(--line-2);box-shadow:12px 14px 0 var(--sunk)}.case-top{display:flex;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);color:var(--ink-3);font:500 9px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}.workflow-card h3{max-width:12ch;margin:28px 0 10px;font-size:38px;line-height:.98}.workflow-card>p{max-width:50ch;margin:0;color:var(--ink-2);font-size:14px}.flow{display:grid;gap:8px;margin-top:24px}.flow div{display:grid;grid-template-columns:29px 1fr;gap:10px;padding:11px 12px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font-size:12.5px}.flow b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--eth);color:white;font:600 9px "IBM Plex Mono",monospace}.workflow-copy h2{max-width:10ch}.workflow-copy>p{margin:22px 0 0;color:var(--ink-2);font-size:17px}.workflow-copy .actions{margin-top:27px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:steps}.step{counter-increment:steps;min-height:220px;padding:24px;background:var(--surface);border:1px solid var(--line-2)}.step::before{content:"0" counter(steps);display:block;margin-bottom:35px;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.12em}.step h3{margin:0 0 9px;font-size:23px;line-height:1.06}.step p{margin:0;color:var(--ink-2);font-size:13.5px}
-.full-team{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:25px;align-items:center;padding:32px;background:var(--surface);border:1px solid var(--line-2)}.full-team h3{margin:0 0 7px;font-size:29px}.full-team p{max-width:65ch;margin:0;color:var(--ink-2)}
+.kit-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:36px}.kit-head h2{max-width:11ch}.kit-head>div>p{max-width:60ch;margin:0;color:var(--ink-2);font-size:17px}.kit-head .kit-safety{margin-top:14px;color:var(--ink-3);font:500 11px/1.55 "IBM Plex Mono",monospace;letter-spacing:.025em}.kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.kit-card{display:flex;flex-direction:column;min-height:360px;padding:24px;background:var(--surface);border:1px solid var(--line-2)}.kit-card h3{margin:4px 0 11px;font-size:25px;line-height:1.04}.kit-card>p:not(.eyebrow){margin:0;color:var(--ink-2);font-size:13.5px}.kit-list{display:grid;gap:7px;margin-top:20px}.kit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:10px 11px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);font:13px "Public Sans",sans-serif;text-align:left;text-decoration:none;cursor:pointer}.kit-row:hover{border-color:var(--line-2)}.kit-row span:last-child{color:var(--ink-3);font:600 8.5px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase}.kit-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:23px}.kit-actions .button{min-height:44px;padding:10px 13px;font-size:9.5px}.kit-link{display:inline-flex;align-items:center;min-height:44px;padding:8px 2px;color:var(--ink-2);border-bottom:1px solid var(--line-2);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none}.copy-status{min-height:20px;margin:16px 0 0;color:var(--experiment);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.04em}
 footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding:54px 0}.office{max-width:720px}.workflow{grid-template-columns:1fr}.workflow-card{max-width:720px}.steps{grid-template-columns:1fr}.step{min-height:0}.step::before{margin-bottom:20px}}
-@media(max-width:720px){.needs{grid-template-columns:1fr}.full-team{grid-template-columns:1fr}.full-team .button{justify-self:start}.section-head{grid-template-columns:1fr}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:54px 0}.office{max-width:720px}.workflow{grid-template-columns:1fr}.workflow-card{max-width:720px}.steps{grid-template-columns:1fr}.step{min-height:0}.step::before{margin-bottom:20px}.kit-grid{grid-template-columns:1fr 1fr}.kit-card:first-child{grid-column:1/-1;min-height:240px}}
+@media(max-width:720px){.needs{grid-template-columns:1fr}.section-head,.kit-head{grid-template-columns:1fr}.kit-grid{grid-template-columns:1fr}.kit-card:first-child{grid-column:auto}.kit-card{min-height:0}}
 @media(max-width:650px){.shell{padding-inline:15px}.top{align-items:flex-start;padding:14px 0}.top-links{display:block;text-align:right}.top-links a{display:block;padding:4px 0}.hero{padding:42px 0;gap:30px}.hero h1{font-size:clamp(45px,14vw,62px)}.actions .button{width:100%}.office{min-height:330px}.person{transform:translate(-50%,-50%) scale(.82)}@keyframes breath{50%{transform:translate(-50%,-53%) scale(.82)}}.bubble{top:40%;font-size:11px}.section{padding:59px 0}.need{grid-template-columns:1fr}.workflow-card{min-height:0;padding:22px}.workflow-card h3{font-size:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.person{animation:none}}
 </style>
@@ -116,11 +116,57 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;paddin
     <div class="steps"><article class="step"><h3>Choose one need</h3><p>You can begin with a single teammate. Use the complete team only when the work genuinely spans several stages.</p></article><article class="step"><h3>Bring the right material</h3><p>Use anonymized evidence you have permission to share. Keep people’s words distinct from your interpretation.</p></article><article class="step"><h3>Review before moving on</h3><p>Correct the draft, name what remains unknown and make each consequential decision with your human team.</p></article></div>
   </section>
 
-  <section class="section" aria-labelledby="all-title">
-    <div class="full-team"><div><p class="eyebrow">For a complete culture-design cycle</p><h3 id="all-title">Bring all four strengths into one conversation.</h3><p>The complete team prompt manages handoffs while pausing for your choices at the focus, idea, revision and trial checkpoints.</p></div><a class="button secondary" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/culture-design-team.txt" target="_blank" rel="noreferrer">Open the full team prompt</a></div>
+  <section class="section team-kit" id="take-team" aria-labelledby="kit-title">
+    <div class="kit-head">
+      <h2 id="kit-title">Bring the team into your own AI chat.</h2>
+      <div><p>These instruction files become the first message in a new conversation. Start with the whole team, invite one teammate, or download the complete kit for a class or workshop.</p><p class="kit-safety">Before sharing workplace material: remove names, health information, performance records and anything you do not have permission to use.</p></div>
+    </div>
+    <div class="kit-grid">
+      <article class="kit-card">
+        <p class="eyebrow">Fastest start</p><h3>Use the complete team</h3><p>One prompt guides you through the four perspectives and pauses whenever a human decision is needed.</p>
+        <div class="kit-actions"><button class="button copy-prompt" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/culture-design-team.txt">Copy the team prompt</button><a class="kit-link" href="https://github.com/kursatozenc/ritual-works/blob/main/prompts/culture-design-team.txt" target="_blank" rel="noreferrer">Read the file</a></div>
+      </article>
+      <article class="kit-card">
+        <p class="eyebrow">Choose one strength</p><h3>Invite one teammate</h3><p>Using one teammate is a complete way to participate. Choose the kind of help you want today.</p>
+        <div class="kit-list">
+          <button class="kit-row copy-prompt" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt"><span>Ethnographer · research and journeys</span><span>Copy</span></button>
+          <button class="kit-row copy-prompt" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/designer.txt"><span>Designer · develop possibilities</span><span>Copy</span></button>
+          <button class="kit-row copy-prompt" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/challenger.txt"><span>Challenger · pressure-test an idea</span><span>Copy</span></button>
+          <button class="kit-row copy-prompt" data-copy-url="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/experimenter.txt"><span>Experimenter · prepare a trial</span><span>Copy</span></button>
+        </div>
+      </article>
+      <article class="kit-card">
+        <p class="eyebrow">Classroom materials</p><h3>Download the full kit</h3><p>Get the prompts, editable Markdown agents, templates, fictional examples and teaching materials in one folder.</p>
+        <div class="kit-list">
+          <a class="kit-row" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/ethnographer.md" target="_blank" rel="noreferrer"><span>Ethnographer.md</span><span>Open</span></a>
+          <a class="kit-row" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/designer.md" target="_blank" rel="noreferrer"><span>Ritual Designer.md</span><span>Open</span></a>
+          <a class="kit-row" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/skeptic.md" target="_blank" rel="noreferrer"><span>Challenger.md</span><span>Open</span></a>
+          <a class="kit-row" href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/.claude/agents/prototyper.md" target="_blank" rel="noreferrer"><span>Experimenter.md</span><span>Open</span></a>
+        </div>
+        <div class="kit-actions"><a class="button" href="https://github.com/kursatozenc/ritual-works/archive/refs/heads/main.zip">Download everything</a><a class="kit-link" href="https://github.com/kursatozenc/ritual-works/tree/main/.claude/agents" target="_blank" rel="noreferrer">Browse all .md files</a></div>
+      </article>
+    </div>
+    <p class="copy-status" id="copy-status" aria-live="polite"></p>
   </section>
 
   <footer><span>Culture Design Field Studio</span><span>Ritual Works · Human judgment stays in the loop</span></footer>
 </div>
+<script>
+(function(){
+  const status=document.getElementById('copy-status');
+  async function copyText(text){
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return}
+    const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
+  }
+  document.querySelectorAll('.copy-prompt').forEach(function(button){
+    button.addEventListener('click',async function(){
+      const original=this.innerHTML;this.disabled=true;
+      try{const response=await fetch(this.dataset.copyUrl);if(!response.ok)throw new Error('fetch');await copyText(await response.text());status.textContent='Copied. Paste it as the first message in a new AI conversation.';if(this.classList.contains('button'))this.textContent='Copied';}
+      catch(error){status.textContent='Copying was blocked by the browser. Open the prompt file and copy its contents.'}
+      setTimeout(()=>{this.disabled=false;this.innerHTML=original},1200);
+    });
+  });
+})();
+</script>
 </body>
 </html>
