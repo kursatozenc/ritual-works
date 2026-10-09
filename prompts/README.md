@@ -14,7 +14,22 @@ the team.
 references that informed the prompts without adding citation material to every
 operational instruction.
 
-## Easiest path: one conversation
+## Recommended student path: one persistent project
+
+For ongoing class or project work, add two materials to a ChatGPT or Claude
+Project:
+
+1. Copy the short [`Project Instructions`](../docs/downloads/Project-Instructions.txt)
+   into the Project Instructions field.
+2. Upload the [`Culture Design Team Guide`](../docs/downloads/Culture-Design-Team-Guide.md)
+   to the Project's files, sources or knowledge area.
+
+Start each conversation by choosing the Ethnographer, Ritual Designer,
+Challenger or Experimenter. The instructions tell the AI to consult only the
+selected section, so the roles do not blur together. The same setup remains
+available in future conversations inside that Project.
+
+## Guided path: one conversation
 
 Copy all of [`culture-design-team.txt`](culture-design-team.txt) into a new
 conversation with your preferred AI assistant. The team will guide you one step

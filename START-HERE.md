@@ -1,8 +1,8 @@
 # Start here: work with your culture design team
 
 You do not need to know anything about agents, prompts, Markdown or coding.
-The four teammates will appear when their perspective is useful, and you will
-lead the decisions.
+Add the team to a ChatGPT or Claude Project once, then choose the teammate you
+need in each conversation. You lead the decisions.
 
 ## Before you begin
 
@@ -22,15 +22,25 @@ If all you have is a conclusion such as “people do not trust leadership,” th
 Ethnographer should help you identify what to observe next rather than pretending
 the conclusion is evidence.
 
-## Begin in one conversation
+## Set up your team once
 
-1. Open the AI assistant you normally use.
-2. Copy everything in
-   [`prompts/culture-design-team.txt`](prompts/culture-design-team.txt) into a
-   new conversation.
-3. When the team welcomes you, share your anonymized notes.
-4. Answer one question at a time. The team will stop whenever you need to make
-   a choice or do something in the real world.
+1. Create a new Project in ChatGPT or Claude.
+2. Copy the short
+   [`Project Instructions`](docs/downloads/Project-Instructions.txt) into the
+   Project Instructions field.
+3. Upload the
+   [`Culture Design Team Guide`](docs/downloads/Culture-Design-Team-Guide.md) to
+   the Project's files, sources or knowledge area.
+4. Start a new conversation inside the Project and choose one teammate:
+   Ethnographer, Ritual Designer, Challenger or Experimenter.
+
+The setup stays available in future conversations inside that Project. The AI
+uses one teammate at a time and stops whenever you need to make a decision or
+do something in the real world.
+
+If you do not want to create a Project yet, copy one complete prompt from
+[`prompts/teammates/`](prompts/teammates/) into an ordinary conversation. It
+will work for that conversation without any setup.
 
 ## What will happen?
 
@@ -83,9 +93,9 @@ ignores it or rejects it. All of those outcomes are information.
 
 ### 7. You return with observations
 
-When you have actual evidence, return to the same conversation. The
-Experimenter helps distinguish what was planned from what happened and whether
-the practice should continue, change or end.
+When you have actual evidence, start or return to an Experimenter conversation
+inside the same Project. The Experimenter helps distinguish what was planned
+from what happened and whether the practice should continue, change or end.
 
 ## Your role as team lead
 

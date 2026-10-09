@@ -2,11 +2,12 @@
 
 How to teach with a four-seat agent team without letting it eat the fieldwork.
 
-The beginner-friendly path is now one guided conversation in
-`prompts/culture-design-team.txt`. Use it when learning the culture design
-method is more important than learning to operate four separate AI prompts. Use
-the four-seat path when making the roles and handoffs visible is itself the
-lesson.
+The beginner-friendly path is one ChatGPT or Claude Project with short Project
+Instructions and one Culture Design Team Guide. Students choose one teammate in
+each conversation; they do not have to install anything or manage four files.
+Use the four-seat path when making the roles and handoffs visible is itself the
+lesson. A ready-to-run eight-minute demonstration is in
+[`LIVE-DEMO.md`](LIVE-DEMO.md).
 
 ---
 
@@ -27,13 +28,12 @@ Say this out loud in week one.
 
 ## Setup for teams
 
-Each team gets its own copy of the repo. On GitHub: **Use this template** →
-their own private repo. Or Download ZIP. From that moment it is theirs — they
-can rewrite the skeptic, add a seat, rename everyone, and they should.
-
-Most design students should use `prompts/` (paste into a Claude Project, two
-minutes, no terminal). Reserve Claude Code for teams who want the real file
-handoff and have someone comfortable in a terminal.
+Most students do not need a copy of the repository. Each team creates a
+ChatGPT or Claude Project, pastes
+`docs/downloads/Project-Instructions.txt` into Project Instructions and uploads
+`docs/downloads/Culture-Design-Team-Guide.md` as project knowledge. Reserve the
+repository and Claude Code workflow for teams who want to modify the method or
+work with file handoffs and have someone comfortable with developer tools.
 
 ---
 

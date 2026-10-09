@@ -23,9 +23,10 @@ make those decisions for you.
 
 ## Start here — no technical experience needed
 
-Use the **[guided team](START-HERE.md)**. It works in one AI conversation and
-guides you one step at a time. You do not need to install anything or move work
-between four chats.
+Use the **[Culture Design Field Studio](https://kursatozenc.github.io/ritual-works/student.html)**.
+It shows how to add the team to a ChatGPT or Claude Project once, then choose
+one teammate in each focused conversation. You do not need to install anything,
+understand Markdown or use a developer tool.
 
 If you would rather see the journey before trying it, read
 **[a small fictional example](examples/README.md)**.
@@ -76,7 +77,16 @@ tool.
 The studio version makes every role and handoff visible. It is useful for
 classes, facilitators and culture practitioners.
 
-### Copy-and-paste version
+### Project version
+
+Copy the short
+[`Project Instructions`](docs/downloads/Project-Instructions.txt) into a
+ChatGPT or Claude Project and upload the
+[`Culture Design Team Guide`](docs/downloads/Culture-Design-Team-Guide.md). This
+keeps the detailed methods available across conversations while using one role
+at a time.
+
+### One-time copy-and-paste version
 
 Open [`prompts/`](prompts/), read the
 [`Team Constitution`](prompts/TEAM-CONSTITUTION.md), and use the four
@@ -139,7 +149,8 @@ Prompt changes can be checked against the
 ## What is in the repository?
 
 ```text
-START-HERE.md         the beginner-friendly, single-conversation path
+START-HERE.md         the beginner-friendly Project setup
+docs/downloads/       Project Instructions and the combined Team Guide
 .claude/agents/       the four specialist teammates
 .claude/commands/     the full cycle coordinator
 prompts/              copy-and-paste versions of the team
