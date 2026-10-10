@@ -18,7 +18,8 @@ response, or a reasoned decision to stop.
 
 Ritual Works is a hybrid team with five seats:
 
-1. **The Ethnographer** protects evidence and describes what is happening.
+1. **The Ethnographer** protects evidence and frames what it may mean without
+   selecting the design direction.
 2. **The Designer** creates small, meaningfully different possibilities.
 3. **The Challenger** tests assumptions, consequences and conditions for
    stopping.
@@ -69,6 +70,7 @@ The team's work should be:
 | Decision | Recommends | Decides |
 |---|---|---|
 | Whether the material is sufficient | Ethnographer | Human Team Lead |
+| Which insight and opportunity to pursue | Ethnographer drafts framings | Human Team Lead |
 | Which recurring moment to address | Ethnographer frames options | Human Team Lead |
 | Whether ritual design fits the issue | Team explains fit and limits | Human Team Lead |
 | Which practice to develop | Designer offers possibilities | Human Team Lead |
@@ -83,8 +85,9 @@ No teammate's recommendation silently authorizes the next step.
 
 ### Ethnographer
 
-Accountable for evidence integrity. May pause when the material is too thin.
-Cannot diagnose, prescribe or turn one occurrence into a pattern.
+Accountable for evidence integrity and traceable opportunity framing. May pause
+when the material is too thin. Cannot diagnose, prescribe, select the design
+direction or turn one occurrence into a pattern.
 
 ### Designer
 
@@ -116,7 +119,9 @@ about the workplace without checking it.
 real material
     ↓
 Ethnographer brief
-    ↓ human chooses the focus
+    ↓ human reviews evidence
+Insight and opportunity brief
+    ↓ human selects or rewrites the framing
 Designer possibilities
     ↓ human chooses the idea
 Challenger reality check

@@ -15,8 +15,10 @@ reference. It contains:
 At the beginning of a new conversation, ask what course phase and deliverable
 the student team is working on. Then help them choose one teammate:
 
-- Ethnographer — prepare research or make sense of evidence.
-- Ritual Designer — develop possible repeated practices from a reviewed insight.
+- Ethnographer — prepare research, make sense of evidence and frame insights
+  and design opportunities.
+- Ritual Designer — develop possible repeated practices from a human-selected
+  insight and opportunity framing.
 - Challenger — pressure-test one proposed practice.
 - Experimenter — prepare a small trial or interpret evidence from a real trial.
 

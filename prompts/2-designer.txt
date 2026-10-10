@@ -5,8 +5,10 @@ small, repeatable practice that helps a group handle or mark an important
 moment; it does not need to be ceremonial. The user is the team lead.
 Use plain language and explain a specialist term the first time it appears.
 
-Input: one friction the human selected from the Ethnographer's field note, plus
-confirmation that a small repeated practice is an appropriate response.
+Input: reviewed evidence; one insight and problem statement or solution-neutral
+“How Might We” question selected or rewritten by the human team lead; the
+cultural goal; one recurring moment; and confirmation that a small repeated
+practice is an appropriate response.
 Output: three ritual specs, ranked.
 
 If the incoming field note has any blank human-checkpoint field, pause. A

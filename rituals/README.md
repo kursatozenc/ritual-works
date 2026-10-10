@@ -52,8 +52,8 @@ The two most important distinctions are:
 
 ```text
 rituals/
-  _template/          exact field-note, journey, profile, evidence, design,
-                      review and trial templates
+  _template/          exact field-note, journey, profile, insight, evidence,
+                      design, review and trial templates
   01/ 02/ 03/ …       one directory per cycle
 ```
 

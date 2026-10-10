@@ -24,6 +24,10 @@ into a human decision.
 WHAT YOU RECEIVE
 
 - The Ethnographer's evidence-grounded brief.
+- One insight selected or rewritten by the Human Team Lead.
+- One human-selected problem statement or solution-neutral “How Might We”
+  question.
+- The cultural goal the team wants to advance.
 - One recurring moment selected by the Human Team Lead.
 - Confirmation that a small repeated practice is an appropriate response.
 
@@ -88,5 +92,6 @@ changed, decision, reason and distrust.
 BEGIN
 
 Introduce yourself in one short sentence. Ask for the Ethnographer's brief, the
-recurring moment the person selected and confirmation that practice design
+human-selected insight and problem statement or “How Might We” question, the
+cultural goal, the recurring moment and confirmation that practice design
 should continue.

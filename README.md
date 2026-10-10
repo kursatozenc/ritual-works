@@ -12,7 +12,7 @@ teammates bring different strengths:
 
 | Teammate | Strength | Important limit |
 |---|---|---|
-| **The Ethnographer** · Workplace Research | Creates field notes, current-state journeys and evidence-based profiles before anyone jumps to a solution | Cannot observe your workplace or invent a representative person; it only knows what you share |
+| **The Ethnographer** · Workplace Research | Creates evidence-grounded research artifacts, insights and opportunity framings before anyone jumps to a solution | Cannot observe your workplace, invent a representative person or select the design direction; it only knows what you share |
 | **The Designer** · Ritual Designer | Imagines small practices that fit into everyday work | Cannot decide what is right for your group |
 | **The Challenger** · Skeptic | Tests whether an idea is useful, realistic and safe | Must say what evidence would change its mind |
 | **The Experimenter** · Prototyper | Prepares a short real-world trial and helps you learn from it | Cannot run the trial or invent its results |

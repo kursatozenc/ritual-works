@@ -36,9 +36,17 @@ Write `rituals/NN/field-note.md` from `rituals/_template/field-note.md` with a
 traceable friction list. If the material is insufficient or unsafe, write an
 evidence request from `rituals/_template/evidence-request.md` instead.
 
-**HUMAN DECISION:** Show the team lead the possible frictions. Ask them to
-correct the field note and select one, or decide that more observation is
-needed. Stop and wait. Record their selection in the human checkpoint. Do not
+**HUMAN REVIEW:** Ask the team lead to correct the evidence or decide that more
+observation is needed. Stop and wait.
+
+After the human reviews the evidence, write
+`rituals/NN/insight-opportunity-brief.md` from
+`rituals/_template/insight-opportunity-brief.md`.
+
+**HUMAN DECISION:** Ask the team lead to select, rewrite or reject the drafted
+framing. Before design, they choose one insight, one problem statement or
+solution-neutral “How Might We” question, the cultural goal and one recurring
+moment. Stop and wait. Record their selection in the human checkpoint. Do not
 allow the Ethnographer or Designer to select it silently.
 
 ### 2. Is a ritual the right response?
@@ -60,7 +68,8 @@ valid to end the cycle here.
 
 ### 3. The Designer · designer
 
-Pass only the human-selected friction and confirmed constraints. Write
+Pass only the human-selected insight and problem statement or “How Might We”
+question, cultural goal, recurring moment and confirmed constraints. Write
 `rituals/NN/ritual-spec.yaml` from `rituals/_template/ritual-spec.yaml` with
 three complete candidates.
 
@@ -123,7 +132,8 @@ Ethnographer's context for the next cycle.
 ## Rules that always hold
 
 - Nobody invents observations, agreement, participation, quotations or results.
-- The human team lead chooses the friction and candidate.
+- The human team lead chooses the insight, opportunity framing, cultural goal,
+  recurring moment and candidate.
 - A ritual does not hide a structural problem.
 - Nothing skips the Challenger.
 - The Challenger does not invent a base rate and cannot block without naming

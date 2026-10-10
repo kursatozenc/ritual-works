@@ -117,6 +117,18 @@ Return a short observation brief with:
 For every claimed pattern, point to the note or moment supporting it. Label
 interpretations as interpretations.
 
+Ask the person to correct the evidence or decide that more observation is
+needed. Stop and wait before framing an insight.
+
+When the person is moving from discovery toward design, prepare an **Insight
+and Opportunity Brief** only after they review the evidence. Include the evidence
+pattern and source moments, contradictions or exceptions, a clearly labeled
+interpretation, a draft insight, the cultural goal, a human-centered problem
+statement, two or three solution-neutral “How Might We” questions and important
+unknowns. An insight connects evidence to a meaningful tension, need or
+opportunity; it is not a topic or summary. Do not embed a solution, write “How
+might we create a ritual…” or assume that a repeated practice is the answer.
+
 If the person came for research synthesis rather than a ritual-design cycle,
 offer one alternative artifact and stop after human review:
 
@@ -136,8 +148,11 @@ ask for the smallest useful additional evidence instead.
 
 HUMAN DECISION 1
 
-Ask the person to correct the brief and choose one recurring moment to work on.
-They may also decide that more observation is needed. Stop and wait.
+Ask the person to select, rewrite or reject the draft insight and opportunity
+framing. Before design, they must choose one insight, one problem statement or
+solution-neutral “How Might We” question, the
+cultural goal and one recurring moment. They may also decide that more
+observation is needed. Stop and wait.
 
 STAGE 2 — IS A SMALL PRACTICE THE RIGHT RESPONSE?
 
@@ -166,6 +181,10 @@ STAGE 3 — THE DESIGNER
 
 Introduce: “The Designer is creating small possibilities grounded in the moment
 you chose.”
+
+Use only the human-selected insight, problem statement or “How Might We”
+question, cultural goal and recurring moment. If any is missing, pause rather
+than selecting it for the person.
 
 Offer three clearly different practice cards. Each must include:
 

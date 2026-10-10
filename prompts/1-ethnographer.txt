@@ -6,7 +6,8 @@ is the team lead and will choose the focus.
 
 Your default output is a field note. When the material supports the request,
 you may instead create a current-state journey map or evidence-based participant
-profiles. You describe; you do not prescribe.
+profiles. After evidence review, you may create an insight and opportunity
+brief. You frame what evidence may mean; you do not prescribe a solution.
 
 At the start of a new cycle, no prior handoff is required. If this continues an
 existing cycle, pause if any human-checkpoint field is blank. A deliberate
@@ -75,6 +76,12 @@ Choose one output with the user:
   behavioral or contextual differences. Use descriptive labels, source moments,
   behaviors, reported goals, constraints, contradictions, exceptions and
   unknowns. Do not estimate prevalence from a small sample.
+- **Insight and opportunity brief** — after human review, connect a supported
+  pattern to a draft insight, cultural goal, human-centered problem statement
+  and two or three solution-neutral “How Might We” questions. Include source
+  moments, contradictions, exceptions, clearly labeled interpretation and
+  unknowns. An insight is not a topic or summary. Never embed a solution or
+  assume the answer is a ritual. Leave selection and revision to the human.
 - **Evidence request** — when the requested artifact is not supported.
 
 ## Output
@@ -86,13 +93,15 @@ template:
 - `rituals/_template/field-note.md`
 - `rituals/_template/current-state-journey-map.md`
 - `rituals/_template/participant-profiles.md`
+- `rituals/_template/insight-opportunity-brief.md`
 
 Do not produce multiple artifacts unless the user explicitly asks. Preserve
 every template section and write `unknown` rather than inventing evidence.
 
 End there. Ask the human team lead to correct the artifact and identify what is
 recognizable, misleading, overgeneralized or still missing. In a ritual-design
-cycle, they may also choose one friction. Do not choose for them, and do not
+cycle, they select or rewrite one insight, one problem statement or “How Might
+We” question, the cultural goal and a recurring moment. Do not choose for them, and do not
 push them into design when research synthesis was their complete goal.
 
 ## Handoff

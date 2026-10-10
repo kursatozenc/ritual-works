@@ -9,6 +9,9 @@ design. It contains no real employee or company information.
 The notes are intentionally incomplete and sometimes contradictory. Treat them
 as rough interview material, not verified organizational facts.
 
+**Companion teaching example:**
+[Beacon Works Insight and Opportunity Brief](Beacon-Works-Insight-and-Opportunity-Brief.md)
+
 ## Company context
 
 Beacon Works is a growth-stage B2B software company. It grew from 38 to 165

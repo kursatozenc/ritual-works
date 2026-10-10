@@ -10,6 +10,9 @@ next teammate begins.
 CASE
 Organization or group:
 Recurring moment:
+Cultural goal:
+Human-selected insight:
+Human-selected problem statement or How Might We question:
 Current stage:
 
 WHAT CAME IN
