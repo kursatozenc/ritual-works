@@ -150,7 +150,7 @@ Prompt changes can be checked against the
 
 ```text
 START-HERE.md         the beginner-friendly Project setup
-docs/downloads/       Project Instructions and the combined Team Guide
+docs/downloads/       General and course-specific Project materials
 .claude/agents/       the four specialist teammates
 .claude/commands/     the full cycle coordinator
 prompts/              copy-and-paste versions of the team

@@ -6,8 +6,9 @@ Project and added the two Ritual Works materials.
 ## Before class
 
 1. Create a project called **Culture Design Field Studio — Demo**.
-2. Paste `Project-Instructions.txt` into its Project Instructions.
-3. Upload `Culture-Design-Team-Guide.md` as a project source or file.
+2. Paste `Student-Project-Instructions.txt` into its Project Instructions.
+3. Upload `Designing-Organizational-Culture-Project-Guide.md` as a project
+   source or file.
 4. Start one blank chat inside the project.
 5. Keep the fictional notes below ready to paste. Do not use a student’s live
    partner-organization material for the first demonstration.

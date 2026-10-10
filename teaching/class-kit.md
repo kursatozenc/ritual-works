@@ -30,8 +30,10 @@ Say this out loud in week one.
 
 Most students do not need a copy of the repository. Each team creates a
 ChatGPT or Claude Project, pastes
-`docs/downloads/Project-Instructions.txt` into Project Instructions and uploads
-`docs/downloads/Culture-Design-Team-Guide.md` as project knowledge. Reserve the
+`docs/downloads/Student-Project-Instructions.txt` into Project Instructions and
+uploads `docs/downloads/Designing-Organizational-Culture-Project-Guide.md` as
+project knowledge. The single guide combines the course context, the shared
+culture-design point of view and all four teammate methods. Reserve the
 repository and Claude Code workflow for teams who want to modify the method or
 work with file handoffs and have someone comfortable with developer tools.
 
