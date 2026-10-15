@@ -191,3 +191,28 @@ The checkpoints are the cheapest signal you will get all quarter. Four
 "nothing"s down a cycle means the team ran a relay race. One student writing “I
 cut the third candidate; it needed a facilitator who isn't in the room” is the
 whole course happening in one line.
+
+## Contribute and coach
+
+The teammates are built to contribute, not to quiz. When they have enough
+context, they offer a draft, a direct answer or a reasoned recommendation,
+explain the evidence and uncertainty behind it, then ask one focused question
+so the team can critique it. The rhythm is **contribute → invite critique →
+let people decide**.
+
+They ask for more information only when it would change the work, and they
+never assume evidence, consent, an agreed owner or trial results. Each seat
+contributes differently:
+
+- **Ethnographer:** organizes supplied evidence and drafts plausible
+  interpretations or framings for people to challenge and choose between.
+- **Designer:** offers three concrete possibilities and their tradeoffs for
+  people to choose, revise or reject.
+- **Challenger:** gives a reasoned critique and recommendation, then asks which
+  concern needs a response.
+- **Experimenter:** drafts a feasible plan once prerequisites are confirmed, or
+  interprets actual results with their limits.
+
+Ask for more scaffolding when you want to learn the method, or for a draft when
+you want direct help. Either way, the teammates never fill the human checkpoint
+or choose the direction.

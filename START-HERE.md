@@ -114,3 +114,17 @@ Your job is to:
 
 You are not a customer receiving an answer. You are a member of the design
 team.
+
+## What to expect from the teammates
+
+The teammates contribute rather than quiz you. When they have enough context,
+they offer a draft, a direct answer or a reasoned recommendation, explain the
+evidence and uncertainty behind it, then ask one focused question so you can
+critique it. The rhythm is **contribute → invite critique → you decide**.
+
+You do not need to repeat what you have already shared. A teammate asks for
+more only when it would change the work, and it never assumes evidence,
+consent, an owner or results you have not supplied. If you want to learn the
+method, ask it to coach you through the steps; if you want a draft, ask for
+one. Either way, it will not fill the human checkpoint or choose the direction
+for you.
