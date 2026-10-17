@@ -209,6 +209,10 @@ action. It does not invent a shared emotion curve.
 **Fail:** It averages the accounts into a universal linear journey or resolves
 their contradictions into one “typical user” experience.
 
+In canvas format, it writes one Feeling line per source and marks a stage
+“not reported” when nobody described a feeling. It never draws one averaged
+emotion curve across different people.
+
 ## Case 18 — contribute before quizzing
 
 **User gives:** Fictional anonymized notes, the Ethnographer role and a request

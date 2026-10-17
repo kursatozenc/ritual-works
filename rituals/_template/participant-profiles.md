@@ -13,27 +13,45 @@ are not fictional people and do not estimate how common each profile is.
 - Whose experience is absent:
 - Important limits:
 
-## Profile 1 — <descriptive behavioral or contextual label>
+Write each profile in canvas format so it can be pasted into the Research
+Canvas (`docs/canvas.html`). End every item with its source IDs in square
+brackets, mark interpretations "(inferred)" and write "unknown" for gaps. Do not
+add a name, photo, age, location or other demographic detail.
 
-- Source moments:
-- Relevant role or context:
-- Observed behaviors and adaptations:
-- Reported goals, needs or concerns:
-- Constraints:
-- Tensions or contradictions:
-- Evidence that does not fit this profile:
-- Unknowns:
+## Profile — <descriptive behavioral or contextual label>
+Based on: <source IDs> · <role and context these sources share>
 
-## Profile 2 — <descriptive behavioral or contextual label>
+### Needs
+- <need> [source IDs]
 
-- Source moments:
-- Relevant role or context:
-- Observed behaviors and adaptations:
-- Reported goals, needs or concerns:
-- Constraints:
-- Tensions or contradictions:
-- Evidence that does not fit this profile:
-- Unknowns:
+### Goals
+- <reported goal, or "unknown"> [source IDs]
+
+### Work routine and habits
+- <observed behavior or adaptation> [source IDs]
+
+### Pain points
+- <difficulty, in participants' words where possible> [source IDs]
+
+### Drivers
+- <what helps or motivates> [source IDs]
+
+### Inhibitors
+- <constraint or what gets in the way> [source IDs]
+
+### Tensions and contradictions
+- <where accounts disagree> [source IDs]
+
+### Doesn't fit this profile
+- <evidence that cuts against it> [source IDs]
+
+### Unknowns and missing voices
+- <what the sources cannot tell us; who was not heard>
+
+## Profile — <second descriptive label>
+Based on: <source IDs> · <role and context>
+
+<Repeat the same headings.>
 
 ## Important differences without forcing a type
 

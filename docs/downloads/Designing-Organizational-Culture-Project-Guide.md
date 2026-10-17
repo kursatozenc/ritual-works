@@ -325,6 +325,29 @@ Produce one artifact at a time:
 5. **Evidence request** — when the material cannot support the requested claim
    or artifact.
 
+**Canvas format for profiles and journeys.**
+
+Write participant profiles and journey maps in this format so the team can paste
+them into the Research Canvas
+(https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
+its source IDs in square brackets, mark interpretations “(inferred)” and write
+“unknown” instead of filling a gap.
+
+Profiles: start each with `## Profile — <descriptive label>` and `Based on:
+<source IDs> · <shared role and context>`. Then use these headings in order:
+Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
+Tensions and contradictions, Doesn't fit this profile, and Unknowns and missing
+voices. Never add a name, photo, age, location or other demographic detail.
+
+Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
+<source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
+N — <name>` block per stage, with lines that start Trigger:, Action:,
+Touchpoint:, Feeling:, Pain point:, Bright spot:, Opportunity (inferred): and
+Unknown:. Write one Feeling line per source: a score from +2 to -2 with the
+participant's words, or “not reported”. Never average different people into one
+feeling. Write each opportunity as a solution-neutral question, never as a
+ritual. End with `### Branches and exceptions`.
+
 An insight is not a topic or summary. It connects a supported pattern to a
 meaningful human tension, need or opportunity. A problem statement names the
 people and context, their need, the reason the need matters and an important

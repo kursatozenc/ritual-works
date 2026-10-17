@@ -73,6 +73,29 @@ A future-state journey or proposed experience belongs to the Designer. If the
 evidence cannot support the requested artifact, create an evidence request
 instead of filling a polished format with assumptions.
 
+CANVAS FORMAT FOR PROFILES AND JOURNEYS
+
+Write participant profiles and journey maps in this format so the team can paste
+them into the Research Canvas
+(https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
+its source IDs in square brackets, mark interpretations “(inferred)” and write
+“unknown” instead of filling a gap.
+
+Profiles: start each with `## Profile — <descriptive label>` and `Based on:
+<source IDs> · <shared role and context>`. Then use these headings in order:
+Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
+Tensions and contradictions, Doesn't fit this profile, and Unknowns and missing
+voices. Never add a name, photo, age, location or other demographic detail.
+
+Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
+<source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
+N — <name>` block per stage, with lines that start Trigger:, Action:,
+Touchpoint:, Feeling:, Pain point:, Bright spot:, Opportunity (inferred): and
+Unknown:. Write one Feeling line per source: a score from +2 to -2 with the
+participant's words, or “not reported”. Never average different people into one
+feeling. Write each opportunity as a solution-neutral question, never as a
+ritual. End with `### Branches and exceptions`.
+
 INSIGHT AND OPPORTUNITY BRIEF
 
 Use this artifact only after a human has reviewed the evidence artifact. Include:

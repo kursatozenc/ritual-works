@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Turn the Ethnographer's participant profiles and journey maps into clean, evidence-traced canvases for review and presentation.">
+<title>Research Canvas · Ritual Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: the Field Studio's paper-and-ink system; a working panel above, the canvas below, printed landscape. */
+:root{
+  color-scheme:light dark;
+  --ground:#F1EBE0;--surface:#FFFCF6;--surface-2:#F7F0E4;--sunk:#EDE4D4;
+  --ink:#2A211A;--ink-2:#675748;--ink-3:#927E6A;--line:#E2D7C5;--line-2:#CCBCA5;
+  --eth:#1F6F82;--eth-soft:#DCEBEC;--sand:#F3E6CC;--pain:#8C3247;--pain-soft:#F4E0E2;--bright:#3C7350;--bright-soft:#E1EEE3;
+  --s1:#1F6F82;--s2:#C0821A;--s3:#8C3247;--s4:#3C7350;--shadow:rgba(60,40,24,.20);
+}
+@media(prefers-color-scheme:dark){:root{
+  --ground:#15110D;--surface:#1F1A15;--surface-2:#282118;--sunk:#100C09;
+  --ink:#F3EBE0;--ink-2:#B5A695;--ink-3:#897864;--line:#2F2820;--line-2:#443A30;
+  --eth:#46AFC6;--eth-soft:#173238;--sand:#3A2F1E;--pain:#D46C85;--pain-soft:#3A1E25;--bright:#5CB97F;--bright-soft:#1A3324;
+  --s1:#46AFC6;--s2:#E3AE3E;--s3:#D46C85;--s4:#5CB97F;--shadow:rgba(0,0,0,.45);
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 "Public Sans","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.shell{max-width:1180px;margin:auto;padding:0 max(22px,env(safe-area-inset-right,0px)) 72px max(22px,env(safe-area-inset-left,0px))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;border-bottom:1px solid var(--line)}
+.brand{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.top-links{display:flex;gap:22px;align-items:center}
+.top-links a{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-2)}
+.top-links a:hover{color:var(--ink)}
+.eyebrow{margin:0 0 10px;color:var(--eth);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,80px);align-items:end;padding:56px 0 36px}
+.intro h1{margin:0;font-size:clamp(44px,6vw,72px);line-height:.92;letter-spacing:-.03em;max-width:11ch}
+.intro p{margin:0;max-width:56ch;color:var(--ink-2);font-size:17px}
+.intro ol{margin:14px 0 0;padding-left:1.2em;color:var(--ink-2);display:grid;gap:4px;max-width:56ch}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid var(--ink);border-radius:3px;background:var(--ink);color:var(--ground);font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.button.secondary{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.button:hover{opacity:.84}
+.button:focus-visible,a:focus-visible,textarea:focus-visible,[role=tab]:focus-visible{outline:2px solid var(--eth);outline-offset:3px}
+
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line-2)}
+[role=tab]{appearance:none;background:none;border:0;border-bottom:3px solid transparent;padding:12px 18px 10px;margin-bottom:-1px;color:var(--ink-2);font:700 18px "Bricolage Grotesque",sans-serif;cursor:pointer}
+[role=tab][aria-selected=true]{color:var(--ink);border-bottom-color:var(--eth)}
+.work{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;padding-top:22px}
+.editor{background:var(--surface);border:1px solid var(--line-2)}
+.editor summary{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;cursor:pointer;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.editor-body{display:grid;gap:12px;padding:0 18px 18px}
+.editor textarea{width:100%;min-height:300px;resize:vertical;padding:14px;border:1px solid var(--line-2);border-radius:3px;background:var(--surface-2);color:var(--ink);font:13px/1.55 "IBM Plex Mono",monospace}
+.editor-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hint{margin:0;color:var(--ink-3);font:500 11px/1.5 "IBM Plex Mono",monospace;letter-spacing:.02em}
+.status{min-height:1.4em}
+
+/* Shared canvas pieces */
+.canvas{background:var(--surface);border:1px solid var(--line-2);box-shadow:12px 14px 0 var(--sunk)}
+.canvas-head{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;align-items:flex-start;padding:24px 26px 18px;border-bottom:1px solid var(--line)}
+.canvas-head h2{margin:2px 0 6px;font-size:clamp(26px,3.2vw,36px);line-height:1;letter-spacing:-.02em}
+.basis{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--ink-2);font-size:14px}
+.stamp{flex:none;padding:7px 10px;border:1.5px dashed var(--pain);color:var(--pain);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-2deg)}
+.chip{display:inline-block;padding:1px 5px;border-radius:2px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font:500 10px/1.5 "IBM Plex Mono",monospace;white-space:nowrap;vertical-align:1px}
+.tag{display:inline-block;padding:1px 5px;border-radius:2px;border:1px dashed var(--ink-3);color:var(--ink-3);font:500 10px/1.5 "IBM Plex Mono",monospace;margin-left:3px;vertical-align:1px}
+.empty{color:var(--ink-3);font-style:italic}
+.review{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:16px 26px 22px;border-top:1px solid var(--line)}
+.review div{display:grid;gap:22px}
+.review span{font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.review i{display:block;border-bottom:1px solid var(--line-2);height:1px}
+
+/* Profile */
+.profiles{display:grid;gap:28px}
+.pgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:20px 26px}
+.box{min-width:0;padding:16px 16px 14px;border:1px solid var(--line-2);background:var(--surface)}
+.box h3{margin:0 0 8px;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+.box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mark,var(--line-2))}
+.box ul{margin:0;padding-left:1.05em;display:grid;gap:6px}
+.box li{overflow-wrap:anywhere}
+.box.lead{background:var(--eth-soft);border-color:transparent;--mark:var(--eth)}
+.box.lead h3{color:var(--eth)}
+.box.pain{--mark:var(--pain)}.box.driver{--mark:var(--bright)}.box.inhib{--mark:var(--s2)}.box.routine{--mark:var(--ink-2)}
+.box.quiet{background:var(--surface-2);border-style:dashed;--mark:var(--ink-3)}
+.span3{grid-column:span 3}.span2{grid-column:span 2}.span4{grid-column:span 4}
+
+/* Journey */
+.jscroll{overflow-x:auto;padding:20px 0 6px}
+.jgrid{display:grid;grid-template-columns:132px repeat(var(--n),var(--col));min-width:max-content;--col:228px;padding:0 26px 0 0}
+.lane{position:sticky;left:0;z-index:2;background:var(--surface);padding:12px 12px 12px 26px;border-top:1px solid var(--line);font:600 10px/1.3 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.lane small{display:block;margin-top:4px;font-weight:400;letter-spacing:.02em;text-transform:none;color:var(--ink-3)}
+.cell{min-width:0;padding:10px 6px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.stagehead{position:relative;margin:0 0 8px;padding:12px 26px 12px 22px;background:var(--surface-2);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,14px 50%);min-height:64px}
+.stagehead.first{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.stagehead b{display:block;font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--eth)}
+.stagehead strong{display:block;font:700 15px/1.2 "Bricolage Grotesque",sans-serif}
+.note{padding:8px 9px;border-radius:2px;font-size:13px;line-height:1.4;overflow-wrap:anywhere}
+.note.action{background:var(--eth-soft)}
+.note.touch{background:var(--sand)}
+.note.pain{background:var(--pain-soft)}
+.note.bright{background:var(--bright-soft)}
+.note.opp{background:transparent;border:1.5px dashed var(--line-2)}
+.note.unknown{background:transparent;color:var(--ink-3);font-style:italic;padding:2px 2px}
+.note.trigger{background:transparent;padding:2px;color:var(--ink-2)}
+.feel{grid-column:2 / -1;border-top:1px solid var(--line);padding:6px 0}
+.feel svg{display:block;overflow:visible}
+.feel text{font:500 10px "IBM Plex Mono",monospace;fill:var(--ink-3)}
+.feel .q{font:400 11px "Public Sans",sans-serif;fill:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 26px 4px;font:500 10px "IBM Plex Mono",monospace;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:3px;border-radius:2px;background:var(--c)}
+.branches{margin:14px 26px 4px;padding:14px 16px;border-left:3px solid var(--s2);background:var(--surface-2)}
+.branches h3{margin:0 0 6px;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
+.branches ul{margin:0;padding-left:1.05em;display:grid;gap:5px}
+.meta{display:grid;gap:3px;color:var(--ink-2);font-size:14px}
+.meta b{font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+
+footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+[hidden]{display:none!important}
+
+@media(max-width:860px){
+  .intro{grid-template-columns:1fr;padding-top:40px}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .span3,.span2,.span4{grid-column:span 1}
+  .pgrid .wide{grid-column:1 / -1}
+  .review{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .shell{padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+  .top{flex-wrap:wrap;padding:12px 0}
+  .pgrid{grid-template-columns:1fr;padding:16px}
+  .canvas-head,.review{padding-inline:16px}
+  .jgrid{--col:200px;grid-template-columns:104px repeat(var(--n),var(--col))}
+  .lane{padding-left:14px}
+}
+@media print{
+  @page{size:landscape;margin:10mm}
+  :root{--ground:#fff;--surface:#fff;--surface-2:#F7F2EA;--ink:#1d1712;--ink-2:#4f4236;--ink-3:#7a6857;--line:#ddd2c1;--line-2:#c4b49d;--eth:#1F6F82;--eth-soft:#DCEBEC;--sand:#F3E6CC;--pain:#8C3247;--pain-soft:#F4E0E2;--bright:#3C7350;--bright-soft:#E1EEE3;--s1:#1F6F82;--s2:#C0821A;--s3:#8C3247;--s4:#3C7350;color-scheme:light}
+  .top,.intro,.tabs,.editor,footer,.noprint{display:none!important}
+  .canvas{box-shadow:none;break-inside:avoid}
+  .jscroll{overflow:visible}
+  .jgrid{--col:min(228px,calc((100vw - 140px) / var(--n)))}
+  .note,.box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="top" aria-label="Main">
+    <a class="brand" href="student.html">Field Studio</a>
+    <div class="top-links"><a href="student.html#choose">Teammates</a><a href="student.html#kit">Kit</a><a href="https://github.com/kursatozenc/ritual-works" target="_blank" rel="noreferrer">GitHub</a></div>
+  </nav>
+
+  <header class="intro">
+    <div>
+      <p class="eyebrow">Ethnographer · research canvas</p>
+      <h1>Make the evidence visible</h1>
+    </div>
+    <div>
+      <p>Turn the Ethnographer's participant profiles and journey maps into clean canvases you can review, correct and present. Every note keeps its source, and gaps stay visible.</p>
+      <ol>
+        <li>Ask the Ethnographer for a participant profile or journey map. It writes them in canvas format.</li>
+        <li>Paste the result below. The canvas builds as you type.</li>
+        <li>Review it with your team, fix what's wrong, then print or save it as a PDF.</li>
+      </ol>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Canvas type">
+    <button role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="true">Participant profiles</button>
+    <button role="tab" id="tab-journey" aria-controls="panel-journey" aria-selected="false" tabindex="-1">Journey map</button>
+  </div>
+
+  <section id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" class="work">
+    <details class="editor" open>
+      <summary><span>Ethnographer output · profiles</span><span>Show or hide</span></summary>
+      <div class="editor-body">
+        <label class="hint" for="src-profile">Paste the Ethnographer's profiles here, or edit the fictional Beacon Works example.</label>
+        <textarea id="src-profile" spellcheck="false"></textarea>
+        <div class="editor-actions">
+          <button class="button" data-act="print">Print or save PDF</button>
+          <button class="button secondary" data-act="example" data-kind="profile">Load example</button>
+          <button class="button secondary" data-act="blank" data-kind="profile">Copy blank format</button>
+          <button class="button secondary" data-act="clear" data-kind="profile">Clear</button>
+        </div>
+        <p class="hint status" id="status-profile" aria-live="polite"></p>
+      </div>
+    </details>
+    <div id="out-profile" class="profiles"></div>
+  </section>
+
+  <section id="panel-journey" role="tabpanel" aria-labelledby="tab-journey" class="work" hidden>
+    <details class="editor" open>
+      <summary><span>Ethnographer output · journey</span><span>Show or hide</span></summary>
+      <div class="editor-body">
+        <label class="hint" for="src-journey">Paste the Ethnographer's journey map here, or edit the fictional Beacon Works example.</label>
+        <textarea id="src-journey" spellcheck="false"></textarea>
+        <div class="editor-actions">
+          <button class="button" data-act="print">Print or save PDF</button>
+          <button class="button secondary" data-act="example" data-kind="journey">Load example</button>
+          <button class="button secondary" data-act="blank" data-kind="journey">Copy blank format</button>
+          <button class="button secondary" data-act="clear" data-kind="journey">Clear</button>
+        </div>
+        <p class="hint status" id="status-journey" aria-live="polite"></p>
+      </div>
+    </details>
+    <div id="out-journey"></div>
+  </section>
+
+  <footer><span>Culture Design Field Studio · Research canvas</span><span>Drafts until a person with direct context reviews them</span></footer>
+</div>
+
+<script>
+const EXAMPLES = {
+profile: `## Profile — Remote newcomer learning norms after hours
+Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
+
+### Needs
+- Know which of several written rules people actually follow [I-01]
+- Someone who can explain their own team's tradeoffs, not only answer questions [I-03]
+
+### Goals
+- Neither source stated their goals directly [unknown]
+- Understand how work really gets done well enough to make a good call (inferred) [I-01, I-03]
+
+### Work routine and habits
+- Worked through 23 onboarding links in the first weeks [I-01]
+- Follows informal interpretation in chat after their workday ends [I-03]
+- Built a personal acronym glossary and shared it with another new hire [I-03]
+
+### Pain points
+- Pages disagreed about who approves a release [I-01]
+- Buddy cancelled two sessions during a launch week [I-01]
+- "The how-we-work conversation happens in Slack after the meeting I attended." [I-03]
+
+### Drivers
+- Shadowing two customer calls was the clearest part of onboarding [I-03]
+- The first production review was when the company "started to make sense" [I-01]
+
+### Inhibitors
+- Works three hours ahead of headquarters [I-03]
+- Buddy works in another function [I-03]
+
+### Tensions and contradictions
+- Buddy answered quickly but was unavailable in a busy week [I-01]
+
+### Doesn't fit this profile
+- I-03's buddy was helpful; the gap was function, not responsiveness [I-03]
+
+### Unknowns and missing voices
+- Whether other remote new hires share this experience [I-01]
+- The managers of these two newcomers were not interviewed
+- No direct observation of onboarding sessions
+
+## Profile — Newcomer reading unwritten decision rights
+Based on: I-02, I-04 · hybrid, three to four months in
+
+### Needs
+- Know which decisions need executive involvement and which can be made locally [I-02]
+- Examples of disagreement and compromise, not only value words [I-04]
+
+### Goals
+- unknown
+
+### Work routine and habits
+- Asks a long-tenured colleague how a proposed decision is likely to be received [I-02]
+- Used the customer-research archive to understand an awkward workflow [I-04]
+
+### Pain points
+- "Move fast sounded like prove you belong before you ask too many questions." [I-02]
+- "Sometimes DNA feels like knowing company trivia rather than knowing how to make a good call." [I-04]
+
+### Drivers
+- The founder story made the mission memorable [I-02]
+- One customer renewal call taught more than the onboarding deck [I-02]
+
+### Inhibitors
+- Early-company stories describe a world new hires cannot enter [I-04]
+
+### Tensions and contradictions
+- I-02 found the founder story energizing; I-04 felt shut out by such stories [I-02, I-04]
+
+### Doesn't fit this profile
+- Another new designer enjoyed the founder stories and did not share this concern (reported by I-04) [I-04]
+
+### Unknowns and missing voices
+- I-02 thinks some uncertainty may come from being a new manager, not onboarding [I-02]
+- No remote employees in this profile`,
+journey: `## Journey — A remote new hire's first five to seven weeks
+Whose journey: Remote newcomers · I-01, I-03 (two accounts, shown separately)
+Begins: first day of orientation · Ends: the first moment the work "made sense"
+
+### Stage 1 — Orientation and links
+- Action: Worked through 23 onboarding links [I-01]
+- Touchpoint: Onboarding pages and checklist [I-01]
+- Feeling: -1 — "I can find the rule. I cannot tell which rule people actually follow." [I-01]
+- Feeling: not reported [I-03]
+- Pain point: Pages disagreed about who approves a release [I-01]
+- Opportunity (inferred): How might newcomers see which rules teams follow in practice? [I-01]
+- Unknown: How I-03 experienced orientation
+
+### Stage 2 — Buddy and first questions
+- Action: Asked the buddy questions and got quick answers [I-01]
+- Action: Asked a buddy from another function [I-03]
+- Touchpoint: Assigned buddy [I-01, I-03]
+- Feeling: not reported [I-01]
+- Feeling: not reported [I-03]
+- Pain point: Buddy cancelled two sessions in a launch week [I-01]
+- Pain point: Buddy could not explain the team's tradeoffs [I-03]
+- Bright spot: Buddy described as helpful [I-03]
+
+### Stage 3 — Learning norms after hours
+- Action: Followed informal interpretation in chat after the workday ended [I-03]
+- Action: Built and shared an acronym glossary [I-03]
+- Touchpoint: Team chat; personal glossary [I-03]
+- Feeling: not reported [I-03]
+- Pain point: Works three hours ahead of headquarters [I-03]
+- Bright spot: Glossary shared with another new hire [I-03]
+- Unknown: Whether I-03's manager knows about the time-zone gap
+
+### Stage 4 — First real work
+- Action: Shipped a small fix in week three [I-01]
+- Feeling: not reported [I-01]
+- Pain point: Learned afterward that a customer promise changed the expected solution [I-01]
+- Opportunity (inferred): How might newcomers learn the customer context behind a task before starting it? [I-01]
+
+### Stage 5 — When it starts to make sense
+- Action: Attended the first production review [I-01]
+- Action: Shadowed two customer calls [I-03]
+- Touchpoint: Production review; customer calls [I-01, I-03]
+- Feeling: +2 — the company "started to make sense" [I-01]
+- Feeling: +2 — "the clearest part of onboarding" [I-03]
+- Bright spot: Seeing real customer work clarified how things work [I-01, I-03]
+
+### Branches and exceptions
+- Some of I-03's learning happened outside their workday because of a three-hour time difference [I-03]
+- Stage order for I-03 is approximate; the notes give no dates [I-03]
+- Hybrid newcomers (I-02, I-04) describe a different path centered on decision rights; not merged here [I-02, I-04]`
+};
+
+const BLANK = {
+profile: `## Profile — <descriptive label, never a person's name>
+Based on: <source IDs> · <role and context these sources share>
+
+### Needs
+- <need> [source IDs]
+
+### Goals
+- <goal, or "unknown"> [source IDs]
+
+### Work routine and habits
+- <what people do> [source IDs]
+
+### Pain points
+- <difficulty, in participants' words where possible> [source IDs]
+
+### Drivers
+- <what helps or motivates> [source IDs]
+
+### Inhibitors
+- <what gets in the way> [source IDs]
+
+### Tensions and contradictions
+- <where accounts disagree> [source IDs]
+
+### Doesn't fit this profile
+- <evidence that cuts against it> [source IDs]
+
+### Unknowns and missing voices
+- <what the sources cannot tell us; who was not heard>`,
+journey: `## Journey — <experience and scope>
+Whose journey: <descriptive label> · <source IDs>
+Begins: <moment> · Ends: <moment>
+
+### Stage 1 — <stage name>
+- Trigger: <what starts this stage> [source IDs]
+- Action: <what people did> [source IDs]
+- Touchpoint: <tool, space, message or person> [source IDs]
+- Feeling: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
+- Pain point: <difficulty> [source IDs]
+- Bright spot: <what already works> [source IDs]
+- Opportunity (inferred): <solution-neutral question> [source IDs]
+- Unknown: <what the sources cannot tell us>
+
+### Branches and exceptions
+- <path that differs by role, context or source> [source IDs]`
+};
+
+/* ---------- parsing ---------- */
+const clean = s => s.replace(/\*\*/g,'').replace(/^\s*#+\s*/,'').trim();
+const isBullet = s => /^\s*([-*•]|\d+[.)])\s+/.test(s);
+const unbullet = s => s.replace(/^\s*([-*•]|\d+[.)])\s+/,'').trim();
+function splitIds(text){
+  let ids=[]; let t=text.trim();
+  const m=t.match(/\s*\[([^\]]+)\]\s*$/);
+  if(m){ids=m[1].split(/\s*[,;]\s*/).filter(Boolean); t=t.slice(0,m.index).trim();}
+  let inferred=/\(inferred\)/i.test(t); t=t.replace(/\s*\(inferred\)\s*/ig,' ').trim();
+  return {text:t, ids, inferred};
+}
+const isCont = s => /^\s{2,}\S/.test(s) && !isBullet(s);
+const rejoin = it => it.text+(it.inferred?' (inferred)':'')+(it.ids.length?' ['+it.ids.join(', ')+']':'');
+const titleAfter = s => { const m=clean(s).match(/^[^—–:-]*?(?:\s[—–-]\s|:\s|—|–)(.+)$/); return m?m[1].trim():''; };
+
+const PSECT=[["needs",/^needs?\b/i],["goals",/^(wants|goals?)\b/i],["routine",/^(work )?(routine|habits)/i],["pain",/^pain/i],["drivers",/^drivers?\b/i],["inhib",/^inhibitors?\b/i],["tension",/^tensions?/i],["nofit",/^(doesn.t|does not|what does not|evidence that does not) fit/i],["unknown",/^(unknowns?|missing)/i]];
+function parseProfiles(src){
+  const out=[]; let cur=null, sect=null;
+  for(const raw of src.split(/\r?\n/)){
+    if(!raw.trim()) continue;
+    const c=clean(raw);
+    if(/^profile\b/i.test(c) && !isBullet(raw)){ cur={label:titleAfter(raw)||c.replace(/^profile\s*\d*/i,'').trim()||'Untitled profile',basis:'',ids:[],s:{}}; out.push(cur); sect=null; continue; }
+    if(/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(raw)){ cur=null; sect=null; continue; }
+    if(!cur) continue;
+    if(/^based on\b/i.test(c)){ const v=c.replace(/^based on\s*:?\s*/i,''); const [a,...b]=v.split(/\s+·\s+|\s+\|\s+/); cur.ids=a.split(/\s*,\s*/).filter(Boolean); cur.basis=b.join(' · '); continue; }
+    const head=PSECT.find(([,re])=>re.test(c));
+    if(head && (!isBullet(raw)) && c.length<60){ sect=head[0]; cur.s[sect]=cur.s[sect]||[]; continue; }
+    if(/^\s*#/.test(raw)){ if(/^\s*#{1,2}\s/.test(raw)) cur=null; sect=null; continue; }
+    if(sect){ const L=cur.s[sect]; if(isCont(raw)&&L.length){ L[L.length-1]=splitIds(rejoin(L[L.length-1])+' '+c); } else L.push(splitIds(isBullet(raw)?unbullet(raw):c)); }
+  }
+  return out;
+}
+
+const JKEYS=[["trigger",/^trigger/i],["action",/^actions?/i],["touch",/^touch ?points?/i],["feel",/^(feelings?|emotions?)/i],["pain",/^pain ?points?/i],["bright",/^bright ?spots?/i],["opp",/^opportunit(y|ies)/i],["unknown",/^unknowns?/i]];
+function parseJourney(src){
+  const j={title:'',who:'',begins:'',ends:'',stages:[],branches:[]}; let st=null, inBranch=false, lastKey=null;
+  for(const raw of src.split(/\r?\n/)){
+    if(!raw.trim()) continue;
+    const c=clean(raw);
+    if(/^journey\b/i.test(c) && !isBullet(raw)){ j.title=titleAfter(raw)||c; continue; }
+    if(/^whose journey/i.test(c)){ j.who=c.replace(/^whose journey\s*:?\s*/i,''); continue; }
+    if(/^begins?\b/i.test(c)){ const parts=c.split(/\s+·\s+|\s+\|\s+/); for(const p of parts){ if(/^begins?/i.test(p)) j.begins=p.replace(/^begins?\s*(when)?\s*:?\s*/i,''); if(/^ends?/i.test(p)) j.ends=p.replace(/^ends?\s*(when)?\s*:?\s*/i,''); } continue; }
+    if(/^ends?\b/i.test(c)){ j.ends=c.replace(/^ends?\s*(when)?\s*:?\s*/i,''); continue; }
+    if(/^(branches|exceptions)/i.test(c) && !isBullet(raw)){ inBranch=true; st=null; continue; }
+    if(/^stage\b/i.test(c) && !isBullet(raw)){ inBranch=false; st={name:titleAfter(raw)||c,trigger:[],action:[],touch:[],feel:[],pain:[],bright:[],opp:[],unknown:[]}; j.stages.push(st); lastKey=null; continue; }
+    if(/^\s*#/.test(raw)){ st=null; inBranch=false; lastKey=null; continue; }
+    if(/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(raw)){ st=null; inBranch=false; lastKey=null; continue; }
+    if(inBranch && !isBullet(raw) && !isCont(raw)){ inBranch=false; continue; }
+    if(inBranch){ const L=j.branches; if(isCont(raw)&&L.length){ L[L.length-1]=splitIds(rejoin(L[L.length-1])+' '+c); } else L.push(splitIds(isBullet(raw)?unbullet(raw):c)); continue; }
+    if(!st) continue;
+    let body=isBullet(raw)?unbullet(raw):c; body=body.replace(/\*\*/g,'');
+    const m=body.match(/^([A-Za-z ()]+?)\s*:\s*(.*)$/);
+    const key=m && JKEYS.find(([,re])=>re.test(m[1].trim()));
+    let k, val;
+    if(key){ k=key[0]; val=m[2]; if(/inferred/i.test(m[1])) val=val.replace(/(\s*\[[^\]]+\])?\s*$/,' (inferred)$1'); lastKey=k; }
+    else if(lastKey){ k=lastKey; val=body; } else continue;
+    if(k==='feel'){
+      const it=splitIds(val); let ft=it.text.replace(/[\u2212\u2013](?=\s*\d)/g,'-');
+      const lead=ft.match(/^([A-Z]{1,4}-?\d{1,3})[:,]?\s+/); if(lead){ ft=ft.slice(lead[0].length); if(!it.ids.length) it.ids=[lead[1]]; }
+      it.text=ft; const fm=ft.match(/^([+-]?\s*[0-2])\b\s*[—–-]?\s*(.*)$/);
+      if(fm) st.feel.push({score:parseInt(fm[1].replace(/\s/g,''),10),text:fm[2],ids:it.ids});
+      else st.feel.push({score:null,text:it.text.replace(/^not reported\s*[.—–-]?\s*/i,''),ids:it.ids});
+    } else {
+      for(const part of (k==='touch'? val.split(/\s*;\s*(?![^\[]*\])/) : [val])){ if(part.trim()) st[k].push(splitIds(part)); }
+      if(k==='touch'){ const ids=splitIds(val).ids; st.touch.forEach(t=>{ if(!t.ids.length) t.ids=ids; }); }
+    }
+  }
+  return j;
+}
+
+/* ---------- rendering ---------- */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const chips = ids => ids.map(i=>`<span class="chip">${esc(i)}</span>`).join(' ');
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*\*/g,'');
+const item = it => `${md(it.text)}${it.inferred?'<span class="tag">inferred</span>':''} ${chips(it.ids)}`;
+const list = (arr) => arr && arr.length ? `<ul>${arr.map(it=>`<li>${item(it)}</li>`).join('')}</ul>` : `<p class="empty">Not in the sources yet.</p>`;
+const REVIEW = `<div class="review"><div><span>What is recognizable</span><i></i><i></i></div><div><span>What is misleading or missing</span><i></i><i></i></div><div><span>Reviewed by · date</span><i></i><i></i></div></div>`;
+const STAMP = `<span class="stamp">Draft · needs human review</span>`;
+
+function renderProfiles(src){
+  const ps=parseProfiles(src);
+  if(!ps.length) return {html:'',msg:'No profiles found yet. Start each profile with a line like "## Profile — <label>".'};
+  const html=ps.map(p=>{
+    const box=(key,title,cls,span)=>`<div class="box ${cls} ${span}"><h3>${title}</h3>${list(p.s[key])}</div>`;
+    return `<article class="canvas">
+      <div class="canvas-head"><div><p class="eyebrow">Evidence-based participant profile</p><h2>${esc(p.label)}</h2>
+      <div class="basis">${p.ids.length?`<span>Based on</span> ${chips(p.ids)}`:'<span class="empty">Sources not listed</span>'}${p.basis?`<span>· ${esc(p.basis)}</span>`:''}</div></div>${STAMP}</div>
+      <div class="pgrid">
+        ${box('needs','Needs','lead','span3 wide')}
+        ${box('goals','Goals','lead','span3 wide')}
+        ${box('routine','Work routine and habits','routine','span4 wide')}
+        ${box('pain','Pain points','pain','span2 wide')}
+        ${box('drivers','Drivers','driver','span3')}
+        ${box('inhib','Inhibitors','inhib','span3')}
+        ${box('tension','Tensions and contradictions','quiet','span2')}
+        ${box('nofit',"Doesn't fit this profile",'quiet','span2')}
+        ${box('unknown','Unknowns and missing voices','quiet','span2 wide')}
+      </div>${REVIEW}</article>`;
+  }).join('');
+  return {html,msg:`${ps.length} profile${ps.length>1?'s':''} built.`};
+}
+
+function feelSvg(j,col){
+  const n=j.stages.length, H=150, top=22, bot=H-30, y=s=>top+(2-s)*(bot-top)/4, x=i=>i*col+col/2;
+  const sources=[...new Set(j.stages.flatMap(s=>s.feel.map(f=>f.ids[0]||'?')))];
+  const colors=['var(--s1)','var(--s2)','var(--s3)','var(--s4)'];
+  const color=id=>colors[sources.indexOf(id)%colors.length];
+  let g=`<line x1="0" x2="${n*col}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line-2)" stroke-dasharray="3 4"/>`;
+  g+=`<text x="4" y="${y(2)-6}">+2</text><text x="4" y="${y(-2)+14}">−2</text>`;
+  for(const id of sources){
+    let prev=null;
+    j.stages.forEach((s,i)=>{
+      const f=s.feel.find(f=>(f.ids[0]||'?')===id);
+      if(f && f.score!==null){
+        if(prev && prev.i===i-1) g+=`<line x1="${x(prev.i)}" y1="${y(prev.s)}" x2="${x(i)}" y2="${y(f.score)}" stroke="${color(id)}" stroke-width="2.5" stroke-linecap="round"/>`;
+        prev={i,s:f.score};
+      } else prev=null;
+    });
+  }
+  j.stages.forEach((s,i)=>{
+    const rep=s.feel.filter(f=>f.score!==null);
+    const nr=s.feel.filter(f=>f.score===null);
+    rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; const cx=x(i)+(k-(rep.length-1)/2)*16;
+      g+=`<circle cx="${cx}" cy="${y(f.score)}" r="6" fill="${color(id)}" stroke="var(--surface)" stroke-width="2"><title>${esc(id)}: ${esc(f.text)}</title></circle>`; });
+    if(!rep.length) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${nr.length?'not reported':'—'}${nr.length?' · '+esc(nr.map(f=>f.ids.join(',')).join(' ')):''}</text>`;
+    else if(nr.length) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">not reported · ${esc(nr.map(f=>f.ids.join(',')).join(' '))}</text>`;
+  });
+  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Reported feelings by stage, one line per source">${g}</svg>`, sources, color};
+}
+
+function renderJourney(src){
+  const j=parseJourney(src);
+  if(!j.stages.length) return {html:'',msg:'No stages found yet. Start each stage with a line like "### Stage 1 — <name>".'};
+  const out=document.getElementById('out-journey'); const lanes=window.matchMedia('(max-width:520px)').matches?104:132;
+  const col=Math.max(window.matchMedia('(max-width:520px)').matches?200:180, Math.floor(((out.clientWidth||1100)-lanes-28)/j.stages.length));
+  const n=j.stages.length;
+  const lane=(label,sub)=>`<div class="lane">${label}${sub?`<small>${sub}</small>`:''}</div>`;
+  const row=(label,sub,key,cls)=>{
+    if(!j.stages.some(s=>s[key].length)) return '';
+    return lane(label,sub)+j.stages.map(s=>`<div class="cell">${s[key].map(it=>`<div class="note ${cls}">${item(it)}</div>`).join('')}</div>`).join('');
+  };
+  const f=feelSvg(j,col);
+  const feelQuotes=j.stages.map(s=>`<div class="cell">${s.feel.filter(x=>x.score!==null).map(x=>`<div class="note trigger">“${esc(x.text.replace(/^["“]|["”]$/g,''))}” ${chips(x.ids)}</div>`).join('')}</div>`).join('');
+  const html=`<article class="canvas">
+    <div class="canvas-head"><div><p class="eyebrow">Current-state journey map</p><h2>${esc(j.title||'Untitled journey')}</h2>
+      <div class="meta">${j.who?`<div><b>Whose journey</b>${esc(j.who)}</div>`:''}${j.begins||j.ends?`<div><b>Scope</b>${esc(j.begins||'?')} → ${esc(j.ends||'?')}</div>`:''}</div></div>${STAMP}</div>
+    ${f.sources.length?`<div class="legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span>One line per source · gaps mean no feeling was reported</span></div>`:''}
+    <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px">
+      <div class="lane" style="border-top:0"></div>${j.stages.map((s,i)=>`<div class="stagehead${i===0?' first':''}"><b>STAGE ${i+1}</b><strong>${esc(s.name)}</strong></div>`).join('')}
+      ${row('Trigger','','trigger','trigger')}
+      ${row('Actions','what people did','action','action')}
+      ${row('Touchpoints','','touch','touch')}
+      ${lane('Feelings','reported only, by source')}<div class="feel">${f.svg}</div>
+      ${j.stages.some(s=>s.feel.some(x=>x.score!==null))?lane('In their words','')+feelQuotes:''}
+      ${row('Pain points','','pain','pain')}
+      ${row('Bright spots','already works','bright','bright')}
+      ${row('Opportunities','inferred · not solutions','opp','opp')}
+      ${row('Unknowns','','unknown','unknown')}
+    </div></div>
+    ${j.branches.length?`<div class="branches"><h3>Branches and exceptions</h3>${list(j.branches)}</div>`:''}
+    ${REVIEW}</article>`;
+  return {html,msg:`${n} stage${n>1?'s':''} built.`};
+}
+
+/* ---------- wiring ---------- */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const R={profile:renderProfiles,journey:renderJourney};
+function build(kind){
+  const src=document.getElementById('src-'+kind).value;
+  const r=R[kind](src);
+  document.getElementById('out-'+kind).innerHTML=r.html;
+  document.getElementById('status-'+kind).textContent=src.trim()?r.msg:'Paste the Ethnographer\'s output or load the example.';
+  store.set('rw-canvas-'+kind,src);
+}
+for(const kind of ['profile','journey']){
+  const ta=document.getElementById('src-'+kind);
+  const saved=store.get('rw-canvas-'+kind);
+  ta.value=saved!==null&&saved.trim()?saved:EXAMPLES[kind];
+  let t; ta.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>build(kind),250)});
+  build(kind);
+}
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-act]'); if(!b) return;
+  const kind=b.dataset.kind, act=b.dataset.act;
+  if(act==='print'){ window.print(); return; }
+  const ta=kind&&document.getElementById('src-'+kind), st=kind&&document.getElementById('status-'+kind);
+  if(act==='example'){ ta.value=EXAMPLES[kind]; build(kind); st.textContent='Fictional Beacon Works example loaded.'; }
+  if(act==='clear'){ ta.value=''; build(kind); ta.focus(); }
+  if(act==='blank'){
+    try{ await navigator.clipboard.writeText(BLANK[kind]); st.textContent='Blank format copied. Paste it into your chat or notes.'; }
+    catch(err){ ta.value=BLANK[kind]; build(kind); ta.select(); st.textContent='Copying was blocked, so the blank format is in the box above. Copy it from there.'; }
+  }
+});
+const tabs=[...document.querySelectorAll('[role=tab]')];
+function select(tab){
+  tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on});
+  if(tab.id==='tab-journey') build('journey');
+  store.set('rw-canvas-tab',tab.id); if(location.hash!=='#'+tab.id.replace('tab-','')) history.replaceState(null,'','#'+tab.id.replace('tab-',''));
+}
+tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];n.focus();select(n)}})});
+let rz; window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>build('journey'),200)});
+const fromHash=location.hash==='#journey'?'tab-journey':location.hash==='#profile'?'tab-profile':store.get('rw-canvas-tab');
+select(document.getElementById(fromHash)||tabs[0]);
+</script>
+</body>
+</html>
