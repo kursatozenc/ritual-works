@@ -7,7 +7,7 @@
 <title>Research Canvas · Ritual Works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 /* Layout: the Field Studio's paper-and-ink system; a working panel above, the canvas below, printed landscape. */
 :root{
@@ -55,91 +55,108 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .hint{margin:0;color:var(--ink-3);font:500 11px/1.5 "IBM Plex Mono",monospace;letter-spacing:.02em}
 .status{min-height:1.4em}
 
-/* Shared canvas pieces */
-.canvas{background:var(--surface);border:1px solid var(--line-2);box-shadow:12px 14px 0 var(--sunk)}
-.canvas-head{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;align-items:flex-start;padding:24px 26px 18px;border-bottom:1px solid var(--line)}
-.canvas-head h2{margin:2px 0 6px;font-size:clamp(26px,3.2vw,36px);line-height:1;letter-spacing:-.02em}
-.basis{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--ink-2);font-size:14px}
-.stamp{flex:none;padding:7px 10px;border:1.5px dashed var(--pain);color:var(--pain);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-2deg)}
-.chip{display:inline-block;padding:1px 5px;border-radius:2px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font:500 10px/1.5 "IBM Plex Mono",monospace;white-space:nowrap;vertical-align:1px}
-.tag{display:inline-block;padding:1px 5px;border-radius:2px;border:1px dashed var(--ink-3);color:var(--ink-3);font:500 10px/1.5 "IBM Plex Mono",monospace;margin-left:3px;vertical-align:1px}
-.empty{color:var(--ink-3);font-style:italic}
-.review{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:16px 26px 22px;border-top:1px solid var(--line)}
-.review div{display:grid;gap:22px}
-.review span{font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.review i{display:block;border-bottom:1px solid var(--line-2);height:1px}
+/* Canvas sheet: Swiss modern. A white sheet in every theme, 12-column grid, one grotesk,
+   heavy rules, flat color fields. Blue = needs and what helps; red = what hurts; gray = unknown. */
+.sw{--k:#111110;--k2:#4B4B47;--k3:#8E8D87;--hair:#DAD9D3;--paper:#FFFFFF;--tint:#F2F1EC;--blue:#1E43D1;--red:#E3312B;--yel:#F2B500;
+  color-scheme:light;background:var(--paper);color:var(--k);font-family:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.42;
+  box-shadow:12px 14px 0 var(--sunk);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sw *{min-width:0}
+.profiles{display:grid;gap:36px}
+.sw-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px 24px;padding:30px 32px 24px;border-bottom:6px solid var(--k)}
+.sw-kicker{grid-column:1 / -1;display:flex;align-items:center;gap:12px;font:700 11px/1 "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.sw-kicker::before{content:"";width:18px;height:18px;background:var(--red)}
+.sw-kicker em{font-style:normal;color:var(--k3);font-weight:500}
+.sw-title{grid-column:1 / span 8;margin:0;font:800 clamp(34px,4.6vw,62px)/.94 "Archivo",sans-serif;letter-spacing:-.035em;text-wrap:balance}
+.sw-side{grid-column:9 / -1;display:grid;gap:12px;align-content:end;font-size:13px;color:var(--k2)}
+.sw-side b{display:block;margin-bottom:3px;font:700 10px "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k)}
+.sw-stamp{justify-self:start;padding:6px 9px;background:var(--k);color:#fff;font:700 10px "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.sw .id{font:500 10px "IBM Plex Mono",monospace;letter-spacing:0;opacity:.62;white-space:nowrap;margin-left:5px}
+.sw .inf{font-style:italic;font-size:.82em;opacity:.78;margin-left:5px;border-bottom:1px dotted currentColor}
+.sw .none{opacity:.55;font-style:italic;margin:0}
+.sw strong{font-weight:700}
+.sw-label{margin:0 0 10px;font:700 11px/1.2 "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.sw ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
 
-/* Profile */
-.profiles{display:grid;gap:28px}
-.pgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:20px 26px}
-.box{min-width:0;padding:16px 16px 14px;border:1px solid var(--line-2);background:var(--surface)}
-.box h3{margin:0 0 8px;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px}
-.box h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mark,var(--line-2))}
-.box ul{margin:0;padding-left:1.05em;display:grid;gap:6px}
-.box li{overflow-wrap:anywhere}
-.box.lead{background:var(--eth-soft);border-color:transparent;--mark:var(--eth)}
-.box.lead h3{color:var(--eth)}
-.box.pain{--mark:var(--pain)}.box.driver{--mark:var(--bright)}.box.inhib{--mark:var(--s2)}.box.routine{--mark:var(--ink-2)}
-.box.quiet{background:var(--surface-2);border-style:dashed;--mark:var(--ink-3)}
-.span3{grid-column:span 3}.span2{grid-column:span 2}.span4{grid-column:span 4}
+/* Persona */
+.sw-body{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;padding:26px 32px 30px}
+.sec{padding-top:10px;border-top:2px solid var(--k)}
+.sec.field{padding:16px 18px 18px;border-top:0;color:#fff}
+.sec.field.blue{background:var(--blue)}.sec.field.ink{background:var(--k)}.sec.field.red{background:var(--red)}
+.sec.field li{font-size:16px;line-height:1.38}
+.sec.quiet{border-top:1px solid var(--k3);color:var(--k2);font-size:13.5px}
+.sec.quiet .sw-label{color:var(--k3)}
+.sec.mark li{display:grid;grid-template-columns:22px 1fr;align-items:baseline}
+.sec.mark li::before{font:800 20px/1 "Archivo",sans-serif}
+.sec.plus li::before{content:"+";color:var(--blue)}
+.sec.minus li::before{content:"−";color:var(--red)}
+.c6{grid-column:span 6}.c8{grid-column:span 8}.c4{grid-column:span 4}
+.sw-review{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:16px 32px 26px;background:var(--tint)}
+.sw-review div{display:grid;gap:22px}
+.sw-review span{font:700 10px "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k2)}
+.sw-review i{display:block;height:1px;background:var(--k3)}
 
 /* Journey */
-.jscroll{overflow-x:auto;padding:20px 0 6px}
-.jgrid{display:grid;grid-template-columns:132px repeat(var(--n),var(--col));min-width:max-content;--col:228px;padding:0 26px 0 0}
-.lane{position:sticky;left:0;z-index:2;background:var(--surface);padding:12px 12px 12px 26px;border-top:1px solid var(--line);font:600 10px/1.3 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
-.lane small{display:block;margin-top:4px;font-weight:400;letter-spacing:.02em;text-transform:none;color:var(--ink-3)}
-.cell{min-width:0;padding:10px 6px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
-.stagehead{position:relative;margin:0 0 8px;padding:12px 26px 12px 22px;background:var(--surface-2);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,14px 50%);min-height:64px}
-.stagehead.first{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
-.stagehead b{display:block;font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--eth)}
-.stagehead strong{display:block;font:700 15px/1.2 "Bricolage Grotesque",sans-serif}
-.note{padding:8px 9px;border-radius:2px;font-size:13px;line-height:1.4;overflow-wrap:anywhere}
-.note.action{background:var(--eth-soft)}
-.note.touch{background:var(--sand)}
-.note.pain{background:var(--pain-soft)}
-.note.bright{background:var(--bright-soft)}
-.note.opp{background:transparent;border:1.5px dashed var(--line-2)}
-.note.unknown{background:transparent;color:var(--ink-3);font-style:italic;padding:2px 2px}
-.note.trigger{background:transparent;padding:2px;color:var(--ink-2)}
-.feel{grid-column:2 / -1;border-top:1px solid var(--line);padding:6px 0}
+.sw-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:14px 32px 0;font:500 11px "Archivo",sans-serif;color:var(--k2)}
+.sw-legend span{display:inline-flex;align-items:center;gap:7px}
+.sw-legend i{width:18px;height:4px;background:var(--c)}
+.jscroll{overflow-x:auto;padding:18px 0 8px}
+.jgrid{display:grid;grid-template-columns:var(--lane) repeat(var(--n),var(--col));min-width:max-content;--lane:140px;padding-right:32px}
+.lane{position:sticky;left:0;z-index:2;background:var(--paper);padding:12px 14px 12px 32px;border-top:1px solid var(--hair);font:700 10.5px/1.25 "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.lane small{display:block;margin-top:4px;font-weight:500;letter-spacing:.01em;text-transform:none;color:var(--k3);font-size:11px}
+.lane.top{border-top:0}
+.cell{padding:10px 10px 12px;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:7px}
+.stagehead{padding:10px 10px 14px;border-top:6px solid var(--k)}
+.stagehead b{display:block;font:800 58px/.86 "Archivo",sans-serif;letter-spacing:-.04em}
+.stagehead strong{display:block;margin-top:8px;font:700 15px/1.2 "Archivo",sans-serif;letter-spacing:-.01em}
+.note{font-size:13.5px;line-height:1.38;overflow-wrap:anywhere}
+.note.action{padding-bottom:7px;border-bottom:1px solid var(--hair)}
+.note.action:last-child{border-bottom:0;padding-bottom:0}
+.note.trigger{color:var(--k2)}
+.note.touch{display:grid;grid-template-columns:12px 1fr;align-items:baseline;color:var(--k2)}
+.note.touch::before{content:"";width:6px;height:6px;background:var(--k);transform:translateY(-1px)}
+.note.quote{color:var(--k2)}
+.note.quote::before{content:"“";color:var(--red);font:800 20px/0 "Archivo",sans-serif;margin-right:2px;vertical-align:-6px}
+.note.pain{padding:9px 10px;background:var(--red);color:#fff}
+.note.bright{padding:9px 10px;background:var(--blue);color:#fff}
+.note.opp{padding:8px 10px;border:1.5px solid var(--k)}
+.note.unknown{color:var(--k3);font-style:italic}
+.feel{grid-column:2 / -1;border-top:1px solid var(--hair);padding:8px 0}
 .feel svg{display:block;overflow:visible}
-.feel text{font:500 10px "IBM Plex Mono",monospace;fill:var(--ink-3)}
-.feel .q{font:400 11px "Public Sans",sans-serif;fill:var(--ink-2)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 26px 4px;font:500 10px "IBM Plex Mono",monospace;color:var(--ink-2)}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.legend i{width:16px;height:3px;border-radius:2px;background:var(--c)}
-.branches{margin:14px 26px 4px;padding:14px 16px;border-left:3px solid var(--s2);background:var(--surface-2)}
-.branches h3{margin:0 0 6px;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
-.branches ul{margin:0;padding-left:1.05em;display:grid;gap:5px}
-.meta{display:grid;gap:3px;color:var(--ink-2);font-size:14px}
-.meta b{font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+.feel text{font:500 10px "Archivo",sans-serif;fill:var(--k3)}
+.branches{margin:18px 32px 24px;padding-top:10px;border-top:2px solid var(--k)}
+.branches ul{gap:6px}
+.branches li{padding-left:16px;position:relative}
+.branches li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;background:var(--yel)}
 
 footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
 [hidden]{display:none!important}
 
 @media(max-width:860px){
   .intro{grid-template-columns:1fr;padding-top:40px}
-  .pgrid{grid-template-columns:1fr 1fr}
-  .span3,.span2,.span4{grid-column:span 1}
-  .pgrid .wide{grid-column:1 / -1}
-  .review{grid-template-columns:1fr}
+  .sw-title,.sw-side{grid-column:1 / -1}
+  .c6,.c8,.c4{grid-column:span 6}
+  .sw-body .c4.wide{grid-column:1 / -1}
+  .sw-review{grid-template-columns:1fr}
 }
 @media(max-width:520px){
   .shell{padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
   .top{flex-wrap:wrap;padding:12px 0}
-  .pgrid{grid-template-columns:1fr;padding:16px}
-  .canvas-head,.review{padding-inline:16px}
-  .jgrid{--col:200px;grid-template-columns:104px repeat(var(--n),var(--col))}
-  .lane{padding-left:14px}
+  .sw-head,.sw-body{padding-inline:16px;gap:16px}
+  .sw-body{grid-template-columns:1fr}
+  .c6,.c8,.c4{grid-column:1 / -1}
+  .sw-review{padding-inline:16px}
+  .sw-legend{padding-inline:16px}
+  .branches{margin-inline:16px}
+  .jgrid{--lane:104px}
+  .lane{padding-left:16px}
+  .stagehead b{font-size:46px}
 }
 @media print{
   @page{size:landscape;margin:10mm}
-  :root{--ground:#fff;--surface:#fff;--surface-2:#F7F2EA;--ink:#1d1712;--ink-2:#4f4236;--ink-3:#7a6857;--line:#ddd2c1;--line-2:#c4b49d;--eth:#1F6F82;--eth-soft:#DCEBEC;--sand:#F3E6CC;--pain:#8C3247;--pain-soft:#F4E0E2;--bright:#3C7350;--bright-soft:#E1EEE3;--s1:#1F6F82;--s2:#C0821A;--s3:#8C3247;--s4:#3C7350;color-scheme:light}
+  body{background:#fff}
   .top,.intro,.tabs,.editor,footer,.noprint{display:none!important}
-  .canvas{box-shadow:none;break-inside:avoid}
+  .sw{box-shadow:none;break-inside:avoid;margin-bottom:12mm}
   .jscroll{overflow:visible}
-  .jgrid{--col:min(228px,calc((100vw - 140px) / var(--n)))}
-  .note,.box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style>
@@ -458,60 +475,66 @@ function parseJourney(src){
 
 /* ---------- rendering ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const chips = ids => ids.map(i=>`<span class="chip">${esc(i)}</span>`).join(' ');
+const ids = a => a.length?`<span class="id">${esc(a.join(', '))}</span>`:'';
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*\*/g,'');
-const item = it => `${md(it.text)}${it.inferred?'<span class="tag">inferred</span>':''} ${chips(it.ids)}`;
-const list = (arr) => arr && arr.length ? `<ul>${arr.map(it=>`<li>${item(it)}</li>`).join('')}</ul>` : `<p class="empty">Not in the sources yet.</p>`;
-const REVIEW = `<div class="review"><div><span>What is recognizable</span><i></i><i></i></div><div><span>What is misleading or missing</span><i></i><i></i></div><div><span>Reviewed by · date</span><i></i><i></i></div></div>`;
-const STAMP = `<span class="stamp">Draft · needs human review</span>`;
+const item = it => `${md(it.text)}${it.inferred?'<span class="inf">inferred</span>':''}${ids(it.ids)}`;
+const list = arr => arr && arr.length ? `<ul>${arr.map(it=>`<li><span>${item(it)}</span></li>`).join('')}</ul>` : `<p class="none">Not in the sources yet.</p>`;
+const REVIEW = `<div class="sw-review"><div><span>What is recognizable</span><i></i><i></i></div><div><span>What is misleading or missing</span><i></i><i></i></div><div><span>Reviewed by · date</span><i></i><i></i></div></div>`;
+const STAMP = `<span class="sw-stamp">Draft — needs human review</span>`;
 
 function renderProfiles(src){
   const ps=parseProfiles(src);
   if(!ps.length) return {html:'',msg:'No personas found yet. Start each persona with a line like "## Persona — <label>".'};
-  const html=ps.map(p=>{
-    const box=(key,title,cls,span)=>`<div class="box ${cls} ${span}"><h3>${title}</h3>${list(p.s[key])}</div>`;
-    return `<article class="canvas">
-      <div class="canvas-head"><div><p class="eyebrow">Evidence-based persona</p><h2>${esc(p.label)}</h2>
-      <div class="basis">${p.ids.length?`<span>Based on</span> ${chips(p.ids)}`:'<span class="empty">Sources not listed</span>'}${p.basis?`<span>· ${esc(p.basis)}</span>`:''}</div></div>${STAMP}</div>
-      <div class="pgrid">
-        ${box('needs','Needs','lead','span3 wide')}
-        ${box('goals','Goals','lead','span3 wide')}
-        ${box('routine','Work routine and habits','routine','span4 wide')}
-        ${box('pain','Pain points','pain','span2 wide')}
-        ${box('drivers','Drivers','driver','span3')}
-        ${box('inhib','Inhibitors','inhib','span3')}
-        ${box('tension','Tensions and contradictions','quiet','span2')}
-        ${box('nofit',"Doesn't fit this persona",'quiet','span2')}
-        ${box('unknown','Unknowns and missing voices','quiet','span2 wide')}
+  const html=ps.map((p,i)=>{
+    const sec=(key,title,cls)=>`<section class="sec ${cls}"><h3 class="sw-label">${title}</h3>${list(p.s[key])}</section>`;
+    return `<article class="sw">
+      <header class="sw-head">
+        <div class="sw-kicker">Evidence-based persona <em>${String(i+1).padStart(2,'0')} of ${String(ps.length).padStart(2,'0')}</em></div>
+        <h2 class="sw-title">${esc(p.label)}</h2>
+        <div class="sw-side">
+          <div><b>Based on</b>${p.ids.length?`<span style="font:500 12px 'IBM Plex Mono',monospace;color:var(--k)">${esc(p.ids.join(', '))}</span>`:'<span class="none">Sources not listed</span>'}</div>
+          ${p.basis?`<div><b>Context</b>${esc(p.basis)}</div>`:''}
+          ${STAMP}
+        </div>
+      </header>
+      <div class="sw-body">
+        ${sec('needs','Needs','field blue c6')}
+        ${sec('goals','Goals','field ink c6')}
+        ${sec('routine','Work routine and habits','c8')}
+        ${sec('pain','Pain points','field red c4')}
+        ${sec('drivers','Drivers','mark plus c6')}
+        ${sec('inhib','Inhibitors','mark minus c6')}
+        ${sec('tension','Tensions and contradictions','quiet c4')}
+        ${sec('nofit',"Doesn't fit this persona",'quiet c4')}
+        ${sec('unknown','Unknowns and missing voices','quiet c4 wide')}
       </div>${REVIEW}</article>`;
   }).join('');
   return {html,msg:`${ps.length} persona${ps.length>1?'s':''} built.`};
 }
 
 function feelSvg(j,col){
-  const n=j.stages.length, H=150, top=22, bot=H-30, y=s=>top+(2-s)*(bot-top)/4, x=i=>i*col+col/2;
+  const n=j.stages.length, H=160, top=18, bot=H-34, y=s=>top+(2-s)*(bot-top)/4, x=i=>i*col+col/2;
   const sources=[...new Set(j.stages.flatMap(s=>s.feel.map(f=>f.ids[0]||'?')))];
-  const colors=['var(--s1)','var(--s2)','var(--s3)','var(--s4)'];
+  const colors=['var(--k)','var(--blue)','var(--yel)','var(--k3)'];
   const color=id=>colors[sources.indexOf(id)%colors.length];
-  let g=`<line x1="0" x2="${n*col}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line-2)" stroke-dasharray="3 4"/>`;
-  g+=`<text x="4" y="${y(2)-6}">+2</text><text x="4" y="${y(-2)+14}">−2</text>`;
+  let g='';
+  for(const v of [2,1,0,-1,-2]) g+=`<line x1="0" x2="${n*col}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'var(--k)':'var(--hair)'}" stroke-width="${v===0?1.5:1}"/>`;
+  g+=`<text x="2" y="${y(2)-5}">+2</text><text x="2" y="${y(-2)+13}">−2</text>`;
   for(const id of sources){
     let prev=null;
     j.stages.forEach((s,i)=>{
       const f=s.feel.find(f=>(f.ids[0]||'?')===id);
       if(f && f.score!==null){
-        if(prev && prev.i===i-1) g+=`<line x1="${x(prev.i)}" y1="${y(prev.s)}" x2="${x(i)}" y2="${y(f.score)}" stroke="${color(id)}" stroke-width="2.5" stroke-linecap="round"/>`;
+        if(prev && prev.i===i-1) g+=`<line x1="${x(prev.i)}" y1="${y(prev.s)}" x2="${x(i)}" y2="${y(f.score)}" stroke="${color(id)}" stroke-width="3.5"/>`;
         prev={i,s:f.score};
       } else prev=null;
     });
   }
   j.stages.forEach((s,i)=>{
-    const rep=s.feel.filter(f=>f.score!==null);
-    const nr=s.feel.filter(f=>f.score===null);
-    rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; const cx=x(i)+(k-(rep.length-1)/2)*16;
-      g+=`<circle cx="${cx}" cy="${y(f.score)}" r="6" fill="${color(id)}" stroke="var(--surface)" stroke-width="2"><title>${esc(id)}: ${esc(f.text)}</title></circle>`; });
-    if(!rep.length) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${nr.length?'not reported':'—'}${nr.length?' · '+esc(nr.map(f=>f.ids.join(',')).join(' ')):''}</text>`;
-    else if(nr.length) g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">not reported · ${esc(nr.map(f=>f.ids.join(',')).join(' '))}</text>`;
+    const rep=s.feel.filter(f=>f.score!==null), nr=s.feel.filter(f=>f.score===null);
+    rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; const cx=x(i)+(k-(rep.length-1)/2)*18;
+      g+=`<rect x="${cx-6}" y="${y(f.score)-6}" width="12" height="12" fill="${color(id)}" stroke="var(--paper)" stroke-width="2"><title>${esc(id)}: ${esc(f.text)}</title></rect>`; });
+    if(nr.length || !rep.length) g+=`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${nr.length?'not reported · '+esc(nr.map(f=>f.ids.join(',')).join(' ')):'—'}</text>`;
   });
   return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Reported feelings by stage, one line per source">${g}</svg>`, sources, color};
 }
@@ -519,33 +542,40 @@ function feelSvg(j,col){
 function renderJourney(src){
   const j=parseJourney(src);
   if(!j.stages.length) return {html:'',msg:'No stages found yet. Start each stage with a line like "### Stage 1 — <name>".'};
-  const out=document.getElementById('out-journey'); const lanes=window.matchMedia('(max-width:520px)').matches?104:132;
-  const col=Math.max(window.matchMedia('(max-width:520px)').matches?200:180, Math.floor(((out.clientWidth||1100)-lanes-28)/j.stages.length));
+  const out=document.getElementById('out-journey'); const narrow=window.matchMedia('(max-width:520px)').matches; const lanes=narrow?104:140;
+  const col=Math.max(narrow?200:180, Math.floor(((out.clientWidth||1100)-lanes-34)/j.stages.length));
   const n=j.stages.length;
   const lane=(label,sub)=>`<div class="lane">${label}${sub?`<small>${sub}</small>`:''}</div>`;
   const row=(label,sub,key,cls)=>{
     if(!j.stages.some(s=>s[key].length)) return '';
-    return lane(label,sub)+j.stages.map(s=>`<div class="cell">${s[key].map(it=>`<div class="note ${cls}">${item(it)}</div>`).join('')}</div>`).join('');
+    return lane(label,sub)+j.stages.map(s=>`<div class="cell">${s[key].map(it=>`<div class="note ${cls}"><span>${item(it)}</span></div>`).join('')}</div>`).join('');
   };
   const f=feelSvg(j,col);
-  const feelQuotes=j.stages.map(s=>`<div class="cell">${s.feel.filter(x=>x.score!==null).map(x=>`<div class="note trigger">“${esc(x.text.replace(/^["“]|["”]$/g,''))}” ${chips(x.ids)}</div>`).join('')}</div>`).join('');
-  const html=`<article class="canvas">
-    <div class="canvas-head"><div><p class="eyebrow">Current-state journey map</p><h2>${esc(j.title||'Untitled journey')}</h2>
-      <div class="meta">${j.who?`<div><b>Whose journey</b>${esc(j.who)}</div>`:''}${j.begins||j.ends?`<div><b>Scope</b>${esc(j.begins||'?')} → ${esc(j.ends||'?')}</div>`:''}</div></div>${STAMP}</div>
-    ${f.sources.length?`<div class="legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span>One line per source · gaps mean no feeling was reported</span></div>`:''}
-    <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px">
-      <div class="lane" style="border-top:0"></div>${j.stages.map((s,i)=>`<div class="stagehead${i===0?' first':''}"><b>STAGE ${i+1}</b><strong>${esc(s.name)}</strong></div>`).join('')}
+  const quotes=j.stages.map(s=>`<div class="cell">${s.feel.filter(x=>x.score!==null).map(x=>`<div class="note quote">${esc(/^["“].*["”]$/.test(x.text)?x.text.slice(1,-1):x.text)}${ids(x.ids)}</div>`).join('')}</div>`).join('');
+  const html=`<article class="sw">
+    <header class="sw-head">
+      <div class="sw-kicker">Current-state journey map <em>${n} stages</em></div>
+      <h2 class="sw-title">${esc(j.title||'Untitled journey')}</h2>
+      <div class="sw-side">
+        ${j.who?`<div><b>Whose journey</b>${esc(j.who)}</div>`:''}
+        ${j.begins||j.ends?`<div><b>Scope</b>${esc(j.begins||'?')} → ${esc(j.ends||'?')}</div>`:''}
+        ${STAMP}
+      </div>
+    </header>
+    ${f.sources.length?`<div class="sw-legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span>One line per source. A gap means no feeling was reported.</span></div>`:''}
+    <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
+      <div class="lane top"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
       ${row('Trigger','','trigger','trigger')}
       ${row('Actions','what people did','action','action')}
       ${row('Touchpoints','','touch','touch')}
       ${lane('Feelings','reported only, by source')}<div class="feel">${f.svg}</div>
-      ${j.stages.some(s=>s.feel.some(x=>x.score!==null))?lane('In their words','')+feelQuotes:''}
+      ${j.stages.some(s=>s.feel.some(x=>x.score!==null))?lane('In their words','')+quotes:''}
       ${row('Pain points','','pain','pain')}
       ${row('Bright spots','already works','bright','bright')}
       ${row('Opportunities','inferred · not solutions','opp','opp')}
       ${row('Unknowns','','unknown','unknown')}
     </div></div>
-    ${j.branches.length?`<div class="branches"><h3>Branches and exceptions</h3>${list(j.branches)}</div>`:''}
+    ${j.branches.length?`<section class="branches"><h3 class="sw-label">Branches and exceptions</h3>${list(j.branches)}</section>`:''}
     ${REVIEW}</article>`;
   return {html,msg:`${n} stage${n>1?'s':''} built.`};
 }
