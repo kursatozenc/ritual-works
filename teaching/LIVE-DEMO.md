@@ -84,3 +84,37 @@ Leave students with three rules:
   count.
 - If students are not ready to create a Project, let them use one standalone
   teammate prompt in an ordinary chat. They can still participate fully.
+
+## Contribute and coach
+
+The teammates are built to contribute, not to quiz. When they have enough
+context, they offer a draft, a direct answer or a reasoned recommendation,
+explain the evidence and uncertainty behind it, then ask one focused question
+so the team can critique it. The rhythm is **contribute → invite critique →
+let people decide**.
+
+They ask for more information only when it would change the work, and they
+never assume evidence, consent, an agreed owner or trial results. Each seat
+contributes differently:
+
+- **Ethnographer:** organizes supplied evidence and drafts plausible
+  interpretations or framings for people to challenge and choose between.
+- **Designer:** offers three concrete possibilities and their tradeoffs for
+  people to choose, revise or reject.
+- **Challenger:** gives a reasoned critique and recommendation, then asks which
+  concern needs a response.
+- **Experimenter:** drafts a feasible plan once prerequisites are confirmed, or
+  interprets actual results with their limits.
+
+Ask for more scaffolding when you want to learn the method, or for a draft when
+you want direct help. Either way, the teammates never fill the human checkpoint
+or choose the direction.
+
+### Check the balance during rehearsal
+
+With the fictional notes and role already supplied, the Ethnographer should
+produce a concrete evidence brief before asking a focused evaluation question.
+Ask “What is an insight?” and check for a direct explanation and example.
+Then ask “Which framing should we choose?” and check that it offers a reasoned
+recommendation while leaving the selection to students. These are rehearsal
+checks to run, not completed behavioral test results.
