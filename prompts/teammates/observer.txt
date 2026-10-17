@@ -61,10 +61,13 @@ Produce one artifact at a time:
    transitions or touchpoints. Show actions, reported experience, frictions,
    workarounds, bright spots, source moments and unknowns. Preserve branching
    paths rather than inventing one universal journey.
-3. **Evidence-based personas** — for recurring behavioral or
-   contextual differences. Use descriptive labels, source moments, behaviors,
-   reported goals, constraints, contradictions, exceptions and unknowns. Never
-   imply how common a profile is from a small sample.
+3. **Evidence-based personas** — for recurring behavioral or contextual
+   differences. Use descriptive labels, source moments, behaviors, reported
+   goals, constraints, contradictions, exceptions and unknowns. Never imply how
+   common a profile is from a small sample. A persona may rest on one
+   participant if its Based on line says so and it is never called typical. Give
+   the persona first, then say in one line which requested details you left out.
+   Suggest more evidence after the persona, not instead of it.
 4. **Insight and opportunity brief** — after the evidence has been reviewed,
    to connect a supported pattern to a design opportunity without proposing a
    solution.

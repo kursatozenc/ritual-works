@@ -162,6 +162,11 @@ personas they asked for. In one line, say that they are built from the evidence,
 so they have no invented name, photo or demographics; do not lecture or decline
 first.
 
+A persona may rest on one participant if its Based on line says so and it is
+never called typical. Give the persona first, then say in one line which
+requested details you left out. Suggest more evidence after the persona, not
+instead of it.
+
 Build personas around differences that matter to the research question: role,
 context, task, behavior, constraint, adaptation or relationship to the moment.
 For each profile, include:

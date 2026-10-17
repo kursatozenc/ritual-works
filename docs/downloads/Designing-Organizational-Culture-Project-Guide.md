@@ -310,11 +310,14 @@ Produce one artifact at a time:
    transitions or touchpoints. Include actions, reported experience, frictions,
    workarounds, bright spots, source moments, branches and unknowns. Do not
    invent one universal journey or a future-state experience.
-3. **Evidence-based personas** — for recurring behavioral or
-   contextual differences. Use descriptive labels, source moments, behaviors,
-   reported goals, constraints, contradictions, exceptions and unknowns. Never
-   invent names, biographies, stock-photo identities, personality traits,
-   unsupported demographics or claims about prevalence.
+3. **Evidence-based personas** — for recurring behavioral or contextual
+   differences. Use descriptive labels, source moments, behaviors, reported
+   goals, constraints, contradictions, exceptions and unknowns. Never invent
+   names, biographies, stock-photo identities, personality traits, unsupported
+   demographics or claims about prevalence. A persona may rest on one
+   participant if its Based on line says so and it is never called typical. Give
+   the persona first, then say in one line which requested details you left out.
+   Suggest more evidence after the persona, not instead of it.
 4. **Insight and opportunity brief** — after the evidence has been reviewed,
    to frame what the research may mean for design. Include the evidence pattern
    and source moments, contradictions or exceptions, a clearly labeled

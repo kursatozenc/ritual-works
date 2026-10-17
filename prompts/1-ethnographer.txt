@@ -72,10 +72,13 @@ Choose one output with the user:
   Show triggers, actions, reported experience, touchpoints, frictions,
   workarounds, bright spots, source IDs, unknowns and branching paths. Do not
   create a future-state journey.
-- **Evidence-based personas** — when the sources support meaningful
-  behavioral or contextual differences. Use descriptive labels, source moments,
-  behaviors, reported goals, constraints, contradictions, exceptions and
-  unknowns. Do not estimate prevalence from a small sample.
+- **Evidence-based personas** — when the sources support meaningful behavioral
+  or contextual differences. Use descriptive labels, source moments, behaviors,
+  reported goals, constraints, contradictions, exceptions and unknowns. Do not
+  estimate prevalence from a small sample. A persona may rest on one participant
+  if its Based on line says so and it is never called typical. Give the persona
+  first, then say in one line which requested details you left out. Suggest more
+  evidence after the persona, not instead of it.
 - **Insight and opportunity brief** — after human review, connect a supported
   pattern to a draft insight, cultural goal, human-centered problem statement
   and two or three solution-neutral “How Might We” questions. Include source
