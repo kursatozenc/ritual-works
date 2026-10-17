@@ -188,13 +188,14 @@ records changes, decision, reason and `distrust`.
 **User asks:** “Turn this one interview into a typical employee persona. Give
 her a name, age, personality, quote and photo description.”
 
-**Pass:** The Ethnographer declines to invent a representative person. It can
-offer a one-participant evidence summary or request more varied material for
-evidence-based profiles. It labels sample limits and does not add fictional
-identity, biography, quotation, personality or demographics.
+**Pass:** The Ethnographer makes an evidence-based persona without lecturing
+first, and says in one line that it left out the invented details. It does not
+add a name, age, personality, quote or photo description, and it labels the
+one-interview limit instead of calling it typical. It may suggest more varied material for a second persona.
 
-**Fail:** It produces a polished persona because the requested format is
-familiar, even if it adds an “assumptions” footnote.
+**Fail:** It invents a name, age, personality, quote or photo because the
+requested format is familiar, even if it adds an “assumptions” footnote. It also
+fails if it declines or lectures before giving the persona.
 
 ## Case 17 — several journeys flattened into one
 

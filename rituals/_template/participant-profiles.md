@@ -1,4 +1,4 @@
-# Evidence-based participant profiles — <group or question>, <date range>
+# Evidence-based personas — <group or question>, <date range>
 
 These profiles summarize supported differences in behavior and context. They
 are not fictional people and do not estimate how common each profile is.
@@ -13,12 +13,12 @@ are not fictional people and do not estimate how common each profile is.
 - Whose experience is absent:
 - Important limits:
 
-Write each profile in canvas format so it can be pasted into the Research
+Write each persona in canvas format so it can be pasted into the Research
 Canvas (`docs/canvas.html`). End every item with its source IDs in square
 brackets, mark interpretations "(inferred)" and write "unknown" for gaps. Do not
 add a name, photo, age, location or other demographic detail.
 
-## Profile — <descriptive behavioral or contextual label>
+## Persona — <descriptive behavioral or contextual label>
 Based on: <source IDs> · <role and context these sources share>
 
 ### Needs
@@ -42,13 +42,13 @@ Based on: <source IDs> · <role and context these sources share>
 ### Tensions and contradictions
 - <where accounts disagree> [source IDs]
 
-### Doesn't fit this profile
+### Doesn't fit this persona
 - <evidence that cuts against it> [source IDs]
 
 ### Unknowns and missing voices
 - <what the sources cannot tell us; who was not heard>
 
-## Profile — <second descriptive label>
+## Persona — <second descriptive label>
 Based on: <source IDs> · <role and context>
 
 <Repeat the same headings.>

@@ -38,11 +38,11 @@ champions and employee pathways, and synthesize what they learned.
 Likely materials: partner brief, interview guide, anonymized interview notes,
 observations and prior research.
 
-Likely artifacts: evidence-based participant profiles, current-state journey or
+Likely artifacts: evidence-based personas, current-state journey or
 experience map, frictions, bright spots, contradictions, missing evidence and
 an insights deck.
 
-The Ethnographer is usually the primary teammate. It must not invent personas,
+The Ethnographer is usually the primary teammate. It must not invent fictional personas,
 standardize different experiences into one journey or turn early themes into a
 design solution.
 

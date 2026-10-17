@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Turn the Ethnographer's participant profiles and journey maps into clean, evidence-traced canvases for review and presentation.">
+<meta name="description" content="Turn the Ethnographer's personas and journey maps into clean, evidence-traced canvases for review and presentation.">
 <title>Research Canvas · Ritual Works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,9 +157,9 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
       <h1>Make the evidence visible</h1>
     </div>
     <div>
-      <p>Turn the Ethnographer's participant profiles and journey maps into clean canvases you can review, correct and present. Every note keeps its source, and gaps stay visible.</p>
+      <p>Turn the Ethnographer's personas and journey maps into clean canvases you can review, correct and present. Every note keeps its source, and gaps stay visible.</p>
       <ol>
-        <li>Ask the Ethnographer for a participant profile or journey map. It writes them in canvas format.</li>
+        <li>Ask the Ethnographer for personas or a journey map. It writes them in canvas format.</li>
         <li>Paste the result below. The canvas builds as you type.</li>
         <li>Review it with your team, fix what's wrong, then print or save it as a PDF.</li>
       </ol>
@@ -167,15 +167,15 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   </header>
 
   <div class="tabs" role="tablist" aria-label="Canvas type">
-    <button role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="true">Participant profiles</button>
+    <button role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="true">Personas</button>
     <button role="tab" id="tab-journey" aria-controls="panel-journey" aria-selected="false" tabindex="-1">Journey map</button>
   </div>
 
   <section id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" class="work">
     <details class="editor" open>
-      <summary><span>Ethnographer output · profiles</span><span>Show or hide</span></summary>
+      <summary><span>Ethnographer output · personas</span><span>Show or hide</span></summary>
       <div class="editor-body">
-        <label class="hint" for="src-profile">Paste the Ethnographer's profiles here, or edit the fictional Beacon Works example.</label>
+        <label class="hint" for="src-profile">Paste the Ethnographer's personas here, or edit the fictional Beacon Works example.</label>
         <textarea id="src-profile" spellcheck="false"></textarea>
         <div class="editor-actions">
           <button class="button" data-act="print">Print or save PDF</button>
@@ -212,7 +212,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
 
 <script>
 const EXAMPLES = {
-profile: `## Profile — Remote newcomer learning norms after hours
+profile: `## Persona — Remote newcomer learning norms after hours
 Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 
 ### Needs
@@ -244,7 +244,7 @@ Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 ### Tensions and contradictions
 - Buddy answered quickly but was unavailable in a busy week [I-01]
 
-### Doesn't fit this profile
+### Doesn't fit this persona
 - I-03's buddy was helpful; the gap was function, not responsiveness [I-03]
 
 ### Unknowns and missing voices
@@ -252,7 +252,7 @@ Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 - The managers of these two newcomers were not interviewed
 - No direct observation of onboarding sessions
 
-## Profile — Newcomer reading unwritten decision rights
+## Persona — Newcomer reading unwritten decision rights
 Based on: I-02, I-04 · hybrid, three to four months in
 
 ### Needs
@@ -280,12 +280,12 @@ Based on: I-02, I-04 · hybrid, three to four months in
 ### Tensions and contradictions
 - I-02 found the founder story energizing; I-04 felt shut out by such stories [I-02, I-04]
 
-### Doesn't fit this profile
+### Doesn't fit this persona
 - Another new designer enjoyed the founder stories and did not share this concern (reported by I-04) [I-04]
 
 ### Unknowns and missing voices
 - I-02 thinks some uncertainty may come from being a new manager, not onboarding [I-02]
-- No remote employees in this profile`,
+- No remote employees in this persona`,
 journey: `## Journey — A remote new hire's first five to seven weeks
 Whose journey: Remote newcomers · I-01, I-03 (two accounts, shown separately)
 Begins: first day of orientation · Ends: the first moment the work "made sense"
@@ -339,7 +339,7 @@ Begins: first day of orientation · Ends: the first moment the work "made sense"
 };
 
 const BLANK = {
-profile: `## Profile — <descriptive label, never a person's name>
+profile: `## Persona — <descriptive label, never a person's name>
 Based on: <source IDs> · <role and context these sources share>
 
 ### Needs
@@ -363,7 +363,7 @@ Based on: <source IDs> · <role and context these sources share>
 ### Tensions and contradictions
 - <where accounts disagree> [source IDs]
 
-### Doesn't fit this profile
+### Doesn't fit this persona
 - <evidence that cuts against it> [source IDs]
 
 ### Unknowns and missing voices
@@ -407,7 +407,7 @@ function parseProfiles(src){
   for(const raw of src.split(/\r?\n/)){
     if(!raw.trim()) continue;
     const c=clean(raw);
-    if(/^profile\b/i.test(c) && !isBullet(raw)){ cur={label:titleAfter(raw)||c.replace(/^profile\s*\d*/i,'').trim()||'Untitled profile',basis:'',ids:[],s:{}}; out.push(cur); sect=null; continue; }
+    if(/^(profile|persona)\b/i.test(c) && !isBullet(raw)){ cur={label:titleAfter(raw)||c.replace(/^(profile|persona)\s*\d*/i,'').trim()||'Untitled persona',basis:'',ids:[],s:{}}; out.push(cur); sect=null; continue; }
     if(/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(raw)){ cur=null; sect=null; continue; }
     if(!cur) continue;
     if(/^based on\b/i.test(c)){ const v=c.replace(/^based on\s*:?\s*/i,''); const [a,...b]=v.split(/\s+·\s+|\s+\|\s+/); cur.ids=a.split(/\s*,\s*/).filter(Boolean); cur.basis=b.join(' · '); continue; }
@@ -467,11 +467,11 @@ const STAMP = `<span class="stamp">Draft · needs human review</span>`;
 
 function renderProfiles(src){
   const ps=parseProfiles(src);
-  if(!ps.length) return {html:'',msg:'No profiles found yet. Start each profile with a line like "## Profile — <label>".'};
+  if(!ps.length) return {html:'',msg:'No personas found yet. Start each persona with a line like "## Persona — <label>".'};
   const html=ps.map(p=>{
     const box=(key,title,cls,span)=>`<div class="box ${cls} ${span}"><h3>${title}</h3>${list(p.s[key])}</div>`;
     return `<article class="canvas">
-      <div class="canvas-head"><div><p class="eyebrow">Evidence-based participant profile</p><h2>${esc(p.label)}</h2>
+      <div class="canvas-head"><div><p class="eyebrow">Evidence-based persona</p><h2>${esc(p.label)}</h2>
       <div class="basis">${p.ids.length?`<span>Based on</span> ${chips(p.ids)}`:'<span class="empty">Sources not listed</span>'}${p.basis?`<span>· ${esc(p.basis)}</span>`:''}</div></div>${STAMP}</div>
       <div class="pgrid">
         ${box('needs','Needs','lead','span3 wide')}
@@ -481,11 +481,11 @@ function renderProfiles(src){
         ${box('drivers','Drivers','driver','span3')}
         ${box('inhib','Inhibitors','inhib','span3')}
         ${box('tension','Tensions and contradictions','quiet','span2')}
-        ${box('nofit',"Doesn't fit this profile",'quiet','span2')}
+        ${box('nofit',"Doesn't fit this persona",'quiet','span2')}
         ${box('unknown','Unknowns and missing voices','quiet','span2 wide')}
       </div>${REVIEW}</article>`;
   }).join('');
-  return {html,msg:`${ps.length} profile${ps.length>1?'s':''} built.`};
+  return {html,msg:`${ps.length} persona${ps.length>1?'s':''} built.`};
 }
 
 function feelSvg(j,col){

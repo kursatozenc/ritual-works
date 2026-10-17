@@ -137,24 +137,23 @@ offer one alternative artifact and stop after human review:
   sequence. Show triggers, actions, reported experience, touchpoints, frictions,
   workarounds, bright spots, source moments, unknowns and branching paths. Do
   not invent a future-state journey.
-- **Evidence-based participant profiles:** use when the material supports
+- **Evidence-based personas:** use when the material supports
   recurring behavioral or contextual differences. Use descriptive labels,
   source moments, behaviors, reported goals, constraints, contradictions,
   exceptions and unknowns. Do not invent persona names, biographies, stock-photo
   identities, personality traits or unsupported demographics.
 
-Canvas format for profiles and journeys:
+Canvas format for personas and journeys:
 
-Write participant profiles and journey maps in this format so the team can paste
-them into the Research Canvas
+Write personas and journey maps in this format so the team can paste them into the Research Canvas
 (https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
 its source IDs in square brackets, mark interpretations “(inferred)” and write
 “unknown” instead of filling a gap.
 
-Profiles: start each with `## Profile — <descriptive label>` and `Based on:
+Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. Then use these headings in order:
 Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
-Tensions and contradictions, Doesn't fit this profile, and Unknowns and missing
+Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
 voices. Never add a name, photo, age, location or other demographic detail.
 
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·

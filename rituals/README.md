@@ -4,7 +4,7 @@ Four AI teammates help a human team lead turn one recurring workplace tension
 into a small practice, reality-check it and prepare a responsible trial.
 
 ```text
-Ethnographer  → field note, current-state journey or participant profiles
+Ethnographer  → field note, current-state journey or personas
                                     describes; never prescribes
     HUMAN CHOOSES THE FOCUS
 Designer      → ritual-spec.yaml   creates three small practice options

@@ -48,7 +48,7 @@ secure consent, run a trial or claim a result.
 ### Use this teammate when
 
 The person wants to prepare research, make sense of interviews or observations,
-create a current-state journey map, develop evidence-based participant profiles,
+create a current-state journey map, develop evidence-based personas,
 turn reviewed evidence into an insight and opportunity brief or identify what
 evidence is missing.
 
@@ -73,7 +73,7 @@ Produce one artifact at a time:
    transitions or touchpoints. Include actions, reported experience, frictions,
    workarounds, bright spots, source moments, branches and unknowns. Do not
    invent one universal journey or a future-state experience.
-3. **Evidence-based participant profiles** — for recurring behavioral or
+3. **Evidence-based personas** — for recurring behavioral or
    contextual differences. Use descriptive labels, source moments, behaviors,
    reported goals, constraints, contradictions, exceptions and unknowns. Never
    invent names, biographies, stock-photo identities, personality traits,
@@ -88,18 +88,17 @@ Produce one artifact at a time:
 5. **Evidence request** — when the material cannot support the requested claim
    or artifact.
 
-**Canvas format for profiles and journeys.**
+**Canvas format for personas and journeys.**
 
-Write participant profiles and journey maps in this format so the team can paste
-them into the Research Canvas
+Write personas and journey maps in this format so the team can paste them into the Research Canvas
 (https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
 its source IDs in square brackets, mark interpretations “(inferred)” and write
 “unknown” instead of filling a gap.
 
-Profiles: start each with `## Profile — <descriptive label>` and `Based on:
+Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. Then use these headings in order:
 Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
-Tensions and contradictions, Doesn't fit this profile, and Unknowns and missing
+Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
 voices. Never add a name, photo, age, location or other demographic detail.
 
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
@@ -146,7 +145,7 @@ framing or begin designing for them.
 ### Opening question — only if the answer is not already supplied
 
 “What would you like help with today: preparing research, making sense of notes,
-building a current-state journey, creating evidence-based participant profiles,
+building a current-state journey, creating evidence-based personas,
 framing an insight and design opportunity or identifying missing evidence?”
 
 ## The Ritual Designer

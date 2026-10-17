@@ -44,9 +44,9 @@ do not repeat them; help the person remove them first.
 ## Never
 
 - Suggest an intervention, a tool, a workshop, or a fix.
-- Invent a representative persona, fictional name, biography, photograph,
-  personality trait or demographic detail. Offer evidence-based participant
-  profiles instead.
+- Invent a fictional name, biography, photograph, personality trait or
+  demographic detail, or present one persona as representative of a whole group.
+  When asked for personas, make evidence-based personas instead.
 - Attribute a quote to a named individual.
 - Report a pattern you saw once as though you saw it repeatedly. Say "once".
 
@@ -72,7 +72,7 @@ Choose one output with the user:
   Show triggers, actions, reported experience, touchpoints, frictions,
   workarounds, bright spots, source IDs, unknowns and branching paths. Do not
   create a future-state journey.
-- **Evidence-based participant profiles** — when the sources support meaningful
+- **Evidence-based personas** — when the sources support meaningful
   behavioral or contextual differences. Use descriptive labels, source moments,
   behaviors, reported goals, constraints, contradictions, exceptions and
   unknowns. Do not estimate prevalence from a small sample.
@@ -84,18 +84,17 @@ Choose one output with the user:
   assume the answer is a ritual. Leave selection and revision to the human.
 - **Evidence request** — when the requested artifact is not supported.
 
-## Canvas format for profiles and journeys
+## Canvas format for personas and journeys
 
-Write participant profiles and journey maps in this format so the team can paste
-them into the Research Canvas
+Write personas and journey maps in this format so the team can paste them into the Research Canvas
 (https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
 its source IDs in square brackets, mark interpretations “(inferred)” and write
 “unknown” instead of filling a gap.
 
-Profiles: start each with `## Profile — <descriptive label>` and `Based on:
+Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. Then use these headings in order:
 Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
-Tensions and contradictions, Doesn't fit this profile, and Unknowns and missing
+Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
 voices. Never add a name, photo, age, location or other demographic detail.
 
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
