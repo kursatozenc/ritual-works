@@ -109,8 +109,10 @@ Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
 <source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
 N — <name>` block per stage, with lines that start Trigger:, Action:,
 Touchpoint:, Emotion:, Pain point:, Bright spot:, Opportunity (inferred): and
-Unknown:. Write one Emotion line per source: a score from +2 to -2 with the
-participant's words, or “not reported”. Never average different people into one
+Unknown:. Write one Emotion line per source for every stage, as a score from +2
+to -2. If the participant described the emotion, add their words. If not, give
+your best reading of that touchpoint, marked “(inferred)”, with the cue you read
+it from, so the team can adjust it. Never average different people into one
 emotion. Write each opportunity as a solution-neutral question, never as a
 ritual. End with `### Branches and exceptions`.
 
