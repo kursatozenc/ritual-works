@@ -57,7 +57,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 
 /* Canvas sheet: Swiss modern. A white sheet in every theme, 12-column grid, one grotesk,
    heavy rules, flat color fields. Blue = needs and what helps; red = what hurts; gray = unknown. */
-.sw{--fd:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;--fb:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;--k:#111110;--k2:#4B4B47;--k3:#8E8D87;--hair:#DAD9D3;--paper:#FFFFFF;--tint:#F2F1EC;--blue:#1E43D1;--red:#E3312B;--yel:#F2B500;
+.sw{--fd:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;--fb:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;--k:#111110;--k2:#4B4B47;--k3:#8E8D87;--hair:#DAD9D3;--paper:#FFFFFF;--tint:#F2F1EC;--blue:#1E43D1;--red:#E3312B;--yel:#F2B500;--pos:#1F9D55;--neu:#E0A800;--neg:#E3312B;
   color-scheme:light;background:var(--paper);color:var(--k);font-family:var(--fb);font-size:15px;line-height:1.42;
   box-shadow:12px 14px 0 var(--sunk);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .sw *{min-width:0}
@@ -163,7 +163,8 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .note.unknown{color:var(--k3);font-style:italic}
 .feel{grid-column:2 / -1;border-top:1px solid var(--hair);padding:8px 0}
 .feel svg{display:block;overflow:visible}
-.feel text{font:500 10px var(--fd);fill:var(--k3)}
+.feel text{font:500 10px var(--fl,var(--fd));fill:var(--k3)}
+.feel text.call{font:700 10.5px var(--fl,var(--fd));letter-spacing:.02em}
 .branches{margin:18px 32px 24px;padding-top:10px;border-top:2px solid var(--k)}
 .branches ul{gap:6px}
 .branches li{padding-left:16px;position:relative}
@@ -210,7 +211,8 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 [data-style=jp] .note.bright{background:none;color:var(--blue);padding:0 0 0 10px;border-left:2px solid var(--blue)}
 [data-style=jp] .note.pain .id.warn{color:var(--red);border-color:var(--red)}
 [data-style=jp] .note.opp{border:1px solid var(--k3)}
-[data-style=jp] .feel path{stroke-width:1.6}
+[data-style=jp] .sw{--pos:#5E7F55;--neu:#B9944A;--neg:#B8352B}
+[data-style=jp] .feel path{stroke-width:2}
 
 /* Editorial: a magazine spread, serif display, pull quote, oxblood and deep green */
 [data-style=ed] .sw{--fd:"DM Serif Display",Georgia,serif;--fb:"Source Serif 4",Georgia,serif;--fl:"Libre Franklin","Helvetica Neue",sans-serif;--k:#161514;--k2:#45423D;--k3:#8A867E;--hair:#DDD8CF;--paper:#FFFFFF;--tint:#F4F1EA;--blue:#1F4D3A;--red:#9E2B25;--yel:#C48A2C;font-size:15.5px}
@@ -250,6 +252,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 [data-style=ed] .note.pain{background:none;color:var(--red);padding:0 0 0 10px;border-left:3px solid var(--red)}
 [data-style=ed] .note.bright{background:none;color:var(--blue);padding:0 0 0 10px;border-left:3px solid var(--blue)}
 [data-style=ed] .note.pain .id.warn{color:var(--red);border-color:var(--red)}
+[data-style=ed] .sw{--pos:#1F4D3A;--neu:#C48A2C;--neg:#9E2B25}
 [data-style=ed] .note.opp{border:1px solid var(--k);font-style:italic}
 
 /* Flat vector: rounded shapes, bright flat color, friendly geometric type */
@@ -282,7 +285,8 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 [data-style=fv] .note.touch::before{border-radius:50%}
 [data-style=fv] .branches{border-top:0;background:var(--tint);padding:16px 18px;border-radius:18px}
 [data-style=fv] .branches li::before{border-radius:50%}
-[data-style=fv] .feel path{stroke-width:4.5;stroke-linecap:round}
+[data-style=fv] .sw{--pos:#2EC4B6;--neu:#FFC93C;--neg:#FF6B5B}
+[data-style=fv] .feel path{stroke-width:5;stroke-linecap:round}
 footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
 [hidden]{display:none!important}
 
@@ -801,32 +805,54 @@ function renderProfiles(src){
 }
 
 function feelSvg(j,col){
-  const n=j.stages.length, H=160, top=18, bot=H-34, y=s=>top+(2-s)*(bot-top)/4, x=i=>i*col+col/2;
+  const n=j.stages.length, H=230, top=34, bot=H-44, y=s=>top+(2-s)*(bot-top)/4;
   const sources=[...new Set(j.stages.flatMap(s=>s.feel.map(f=>f.ids[0]||'?')))];
+  const single=sources.length===1;
   const colors=['var(--k)','var(--blue)','var(--yel)','var(--k3)'];
   const color=id=>colors[sources.indexOf(id)%colors.length];
+  const mood=v=>v>0?'var(--pos)':v<0?'var(--neg)':'var(--neu)';
   let g='';
-  for(const v of [2,1,0,-1,-2]) g+=`<line x1="0" x2="${n*col}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'var(--k)':'var(--hair)'}" stroke-width="${v===0?1.5:1}"/>`;
-  g+=`<text x="2" y="${y(2)-5}">+2</text><text x="2" y="${y(-2)+13}">−2</text>`;
-  const pos={};
-  j.stages.forEach((s,i)=>{ const rep=s.feel.filter(f=>f.score!==null); rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; (pos[id]=pos[id]||{})[i]={p:[x(i)+(k-(rep.length-1)/2)*18,y(f.score)],inf:f.inf}; }); });
+  // Valence gradient for a single person's line: green above neutral, red below.
+  if(single) g+=`<defs><linearGradient id="valence" gradientUnits="userSpaceOnUse" x1="0" y1="${y(2)}" x2="0" y2="${y(-2)}"><stop offset="0" stop-color="var(--pos)"/><stop offset=".42" stop-color="var(--pos)"/><stop offset=".5" stop-color="var(--neu)"/><stop offset=".58" stop-color="var(--neg)"/><stop offset="1" stop-color="var(--neg)"/></linearGradient></defs>`;
+  for(const v of [2,1,0,-1,-2]) g+=`<line x1="0" x2="${n*col}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'var(--k3)':'var(--hair)'}" stroke-width="1" ${v===0?'stroke-dasharray="2 4"':''}/>`;
+  for(const v of [2,1,0,-1,-2]) g+=`<text x="2" y="${y(v)-4}">${v>0?'+'+v:v<0?'−'+(-v):'0'}</text>`;
+  // Points: every scored line becomes a point, spread across its stage in the order written,
+  // so a stage with several touchpoints gets several points.
+  const pts=[];
+  j.stages.forEach((s,i)=>{
+    const scored=s.feel.filter(f=>f.score!==null);
+    scored.forEach((f,k)=>pts.push({id:f.ids[0]||'?',i,cx:i*col+col*(k+1)/(scored.length+1),cy:y(f.score),f}));
+  });
   for(const id of sources){
-    let prev=null;
-    j.stages.forEach((s,i)=>{
-      const cur=pos[id]&&pos[id][i];
-      if(cur&&prev){ const [x0,y0]=prev.p,[x1,y1]=cur.p,m=(x1-x0)/2, dash=prev.inf||cur.inf;
-        g+=`<path d="M${x0} ${y0} C${x0+m} ${y0} ${x1-m} ${y1} ${x1} ${y1}" fill="none" stroke="${color(id)}" stroke-width="${dash?2.5:3.5}" stroke-linecap="round"${dash?' stroke-dasharray="2 7"':''}/>`; }
-      prev=cur||null;
-    });
+    const mine=pts.filter(p=>p.id===id);
+    for(let k=1;k<mine.length;k++){
+      const a=mine[k-1],b=mine[k]; if(b.i-a.i>1) continue; // no line across a stage this person was not in
+      const m=(b.cx-a.cx)/2, dash=a.f.inf||b.f.inf;
+      g+=`<path d="M${a.cx} ${a.cy} C${a.cx+m} ${a.cy} ${b.cx-m} ${b.cy} ${b.cx} ${b.cy}" fill="none" stroke="${single?'url(#valence)':color(id)}" stroke-width="${dash?3:4}" stroke-linecap="round"${dash?' stroke-dasharray="1 8"':''}/>`;
+    }
+  }
+  // Pit and peak callouts.
+  const scored=pts.map(p=>p.f.score);
+  const lo=Math.min(...scored), hi=Math.max(...scored);
+  const pit=lo<=-1?pts.find(p=>p.f.score===lo):null, peak=hi>=1?pts.find(p=>p.f.score===hi):null;
+  const cx=x=>Math.min(Math.max(x,110),n*col-110);
+  const short=t=>{t=t.replace(/^["“]|["”]$/g,''); return t.length>34?t.slice(0,32).trim()+'…':t;};
+  if(pit) g+=`<circle cx="${pit.cx}" cy="${pit.cy}" r="21" fill="none" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="3 3"/><text class="call" x="${cx(pit.cx)}" y="${pit.cy+38}" text-anchor="middle" style="fill:var(--neg)">Pit point${pit.f.text?' · '+esc(short(pit.f.text)):''}</text>`;
+  if(peak) g+=`<text class="call" x="${cx(peak.cx)}" y="${peak.cy-20}" text-anchor="middle" style="fill:var(--pos)">High point${peak.f.text?' · '+esc(short(peak.f.text)):''}</text>`;
+  // Faces.
+  for(const p of pts){
+    const v=p.f.score, c=single?mood(v):color(p.id), r=11;
+    const mouth=v===0?`M${p.cx-4.5} ${p.cy+4}h9`:`M${p.cx-5} ${p.cy+3.2} Q${p.cx} ${p.cy+3.2+v*2.6} ${p.cx+5} ${p.cy+3.2}`;
+    g+=`<g class="face"><title>${esc(p.id)}${p.f.inf?', team reading':''}: ${v>0?'+'+v:v} ${esc(p.f.text)}</title>
+      <circle cx="${p.cx}" cy="${p.cy}" r="${r}" fill="${p.f.inf?'var(--paper)':c}" stroke="${c}" stroke-width="2"${p.f.inf?' stroke-dasharray="3 2.4"':''}/>
+      <circle cx="${p.cx-3.6}" cy="${p.cy-2.6}" r="1.5" fill="${p.f.inf?c:'var(--paper)'}"/><circle cx="${p.cx+3.6}" cy="${p.cy-2.6}" r="1.5" fill="${p.f.inf?c:'var(--paper)'}"/>
+      <path d="${mouth}" fill="none" stroke="${p.f.inf?c:'var(--paper)'}" stroke-width="1.8" stroke-linecap="round"/></g>`;
   }
   j.stages.forEach((s,i)=>{
-    const rep=s.feel.filter(f=>f.score!==null), nr=s.feel.filter(f=>f.score===null);
-    rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; const cx=x(i)+(k-(rep.length-1)/2)*18;
-      g+=f.inf?`<circle cx="${cx}" cy="${y(f.score)}" r="6" fill="var(--paper)" stroke="${color(id)}" stroke-width="2.5"><title>${esc(id)}, team reading: ${esc(f.text)}</title></circle>`
-              :`<circle cx="${cx}" cy="${y(f.score)}" r="7" fill="${color(id)}" stroke="var(--paper)" stroke-width="2.5"><title>${esc(id)}: ${esc(f.text)}</title></circle>`; });
-    if(nr.length || !rep.length) g+=`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${nr.length?'not mapped · '+esc(nr.map(f=>f.ids.join(',')).join(' ')):'—'}</text>`;
+    const nr=s.feel.filter(f=>f.score===null);
+    if(nr.length) g+=`<text x="${i*col+col/2}" y="${H-6}" text-anchor="middle">not mapped · ${esc(nr.map(f=>f.ids.join(',')).join(' '))}</text>`;
   });
-  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Emotions by stage, one curve per source. Solid points were reported; hollow points are the team’s reading.">${g}</svg>`, sources, color};
+  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Emotions by touchpoint from +2 to −2${single?'':', one line per person'}. Solid faces were reported; dashed faces are the team’s reading.">${g}</svg>`, sources, color, single};
 }
 
 function renderJourney(src){
@@ -853,13 +879,13 @@ function renderJourney(src){
         ${STAMP}
       </div>
     </header>
-    ${f.sources.length?`<div class="sw-legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span><svg width="30" height="10" style="vertical-align:-1px"><line x1="2" y1="5" x2="18" y2="5" stroke="var(--k)" stroke-width="3"/><circle cx="24" cy="5" r="4" fill="var(--k)"/></svg> reported</span><span><svg width="30" height="10" style="vertical-align:-1px"><line x1="2" y1="5" x2="18" y2="5" stroke="var(--k)" stroke-width="2" stroke-dasharray="2 4" stroke-linecap="round"/><circle cx="24" cy="5" r="3.5" fill="var(--paper)" stroke="var(--k)" stroke-width="2"/></svg> team’s reading</span></div>`:''}
+    ${f.sources.length?`<div class="sw-legend">${f.single?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading</span></div>`:''}
     <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
       <div class="lane corner"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
       ${row('Trigger','','trigger','trigger')}
       ${row('Actions','what people did','action','action')}
       ${row('Touchpoints','','touch','touch')}
-      ${lane('Emotions','one curve per person')}<div class="feel">${f.svg}</div>
+      ${lane('Emotions',f.single?'one point per touchpoint':'one curve per person')}<div class="feel">${f.svg}</div>
       ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&!x.inf))?lane('In their words','reported')+quotes:''}
       ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&x.inf))?lane('Our reading','inferred · adjust it')+readings:''}
       ${row('Pain points','','pain','pain')}

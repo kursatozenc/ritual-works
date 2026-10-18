@@ -16,10 +16,12 @@ Begins: <moment> · Ends: <moment>
 
 Write the stages in canvas format so the map can be pasted into the Research
 Canvas (`docs/canvas.html`). End every line with source IDs in square brackets.
-Write one Emotion line per source for every stage, as a score from +2 to -2. If
-the participant described the emotion, add their words. If not, give your best
-reading of that touchpoint, marked “(inferred)”, with the cue you read it from,
-so the team can adjust it. Never average different people into one emotion. Write opportunities as solution-neutral questions.
+Write one Emotion line per source for every touchpoint, in the order they
+happen, so a stage can hold several; give every stage at least one. Score each
+from +2 to -2. If the participant described the emotion, add their words. If
+not, give your best reading of that touchpoint, marked “(inferred)”, with the
+cue you read it from, so the team can adjust it. Never average different people
+into one emotion. Write opportunities as solution-neutral questions.
 
 ### Stage 1 — <stage name>
 - Trigger: <what starts this stage> [source IDs]
