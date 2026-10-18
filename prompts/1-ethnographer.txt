@@ -101,9 +101,10 @@ Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. If the sources support them, add `###
 In their words` (one to three verbatim quotes) and `### Defining moment` (one
 real scene from the notes, two sentences or fewer). Then use these headings in
-order: Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
-Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
-voices. Never add a name, photo, age, location or other demographic detail.
+order: Needs, Goals, Day in the life (only what the notes show people actually
+do, never an invented schedule), Pain points, Drivers, Inhibitors, Tensions and
+contradictions, Doesn't fit this persona, and Unknowns and missing voices. Never
+add a name, photo, age, location or other demographic detail.
 
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
 <source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage

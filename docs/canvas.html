@@ -326,7 +326,7 @@ Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 - Neither source stated their goals directly [unknown]
 - Understand how work really gets done well enough to make a good call (inferred) [I-01, I-03]
 
-### Work routine and habits
+### Day in the life
 - Worked through 23 onboarding links in the first weeks [I-01]
 - Follows informal interpretation in chat after their workday ends [I-03]
 - Built a personal acronym glossary and shared it with another new hire [I-03]
@@ -372,7 +372,7 @@ Based on: I-02, I-04 · hybrid, three to four months in
 ### Goals
 - unknown
 
-### Work routine and habits
+### Day in the life
 - Asks a long-tenured colleague how a proposed decision is likely to be received [I-02]
 - Used the customer-research archive to understand an awkward workflow [I-04]
 
@@ -464,8 +464,8 @@ Based on: <source IDs> · <role and context these sources share>
 ### Goals
 - <goal, or "unknown"> [source IDs]
 
-### Work routine and habits
-- <what people do> [source IDs]
+### Day in the life
+- <what the notes show they actually do> [source IDs]
 
 ### Pain points
 - <difficulty, in participants' words where possible> [source IDs]
@@ -518,7 +518,7 @@ const isCont = s => /^\s{2,}\S/.test(s) && !isBullet(s);
 const rejoin = it => it.text+(it.inferred?' (inferred)':'')+(it.ids.length?' ['+it.ids.join(', ')+']':'');
 const titleAfter = s => { const m=clean(s).match(/^[^—–:-]*?(?:\s[—–-]\s|:\s|—|–)(.+)$/); return m?m[1].trim():''; };
 
-const PSECT=[["quotes",/^in (their|her|his) (own )?words/i],["moment",/^(a |the )?(defining|key) moment/i],["needs",/^needs?\b/i],["goals",/^(wants|goals?)\b/i],["routine",/^(work )?(routine|habits)/i],["pain",/^pain/i],["drivers",/^drivers?\b/i],["inhib",/^inhibitors?\b/i],["tension",/^tensions?/i],["nofit",/^(doesn.t|does not|what does not|evidence that does not) fit/i],["unknown",/^(unknowns?|missing)/i]];
+const PSECT=[["quotes",/^in (their|her|his) (own )?words/i],["moment",/^(a |the )?(defining|key) moment/i],["needs",/^needs?\b/i],["goals",/^(wants|goals?)\b/i],["routine",/^((work )?(routine|habits)|(a )?day in (the|their) (life|work))/i],["pain",/^pain/i],["drivers",/^drivers?\b/i],["inhib",/^inhibitors?\b/i],["tension",/^tensions?/i],["nofit",/^(doesn.t|does not|what does not|evidence that does not) fit/i],["unknown",/^(unknowns?|missing)/i]];
 function parseProfiles(src){
   const out=[]; let cur=null, sect=null;
   for(const raw of src.split(/\r?\n/)){
@@ -667,7 +667,7 @@ function renderProfiles(src){
         ${hero}
         ${sec('needs','What they need','big c7')}
         ${sec('goals','Goals','field ink c5')}
-        ${sec('routine','Work routine and habits','c7')}
+        ${sec('routine','Day in the life','c7')}
         ${sec('pain','Pain points','field red c5')}
         <div class="tug c12"><section class="pull"><h3 class="sw-label">Drivers · what helps <b>+</b></h3>${list(p.s.drivers)}</section><section class="push"><h3 class="sw-label"><b>−</b> Inhibitors · what gets in the way</h3>${list(p.s.inhib)}</section></div>
         ${sec('tension','Tensions and contradictions','quiet c4')}
