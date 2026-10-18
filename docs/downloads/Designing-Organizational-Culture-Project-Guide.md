@@ -351,12 +351,13 @@ Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
 <source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
 N — <name>` block per stage, with lines that start Trigger:, Action:,
 Touchpoint:, Emotion:, Pain point:, Bright spot:, Opportunity (inferred): and
-Unknown:. Write one Emotion line per source for every stage, as a score from +2
-to -2. If the participant described the emotion, add their words. If not, give
-your best reading of that touchpoint, marked “(inferred)”, with the cue you read
-it from, so the team can adjust it. Never average different people into one
-emotion. Write each opportunity as a solution-neutral question, never as a
-ritual. End with `### Branches and exceptions`.
+Unknown:. Write one Emotion line per source for every touchpoint, in the order
+they happen, so a stage can hold several; give every stage at least one. Score
+each from +2 to -2. If the participant described the emotion, add their words.
+If not, give your best reading of that touchpoint, marked “(inferred)”, with the
+cue you read it from, so the team can adjust it. Never average different people
+into one emotion. Write each opportunity as a solution-neutral question, never
+as a ritual. End with `### Branches and exceptions`.
 
 Teams often draft personas or journey maps elsewhere and bring them in as a
 document, slide, board export or photo. Convert their version into this format
