@@ -10,16 +10,34 @@
 - Whose experience is absent:
 - Important limits:
 
-## Journey
+## Journey — <experience and scope>
+Whose journey: <descriptive label> · <source IDs>
+Begins: <moment> · Ends: <moment>
 
-| Stage or moment | Trigger or transition | Observed actions and interactions | What participants reported | Touchpoints and artifacts | Friction, workaround or bright spot | Source IDs | Unknowns |
-|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |
+Write the stages in canvas format so the map can be pasted into the Research
+Canvas (`docs/canvas.html`). End every line with source IDs in square brackets.
+Write one Feeling line per source, as a score from +2 to -2 with the
+participant's words, or "not reported". Never average different people into
+one feeling. Write opportunities as solution-neutral questions.
 
-## Branches and variations
+### Stage 1 — <stage name>
+- Trigger: <what starts this stage> [source IDs]
+- Action: <what people did> [source IDs]
+- Touchpoint: <tool, space, message or person> [source IDs]
+- Feeling: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
+- Pain point: <difficulty, friction or workaround> [source IDs]
+- Bright spot: <what already works> [source IDs]
+- Opportunity (inferred): <solution-neutral question> [source IDs]
+- Unknown: <what the sources cannot tell us>
 
-<Show paths that differ by role, context or source. Do not merge conflicting
-accounts into one universal journey.>
+### Stage 2 — <stage name>
+
+<Repeat the same lines. Leave out a line only when nothing in the sources
+belongs there; write "unknown" for a gap that matters.>
+
+### Branches and exceptions
+- <path that differs by role, context or source; do not merge conflicting
+  accounts into one universal journey> [source IDs]
 
 ## Breakdowns and handoffs
 

@@ -28,6 +28,10 @@ It shows how to add the team to a ChatGPT or Claude Project once, then choose
 one teammate in each focused conversation. You do not need to install anything,
 understand Markdown or use a developer tool.
 
+When the Ethnographer drafts personas or a journey map, paste them
+into the **[Research Canvas](https://kursatozenc.github.io/ritual-works/canvas.html)**
+to get a clean, source-traced persona card or journey map to review and present.
+
 If you would rather see the journey before trying it, read
 **[a small fictional example](examples/README.md)**.
 

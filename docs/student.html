@@ -61,6 +61,23 @@ h1{max-width:10.5ch;margin:0;font-size:clamp(52px,7vw,84px);line-height:.91;lett
 .needs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.need{--mate:var(--eth);display:grid;grid-template-columns:58px 1fr;gap:18px;min-height:240px;padding:25px;background:var(--surface);border:1px solid var(--line-2);box-shadow:inset 0 3px var(--mate)}.need-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--mate);color:white;font:600 16px "IBM Plex Mono",monospace}.need h3{margin:2px 0 8px;font-size:27px;line-height:1.02}.need p{margin:0;color:var(--ink-2);font-size:13.5px}.need small{display:block;margin:14px 0 18px;color:var(--ink-3);font:500 9px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.need-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}.need-links a{color:var(--mate);font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:3px}.need.d{--mate:var(--design)}.need.c{--mate:var(--challenge)}.need.x{--mate:var(--experiment)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:steps}.step{counter-increment:steps;min-height:220px;padding:24px;background:var(--surface);border:1px solid var(--line-2)}.step::before{content:"0" counter(steps);display:block;margin-bottom:35px;color:var(--ink-3);font:500 10px "IBM Plex Mono",monospace;letter-spacing:.12em}.step h3{margin:0 0 9px;font-size:23px;line-height:1.06}.step p{margin:0;color:var(--ink-2);font-size:13.5px}
 .kit-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:36px}.kit-head h2{max-width:11ch}.kit-head>div>p{max-width:60ch;margin:0;color:var(--ink-2);font-size:17px}.kit-head .kit-safety{margin-top:14px;color:var(--ink-3);font:500 11px/1.55 "IBM Plex Mono",monospace;letter-spacing:.025em}.kit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.kit-card{display:flex;flex-direction:column;min-height:360px;padding:24px;background:var(--surface);border:1px solid var(--line-2)}.kit-card h3{margin:4px 0 11px;font-size:25px;line-height:1.04}.kit-card>p:not(.eyebrow){margin:0;color:var(--ink-2);font-size:13.5px}.kit-list{display:grid;gap:7px;margin-top:20px}.kit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:10px 11px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);font:13px "Public Sans",sans-serif;text-align:left;text-decoration:none;cursor:pointer}.kit-row:hover{border-color:var(--line-2)}.kit-row span:last-child{color:var(--ink-3);font:600 8.5px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase}.kit-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:23px}.kit-actions .button{min-height:44px;padding:10px 13px;font-size:9.5px}.kit-link{display:inline-flex;align-items:center;min-height:44px;padding:8px 2px;color:var(--ink-2);border-bottom:1px solid var(--line-2);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;text-decoration:none}.copy-status{min-height:20px;margin:16px 0 0;color:var(--experiment);font:600 10px "IBM Plex Mono",monospace;letter-spacing:.04em}
+.present-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);gap:14px;align-items:stretch}
+.path{display:flex;flex-direction:column;gap:12px;padding:25px;background:var(--surface);border:1px solid var(--line-2);box-shadow:inset 0 3px var(--eth)}
+.path h3{margin:0;font-size:27px;line-height:1.02}.path p{margin:0;color:var(--ink-2);font-size:13.5px}
+.path ol{margin:0;padding-left:1.15em;color:var(--ink-2);font-size:13.5px;display:grid;gap:5px}
+.path .button{margin-top:auto;align-self:flex-start}
+.preview{display:flex;flex-direction:column;gap:12px;padding:22px 22px 0;background:#fff;color:#111;border:1px solid var(--line-2);box-shadow:12px 14px 0 var(--sunk);text-decoration:none;overflow:hidden}
+.preview:hover{opacity:.92}
+.pv-kick{display:flex;align-items:center;gap:8px;font:700 9px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.pv-kick::before{content:"";width:12px;height:12px;background:#E3312B}
+.pv-title{margin:0;font:800 26px/.95 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;padding-bottom:12px;border-bottom:4px solid #111}
+.pv-quote{position:relative;margin:0;padding-left:34px;font:700 16px/1.15 "Bricolage Grotesque",sans-serif}
+.pv-quote::before{content:"“";position:absolute;left:0;top:-10px;font:800 52px/1 "Bricolage Grotesque",sans-serif;color:#E3312B}
+.pv-row{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:auto}
+.pv-row span{padding:10px 10px 14px;color:#fff;font:600 8.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.pv-row span:first-child{background:#1E43D1}.pv-row span:last-child{background:#E3312B}
+.preview small{display:block;padding:10px 0 14px;color:#4B4B47;font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:900px){.present-grid{grid-template-columns:1fr}}
 footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;color:var(--ink-3);font:500 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding:54px 0}.office{max-width:720px}.start-card{grid-template-columns:1fr}.start-choice{border-right:0;border-bottom:1px solid var(--line)}.starter-buttons{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.step{min-height:0}.step::before{margin-bottom:20px}}
 @media(max-width:720px){.needs{grid-template-columns:1fr}.section-head,.kit-head{grid-template-columns:1fr}.kit-grid{grid-template-columns:1fr}.kit-card{min-height:0}}
@@ -72,7 +89,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;paddin
 <div class="shell">
   <nav class="top" aria-label="Page navigation">
     <a class="brand" href="index.html">Ritual Works</a>
-    <div class="top-links"><a href="#choose">Meet the team</a><a href="#start">Set up</a></div>
+    <div class="top-links"><a href="#choose">Meet the team</a><a href="#start">Set up</a><a href="#present">Personas &amp; journeys</a></div>
   </nav>
 
   <header class="hero">
@@ -96,7 +113,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;paddin
   <section class="section" id="choose" aria-labelledby="choose-title">
     <div class="section-head"><h2 id="choose-title">What are you trying to do?</h2><p>Start with the question closest to your project team’s work. Use one teammate independently, then invite another perspective when the work is ready.</p></div>
     <div class="needs">
-      <article class="need e"><div class="need-icon">E</div><div><p class="eyebrow">Ethnographer</p><h3>Learn from lived experience</h3><p>Prepare interviews, organize evidence, trace patterns and turn reviewed research into insights, problem statements and How Might We questions.</p><small>Bring notes, transcripts or a research question</small><div class="need-links"><a href="interview.html">Optional interview worksheet →</a><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt" target="_blank" rel="noreferrer">Use without a Project</a></div></div></article>
+      <article class="need e"><div class="need-icon">E</div><div><p class="eyebrow">Ethnographer</p><h3>Learn from lived experience</h3><p>Prepare interviews, organize evidence, trace patterns and turn reviewed research into insights, problem statements and How Might We questions.</p><small>Bring notes, transcripts or a research question</small><div class="need-links"><a href="interview.html">Optional interview worksheet →</a><a href="canvas.html">Persona and journey canvas →</a><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/observer.txt" target="_blank" rel="noreferrer">Use without a Project</a></div></div></article>
       <article class="need d"><div class="need-icon">D</div><div><p class="eyebrow">Ritual Designer</p><h3>Develop possible practices</h3><p>Use your team’s selected insight and opportunity to develop several participatory practices when a repeated practice is the right response.</p><small>Bring a reviewed insight, cultural goal and selected How Might We question</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/designer.txt" target="_blank" rel="noreferrer">Use without a Project →</a></div></div></article>
       <article class="need c"><div class="need-icon">C</div><div><p class="eyebrow">Challenger</p><h3>Pressure-test an idea</h3><p>Examine a proposed practice for power, exclusion, burden, coercion, unintended signals and practical constraints.</p><small>Bring one specific idea and its intended participants</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/challenger.txt" target="_blank" rel="noreferrer">Use without a Project →</a></div></div></article>
       <article class="need x"><div class="need-icon">X</div><div><p class="eyebrow">Experimenter</p><h3>Prepare a small trial</h3><p>Turn a selected and reviewed practice into a bounded pilot with an owner, learning signals and a review date.</p><small>Bring an idea that has passed a reality check</small><div class="need-links"><a href="https://raw.githubusercontent.com/kursatozenc/ritual-works/main/prompts/teammates/experimenter.txt" target="_blank" rel="noreferrer">Use without a Project →</a></div></div></article>
@@ -137,6 +154,32 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;paddin
     <details class="what-copy"><summary>What will the AI know about this class?</summary><p>It will know the course’s discovery, design and delivery journey; the focus on human flourishing; the relationship between visible and invisible cultural forces; and the difference between rituals, policies, stories, artifacts and structural responses. It will still need your partner brief, evidence and human judgment.</p></details>
     <details class="what-copy"><summary>How can we use this as a student team?</summary><p>One person can host the AI conversation while the group decides what to share and reviews the response together. Or each student can add the same materials to their own account. Agree on one active teammate, share the relevant output and make the human decision together before moving on.</p></details>
     <details class="what-copy"><summary>We do not want to create a Project yet</summary><p>That is completely fine. Copy one complete teammate below and paste it into an ordinary ChatGPT or Claude conversation. It will work for that conversation without any setup.</p></details>
+  </section>
+
+  <section class="section" id="present" aria-labelledby="present-title">
+    <div class="section-head"><h2 id="present-title">Make your personas and journey map presentable.</h2><p>Work on them wherever your team works: Miro, Figma, slides or a wall of sticky notes. When you are ready to present, the Ethnographer puts your version into canvas format and checks it against your notes. The Research Canvas turns that text into a printable persona card or journey map.</p></div>
+    <div class="present-grid starter-strip" style="margin-top:0;padding:0;background:none;border:0">
+      <article class="path">
+        <p class="eyebrow">Bring your own draft</p>
+        <h3>We already made ours</h3>
+        <ol><li>Upload your draft (a doc, a slide or board export, or a photo of the wall) with your anonymized notes.</li><li>The Ethnographer keeps your wording, adds source IDs and marks anything your notes do not support “no source yet”.</li><li>Paste its reply into the canvas.</li></ol>
+        <button class="button copy-prompt" data-copy-text="Work with our project team as the Ethnographer. We made our own personas or journey map outside this chat and attached it with our anonymized interview notes. Convert our version into Research Canvas format. Keep our wording and order, add source IDs where our notes support an item, and mark anything the notes do not support [no source yet]. Do not rewrite our claims or add new ones, but add our participants' own words from the notes. Then ask us your most important questions." data-success="Prompt copied. Paste it in your Project chat and attach your draft and notes.">Copy the prompt</button>
+      </article>
+      <article class="path">
+        <p class="eyebrow">Start from your notes</p>
+        <h3>Draft it with the Ethnographer</h3>
+        <ol><li>Number your interviews I-01, I-02 and so on, and remove names.</li><li>Paste the notes and ask for personas, then a journey map.</li><li>Correct the drafts together, then paste them into the canvas.</li></ol>
+        <button class="button copy-prompt" data-copy-text="Work with our project team as the Ethnographer. Here are our anonymized interview notes, numbered I-01, I-02 and so on. Make evidence-based personas in Research Canvas format. After we review them, we will ask for a journey map." data-success="Prompt copied. Paste it in your Project chat with your notes.">Copy the prompt</button>
+      </article>
+      <a class="preview" href="canvas.html#profile" aria-label="Open the Research Canvas">
+        <span class="pv-kick">Evidence-based persona</span>
+        <p class="pv-title">Remote newcomer learning norms after hours</p>
+        <p class="pv-quote">I can find the rule. I cannot tell which rule people actually follow.</p>
+        <span class="pv-row"><span>Defining moment</span><span>Pain points</span></span>
+        <small>Open the Research Canvas →</small>
+      </a>
+      <p class="starter-status" aria-live="polite" style="grid-column:1 / -1;margin:0"></p>
+    </div>
   </section>
 
   <section class="section team-kit" id="take-team" aria-labelledby="kit-title">
