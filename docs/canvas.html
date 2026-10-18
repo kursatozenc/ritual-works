@@ -116,6 +116,25 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .sw-review span{font:700 10px "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k2)}
 .sw-review i{display:block;height:1px;background:var(--k3)}
 
+/* Persona hero: a poster of the persona's world, built from what the notes mention */
+.ph-head .ph{grid-column:1 / span 4;grid-row:1 / span 3}
+.ph-head .sw-kicker,.ph-head .sw-title,.ph-head .sw-side{grid-column:5 / -1}
+.ph-head .sw-title{font-size:clamp(30px,3.9vw,54px)}
+.ph-head .sw-side{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end}
+.ph{display:flex;flex-direction:column;gap:8px}
+.ph-tiles{display:grid;grid-template-columns:1fr 1fr;gap:4px;aspect-ratio:1}
+.ph-tiles .t{position:relative;background:var(--bg);color:var(--fg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ph-tiles .t svg{width:50%;height:50%;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:miter}
+.ph-tiles .t span{position:absolute;left:9px;bottom:7px;font:700 9.5px/1 "Archivo",sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.ph-tiles .t b{font:800 clamp(44px,5vw,72px)/.8 "Archivo",sans-serif;letter-spacing:-.05em}
+.ph-tiles .t.circle::after{content:"";position:absolute;width:44%;aspect-ratio:1;border-radius:50%;background:var(--fg);opacity:.16;right:-10%;top:-10%}
+.ph-img{aspect-ratio:1;background:var(--tint);overflow:hidden}
+.ph-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ph-cap{margin:0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font:500 10px "Archivo",sans-serif;color:var(--k3);letter-spacing:.02em}
+.ph-btn{appearance:none;border:0;background:none;padding:0;color:var(--k);font:700 10px "Archivo",sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ph-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.sw-label .ic{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;vertical-align:-3px;margin-right:7px}
+
 /* Journey */
 .sw-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:14px 32px 0;font:500 11px "Archivo",sans-serif;color:var(--k2)}
 .sw-legend span{display:inline-flex;align-items:center;gap:7px}
@@ -155,6 +174,8 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
 @media(max-width:860px){
   .intro{grid-template-columns:1fr;padding-top:40px}
   .sw-title,.sw-side{grid-column:1 / -1}
+  .ph-head .ph{grid-column:1 / span 5;grid-row:auto}
+  .ph-head .sw-kicker,.ph-head .sw-title,.ph-head .sw-side{grid-column:1 / -1}
   .c6,.c8,.c4{grid-column:span 6}
   .c7,.c5{grid-column:1 / -1}
   .sw-body .c4.wide{grid-column:1 / -1}
@@ -166,6 +187,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .sw-head,.sw-body{padding-inline:16px;gap:16px}
   .sw-body{grid-template-columns:1fr}
   .c6,.c8,.c4{grid-column:1 / -1}
+  .ph-head .ph{grid-column:1 / -1;max-width:260px}
   .voice{padding-left:44px}.voice::before{font-size:100px;top:-18px}
   .tug{grid-template-columns:1fr;gap:16px}.tug::before{display:none}.tug .pull,.tug .push{grid-column:1;text-align:left}.tug .pull h3{justify-content:flex-start;flex-direction:row-reverse}
   .sw-review{padding-inline:16px}
@@ -185,6 +207,10 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .profiles{gap:0}
   .sw-head{padding:12px 18px 10px;gap:10px 18px;border-bottom-width:4px}
   .sw-title{font-size:26px}
+  .ph-head .sw-title{font-size:26px}
+  .ph-head .ph{grid-column:1 / span 3}
+  .ph-head .sw-kicker,.ph-head .sw-title,.ph-head .sw-side{grid-column:4 / -1}
+  .ph-tiles .t svg{stroke-width:2}
   .sw-side{font-size:10.5px;gap:6px}
   .sw-label{margin-bottom:6px;font-size:9.5px}
   .sw ul{gap:4px}
@@ -244,6 +270,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
       <summary><span>Ethnographer output · personas</span><span>Show or hide</span></summary>
       <div class="editor-body">
         <label class="hint" for="src-profile">Paste the Ethnographer's personas here, or edit the fictional Beacon Works example.</label>
+        <p class="hint">Each persona card shows their world as icons drawn from the notes. To use your own image instead, choose a sketch, the workspace or the tools people use, not a photo of a person. Images stay in this browser.</p>
         <textarea id="src-profile" spellcheck="false"></textarea>
         <div class="editor-actions">
           <button class="button" data-act="print">Print or save PDF</button>
@@ -548,6 +575,58 @@ function parseJourney(src){
   return j;
 }
 
+/* ---------- persona hero and icons ---------- */
+const ICON={
+ house:'<path d="M3 11 12 3l9 8M5 9v12h14V9M10 21v-6h4v6"/>',
+ building:'<path d="M4 21V3h10v18M14 9h6v12M2 21h20M7 7h4M7 11h4M7 15h4"/>',
+ laptop:'<path d="M5 5h14v10H5zM2 19h20"/>',
+ chat:'<path d="M4 4h16v11H10l-5 5v-5H4z"/>',
+ screen:'<path d="M3 4h18v11H3zM12 15v5M8 20h8"/>',
+ headset:'<path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v6H4zM20 14h-3v6h3z"/>',
+ doc:'<path d="M6 3h8l5 5v13H6zM14 3v5h5M9 13h7M9 17h7"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+ people:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-5 12-5 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5c3-.5 5 1.5 5 5.5"/>',
+ calendar:'<path d="M4 5h16v16H4zM4 10h16M8 3v4M16 3v4"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+ flag:'<path d="M5 21V4M5 4h13l-3 4 3 4H5"/>',
+ bolt:'<path d="M13 2 5 14h7l-1 8 8-12h-7z"/>',
+ question:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 17v.5"/>',
+ split:'<path d="M3 12h7l4-6h7M10 12l4 6h7"/>',
+ nofit:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/>'
+};
+const svg=(k,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
+const WORLD=[
+ ['house','Remote',/remote|from home|\bwfh\b/g],
+ ['building','Office',/in[- ]office|\boffice\b|campus|hybrid|on[- ]site/g],
+ ['chat','Chat',/chat|slack|message|thread|\bdms?\b/g],
+ ['screen','Meetings',/meeting|\bcrit\b|critique|review|demo|stand-?up|presentation|retro|orientation/g],
+ ['headset','Customers',/customer|client|renewal/g],
+ ['doc','Documents',/\blinks?\b|\bpages?\b|\bdocs?\b|document|checklist|\bdeck\b|glossary|archive|wiki|slides/g],
+ ['clock','Time',/time zone|hours|\blate\b|weekend|deadline|overrun|run over|monday/g],
+ ['people','People',/buddy|colleague|manager|senior|leader|mentor|veteran/g],
+ ['laptop','Tools',/\bcode\b|coding|engineer|software|laptop|figma|\btools?\b/g]
+];
+const hash=str=>{let h=0;for(const ch of str)h=(h*31+ch.charCodeAt(0))>>>0;return h;};
+const IMGS={};
+const imgKey=p=>'rw-img-'+hash(p.label);
+function getImg(p){ const k=imgKey(p); if(k in IMGS) return IMGS[k]; try{ const v=localStorage.getItem(k); if(v) IMGS[k]=v; return v; }catch(e){ return null; } }
+function personaHero(p,i){
+  const k=imgKey(p), img=getImg(p);
+  if(img) return `<div class="ph"><div class="ph-img"><img src="${img}" alt="Image added by the team for this persona"></div>
+    <p class="ph-cap"><span>Image added by the team</span><button class="ph-btn noprint" data-img-remove="${k}">Remove</button></p></div>`;
+  const text=[p.label,p.basis,...Object.values(p.s).flat().map(it=>it.text)].join(' ').toLowerCase();
+  const picks=WORLD.map(([ic,cap,re],o)=>({ic,cap,o,n:(text.match(re)||[]).length})).filter(w=>w.n).sort((a,b)=>b.n-a.n||a.o-b.o).slice(0,3);
+  const pal=[['var(--blue)','#fff'],['var(--red)','#fff'],['var(--k)','#fff'],['var(--yel)','var(--k)']];
+  const off=hash(p.label)%4;
+  const tiles=picks.map((w,j)=>({...w,c:pal[(off+j)%4]}));
+  tiles.splice(Math.min(hash(p.label+'n')%4,tiles.length),0,{num:true,c:pal[(off+3)%4]});
+  while(tiles.length<4) tiles.push({blank:true,c:pal[(off+tiles.length)%4]});
+  const ring=hash(p.label)%4;
+  const tileHtml=tiles.slice(0,4).map((t,j)=>`<div class="t${j===ring&&!t.num?' circle':''}" style="--bg:${t.c[0]};--fg:${t.c[1]}">${t.num?`<b>${String(i+1).padStart(2,'0')}</b>`:t.blank?'':`${svg(t.ic)}<span>${t.cap}</span>`}</div>`).join('');
+  return `<div class="ph"><div class="ph-tiles" role="img" aria-label="Their world, from the notes: ${picks.map(w=>w.cap).join(', ')||'not enough detail yet'}">${tileHtml}</div>
+    <p class="ph-cap"><span>Their world, from the notes</span><button class="ph-btn noprint" data-img="${k}">Use your own image</button></p></div>`;
+}
+
 /* ---------- rendering ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ids = a => a.length?a.map(x=>/no source/i.test(x)?`<span class="id warn">no source yet</span>`:'').join('')+(a.filter(x=>!/no source/i.test(x)).length?`<span class="id">${esc(a.filter(x=>!/no source/i.test(x)).join(', '))}</span>`:''):'';
@@ -561,7 +640,8 @@ function renderProfiles(src){
   const ps=parseProfiles(src);
   if(!ps.length) return {html:'',msg:'No personas found yet. Start each persona with a line like "## Persona — <label>".'};
   const html=ps.map((p,i)=>{
-    const sec=(key,title,cls)=>`<section class="sec ${cls}"><h3 class="sw-label">${title}</h3>${list(p.s[key])}</section>`;
+    const SI={needs:'target',goals:'flag',routine:'calendar',pain:'bolt',tension:'split',nofit:'nofit',unknown:'question'};
+    const sec=(key,title,cls)=>`<section class="sec ${cls}"><h3 class="sw-label">${SI[key]?svg(SI[key],'ic'):''}${title}</h3>${list(p.s[key])}</section>`;
     const isQ=t=>/^["“].+["”]$/.test(t.trim());
     let quotes=(p.s.quotes||[]).slice();
     if(!quotes.length){ const all=['pain','needs','drivers','inhib','routine','goals'].flatMap(k=>p.s[k]||[]); const q=all.find(it=>isQ(it.text)); if(q) quotes=[q]; }
@@ -571,7 +651,8 @@ function renderProfiles(src){
     const mom=moment?`<section class="moment ${quotes.length?'c5':'c12'}"><h3 class="sw-label">Defining moment</h3><p>${item(moment)}</p></section>`:'';
     const hero=voice+mom;
     return `<article class="sw">
-      <header class="sw-head">
+      <header class="sw-head ph-head">
+        ${personaHero(p,i)}
         <div class="sw-kicker">Evidence-based persona <em>${String(i+1).padStart(2,'0')} of ${String(ps.length).padStart(2,'0')}</em></div>
         <h2 class="sw-title">${esc(p.label)}</h2>
         <div class="sw-side">
@@ -699,6 +780,24 @@ function select(tab){
   store.set('rw-canvas-tab',tab.id); if(location.hash!=='#'+tab.id.replace('tab-','')) history.replaceState(null,'','#'+tab.id.replace('tab-',''));
 }
 tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];n.focus();select(n)}})});
+const fileIn=document.createElement('input'); fileIn.type='file'; fileIn.accept='image/*'; fileIn.hidden=true; document.body.appendChild(fileIn);
+let pendingKey=null;
+document.addEventListener('click',e=>{
+  const add=e.target.closest('[data-img]'), rm=e.target.closest('[data-img-remove]');
+  if(add){ pendingKey=add.dataset.img; fileIn.value=''; fileIn.click(); }
+  if(rm){ const k=rm.dataset.imgRemove; IMGS[k]=null; try{localStorage.removeItem(k)}catch(err){} build('profile'); }
+});
+fileIn.addEventListener('change',()=>{
+  const f=fileIn.files[0]; if(!f||!pendingKey) return;
+  const r=new FileReader(); r.onload=()=>{ const im=new Image(); im.onload=()=>{
+    const m=900, sc=Math.min(1,m/Math.max(im.width,im.height)), c=document.createElement('canvas');
+    c.width=Math.round(im.width*sc); c.height=Math.round(im.height*sc); c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+    const url=c.toDataURL('image/jpeg',.82); IMGS[pendingKey]=url;
+    let saved=true; try{localStorage.setItem(pendingKey,url)}catch(err){saved=false}
+    build('profile');
+    document.getElementById('status-profile').textContent=saved?'Image added. It is saved in this browser only.':'Image added for now. This browser could not save it, so add it again after a reload.';
+  }; im.src=r.result; }; r.readAsDataURL(f);
+});
 let rz; window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>build('journey'),200)});
 const fromHash=location.hash==='#journey'?'tab-journey':location.hash==='#profile'?'tab-profile':store.get('rw-canvas-tab');
 select(document.getElementById(fromHash)||tabs[0]);
