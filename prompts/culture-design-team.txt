@@ -145,10 +145,13 @@ offer one alternative artifact and stop after human review:
 
 Canvas format for personas and journeys:
 
-Write personas and journey maps in this format so the team can paste them into the Research Canvas
-(https://kursatozenc.github.io/ritual-works/canvas.html). End every item with
-its source IDs in square brackets, mark interpretations “(inferred)” and write
-“unknown” instead of filling a gap.
+Write personas and journey maps in this format so the team can paste them into
+the Research Canvas (https://kursatozenc.github.io/ritual-works/canvas.html).
+End every item with its source IDs in square brackets, mark interpretations
+“(inferred)” and write “unknown” instead of filling a gap. Refer to every
+participant and persona by role and as they/them; never carry over a gender or
+pronoun implied by a name. When the team asks for a change, give the full
+revised persona or journey again in this format so they can paste it.
 
 Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. Then use these headings in order:
