@@ -522,56 +522,44 @@ Based on: I-02, I-04 · hybrid, three to four months in
 ### Unknowns and missing voices
 - I-02 thinks some uncertainty may come from being a new manager, not onboarding [I-02]
 - No remote employees in this persona`,
-journey: `## Journey — A remote new hire's first five to seven weeks
-Whose journey: Remote newcomers · I-01, I-03 (two accounts, shown separately)
-Begins: first day of orientation · Ends: the first moment the work "made sense"
+journey: `## Journey — A remote engineer's first five weeks
+Whose journey: Remote product engineer · I-01 (one account)
+Begins: first day · Ends: the first production review
 
 ### Stage 1 — Orientation and links
 - Action: Worked through 23 onboarding links [I-01]
-- Touchpoint: Onboarding pages and checklist [I-01]
+- Touchpoint: Onboarding pages; checklist [I-01]
+- Emotion: 0 (inferred) — starting out with plenty of material [I-01]
 - Emotion: -1 — "I can find the rule. I cannot tell which rule people actually follow." [I-01]
-- Emotion: 0 (inferred) — no cue in the notes; a placeholder for the team to set [I-03]
 - Pain point: Pages disagreed about who approves a release [I-01]
 - Opportunity (inferred): How might newcomers see which rules teams follow in practice? [I-01]
-- Unknown: How I-03 experienced orientation
 
 ### Stage 2 — Buddy and first questions
 - Action: Asked the buddy questions and got quick answers [I-01]
-- Action: Asked a buddy from another function [I-03]
-- Touchpoint: Assigned buddy [I-01, I-03]
-- Emotion: 0 (inferred) — quick answers, but two cancelled sessions [I-01]
-- Emotion: +1 (inferred) — buddy described as helpful [I-03]
+- Touchpoint: Assigned buddy [I-01]
+- Emotion: +1 (inferred) — quick answers from the buddy [I-01]
+- Emotion: -1 (inferred) — buddy cancelled two sessions in a launch week [I-01]
 - Pain point: Buddy cancelled two sessions in a launch week [I-01]
-- Pain point: Buddy could not explain the team's tradeoffs [I-03]
-- Bright spot: Buddy described as helpful [I-03]
+- Bright spot: Buddy answered questions quickly [I-01]
 
-### Stage 3 — Learning norms after hours
-- Action: Followed informal interpretation in chat after the workday ended [I-03]
-- Action: Built and shared an acronym glossary [I-03]
-- Touchpoint: Team chat; personal glossary [I-03]
-- Emotion: -1 (inferred) — norms get settled after their workday is over [I-03]
-- Pain point: Works three hours ahead of headquarters [I-03]
-- Bright spot: Glossary shared with another new hire [I-03]
-- Unknown: Whether I-03's manager knows about the time-zone gap
-
-### Stage 4 — First real work
+### Stage 3 — First real work
 - Action: Shipped a small fix in week three [I-01]
-- Emotion: -1 (inferred) — learned afterwards the fix missed a customer promise [I-01]
-- Pain point: Learned afterward that a customer promise changed the expected solution [I-01]
+- Touchpoint: Code review; the release [I-01]
+- Emotion: +1 (inferred) — shipped a fix in week three [I-01]
+- Emotion: -2 (inferred) — learned afterwards a customer promise changed the right solution [I-01]
+- Pain point: Learned afterwards that a customer promise changed the expected solution [I-01]
 - Opportunity (inferred): How might newcomers learn the customer context behind a task before starting it? [I-01]
 
-### Stage 5 — When it starts to make sense
+### Stage 4 — When it starts to make sense
 - Action: Attended the first production review [I-01]
-- Action: Shadowed two customer calls [I-03]
-- Touchpoint: Production review; customer calls [I-01, I-03]
+- Touchpoint: Production review [I-01]
 - Emotion: +2 — the company "started to make sense" [I-01]
-- Emotion: +2 — "the clearest part of onboarding" [I-03]
-- Bright spot: Seeing real customer work clarified how things work [I-01, I-03]
+- Bright spot: Seeing real decisions made the written rules make sense (inferred) [I-01]
+- Unknown: Whether other remote hires reach this point, and when [I-01]
 
 ### Branches and exceptions
-- Some of I-03's learning happened outside their workday because of a three-hour time difference [I-03]
-- Stage order for I-03 is approximate; the notes give no dates [I-03]
-- Hybrid newcomers (I-02, I-04) describe a different path centered on decision rights; not merged here [I-02, I-04]`
+- I-03, a remote customer success manager, describes a different path that runs through after-hours chat; not merged here [I-03]
+- Hybrid newcomers (I-02, I-04) describe a path centered on decision rights [I-02, I-04]`
 };
 
 const BLANK = {
@@ -826,19 +814,19 @@ function feelSvg(j,col){
   for(const id of sources){
     const mine=pts.filter(p=>p.id===id);
     for(let k=1;k<mine.length;k++){
-      const a=mine[k-1],b=mine[k]; if(b.i-a.i>1) continue; // no line across a stage this person was not in
+      const a=mine[k-1],b=mine[k], skip=b.i-a.i>1; // skip: the person was not in the stage(s) between
       const m=(b.cx-a.cx)/2, dash=a.f.inf||b.f.inf;
-      g+=`<path d="M${a.cx} ${a.cy} C${a.cx+m} ${a.cy} ${b.cx-m} ${b.cy} ${b.cx} ${b.cy}" fill="none" stroke="${single?'url(#valence)':color(id)}" stroke-width="${dash?3:4}" stroke-linecap="round"${dash?' stroke-dasharray="1 8"':''}/>`;
+      g+=`<path d="M${a.cx} ${a.cy} C${a.cx+m} ${a.cy} ${b.cx-m} ${b.cy} ${b.cx} ${b.cy}" fill="none" stroke="${single?'url(#valence)':color(id)}" stroke-width="${skip?1.5:dash?3:4}" stroke-linecap="round"${skip?' stroke-dasharray="4 5" opacity=".55"':dash?' stroke-dasharray="9 6"':''}/>`;
     }
   }
   // Pit and peak callouts.
   const scored=pts.map(p=>p.f.score);
   const lo=Math.min(...scored), hi=Math.max(...scored);
   const pit=lo<=-1?pts.find(p=>p.f.score===lo):null, peak=hi>=1?pts.find(p=>p.f.score===hi):null;
-  const cx=x=>Math.min(Math.max(x,110),n*col-110);
-  const short=t=>{t=t.replace(/^["“]|["”]$/g,''); return t.length>34?t.slice(0,32).trim()+'…':t;};
-  if(pit) g+=`<circle cx="${pit.cx}" cy="${pit.cy}" r="21" fill="none" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="3 3"/><text class="call" x="${cx(pit.cx)}" y="${pit.cy+38}" text-anchor="middle" style="fill:var(--neg)">Pit point${pit.f.text?' · '+esc(short(pit.f.text)):''}</text>`;
-  if(peak) g+=`<text class="call" x="${cx(peak.cx)}" y="${peak.cy-20}" text-anchor="middle" style="fill:var(--pos)">High point${peak.f.text?' · '+esc(short(peak.f.text)):''}</text>`;
+  const place=(x,txt)=>{const w=txt.length*6.1; return Math.min(Math.max(x,w/2+30),n*col-w/2-6);};
+  const short=t=>{t=t.trim(); if(/^["“][^"“”]*["”]$/.test(t)) t=t.slice(1,-1); t=t.replace(/"([^"]*)"/g,'“$1”'); return t.length>40?t.slice(0,38).trim()+'…':t;};
+  if(pit){ const t='Pit point'+(pit.f.text?' · '+short(pit.f.text):''); g+=`<circle cx="${pit.cx}" cy="${pit.cy}" r="21" fill="none" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="3 3"/><text class="call" x="${place(pit.cx,t)}" y="${pit.cy+38}" text-anchor="middle" style="fill:var(--neg)">${esc(t)}</text>`; }
+  if(peak){ const t='High point'+(peak.f.text?' · '+short(peak.f.text):''); g+=`<text class="call" x="${place(peak.cx,t)}" y="${peak.cy-20}" text-anchor="middle" style="fill:var(--pos)">${esc(t)}</text>`; }
   // Faces.
   for(const p of pts){
     const v=p.f.score, c=single?mood(v):color(p.id), r=11;
@@ -879,7 +867,7 @@ function renderJourney(src){
         ${STAMP}
       </div>
     </header>
-    ${f.sources.length?`<div class="sw-legend">${f.single?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading</span></div>`:''}
+    ${f.sources.length?`<div class="sw-legend">${f.single?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading (dashed)</span></div>`:''}
     <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
       <div class="lane corner"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
       ${row('Trigger','','trigger','trigger')}
