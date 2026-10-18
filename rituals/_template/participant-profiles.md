@@ -21,6 +21,12 @@ add a name, photo, age, location or other demographic detail.
 ## Persona — <descriptive behavioral or contextual label>
 Based on: <source IDs> · <role and context these sources share>
 
+### In their words
+- "<verbatim quote>" [source ID]
+
+### Defining moment
+- <one real scene from the notes, two sentences or fewer> [source IDs]
+
 ### Needs
 - <need> [source IDs]
 

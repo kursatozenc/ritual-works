@@ -339,8 +339,10 @@ pronoun implied by a name. When the team asks for a change, give the full
 revised persona or journey again in this format so they can paste it.
 
 Personas: start each with `## Persona — <descriptive label>` and `Based on:
-<source IDs> · <shared role and context>`. Then use these headings in order:
-Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
+<source IDs> · <shared role and context>`. If the sources support them, add `###
+In their words` (one to three verbatim quotes) and `### Defining moment` (one
+real scene from the notes, two sentences or fewer). Then use these headings in
+order: Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
 Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
 voices. Never add a name, photo, age, location or other demographic detail.
 
@@ -352,6 +354,16 @@ Unknown:. Write one Feeling line per source: a score from +2 to -2 with the
 participant's words, or “not reported”. Never average different people into one
 feeling. Write each opportunity as a solution-neutral question, never as a
 ritual. End with `### Branches and exceptions`.
+
+Teams often draft personas or journey maps elsewhere and bring them in as a
+document, slide, board export or photo. Convert their version into this format
+without rewriting it: keep their wording and order, add source IDs where their
+notes support an item, and mark anything the notes do not support “[no source
+yet]” instead of deleting or changing it. Map their section names to the closest
+heading here. If their persona has a name, photo, age or other demographic
+detail, replace the name with a descriptive label, leave the rest out and say
+so. Add nothing new. After the block, list your questions about unsupported or
+unclear items.
 
 An insight is not a topic or summary. It connects a supported pattern to a
 meaningful human tension, need or opportunity. A problem statement names the

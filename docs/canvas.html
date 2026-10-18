@@ -89,7 +89,28 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .sec.mark li::before{font:800 20px/1 "Archivo",sans-serif}
 .sec.plus li::before{content:"+";color:var(--blue)}
 .sec.minus li::before{content:"−";color:var(--red)}
-.c6{grid-column:span 6}.c8{grid-column:span 8}.c4{grid-column:span 4}
+.c6{grid-column:span 6}.c8{grid-column:span 8}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:1 / -1}
+.voice{position:relative;padding:4px 0 6px 74px;align-self:start}
+.voice::before{content:"“";position:absolute;left:-6px;top:-30px;font:800 150px/1 "Archivo",sans-serif;color:var(--red)}
+.voice blockquote{margin:0;font:700 clamp(23px,2.5vw,34px)/1.12 "Archivo",sans-serif;letter-spacing:-.022em;text-wrap:balance}
+.voice blockquote .id{font-size:11px;vertical-align:4px}
+.voice ul{margin-top:16px;gap:8px;color:var(--k2);font-size:15px}
+.voice li::before{content:"— "}
+.moment{padding:18px 20px 20px;background:var(--blue);color:#fff;align-self:stretch;display:flex;flex-direction:column}
+.moment p{margin:0;font:500 18px/1.38 "Archivo",sans-serif;letter-spacing:-.005em}
+.moment .sw-label{margin-bottom:auto;padding-bottom:18px}
+.sec.big li{font:600 19px/1.28 "Archivo",sans-serif;letter-spacing:-.012em;padding-bottom:9px;border-bottom:1px solid var(--hair)}
+.sec.big li:last-child{border-bottom:0;padding-bottom:0}
+.tug{display:grid;grid-template-columns:minmax(0,1fr) 3px minmax(0,1fr);gap:0 26px;padding-top:12px;border-top:2px solid var(--k)}
+.tug::before{content:"";grid-column:2;grid-row:1 / span 2;background:var(--k)}
+.tug h3{display:flex;align-items:baseline;gap:10px}
+.tug h3 b{font:800 30px/.6 "Archivo",sans-serif}
+.tug .pull h3 b{color:var(--blue)}.tug .push h3 b{color:var(--red)}
+.tug .pull{grid-column:1;text-align:right}.tug .push{grid-column:3}
+.tug .pull h3{justify-content:flex-end}
+.tug li{font-size:15.5px}
+.sw .id.warn{opacity:1;color:var(--red);border:1px solid var(--red);padding:0 4px}
+.sec.field .id.warn,.moment .id.warn,.note.pain .id.warn{color:#fff;border-color:#fff}
 .sw-review{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:16px 32px 26px;background:var(--tint)}
 .sw-review div{display:grid;gap:22px}
 .sw-review span{font:700 10px "Archivo",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k2)}
@@ -135,6 +156,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .intro{grid-template-columns:1fr;padding-top:40px}
   .sw-title,.sw-side{grid-column:1 / -1}
   .c6,.c8,.c4{grid-column:span 6}
+  .c7,.c5{grid-column:1 / -1}
   .sw-body .c4.wide{grid-column:1 / -1}
   .sw-review{grid-template-columns:1fr}
 }
@@ -144,6 +166,8 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .sw-head,.sw-body{padding-inline:16px;gap:16px}
   .sw-body{grid-template-columns:1fr}
   .c6,.c8,.c4{grid-column:1 / -1}
+  .voice{padding-left:44px}.voice::before{font-size:100px;top:-18px}
+  .tug{grid-template-columns:1fr;gap:16px}.tug::before{display:none}.tug .pull,.tug .push{grid-column:1;text-align:left}.tug .pull h3{justify-content:flex-start;flex-direction:row-reverse}
   .sw-review{padding-inline:16px}
   .sw-legend{padding-inline:16px}
   .branches{margin-inline:16px}
@@ -169,6 +193,10 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .sec.field li{font-size:11.5px}
   .sec.quiet{font-size:10.5px}
   .sec,.note,.branches li{break-inside:avoid}
+  .voice{padding-left:52px}.voice::before{font-size:96px;top:-18px}.voice blockquote{font-size:20px}.voice ul{font-size:11px;margin-top:8px}
+  .moment{padding:10px 12px}.moment p{font-size:12.5px}.moment .sw-label{padding-bottom:8px}
+  .sec.big li{font-size:13px;padding-bottom:5px}
+  .tug{padding-top:8px;gap:0 16px}.tug li{font-size:11.5px}.tug h3 b{font-size:20px}
   .sw-review{padding:8px 18px 10px}
   .sw-review div{gap:10px}
   .jscroll{overflow:visible;padding-top:10px}
@@ -255,6 +283,13 @@ const EXAMPLES = {
 profile: `## Persona — Remote newcomer learning norms after hours
 Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 
+### In their words
+- "I can find the rule. I cannot tell which rule people actually follow." [I-01]
+- "The how-we-work conversation happens in Slack after the meeting I attended." [I-03]
+
+### Defining moment
+- In week three they ship a small fix, then learn afterwards that a customer promise had changed what the right solution was. [I-01]
+
 ### Needs
 - Know which of several written rules people actually follow [I-01]
 - Someone who can explain their own team's tradeoffs, not only answer questions [I-03]
@@ -271,7 +306,7 @@ Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 ### Pain points
 - Pages disagreed about who approves a release [I-01]
 - Buddy cancelled two sessions during a launch week [I-01]
-- "The how-we-work conversation happens in Slack after the meeting I attended." [I-03]
+- Informal norms get settled after their workday is over [I-03]
 
 ### Drivers
 - Shadowing two customer calls was the clearest part of onboarding [I-03]
@@ -295,6 +330,13 @@ Based on: I-01, I-03 · remote individual contributors, five to seven weeks in
 ## Persona — Newcomer reading unwritten decision rights
 Based on: I-02, I-04 · hybrid, three to four months in
 
+### In their words
+- "Move fast sounded like prove you belong before you ask too many questions." [I-02]
+- "Sometimes DNA feels like knowing company trivia rather than knowing how to make a good call." [I-04]
+
+### Defining moment
+- Before proposing a decision, they ask a long-tenured colleague how it is likely to be received. [I-02]
+
 ### Needs
 - Know which decisions need executive involvement and which can be made locally [I-02]
 - Examples of disagreement and compromise, not only value words [I-04]
@@ -307,8 +349,8 @@ Based on: I-02, I-04 · hybrid, three to four months in
 - Used the customer-research archive to understand an awkward workflow [I-04]
 
 ### Pain points
-- "Move fast sounded like prove you belong before you ask too many questions." [I-02]
-- "Sometimes DNA feels like knowing company trivia rather than knowing how to make a good call." [I-04]
+- Cannot tell which decisions can be made locally [I-02]
+- Values are clear as words, but examples of disagreement and compromise are hard to find [I-04]
 
 ### Drivers
 - The founder story made the mission memorable [I-02]
@@ -382,6 +424,12 @@ const BLANK = {
 profile: `## Persona — <descriptive label, never a person's name>
 Based on: <source IDs> · <role and context these sources share>
 
+### In their words
+- "<verbatim quote>" [source ID]
+
+### Defining moment
+- <one real scene from the notes, two sentences or fewer> [source IDs]
+
 ### Needs
 - <need> [source IDs]
 
@@ -441,7 +489,7 @@ const isCont = s => /^\s{2,}\S/.test(s) && !isBullet(s);
 const rejoin = it => it.text+(it.inferred?' (inferred)':'')+(it.ids.length?' ['+it.ids.join(', ')+']':'');
 const titleAfter = s => { const m=clean(s).match(/^[^—–:-]*?(?:\s[—–-]\s|:\s|—|–)(.+)$/); return m?m[1].trim():''; };
 
-const PSECT=[["needs",/^needs?\b/i],["goals",/^(wants|goals?)\b/i],["routine",/^(work )?(routine|habits)/i],["pain",/^pain/i],["drivers",/^drivers?\b/i],["inhib",/^inhibitors?\b/i],["tension",/^tensions?/i],["nofit",/^(doesn.t|does not|what does not|evidence that does not) fit/i],["unknown",/^(unknowns?|missing)/i]];
+const PSECT=[["quotes",/^in (their|her|his) (own )?words/i],["moment",/^(a |the )?(defining|key) moment/i],["needs",/^needs?\b/i],["goals",/^(wants|goals?)\b/i],["routine",/^(work )?(routine|habits)/i],["pain",/^pain/i],["drivers",/^drivers?\b/i],["inhib",/^inhibitors?\b/i],["tension",/^tensions?/i],["nofit",/^(doesn.t|does not|what does not|evidence that does not) fit/i],["unknown",/^(unknowns?|missing)/i]];
 function parseProfiles(src){
   const out=[]; let cur=null, sect=null;
   for(const raw of src.split(/\r?\n/)){
@@ -499,7 +547,7 @@ function parseJourney(src){
 
 /* ---------- rendering ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ids = a => a.length?`<span class="id">${esc(a.join(', '))}</span>`:'';
+const ids = a => a.length?a.map(x=>/no source/i.test(x)?`<span class="id warn">no source yet</span>`:'').join('')+(a.filter(x=>!/no source/i.test(x)).length?`<span class="id">${esc(a.filter(x=>!/no source/i.test(x)).join(', '))}</span>`:''):'';
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*\*/g,'');
 const item = it => `${md(it.text)}${it.inferred?'<span class="inf">inferred</span>':''}${ids(it.ids)}`;
 const list = arr => arr && arr.length ? `<ul>${arr.map(it=>`<li><span>${item(it)}</span></li>`).join('')}</ul>` : `<p class="none">Not in the sources yet.</p>`;
@@ -511,6 +559,14 @@ function renderProfiles(src){
   if(!ps.length) return {html:'',msg:'No personas found yet. Start each persona with a line like "## Persona — <label>".'};
   const html=ps.map((p,i)=>{
     const sec=(key,title,cls)=>`<section class="sec ${cls}"><h3 class="sw-label">${title}</h3>${list(p.s[key])}</section>`;
+    const isQ=t=>/^["“].+["”]$/.test(t.trim());
+    let quotes=(p.s.quotes||[]).slice();
+    if(!quotes.length){ const all=['pain','needs','drivers','inhib','routine','goals'].flatMap(k=>p.s[k]||[]); const q=all.find(it=>isQ(it.text)); if(q) quotes=[q]; }
+    const strip=t=>isQ(t)?t.trim().slice(1,-1):t;
+    const moment=(p.s.moment||[])[0];
+    const voice=quotes.length?`<div class="voice ${moment?'c7':'c12'}"><blockquote>${md(strip(quotes[0].text))}${ids(quotes[0].ids)}</blockquote>${quotes.length>1?`<ul>${quotes.slice(1,3).map(q=>`<li>${md(strip(q.text))}${ids(q.ids)}</li>`).join('')}</ul>`:''}</div>`:'';
+    const mom=moment?`<section class="moment ${quotes.length?'c5':'c12'}"><h3 class="sw-label">Defining moment</h3><p>${item(moment)}</p></section>`:'';
+    const hero=voice+mom;
     return `<article class="sw">
       <header class="sw-head">
         <div class="sw-kicker">Evidence-based persona <em>${String(i+1).padStart(2,'0')} of ${String(ps.length).padStart(2,'0')}</em></div>
@@ -522,12 +578,12 @@ function renderProfiles(src){
         </div>
       </header>
       <div class="sw-body">
-        ${sec('needs','Needs','field blue c6')}
-        ${sec('goals','Goals','field ink c6')}
-        ${sec('routine','Work routine and habits','c8')}
-        ${sec('pain','Pain points','field red c4')}
-        ${sec('drivers','Drivers','mark plus c6')}
-        ${sec('inhib','Inhibitors','mark minus c6')}
+        ${hero}
+        ${sec('needs','What they need','big c7')}
+        ${sec('goals','Goals','field ink c5')}
+        ${sec('routine','Work routine and habits','c7')}
+        ${sec('pain','Pain points','field red c5')}
+        <div class="tug c12"><section class="pull"><h3 class="sw-label">Drivers · what helps <b>+</b></h3>${list(p.s.drivers)}</section><section class="push"><h3 class="sw-label"><b>−</b> Inhibitors · what gets in the way</h3>${list(p.s.inhib)}</section></div>
         ${sec('tension','Tensions and contradictions','quiet c4')}
         ${sec('nofit',"Doesn't fit this persona",'quiet c4')}
         ${sec('unknown','Unknowns and missing voices','quiet c4 wide')}
