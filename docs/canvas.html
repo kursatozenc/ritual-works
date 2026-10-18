@@ -402,8 +402,8 @@ Begins: first day of orientation · Ends: the first moment the work "made sense"
 ### Stage 1 — Orientation and links
 - Action: Worked through 23 onboarding links [I-01]
 - Touchpoint: Onboarding pages and checklist [I-01]
-- Feeling: -1 — "I can find the rule. I cannot tell which rule people actually follow." [I-01]
-- Feeling: not reported [I-03]
+- Emotion: -1 — "I can find the rule. I cannot tell which rule people actually follow." [I-01]
+- Emotion: not reported [I-03]
 - Pain point: Pages disagreed about who approves a release [I-01]
 - Opportunity (inferred): How might newcomers see which rules teams follow in practice? [I-01]
 - Unknown: How I-03 experienced orientation
@@ -412,8 +412,8 @@ Begins: first day of orientation · Ends: the first moment the work "made sense"
 - Action: Asked the buddy questions and got quick answers [I-01]
 - Action: Asked a buddy from another function [I-03]
 - Touchpoint: Assigned buddy [I-01, I-03]
-- Feeling: not reported [I-01]
-- Feeling: not reported [I-03]
+- Emotion: not reported [I-01]
+- Emotion: not reported [I-03]
 - Pain point: Buddy cancelled two sessions in a launch week [I-01]
 - Pain point: Buddy could not explain the team's tradeoffs [I-03]
 - Bright spot: Buddy described as helpful [I-03]
@@ -422,14 +422,14 @@ Begins: first day of orientation · Ends: the first moment the work "made sense"
 - Action: Followed informal interpretation in chat after the workday ended [I-03]
 - Action: Built and shared an acronym glossary [I-03]
 - Touchpoint: Team chat; personal glossary [I-03]
-- Feeling: not reported [I-03]
+- Emotion: not reported [I-03]
 - Pain point: Works three hours ahead of headquarters [I-03]
 - Bright spot: Glossary shared with another new hire [I-03]
 - Unknown: Whether I-03's manager knows about the time-zone gap
 
 ### Stage 4 — First real work
 - Action: Shipped a small fix in week three [I-01]
-- Feeling: not reported [I-01]
+- Emotion: not reported [I-01]
 - Pain point: Learned afterward that a customer promise changed the expected solution [I-01]
 - Opportunity (inferred): How might newcomers learn the customer context behind a task before starting it? [I-01]
 
@@ -437,8 +437,8 @@ Begins: first day of orientation · Ends: the first moment the work "made sense"
 - Action: Attended the first production review [I-01]
 - Action: Shadowed two customer calls [I-03]
 - Touchpoint: Production review; customer calls [I-01, I-03]
-- Feeling: +2 — the company "started to make sense" [I-01]
-- Feeling: +2 — "the clearest part of onboarding" [I-03]
+- Emotion: +2 — the company "started to make sense" [I-01]
+- Emotion: +2 — "the clearest part of onboarding" [I-03]
 - Bright spot: Seeing real customer work clarified how things work [I-01, I-03]
 
 ### Branches and exceptions
@@ -491,7 +491,7 @@ Begins: <moment> · Ends: <moment>
 - Trigger: <what starts this stage> [source IDs]
 - Action: <what people did> [source IDs]
 - Touchpoint: <tool, space, message or person> [source IDs]
-- Feeling: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
+- Emotion: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
 - Pain point: <difficulty> [source IDs]
 - Bright spot: <what already works> [source IDs]
 - Opportunity (inferred): <solution-neutral question> [source IDs]
@@ -684,23 +684,25 @@ function feelSvg(j,col){
   let g='';
   for(const v of [2,1,0,-1,-2]) g+=`<line x1="0" x2="${n*col}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'var(--k)':'var(--hair)'}" stroke-width="${v===0?1.5:1}"/>`;
   g+=`<text x="2" y="${y(2)-5}">+2</text><text x="2" y="${y(-2)+13}">−2</text>`;
+  const pos={};
+  j.stages.forEach((s,i)=>{ const rep=s.feel.filter(f=>f.score!==null); rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; (pos[id]=pos[id]||{})[i]=[x(i)+(k-(rep.length-1)/2)*18,y(f.score)]; }); });
   for(const id of sources){
-    let prev=null;
+    let run=[];
+    const flush=()=>{ if(run.length>1){ let d=`M${run[0][0]} ${run[0][1]}`; for(let k=1;k<run.length;k++){ const [x0,y0]=run[k-1],[x1,y1]=run[k],m=(x1-x0)/2; d+=` C${x0+m} ${y0} ${x1-m} ${y1} ${x1} ${y1}`; }
+      g+=`<path d="${d}" fill="none" stroke="${color(id)}" stroke-width="3.5" stroke-linecap="round"/>`; } run=[]; };
     j.stages.forEach((s,i)=>{
       const f=s.feel.find(f=>(f.ids[0]||'?')===id);
-      if(f && f.score!==null){
-        if(prev && prev.i===i-1) g+=`<line x1="${x(prev.i)}" y1="${y(prev.s)}" x2="${x(i)}" y2="${y(f.score)}" stroke="${color(id)}" stroke-width="3.5"/>`;
-        prev={i,s:f.score};
-      } else prev=null;
+      if(f && f.score!==null) run.push(pos[id][i]); else flush();
     });
+    flush();
   }
   j.stages.forEach((s,i)=>{
     const rep=s.feel.filter(f=>f.score!==null), nr=s.feel.filter(f=>f.score===null);
     rep.forEach((f,k)=>{ const id=f.ids[0]||'?'; const cx=x(i)+(k-(rep.length-1)/2)*18;
-      g+=`<rect x="${cx-6}" y="${y(f.score)-6}" width="12" height="12" fill="${color(id)}" stroke="var(--paper)" stroke-width="2"><title>${esc(id)}: ${esc(f.text)}</title></rect>`; });
+      g+=`<circle cx="${cx}" cy="${y(f.score)}" r="7" fill="${color(id)}" stroke="var(--paper)" stroke-width="2.5"><title>${esc(id)}: ${esc(f.text)}</title></circle>`; });
     if(nr.length || !rep.length) g+=`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${nr.length?'not reported · '+esc(nr.map(f=>f.ids.join(',')).join(' ')):'—'}</text>`;
   });
-  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Reported feelings by stage, one line per source">${g}</svg>`, sources, color};
+  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Reported emotions by stage, one curve per source">${g}</svg>`, sources, color};
 }
 
 function renderJourney(src){
@@ -726,13 +728,13 @@ function renderJourney(src){
         ${STAMP}
       </div>
     </header>
-    ${f.sources.length?`<div class="sw-legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span>One line per source. A gap means no feeling was reported.</span></div>`:''}
+    ${f.sources.length?`<div class="sw-legend">${f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span>One curve per source. A gap means no emotion was reported.</span></div>`:''}
     <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
       <div class="lane corner"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
       ${row('Trigger','','trigger','trigger')}
       ${row('Actions','what people did','action','action')}
       ${row('Touchpoints','','touch','touch')}
-      ${lane('Feelings','reported only, by source')}<div class="feel">${f.svg}</div>
+      ${lane('Emotions','reported only, by source')}<div class="feel">${f.svg}</div>
       ${j.stages.some(s=>s.feel.some(x=>x.score!==null))?lane('In their words','')+quotes:''}
       ${row('Pain points','','pain','pain')}
       ${row('Bright spots','already works','bright','bright')}

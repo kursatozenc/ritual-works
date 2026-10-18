@@ -112,10 +112,10 @@ voices. Never add a name, photo, age, location or other demographic detail.
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
 <source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
 N — <name>` block per stage, with lines that start Trigger:, Action:,
-Touchpoint:, Feeling:, Pain point:, Bright spot:, Opportunity (inferred): and
-Unknown:. Write one Feeling line per source: a score from +2 to -2 with the
+Touchpoint:, Emotion:, Pain point:, Bright spot:, Opportunity (inferred): and
+Unknown:. Write one Emotion line per source: a score from +2 to -2 with the
 participant's words, or “not reported”. Never average different people into one
-feeling. Write each opportunity as a solution-neutral question, never as a
+emotion. Write each opportunity as a solution-neutral question, never as a
 ritual. End with `### Branches and exceptions`.
 
 Teams often draft personas or journey maps elsewhere and bring them in as a

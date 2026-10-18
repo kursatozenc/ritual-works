@@ -16,15 +16,15 @@ Begins: <moment> · Ends: <moment>
 
 Write the stages in canvas format so the map can be pasted into the Research
 Canvas (`docs/canvas.html`). End every line with source IDs in square brackets.
-Write one Feeling line per source, as a score from +2 to -2 with the
+Write one Emotion line per source, as a score from +2 to -2 with the
 participant's words, or "not reported". Never average different people into
-one feeling. Write opportunities as solution-neutral questions.
+one emotion. Write opportunities as solution-neutral questions.
 
 ### Stage 1 — <stage name>
 - Trigger: <what starts this stage> [source IDs]
 - Action: <what people did> [source IDs]
 - Touchpoint: <tool, space, message or person> [source IDs]
-- Feeling: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
+- Emotion: <+2, +1, 0, -1, -2 or not reported> — <participant's words> [one source ID]
 - Pain point: <difficulty, friction or workaround> [source IDs]
 - Bright spot: <what already works> [source IDs]
 - Opportunity (inferred): <solution-neutral question> [source IDs]
