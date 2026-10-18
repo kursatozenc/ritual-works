@@ -342,17 +342,20 @@ Personas: start each with `## Persona — <descriptive label>` and `Based on:
 <source IDs> · <shared role and context>`. If the sources support them, add `###
 In their words` (one to three verbatim quotes) and `### Defining moment` (one
 real scene from the notes, two sentences or fewer). Then use these headings in
-order: Needs, Goals, Work routine and habits, Pain points, Drivers, Inhibitors,
-Tensions and contradictions, Doesn't fit this persona, and Unknowns and missing
-voices. Never add a name, photo, age, location or other demographic detail.
+order: Needs, Goals, Day in the life (only what the notes show people actually
+do, never an invented schedule), Pain points, Drivers, Inhibitors, Tensions and
+contradictions, Doesn't fit this persona, and Unknowns and missing voices. Never
+add a name, photo, age, location or other demographic detail.
 
 Journeys: start with `## Journey — <experience>`, `Whose journey: <label> ·
 <source IDs>` and `Begins: <moment> · Ends: <moment>`. Then write one `### Stage
 N — <name>` block per stage, with lines that start Trigger:, Action:,
-Touchpoint:, Feeling:, Pain point:, Bright spot:, Opportunity (inferred): and
-Unknown:. Write one Feeling line per source: a score from +2 to -2 with the
-participant's words, or “not reported”. Never average different people into one
-feeling. Write each opportunity as a solution-neutral question, never as a
+Touchpoint:, Emotion:, Pain point:, Bright spot:, Opportunity (inferred): and
+Unknown:. Write one Emotion line per source for every stage, as a score from +2
+to -2. If the participant described the emotion, add their words. If not, give
+your best reading of that touchpoint, marked “(inferred)”, with the cue you read
+it from, so the team can adjust it. Never average different people into one
+emotion. Write each opportunity as a solution-neutral question, never as a
 ritual. End with `### Branches and exceptions`.
 
 Teams often draft personas or journey maps elsewhere and bring them in as a

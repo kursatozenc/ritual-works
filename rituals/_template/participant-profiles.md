@@ -33,8 +33,8 @@ Based on: <source IDs> · <role and context these sources share>
 ### Goals
 - <reported goal, or "unknown"> [source IDs]
 
-### Work routine and habits
-- <observed behavior or adaptation> [source IDs]
+### Day in the life
+- <what the notes show they actually do; no invented schedule> [source IDs]
 
 ### Pain points
 - <difficulty, in participants' words where possible> [source IDs]
