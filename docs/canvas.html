@@ -502,7 +502,10 @@ function parseProfiles(src){
     const head=PSECT.find(([,re])=>re.test(c));
     if(head && (!isBullet(raw)) && c.length<60){ sect=head[0]; cur.s[sect]=cur.s[sect]||[]; continue; }
     if(/^\s*#/.test(raw)){ if(/^\s*#{1,2}\s/.test(raw)) cur=null; sect=null; continue; }
-    if(!isBullet(raw) && !isCont(raw)){ if(sect && cur.s[sect].length){ cur=null; sect=null; } continue; }
+    if(/^\s*(```|~~~)/.test(raw)){ cur=null; sect=null; continue; }
+    if(!isBullet(raw) && !isCont(raw)){
+      if(sect && !cur.s[sect].length && /^(unknown|none|not (in|reported))/i.test(c)){ cur.s[sect].push(splitIds(c)); continue; }
+      if(sect){ cur=null; sect=null; } continue; }
     if(sect){ const L=cur.s[sect]; if(isCont(raw)&&L.length){ L[L.length-1]=splitIds(rejoin(L[L.length-1])+' '+c); } else L.push(splitIds(isBullet(raw)?unbullet(raw):c)); }
   }
   return out;
@@ -521,7 +524,7 @@ function parseJourney(src){
     if(/^(branches|exceptions)/i.test(c) && !isBullet(raw)){ inBranch=true; st=null; continue; }
     if(/^stage\b/i.test(c) && !isBullet(raw)){ inBranch=false; st={name:titleAfter(raw)||c,trigger:[],action:[],touch:[],feel:[],pain:[],bright:[],opp:[],unknown:[]}; j.stages.push(st); lastKey=null; continue; }
     if(/^\s*#/.test(raw)){ st=null; inBranch=false; lastKey=null; continue; }
-    if(/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(raw)){ st=null; inBranch=false; lastKey=null; continue; }
+    if(/^\s*(-{3,}|\*{3,}|_{3,}|```|~~~)/.test(raw)){ st=null; inBranch=false; lastKey=null; continue; }
     if(inBranch && !isBullet(raw) && !isCont(raw)){ inBranch=false; continue; }
     if(inBranch){ const L=j.branches; if(isCont(raw)&&L.length){ L[L.length-1]=splitIds(rejoin(L[L.length-1])+' '+c); } else L.push(splitIds(isBullet(raw)?unbullet(raw):c)); continue; }
     if(!st) continue;
@@ -548,7 +551,7 @@ function parseJourney(src){
 /* ---------- rendering ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ids = a => a.length?a.map(x=>/no source/i.test(x)?`<span class="id warn">no source yet</span>`:'').join('')+(a.filter(x=>!/no source/i.test(x)).length?`<span class="id">${esc(a.filter(x=>!/no source/i.test(x)).join(', '))}</span>`:''):'';
-const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*\*/g,'');
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*\*/g,'').replace(/\[no source yet\]/gi,'<span class="id warn">no source yet</span>');
 const item = it => `${md(it.text)}${it.inferred?'<span class="inf">inferred</span>':''}${ids(it.ids)}`;
 const list = arr => arr && arr.length ? `<ul>${arr.map(it=>`<li><span>${item(it)}</span></li>`).join('')}</ul>` : `<p class="none">Not in the sources yet.</p>`;
 const REVIEW = `<div class="sw-review"><div><span>What is recognizable</span><i></i><i></i></div><div><span>What is misleading or missing</span><i></i><i></i></div><div><span>Reviewed by · date</span><i></i><i></i></div></div>`;

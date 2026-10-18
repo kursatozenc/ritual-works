@@ -362,8 +362,9 @@ notes support an item, and mark anything the notes do not support “[no source
 yet]” instead of deleting or changing it. Map their section names to the closest
 heading here. If their persona has a name, photo, age or other demographic
 detail, replace the name with a descriptive label, leave the rest out and say
-so. Add nothing new. After the block, list your questions about unsupported or
-unclear items.
+so. Add no new claims, but do add `In their words` with one to three verbatim
+quotes from their notes, because quotes are evidence. After the block, ask your
+most important questions about unsupported or unclear items, five at most.
 
 An insight is not a topic or summary. It connects a supported pattern to a
 meaningful human tension, need or opportunity. A problem statement names the
