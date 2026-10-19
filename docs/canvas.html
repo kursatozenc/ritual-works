@@ -148,6 +148,13 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .avg-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 [data-style=fv] .avg-btn{border-radius:999px}
 
+.sw-legend .btns{margin-left:auto;display:flex;gap:6px}
+.sw-legend .btns .avg-btn{margin-left:0}
+.lane .key{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+.lane .key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.lane .key .kp{background:var(--red)}.lane .key .kb{background:var(--blue)}.lane .key .ko{border:1.5px solid var(--k)}
+[data-style=fv] .lane .key i{border-radius:3px}
+
 /* Journey */
 .sw-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:14px 32px 0;font:500 11px var(--fd);color:var(--k2)}
 .sw-legend span{display:inline-flex;align-items:center;gap:7px}
@@ -807,6 +814,7 @@ function renderProfiles(src){
 }
 
 const ANCHORS={2:'Delighted',1:'Pleased',0:'Neutral',[-1]:'Frustrated',[-2]:'Distressed'};
+let EVID=(()=>{try{return localStorage.getItem('rw-canvas-evidence')==='1'}catch(e){return false}})();
 let AVG=(()=>{try{return localStorage.getItem('rw-canvas-avg')==='1'}catch(e){return false}})();
 function feelSvg(j,col){
   const n=j.stages.length, H=230, top=34, bot=H-44, y=s=>top+(2-s)*(bot-top)/4;
@@ -901,21 +909,20 @@ function renderJourney(src){
         ${STAMP}
       </div>
     </header>
-    ${f.sources.length?`<div class="sw-legend">${f.single||f.avg?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:''}${f.single?'':f.sources.map(s=>`<span style="--c:${f.color(s)}"${f.avg?' class="faint"':''}><i></i>${esc(s)}</span>`).join('')}${f.avg?`<span><svg width="22" height="14" style="vertical-align:-3px"><rect x="1" y="2" width="20" height="10" fill="var(--k3)" opacity=".25"/></svg> spread between people</span><span class="avg-note">Average of ${f.sources.length} interviews: a summary, not a person</span>`:''}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading (dashed)</span>${f.single?'':`<button class="avg-btn noprint" data-act="avg" aria-pressed="${f.avg}">${f.avg?'Show each person':'Show team average'}</button>`}</div>`:''}
+    ${f.sources.length?`<div class="sw-legend">${f.single||f.avg?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:''}${f.single?'':f.sources.map(s=>`<span style="--c:${f.color(s)}"${f.avg?' class="faint"':''}><i></i>${esc(s)}</span>`).join('')}${f.avg?`<span><svg width="22" height="14" style="vertical-align:-3px"><rect x="1" y="2" width="20" height="10" fill="var(--k3)" opacity=".25"/></svg> spread between people</span><span class="avg-note">Average of ${f.sources.length} interviews: a summary, not a person</span>`:''}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading (dashed)</span><span class="btns noprint">${f.single?'':`<button class="avg-btn" data-act="avg" aria-pressed="${f.avg}">${f.avg?'Show each person':'Show team average'}</button>`}<button class="avg-btn" data-act="evidence" aria-pressed="${EVID}">${EVID?'Hide evidence':'Show evidence'}</button></span></div>`:''}
     <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
       <div class="lane corner"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
-      ${row('Trigger','','trigger','trigger')}
+      ${EVID?row('Trigger','','trigger','trigger'):''}
       ${row('Actions','what people did','action','action')}
       ${row('Touchpoints','','touch','touch')}
       <div class="lane emo">Emotions${[2,1,0,-1,-2].map(v=>`<span class="anc" style="top:${8+f.y(v)}px"><b>${v>0?'+'+v:v<0?'−'+(-v):'0'}</b> ${ANCHORS[v]}</span>`).join('')}</div><div class="feel">${f.svg}</div>
-      ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&!x.inf))?lane('In their words','reported')+quotes:''}
-      ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&x.inf))?lane('Our reading','inferred · adjust it')+readings:''}
-      ${row('Pain points','','pain','pain')}
-      ${row('Bright spots','already works','bright','bright')}
-      ${row('Opportunities','inferred · not solutions','opp','opp')}
-      ${row('Unknowns','','unknown','unknown')}
+      ${EVID&&j.stages.some(s=>s.feel.some(x=>x.score!==null&&!x.inf))?lane('In their words','reported')+quotes:''}
+      ${EVID&&j.stages.some(s=>s.feel.some(x=>x.score!==null&&x.inf))?lane('Our reading','inferred · adjust it')+readings:''}
+      ${EVID?row('Pain points','','pain','pain')+row('Bright spots','already works','bright','bright')+row('Opportunities','inferred · not solutions','opp','opp')+row('Unknowns','','unknown','unknown')
+        :(j.stages.some(s=>s.pain.length||s.bright.length||s.opp.length)?lane('Insights &amp; opportunities','<span class="key"><span><i class="kp"></i>pain point</span><span><i class="kb"></i>bright spot</span><span><i class="ko"></i>opportunity</span></span>')+j.stages.map(s=>`<div class="cell">${[...s.pain.map(it=>['pain',it]),...s.bright.map(it=>['bright',it]),...s.opp.map(it=>['opp',it])].map(([c,it])=>`<div class="note ${c}"><span>${item(it)}</span></div>`).join('')}</div>`).join(''):'')}
     </div></div>
-    ${j.branches.length?`<section class="branches"><h3 class="sw-label">Branches and exceptions</h3>${list(j.branches)}</section>`:''}
+    ${EVID?(j.branches.length?`<section class="branches"><h3 class="sw-label">Branches and exceptions</h3>${list(j.branches)}</section>`:'')
+      :((j.branches.length||j.stages.some(s=>s.unknown.length))?`<section class="branches"><h3 class="sw-label">Open questions</h3>${list([...j.stages.flatMap(s=>s.unknown),...j.branches])}</section>`:'')}
     ${REVIEW}</article>`;
   return {html,msg:`${n} stage${n>1?'s':''} built.`};
 }
@@ -941,6 +948,7 @@ document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   const kind=b.dataset.kind, act=b.dataset.act;
   if(act==='print'){ window.print(); return; }
+  if(act==='evidence'){ EVID=!EVID; try{localStorage.setItem('rw-canvas-evidence',EVID?'1':'0')}catch(err){} build('journey'); return; }
   if(act==='avg'){ AVG=!AVG; try{localStorage.setItem('rw-canvas-avg',AVG?'1':'0')}catch(err){} build('journey'); return; }
   const ta=kind&&document.getElementById('src-'+kind), st=kind&&document.getElementById('status-'+kind);
   if(act==='example'){ ta.value=EXAMPLES[kind]; build(kind); st.textContent='Fictional Beacon Works example loaded.'; }
