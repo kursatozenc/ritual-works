@@ -213,8 +213,9 @@ their contradictions into one “typical user” experience.
 In canvas format, it writes one Emotion line per source for every touchpoint, and at least one
 per stage. It uses
 the participant's words where they exist and marks every other score
-“(inferred)” with the cue it read. It never draws one averaged emotion curve
-across different people.
+“(inferred)” with the cue it read. It never averages different people into one
+emotion itself. A team average shown on the canvas is the team's choice, and
+the individual lines and the spread stay visible behind it.
 
 ## Case 18 — contribute before quizzing
 

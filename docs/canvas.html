@@ -135,6 +135,26 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 .ph-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .sw-label .ic{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;vertical-align:-3px;margin-right:7px}
 
+.lane.emo{position:sticky}
+.lane.emo .anc{position:absolute;right:12px;transform:translateY(-50%);font:500 10px var(--fl,var(--fd));letter-spacing:.02em;text-transform:none;color:var(--k3);white-space:nowrap}
+.lane.emo .anc b{display:inline-block;min-width:16px;text-align:right;color:var(--k2);font-weight:700}
+.sw .feel path.avgline{stroke-width:5}
+[data-style] .sw .feel path.avgline{stroke-width:5}
+.feel text.nlab{font:600 9.5px var(--fl,var(--fd));fill:var(--k2)}
+.sw-legend .faint{opacity:.45}
+.sw-legend .avg-note{font-style:italic}
+.avg-btn{margin-left:auto;appearance:none;border:1.5px solid var(--k);background:var(--paper);color:var(--k);padding:5px 10px;font:700 10px var(--fl,var(--fd));letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+.avg-btn[aria-pressed=true]{background:var(--k);color:var(--paper)}
+.avg-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+[data-style=fv] .avg-btn{border-radius:999px}
+
+.sw-legend .btns{margin-left:auto;display:flex;gap:6px}
+.sw-legend .btns .avg-btn{margin-left:0}
+.lane .key{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+.lane .key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.lane .key .kp{background:var(--red)}.lane .key .kb{background:var(--blue)}.lane .key .ko{border:1.5px solid var(--k)}
+[data-style=fv] .lane .key i{border-radius:3px}
+
 /* Journey */
 .sw-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:14px 32px 0;font:500 11px var(--fd);color:var(--k2)}
 .sw-legend span{display:inline-flex;align-items:center;gap:7px}
@@ -347,6 +367,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
   .jscroll{overflow:visible;padding-top:10px}
   .jgrid{grid-template-columns:96px repeat(var(--n),minmax(0,1fr))!important;min-width:0;padding-right:0}
   .lane{position:static;padding-left:20px;font-size:9px}
+  .lane.emo{position:relative}
   .note{font-size:11px}
   .stagehead b{font-size:22px}
   .stagehead strong{font-size:12px}
@@ -372,7 +393,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
     <div>
       <p>Turn the Ethnographer's personas and journey maps into clean canvases you can review, correct and present. Every note keeps its source, and gaps stay visible.</p>
       <ol>
-        <li>Ask the Ethnographer for personas or a journey map. It writes them in canvas format.</li>
+        <li>Ask the Ethnographer for personas or a journey map. It writes them in canvas format. Working from your own draft? Start with the <a href="https://docs.google.com/spreadsheets/d/1baWBrhoL1t8xGVJPFvPb2J51PEqMLpcZHjhqmgsYqKA/copy" target="_blank" rel="noreferrer">team sheet template</a>.</li>
         <li>Paste the result below. The canvas builds as you type.</li>
         <li>Pick a style, review it with your team, fix what's wrong, then print or save it as a PDF.</li>
       </ol>
@@ -792,55 +813,76 @@ function renderProfiles(src){
   return {html,msg:`${ps.length} persona${ps.length>1?'s':''} built.`};
 }
 
+const ANCHORS={2:'Delighted',1:'Pleased',0:'Neutral',[-1]:'Frustrated',[-2]:'Distressed'};
+let EVID=(()=>{try{return localStorage.getItem('rw-canvas-evidence')==='1'}catch(e){return false}})();
+let AVG=(()=>{try{return localStorage.getItem('rw-canvas-avg')==='1'}catch(e){return false}})();
 function feelSvg(j,col){
   const n=j.stages.length, H=230, top=34, bot=H-44, y=s=>top+(2-s)*(bot-top)/4;
   const sources=[...new Set(j.stages.flatMap(s=>s.feel.map(f=>f.ids[0]||'?')))];
-  const single=sources.length===1;
+  const single=sources.length===1, avg=AVG&&!single;
   const colors=['var(--k)','var(--blue)','var(--yel)','var(--k3)'];
   const color=id=>colors[sources.indexOf(id)%colors.length];
-  const mood=v=>v>0?'var(--pos)':v<0?'var(--neg)':'var(--neu)';
+  const mood=v=>v>0.25?'var(--pos)':v<-0.25?'var(--neg)':'var(--neu)';
   let g='';
-  // Valence gradient for a single person's line: green above neutral, red below.
-  if(single) g+=`<defs><linearGradient id="valence" gradientUnits="userSpaceOnUse" x1="0" y1="${y(2)}" x2="0" y2="${y(-2)}"><stop offset="0" stop-color="var(--pos)"/><stop offset=".42" stop-color="var(--pos)"/><stop offset=".5" stop-color="var(--neu)"/><stop offset=".58" stop-color="var(--neg)"/><stop offset="1" stop-color="var(--neg)"/></linearGradient></defs>`;
+  if(single||avg) g+=`<defs><linearGradient id="valence" gradientUnits="userSpaceOnUse" x1="0" y1="${y(2)}" x2="0" y2="${y(-2)}"><stop offset="0" stop-color="var(--pos)"/><stop offset=".42" stop-color="var(--pos)"/><stop offset=".5" stop-color="var(--neu)"/><stop offset=".58" stop-color="var(--neg)"/><stop offset="1" stop-color="var(--neg)"/></linearGradient></defs>`;
   for(const v of [2,1,0,-1,-2]) g+=`<line x1="0" x2="${n*col}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'var(--k3)':'var(--hair)'}" stroke-width="1" ${v===0?'stroke-dasharray="2 4"':''}/>`;
-  for(const v of [2,1,0,-1,-2]) g+=`<text x="2" y="${y(v)-4}">${v>0?'+'+v:v<0?'−'+(-v):'0'}</text>`;
-  // Points: every scored line becomes a point, spread across its stage in the order written,
-  // so a stage with several touchpoints gets several points.
+  // Points: every scored line, spread across its stage in the order written.
   const pts=[];
   j.stages.forEach((s,i)=>{
     const scored=s.feel.filter(f=>f.score!==null);
-    scored.forEach((f,k)=>pts.push({id:f.ids[0]||'?',i,cx:i*col+col*(k+1)/(scored.length+1),cy:y(f.score),f}));
+    scored.forEach((f,k)=>pts.push({id:f.ids[0]||'?',i,cx:i*col+col*(k+1)/(scored.length+1),cy:y(f.score),v:f.score,f}));
   });
+  const curve=(a,b)=>{const m=(b.cx-a.cx)/2; return `M${a.cx} ${a.cy} C${a.cx+m} ${a.cy} ${b.cx-m} ${b.cy} ${b.cx} ${b.cy}`;};
+  const face=(p,c,hollow,r=11,op=1)=>{ const v=Math.round(p.v);
+    const mouth=v===0?`M${p.cx-4.5} ${p.cy+4}h9`:`M${p.cx-5} ${p.cy+3.2} Q${p.cx} ${p.cy+3.2+v*2.6} ${p.cx+5} ${p.cy+3.2}`;
+    const ink=hollow?c:'var(--paper)';
+    return `<g class="face" opacity="${op}"><title>${esc(p.title||'')}</title><circle cx="${p.cx}" cy="${p.cy}" r="${r}" fill="${hollow?'var(--paper)':c}" stroke="${c}" stroke-width="2"${hollow?' stroke-dasharray="3 2.4"':''}/>
+      <circle cx="${p.cx-3.6}" cy="${p.cy-2.6}" r="1.5" fill="${ink}"/><circle cx="${p.cx+3.6}" cy="${p.cy-2.6}" r="1.5" fill="${ink}"/><path d="${mouth}" fill="none" stroke="${ink}" stroke-width="1.8" stroke-linecap="round"/></g>`; };
+  // Each person's line (faded when the team average is shown).
+  const fade=avg?0.22:1;
   for(const id of sources){
     const mine=pts.filter(p=>p.id===id);
     for(let k=1;k<mine.length;k++){
-      const a=mine[k-1],b=mine[k], skip=b.i-a.i>1; // skip: the person was not in the stage(s) between
-      const m=(b.cx-a.cx)/2, dash=a.f.inf||b.f.inf;
-      g+=`<path d="M${a.cx} ${a.cy} C${a.cx+m} ${a.cy} ${b.cx-m} ${b.cy} ${b.cx} ${b.cy}" fill="none" stroke="${single?'url(#valence)':color(id)}" stroke-width="${skip?1.5:dash?3:4}" stroke-linecap="round"${skip?' stroke-dasharray="4 5" opacity=".55"':dash?' stroke-dasharray="9 6"':''}/>`;
+      const a=mine[k-1],b=mine[k], skip=b.i-a.i>1, dash=a.f.inf||b.f.inf;
+      g+=`<path d="${curve(a,b)}" fill="none" stroke="${single?'url(#valence)':color(id)}" stroke-width="${skip?1.5:dash?3:4}" stroke-linecap="round" opacity="${skip?.55*fade:fade}"${skip?' stroke-dasharray="4 5"':dash?' stroke-dasharray="9 6"':''}/>`;
     }
   }
-  // Pit and peak callouts.
-  const scored=pts.map(p=>p.f.score);
-  const lo=Math.min(...scored), hi=Math.max(...scored);
-  const pit=lo<=-1?pts.find(p=>p.f.score===lo):null, peak=hi>=1?pts.find(p=>p.f.score===hi):null;
-  const place=(x,txt)=>{const w=txt.length*6.1; return Math.min(Math.max(x,w/2+30),n*col-w/2-6);};
-  const short=t=>{t=t.trim(); if(/^["“][^"“”]*["”]$/.test(t)) t=t.slice(1,-1); t=t.replace(/"([^"]*)"/g,'“$1”'); return t.length>40?t.slice(0,38).trim()+'…':t;};
-  if(pit){ const t='Pit point'+(pit.f.text?' · '+short(pit.f.text):''); g+=`<circle cx="${pit.cx}" cy="${pit.cy}" r="21" fill="none" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="3 3"/><text class="call" x="${place(pit.cx,t)}" y="${pit.cy+38}" text-anchor="middle" style="fill:var(--neg)">${esc(t)}</text>`; }
-  if(peak){ const t='High point'+(peak.f.text?' · '+short(peak.f.text):''); g+=`<text class="call" x="${place(peak.cx,t)}" y="${peak.cy-20}" text-anchor="middle" style="fill:var(--pos)">${esc(t)}</text>`; }
-  // Faces.
-  for(const p of pts){
-    const v=p.f.score, c=single?mood(v):color(p.id), r=11;
-    const mouth=v===0?`M${p.cx-4.5} ${p.cy+4}h9`:`M${p.cx-5} ${p.cy+3.2} Q${p.cx} ${p.cy+3.2+v*2.6} ${p.cx+5} ${p.cy+3.2}`;
-    g+=`<g class="face"><title>${esc(p.id)}${p.f.inf?', team reading':''}: ${v>0?'+'+v:v} ${esc(p.f.text)}</title>
-      <circle cx="${p.cx}" cy="${p.cy}" r="${r}" fill="${p.f.inf?'var(--paper)':c}" stroke="${c}" stroke-width="2"${p.f.inf?' stroke-dasharray="3 2.4"':''}/>
-      <circle cx="${p.cx-3.6}" cy="${p.cy-2.6}" r="1.5" fill="${p.f.inf?c:'var(--paper)'}"/><circle cx="${p.cx+3.6}" cy="${p.cy-2.6}" r="1.5" fill="${p.f.inf?c:'var(--paper)'}"/>
-      <path d="${mouth}" fill="none" stroke="${p.f.inf?c:'var(--paper)'}" stroke-width="1.8" stroke-linecap="round"/></g>`;
+  // Team average: per stage, average each person first, then average the people.
+  let marks=pts;
+  if(avg){
+    const st=j.stages.map((s,i)=>{
+      const per=sources.map(id=>pts.filter(p=>p.i===i&&p.id===id)).filter(a=>a.length).map(a=>a.reduce((t,p)=>t+p.v,0)/a.length);
+      if(!per.length) return null;
+      const mean=per.reduce((t,v)=>t+v,0)/per.length;
+      return {i,cx:i*col+col/2,cy:y(mean),v:mean,n:per.length,lo:Math.min(...per),hi:Math.max(...per)};
+    }).filter(Boolean);
+    if(st.length>1){
+      let top_=`M${st[0].cx} ${y(st[0].hi)}`, bot_='';
+      for(let k=1;k<st.length;k++){ const a=st[k-1],b=st[k],m=(b.cx-a.cx)/2; top_+=` C${a.cx+m} ${y(a.hi)} ${b.cx-m} ${y(b.hi)} ${b.cx} ${y(b.hi)}`; }
+      for(let k=st.length-1;k>=0;k--){ const b=st[k]; if(k===st.length-1){ bot_+=` L${b.cx} ${y(b.lo)}`; continue; } const a=st[k+1],m=(a.cx-b.cx)/2; bot_+=` C${a.cx-m} ${y(a.lo)} ${b.cx+m} ${y(b.lo)} ${b.cx} ${y(b.lo)}`; }
+      g+=`<path d="${top_}${bot_} Z" fill="var(--k3)" opacity=".16"/>`;
+      for(let k=1;k<st.length;k++) g+=`<path class="avgline" d="${curve(st[k-1],st[k])}" fill="none" stroke="url(#valence)" stroke-width="5" stroke-linecap="round"/>`;
+    }
+    for(const p of st){ p.title=`Team average ${p.v>0?'+':''}${p.v.toFixed(1)} from ${p.n} ${p.n===1?'person':'people'}; range ${p.lo>0?'+':''}${p.lo.toFixed(1)} to ${p.hi>0?'+':''}${p.hi.toFixed(1)}`;
+      g+=`<text class="nlab" x="${p.cx}" y="${p.cy+26}" text-anchor="middle">${p.v>0?'+':''}${p.v.toFixed(1)} · n=${p.n}</text>`; }
+    marks=st;
   }
+  // Pit and high points (on the average when it is shown).
+  const lo=Math.min(...marks.map(p=>p.v)), hi=Math.max(...marks.map(p=>p.v));
+  const pit=lo<=-1?marks.find(p=>p.v===lo):null, peak=hi>=1?marks.find(p=>p.v===hi):null;
+  const place=(x,txt)=>{const w=txt.length*6.1; return Math.min(Math.max(x,w/2+6),n*col-w/2-6);};
+  const short=t=>{t=(t||'').trim(); if(/^["“][^"“”]*["”]$/.test(t)) t=t.slice(1,-1); t=t.replace(/"([^"]*)"/g,'“$1”'); return t.length>40?t.slice(0,38).trim()+'…':t;};
+  const words=p=>avg?(p.n===1?'one person only':`average of ${p.n} people`):short(p.f.text);
+  if(pit){ const t='Pit point'+(words(pit)?' · '+words(pit):''); g+=`<circle cx="${pit.cx}" cy="${pit.cy}" r="21" fill="none" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="3 3"/><text class="call" x="${place(pit.cx,t)}" y="${pit.cy+(avg?46:38)}" text-anchor="middle" style="fill:var(--neg)">${esc(t)}</text>`; }
+  if(peak){ const t='High point'+(words(peak)?' · '+words(peak):''); g+=`<text class="call" x="${place(peak.cx,t)}" y="${Math.max(12,peak.cy-(avg?24:20))}" text-anchor="middle" style="fill:var(--pos)">${esc(t)}</text>`; }
+  // Faces.
+  for(const p of pts){ p.title=`${p.id}${p.f.inf?', team reading':''}: ${p.v>0?'+'+p.v:p.v} ${p.f.text}`; g+=face(p,single?mood(p.v):color(p.id),p.f.inf,avg?8:11,avg?.35:1); }
+  if(avg) for(const p of marks) g+=face(p,mood(p.v),false,13);
   j.stages.forEach((s,i)=>{
     const nr=s.feel.filter(f=>f.score===null);
     if(nr.length) g+=`<text x="${i*col+col/2}" y="${H-6}" text-anchor="middle">not mapped · ${esc(nr.map(f=>f.ids.join(',')).join(' '))}</text>`;
   });
-  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Emotions by touchpoint from +2 to −2${single?'':', one line per person'}. Solid faces were reported; dashed faces are the team’s reading.">${g}</svg>`, sources, color, single};
+  return {svg:`<svg width="${n*col}" height="${H}" viewBox="0 0 ${n*col} ${H}" role="img" aria-label="Emotions by touchpoint from +2 Delighted to −2 Distressed${avg?', with the team average and its spread':single?'':', one line per person'}.">${g}</svg>`, sources, color, single, avg, top, bot, y};
 }
 
 function renderJourney(src){
@@ -867,21 +909,20 @@ function renderJourney(src){
         ${STAMP}
       </div>
     </header>
-    ${f.sources.length?`<div class="sw-legend">${f.single?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:f.sources.map(s=>`<span style="--c:${f.color(s)}"><i></i>${esc(s)}</span>`).join('')}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading (dashed)</span></div>`:''}
+    ${f.sources.length?`<div class="sw-legend">${f.single||f.avg?`<span style="--c:var(--pos)"><i></i>Positive</span><span style="--c:var(--neu)"><i></i>Neutral</span><span style="--c:var(--neg)"><i></i>Negative</span>`:''}${f.single?'':f.sources.map(s=>`<span style="--c:${f.color(s)}"${f.avg?' class="faint"':''}><i></i>${esc(s)}</span>`).join('')}${f.avg?`<span><svg width="22" height="14" style="vertical-align:-3px"><rect x="1" y="2" width="20" height="10" fill="var(--k3)" opacity=".25"/></svg> spread between people</span><span class="avg-note">Average of ${f.sources.length} interviews: a summary, not a person</span>`:''}<span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="6" fill="var(--k)"/></svg> reported</span><span><svg width="22" height="14" style="vertical-align:-3px"><circle cx="11" cy="7" r="5.5" fill="none" stroke="var(--k)" stroke-width="1.6" stroke-dasharray="2.5 2"/></svg> team’s reading (dashed)</span><span class="btns noprint">${f.single?'':`<button class="avg-btn" data-act="avg" aria-pressed="${f.avg}">${f.avg?'Show each person':'Show team average'}</button>`}<button class="avg-btn" data-act="evidence" aria-pressed="${EVID}">${EVID?'Hide evidence':'Show evidence'}</button></span></div>`:''}
     <div class="jscroll"><div class="jgrid" style="--n:${n};--col:${col}px;--lane:${lanes}px">
       <div class="lane corner"></div>${j.stages.map((s,i)=>`<div class="stagehead"><b>${String(i+1).padStart(2,'0')}</b><strong>${esc(s.name)}</strong></div>`).join('')}
-      ${row('Trigger','','trigger','trigger')}
+      ${EVID?row('Trigger','','trigger','trigger'):''}
       ${row('Actions','what people did','action','action')}
       ${row('Touchpoints','','touch','touch')}
-      ${lane('Emotions',f.single?'one point per touchpoint':'one curve per person')}<div class="feel">${f.svg}</div>
-      ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&!x.inf))?lane('In their words','reported')+quotes:''}
-      ${j.stages.some(s=>s.feel.some(x=>x.score!==null&&x.inf))?lane('Our reading','inferred · adjust it')+readings:''}
-      ${row('Pain points','','pain','pain')}
-      ${row('Bright spots','already works','bright','bright')}
-      ${row('Opportunities','inferred · not solutions','opp','opp')}
-      ${row('Unknowns','','unknown','unknown')}
+      <div class="lane emo">Emotions${[2,1,0,-1,-2].map(v=>`<span class="anc" style="top:${8+f.y(v)}px"><b>${v>0?'+'+v:v<0?'−'+(-v):'0'}</b> ${ANCHORS[v]}</span>`).join('')}</div><div class="feel">${f.svg}</div>
+      ${EVID&&j.stages.some(s=>s.feel.some(x=>x.score!==null&&!x.inf))?lane('In their words','reported')+quotes:''}
+      ${EVID&&j.stages.some(s=>s.feel.some(x=>x.score!==null&&x.inf))?lane('Our reading','inferred · adjust it')+readings:''}
+      ${EVID?row('Pain points','','pain','pain')+row('Bright spots','already works','bright','bright')+row('Opportunities','inferred · not solutions','opp','opp')+row('Unknowns','','unknown','unknown')
+        :(j.stages.some(s=>s.pain.length||s.bright.length||s.opp.length)?lane('Insights &amp; opportunities','<span class="key"><span><i class="kp"></i>pain point</span><span><i class="kb"></i>bright spot</span><span><i class="ko"></i>opportunity</span></span>')+j.stages.map(s=>`<div class="cell">${[...s.pain.map(it=>['pain',it]),...s.bright.map(it=>['bright',it]),...s.opp.map(it=>['opp',it])].map(([c,it])=>`<div class="note ${c}"><span>${item(it)}</span></div>`).join('')}</div>`).join(''):'')}
     </div></div>
-    ${j.branches.length?`<section class="branches"><h3 class="sw-label">Branches and exceptions</h3>${list(j.branches)}</section>`:''}
+    ${EVID?(j.branches.length?`<section class="branches"><h3 class="sw-label">Branches and exceptions</h3>${list(j.branches)}</section>`:'')
+      :((j.branches.length||j.stages.some(s=>s.unknown.length))?`<section class="branches"><h3 class="sw-label">Open questions</h3>${list([...j.stages.flatMap(s=>s.unknown),...j.branches])}</section>`:'')}
     ${REVIEW}</article>`;
   return {html,msg:`${n} stage${n>1?'s':''} built.`};
 }
@@ -907,6 +948,8 @@ document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   const kind=b.dataset.kind, act=b.dataset.act;
   if(act==='print'){ window.print(); return; }
+  if(act==='evidence'){ EVID=!EVID; try{localStorage.setItem('rw-canvas-evidence',EVID?'1':'0')}catch(err){} build('journey'); return; }
+  if(act==='avg'){ AVG=!AVG; try{localStorage.setItem('rw-canvas-avg',AVG?'1':'0')}catch(err){} build('journey'); return; }
   const ta=kind&&document.getElementById('src-'+kind), st=kind&&document.getElementById('status-'+kind);
   if(act==='example'){ ta.value=EXAMPLES[kind]; build(kind); st.textContent='Fictional Beacon Works example loaded.'; }
   if(act==='clear'){ ta.value=''; build(kind); ta.focus(); }
