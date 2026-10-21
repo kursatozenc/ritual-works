@@ -703,11 +703,11 @@ function parseJourney(src){
     if(k==='feel'){
       const it=splitIds(val); let ft=it.text.replace(/[\u2212\u2013](?=\s*\d)/g,'-');
       const lead=ft.match(/^([A-Z]{1,4}-?\d{1,3})[:,]?\s+/); if(lead){ ft=ft.slice(lead[0].length); if(!it.ids.length) it.ids=[lead[1]]; }
-      it.text=ft; const fm=ft.match(/^([+-]?\s*[0-2])\b\s*[—–-]?\s*(.*)$/);
+      it.text=ft; const fm=ft.match(/^([+-]?\s*[0-2])\b\s*[—–·:-]?\s*(.*)$/);
       if(fm) st.feel.push({score:parseInt(fm[1].replace(/\s/g,''),10),text:fm[2],ids:it.ids,inf:it.inferred});
       else st.feel.push({score:null,text:it.text.replace(/^not reported\s*[.—–-]?\s*/i,''),ids:it.ids});
     } else {
-      for(const part of (k==='touch'? val.split(/\s*;\s*(?![^\[]*\])/) : [val])){ if(part.trim()) st[k].push(splitIds(part)); }
+      for(const part of (k==='touch'? val.split(/\s*;\s*(?![^\[]*\])/) : [val])){ if(part.trim()) st[/^(pain|bright|opp)$/.test(k)&&/^\s*(unknown|none)\b/i.test(part)?'unknown':k].push(splitIds(part)); }
       if(k==='touch'){ const ids=splitIds(val).ids; st.touch.forEach(t=>{ if(!t.ids.length) t.ids=ids; }); }
     }
   }
