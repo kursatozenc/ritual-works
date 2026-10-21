@@ -222,7 +222,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;text-wrap:balance}
 [data-style=jp] .ph-tiles .t svg{stroke-width:1.1}
 [data-style=jp] .ph-tiles .t b{font-family:var(--fd);font-weight:500}
 [data-style=jp] .ph-tiles .t.circle::after{opacity:1;background:var(--red);width:30%;right:auto;left:50%;top:50%;transform:translate(-50%,-50%)}
-[data-style=jp] .ph-tiles .t.circle svg,[data-style=jp] .ph-tiles .t.circle span{position:relative;z-index:1}
+[data-style=jp] .ph-tiles .t.circle span{z-index:1}
 [data-style=jp] .ph-tiles .t.circle svg{display:none}
 [data-style=jp] .sw-review{background:none;border-top:1px solid var(--hair)}
 [data-style=jp] .stagehead{border-top:1px solid var(--k)}
@@ -395,7 +395,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
       <ol>
         <li>Ask the Ethnographer for personas or a journey map. It writes them in canvas format. Working from your own draft? Start with the <a href="https://docs.google.com/spreadsheets/d/1baWBrhoL1t8xGVJPFvPb2J51PEqMLpcZHjhqmgsYqKA/copy" target="_blank" rel="noreferrer">team sheet template</a>.</li>
         <li>Paste the result below. The canvas builds as you type.</li>
-        <li>Pick a style, review it with your team, fix what's wrong, then print or save it as a PDF.</li>
+        <li>Pick a style, review it with your team, fix what's wrong, then print it, save it as a PDF or download a PNG for slides.</li>
       </ol>
     </div>
   </header>
@@ -422,6 +422,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
         <textarea id="src-profile" spellcheck="false"></textarea>
         <div class="editor-actions">
           <button class="button" data-act="print">Print or save PDF</button>
+          <button class="button" data-act="png" data-kind="profile">Download PNG</button>
           <button class="button secondary" data-act="example" data-kind="profile">Load example</button>
           <button class="button secondary" data-act="blank" data-kind="profile">Copy blank format</button>
           <button class="button secondary" data-act="clear" data-kind="profile">Clear</button>
@@ -440,6 +441,7 @@ footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin
         <textarea id="src-journey" spellcheck="false"></textarea>
         <div class="editor-actions">
           <button class="button" data-act="print">Print or save PDF</button>
+          <button class="button" data-act="png" data-kind="journey">Download PNG</button>
           <button class="button secondary" data-act="example" data-kind="journey">Load example</button>
           <button class="button secondary" data-act="blank" data-kind="journey">Copy blank format</button>
           <button class="button secondary" data-act="clear" data-kind="journey">Clear</button>
@@ -944,10 +946,43 @@ for(const kind of ['profile','journey']){
   let t; ta.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>build(kind),250)});
   build(kind);
 }
+/* PNG export: html-to-image loads on first use. Only the font files the card actually uses are embedded,
+   so the Japanese faces don't pull in every character subset. */
+let H2I=null;
+const loadH2I=()=>H2I||(H2I=new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js';s.onload=()=>ok(window.htmlToImage);s.onerror=()=>{H2I=null;no(new Error('script'))};document.head.appendChild(s)}));
+const inRange=(range,codes)=>range.split(',').some(r=>{const [x,y]=r.trim().replace(/^U\+/i,'').split('-');const a=parseInt(x.replace(/\?/g,'0'),16),z=y?parseInt(y,16):parseInt(x.replace(/\?/g,'F'),16);for(const c of codes)if(c>=a&&c<=z)return true;return false});
+const asData=async u=>{const b=await(await fetch(u)).blob();return new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(b)})};
+async function fontCSS(el){
+  const link=document.querySelector('link[href*="fonts.googleapis.com/css2"]'); if(!link) return '';
+  const fams=new Set(), codes=new Set();
+  for(const n of [el,...el.querySelectorAll('*')]) getComputedStyle(n).fontFamily.split(',').forEach(f=>fams.add(f.trim().replace(/^["']|["']$/g,'')));
+  for(const ch of el.textContent+'“”') codes.add(ch.codePointAt(0));
+  const css=await(await fetch(link.href)).text();
+  const faces=(css.match(/@font-face\s*{[^}]*}/g)||[]).filter(f=>{const fam=(f.match(/font-family:\s*['"]?([^;'"]+)/)||[])[1], r=(f.match(/unicode-range:\s*([^;]+)/)||[])[1]; return fam&&fams.has(fam)&&(!r||inRange(r,codes))});
+  return (await Promise.all(faces.map(async f=>{const u=(f.match(/url\(([^)]+)\)/)||[])[1]; return u?f.replace(u,await asData(u.replace(/['"]/g,''))):f}))).join('\n');
+}
+const slug=t=>(t||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+async function savePng(kind,btn){
+  const st=document.getElementById('status-'+kind), cards=[...document.querySelectorAll('#out-'+kind+' article.sw')];
+  if(!cards.length){ st.textContent='Nothing to export yet. Paste the Ethnographer’s text above first.'; return; }
+  const label=btn.textContent; btn.disabled=true; btn.textContent='Preparing…'; st.textContent='';
+  try{
+    const h=await loadH2I(); await document.fonts.ready;
+    for(const [i,card] of cards.entries()){
+      const url=await h.toPng(card,{pixelRatio:2,backgroundColor:getComputedStyle(card).backgroundColor,fontEmbedCSS:await fontCSS(card),filter:n=>!(n.classList&&n.classList.contains('noprint'))});
+      const a=document.createElement('a'); a.href=url;
+      a.download=(kind==='profile'?'persona-':'journey-')+(slug(card.querySelector('.sw-title')?.textContent)||String(i+1).padStart(2,'0'))+'.png';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+    st.textContent=cards.length>1?`${cards.length} PNG files downloaded, one per persona. If your browser asks, allow multiple downloads.`:'PNG downloaded.';
+  }catch(err){ st.textContent='The PNG could not be made here (it needs an internet connection). Use Print or save PDF instead.'; }
+  finally{ btn.disabled=false; btn.textContent=label; }
+}
 document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   const kind=b.dataset.kind, act=b.dataset.act;
   if(act==='print'){ window.print(); return; }
+  if(act==='png'){ savePng(kind,b); return; }
   if(act==='evidence'){ EVID=!EVID; try{localStorage.setItem('rw-canvas-evidence',EVID?'1':'0')}catch(err){} build('journey'); return; }
   if(act==='avg'){ AVG=!AVG; try{localStorage.setItem('rw-canvas-avg',AVG?'1':'0')}catch(err){} build('journey'); return; }
   const ta=kind&&document.getElementById('src-'+kind), st=kind&&document.getElementById('status-'+kind);
